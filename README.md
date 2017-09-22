@@ -1,5 +1,7 @@
 # cheidelacoriera
 
+[![Build Status](https://travis-ci.org/mberlanda/cheidelacoriera.svg?branch=master)](https://travis-ci.org/mberlanda/cheidelacoriera)
+
 This Rails application aims to become a management system for away fans.
 
 It should include two levels of users:
