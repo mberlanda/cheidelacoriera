@@ -1,0 +1,36 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - bin/**/*
+    - config/boot.rb
+    - config/**/*
+    - db/schema.rb
+    - script/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - Rakefile
+    - Gemfile
+  DisplayCopNames: true
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/LineLength:
+  Enabled: true
+  Exclude:
+    - db/**/*
+    - spec/*_helper.rb
+
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - db/**/*
+    - spec/*_helper.rb
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false

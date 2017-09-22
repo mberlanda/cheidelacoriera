@@ -1,0 +1,9 @@
+linters:
+  LineLength:
+    max: 200
+  RuboCop:
+    enabled: true
+    ignored_cops:
+      - Layout/TrailingBlankLines
+      - Style/Documentation
+      - Style/FrozenStringLiteralComment

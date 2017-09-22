@@ -1,0 +1,50 @@
+gemfile: 'Gemfile'
+
+PreCommit:
+  ALL:
+    exclude:
+      - 'bin/**'
+      - 'public/**'
+      - 'vendor/**'
+  # Checks for vulnerable versions of gems
+  BundleAudit:
+    enabled: true
+    on_warn: fail
+  # Dependency Check
+  BundleCheck:
+    enabled: true
+    on_warn: fail
+  # Style Check in HAML
+  HamlLint:
+    enabled: true
+    command: ['bundle', 'exec', 'haml-lint', '-c','./.haml-lint.yml', 'app/views/']
+    on_warn: fail
+  # Migration Check
+  RailsSchemaUpToDate:
+    enabled: true
+    on_warn: fail
+  # Style Check
+  RuboCop:
+    enabled: true
+    command: ['bundle', 'exec', 'rubocop', '-c', './.rubocop.yml']
+    on_warn: fail
+  # YAML Check
+  YamlSyntax:
+    enabled: true
+    on_warn: fail
+
+PrePush:
+  # Security Check
+  Brakeman:
+    enabled: true
+    command: ['bundle', 'exec', 'brakeman']
+    on_warn: fail
+  # Dependency Check
+  BundleInstall:
+    enabled: true
+    on_warn: fail
+  # Unit & Integration TEST
+  RSpec:
+    enabled: true
+    command: ['bundle', 'exec', 'rspec', 'spec']
+    on_warn: fail

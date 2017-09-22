@@ -27,7 +27,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 9.1.0', platform: :mri
   gem 'rspec-rails', '~> 3.6.0'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '1.0.2'
 end
 
 group :test do
@@ -45,6 +45,16 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :lint do
+  gem 'overcommit', '~> 0.41', require: false  # hook event pre-commit, pre-push
+  gem 'brakeman', '~> 3.7.2', require: false   # A static analysis security vulnerability scanner
+  gem 'haml-lint', '~> 0.26', require: false   # Syntax checker for HAML
+  gem 'ruby_css_lint', '~> 0.1', require: false   # Syntax checker for CSS
+  gem 'rubocop', '~> 0.50', require: false   # A Ruby static code analyzer
+  gem 'bundler-audit', '~> 0.6'   # Check dependencies
+end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

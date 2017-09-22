@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :fan do
     first_name { FFaker::Name.first_name }

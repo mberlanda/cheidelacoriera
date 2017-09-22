@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe WelcomeController, type: :controller do
-
   describe 'GET index' do
     it 'has http status OK' do
       get :index

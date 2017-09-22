@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   context 'default user' do
     subject { FactoryGirl.create :user }
 
@@ -17,5 +18,4 @@ RSpec.describe User, type: :model do
       expect(subject.status).to eq('pending')
     end
   end
-
 end
