@@ -48,11 +48,11 @@ end
 
 group :lint do
   gem 'overcommit', '~> 0.41', require: false  # hook event pre-commit, pre-push
-  gem 'brakeman', '~> 3.7.2', require: false   # A static analysis security vulnerability scanner
-  gem 'haml-lint', '~> 0.26', require: false   # Syntax checker for HAML
-  gem 'ruby_css_lint', '~> 0.1', require: false   # Syntax checker for CSS
-  gem 'rubocop', '~> 0.50', require: false   # A Ruby static code analyzer
-  gem 'bundler-audit', '~> 0.6'   # Check dependencies
+  gem 'brakeman', '~> 3.7.2', require: false  # A static analysis security vulnerability scanner
+  gem 'haml-lint', '~> 0.26', require: false  # Syntax checker for HAML
+  gem 'ruby_css_lint', '~> 0.1', require: false  # Syntax checker for CSS
+  gem 'rubocop', '~> 0.50', require: false  # A Ruby static code analyzer
+  gem 'bundler-audit', '~> 0.6'  # Check dependencies
 end
 
 
