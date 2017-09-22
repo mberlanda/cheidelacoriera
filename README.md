@@ -1,24 +1,18 @@
-# README
+# cheidelacoriera
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails application aims to become a management system for away fans.
 
-Things you may want to cover:
+It should include two levels of users:
+- administrators: can create new events, set the amount of seats/tickets, export list of participants for every event
+- fans: can register for a match
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In terms of models, it should include:
+- users: credentials and permissions scope
+  - fans: people associated to a user account (first_name, last_name, date_of_birth, place_of_birth, fidelity_card_no)
+- teams: name, country, url, image_url
+- competitions (e.g. championship, national cup, European cup ...)
+  - events: date, team, competition, season, home_team, away_team, score, notes
+- transport_means
+- travels : event, transport_mean
+  - travel_seats: total, requested, reserved, available
+  - fan_travels: travel, fan, status
