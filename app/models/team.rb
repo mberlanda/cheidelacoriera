@@ -5,12 +5,6 @@ class Team < ApplicationRecord
   validates :country, presence: true, allow_blank: false
   validates :name, uniqueness: { scope: :country }
 
-  # rubocop:disable Metrics/LineLength
-  URL_REGEXP = %r[
-    /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
-  ]
-  # rubocop:enable Metrics/LineLength
-
-  # validates :url, format: { with: Team::URL_REGEXP }
-  # validates :image_url, format: { with: Team::URL_REGEXP }
+  validates :url, http_url: true, allow_nil: true
+  validates :image_url, http_url: true, allow_nil: true
 end

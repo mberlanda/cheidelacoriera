@@ -17,6 +17,11 @@ Metrics/AbcSize:
   Exclude:
     - db/migrate/*.rb
 
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*_spec.rb
+
 Metrics/LineLength:
   Enabled: true
   Exclude:

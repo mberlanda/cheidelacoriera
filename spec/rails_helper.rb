@@ -58,10 +58,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-end
-
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:
@@ -75,3 +71,7 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+require 'support/database_cleaner'
+require 'support/devise'
+require 'support/factory_girl'
