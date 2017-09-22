@@ -21,7 +21,7 @@ PreCommit:
     on_warn: fail
   # Migration Check
   RailsSchemaUpToDate:
-    enabled: false
+    enabled: true
     on_warn: fail
   # Style Check
   RuboCop:

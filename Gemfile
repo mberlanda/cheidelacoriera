@@ -34,7 +34,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.8.0'
-  gem 'ffaker', '~> 2.5.0'
+  gem 'ffaker', '~> 2.7.0'
 end
 
 group :development do
