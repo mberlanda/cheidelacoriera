@@ -5,13 +5,20 @@ require 'rails_helper'
 # (CrudTestModel). This is useful to test the general behavior
 # of CrudController.
 
-describe CrudTestModelsController do
+describe CrudTestModelsController, type: :controller do
   include CrudTestHelper
+  include Devise::Test::IntegrationHelpers
+  # include Warden::Test::Helpers
 
   before(:all) do
     reset_db
     setup_db
     create_test_data
+
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    # @request.env["devise.mapping"] = Devise.mappings[:user]
+    # login_as @user, scope: :user
   end
 
   after(:all) { reset_db }

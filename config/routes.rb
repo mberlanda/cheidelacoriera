@@ -3,4 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
+
+  resources :crud, only: [] do
+    collection do
+      scope module: :crud do
+        resources :users
+      end
+    end
+  end
 end
