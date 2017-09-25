@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 module DryCrud
   # Sort functionality for the index table.

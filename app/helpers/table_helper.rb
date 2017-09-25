@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 # Defines tables to display a list of entries. The helper methods come in
 # different granularities:

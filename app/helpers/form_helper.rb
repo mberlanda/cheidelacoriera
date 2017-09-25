@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 # Defines forms to edit models. The helper methods come in different
 # granularities:

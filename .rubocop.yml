@@ -11,6 +11,7 @@ AllCops:
     - Rakefile
     - Gemfile
     - '**/helpers/dry_crud/**/*.rb'
+    - '**/helpers/actions_helper*.rb'
     - '**/helpers/form_helper*.rb'
     - '**/helpers/format_helper*.rb'
     - '**/helpers/i18n_helper*.rb'

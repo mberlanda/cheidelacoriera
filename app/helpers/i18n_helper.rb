@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 # Translation helpers extending the Rails +translate+ helper to support
 # translation inheritance over the controller class hierarchy.
@@ -30,7 +30,7 @@ module I18nHelper
   #  - activerecord.associations.{association_model_name}.{key}
   #  - global.associations.{key}
   def translate_association(key, assoc = nil, variables = {})
-    if assoc&.options[:polymorphic].nil?
+    if assoc && assoc.options[:polymorphic].nil?
       variables[:default] ||= [association_klass_key(assoc, key).to_sym,
                                :"global.associations.#{key}"]
       t(association_owner_key(assoc, key), variables)

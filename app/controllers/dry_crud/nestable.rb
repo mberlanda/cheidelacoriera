@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 module DryCrud
   # Provides functionality to nest controllers/resources.

@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 # Helpers to create action links. This default implementation supports
 # regular links with an icon and a label. To change the general style

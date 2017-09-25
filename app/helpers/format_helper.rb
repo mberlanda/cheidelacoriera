@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 # Provides uniform formatting of basic data types, based on Ruby class (#f)
 # or database column type (#format_attr). If other helpers define methods
