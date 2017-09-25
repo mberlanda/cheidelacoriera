@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 # Provides uniform formatting of basic data types, based on Ruby class (#f)
 # or database column type (#format_attr). If other helpers define methods
@@ -8,14 +8,13 @@
 # Futher helpers standartize the layout of multiple attributes (#render_attrs),
 # values with labels (#labeled) and simple lists.
 module FormatHelper
-
   # Formats a basic value based on its Ruby class.
   def f(value)
     case value
     when Float, BigDecimal then
       number_with_precision(value, precision: t('number.format.precision'),
                                    delimiter: t('number.format.delimiter'))
-    when Fixnum then
+    when Integer then
       number_with_delimiter(value, delimiter: t('number.format.delimiter'))
     when Date   then l(value)
     when Time   then "#{l(value.to_date)} #{l(value, format: :time)}"
@@ -162,5 +161,4 @@ module FormatHelper
   def assoc_link?(_assoc, val)
     respond_to?("#{val.class.model_name.singular_route_key}_path".to_sym)
   end
-
 end

@@ -1,4 +1,6 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Tests all actions of the CrudController based on a dummy model
@@ -7,18 +9,11 @@ require 'rails_helper'
 
 describe CrudTestModelsController, type: :controller do
   include CrudTestHelper
-  include Devise::Test::IntegrationHelpers
-  # include Warden::Test::Helpers
 
   before(:all) do
     reset_db
     setup_db
     create_test_data
-
-    @user = FactoryGirl.create(:user)
-    sign_in @user
-    # @request.env["devise.mapping"] = Devise.mappings[:user]
-    # login_as @user, scope: :user
   end
 
   after(:all) { reset_db }
@@ -98,7 +93,7 @@ describe CrudTestModelsController, type: :controller do
           it_is_expected_to_respond
 
           it 'entries have one item' do
-            expect(entries).to eq([CrudTestModel.find_by_name('BBBBB')])
+            expect(entries).to eq([CrudTestModel.find_by(name: 'BBBBB')])
           end
 
           it 'session has query list param' do
@@ -120,7 +115,8 @@ describe CrudTestModelsController, type: :controller do
 
           it 'session has sort list param' do
             expect(session[:list_params]['/crud_test_models.html']).to eq(
-              'sort' => 'children', 'sort_dir' => 'asc')
+              'sort' => 'children', 'sort_dir' => 'asc'
+            )
           end
         end
 
@@ -141,7 +137,8 @@ describe CrudTestModelsController, type: :controller do
 
           it 'session has sort list param' do
             expect(session[:list_params]['/crud_test_models.html']).to eq(
-              'sort' => 'chatty', 'sort_dir' => 'desc')
+              'sort' => 'chatty', 'sort_dir' => 'desc'
+            )
           end
         end
 
@@ -153,12 +150,13 @@ describe CrudTestModelsController, type: :controller do
           it_is_expected_to_respond
 
           it 'entries are in correct order' do
-            expect(entries.map(&:name)).to eq(%w(CCCCC DDDDD BBBBB))
+            expect(entries.map(&:name)).to eq(%w[CCCCC DDDDD BBBBB])
           end
 
           it 'session has sort list param' do
             expect(session[:list_params]['/crud_test_models.html']).to eq(
-              'q' => 'DDD', 'sort' => 'chatty', 'sort_dir' => 'asc')
+              'q' => 'DDD', 'sort' => 'chatty', 'sort_dir' => 'asc'
+            )
           end
         end
       end
@@ -186,7 +184,7 @@ describe CrudTestModelsController, type: :controller do
         it_is_expected_to_respond
 
         it 'entries are in correct order' do
-          expect(entries.map(&:name)).to eq(%w(BBBBB DDDDD CCCCC))
+          expect(entries.map(&:name)).to eq(%w[BBBBB DDDDD CCCCC])
         end
 
         it 'params are set' do
@@ -211,7 +209,8 @@ describe CrudTestModelsController, type: :controller do
 
       it 'calls two render callbacks' do
         expect(controller.called_callbacks).to eq(
-          [:before_render_new, :before_render_form])
+          %i[before_render_new before_render_form]
+        )
       end
     end
 
@@ -235,7 +234,8 @@ describe CrudTestModelsController, type: :controller do
 
     it 'calls the correct callbacks' do
       expect(controller.called_callbacks).to eq(
-        [:before_create, :before_save, :after_save, :after_create])
+        %i[before_create before_save after_save after_create]
+      )
     end
 
     context 'with before callback' do
@@ -261,7 +261,8 @@ describe CrudTestModelsController, type: :controller do
 
         it 'calls the correct callbacks' do
           expect(controller.called_callbacks).to eq(
-            [:before_render_new, :before_render_form])
+            %i[before_render_new before_render_form]
+          )
         end
       end
 
@@ -304,8 +305,9 @@ describe CrudTestModelsController, type: :controller do
 
           it 'calls the correct callbacks' do
             expect(controller.called_callbacks).to eq(
-              [:before_create, :before_save,
-               :before_render_new, :before_render_form])
+              %i[before_create before_save
+                 before_render_new before_render_form]
+            )
           end
         end
       end
@@ -328,7 +330,8 @@ describe CrudTestModelsController, type: :controller do
 
           it 'calls the correct callbacks' do
             expect(controller.called_callbacks).to eq(
-              [:before_create, :before_save])
+              %i[before_create before_save]
+            )
           end
         end
       end
@@ -338,7 +341,8 @@ describe CrudTestModelsController, type: :controller do
   describe_action :get, :edit, id: true do
     it 'calls the correct callbacks' do
       expect(controller.called_callbacks).to eq(
-        [:before_render_edit, :before_render_form])
+        %i[before_render_edit before_render_form]
+      )
     end
   end
 
@@ -347,7 +351,8 @@ describe CrudTestModelsController, type: :controller do
 
     it 'calls the correct callbacks' do
       expect(controller.called_callbacks).to eq(
-        [:before_update, :before_save, :after_save, :after_update])
+        %i[before_update before_save after_save after_update]
+      )
     end
 
     context 'with invalid params' do
@@ -367,8 +372,9 @@ describe CrudTestModelsController, type: :controller do
 
         it 'calls the correct callbacks' do
           expect(controller.called_callbacks).to eq(
-            [:before_update, :before_save,
-             :before_render_edit, :before_render_form])
+            %i[before_update before_save
+               before_render_edit before_render_form]
+          )
         end
       end
 
@@ -379,7 +385,8 @@ describe CrudTestModelsController, type: :controller do
 
         it 'calls the correct callbacks' do
           expect(controller.called_callbacks).to eq(
-            [:before_update, :before_save])
+            %i[before_update before_save]
+          )
         end
       end
     end
@@ -388,7 +395,8 @@ describe CrudTestModelsController, type: :controller do
   describe_action :delete, :destroy, id: true do
     it 'calls the correct callbacks' do
       expect(controller.called_callbacks).to eq(
-        [:before_destroy, :after_destroy])
+        %i[before_destroy after_destroy]
+      )
     end
 
     context 'with failure' do

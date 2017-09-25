@@ -1,8 +1,7 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module DryCrud
   module Form
-
     # A form builder that automatically selects the corresponding input field
     # for ActiveRecord column types. Convenience methods for each column type
     # allow one to customize the different fields.
@@ -16,7 +15,6 @@ module DryCrud
     # See the Control class for how to customize the html rendered for a
     # single input field.
     class Builder < ActionView::Helpers::FormBuilder
-
       class_attribute :control_class
       self.control_class = Control
 
@@ -84,8 +82,8 @@ module DryCrud
       end
 
       # Add form-control class to all input fields.
-      %w(text_field password_field email_field text_area
-         number_field date_field time_field datetime_field).each do |method|
+      %w[text_field password_field email_field text_area
+         number_field date_field time_field datetime_field].each do |method|
         define_method(method) do |attr, html_options = {}|
           add_css_class(html_options, 'form-control')
           super(attr, html_options)
@@ -315,7 +313,6 @@ module DryCrud
           options[:cancel_url_edit] || options[:cancel_url]
         end
       end
-
     end
   end
 end

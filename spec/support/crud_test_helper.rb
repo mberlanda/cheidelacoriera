@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #:nodoc:
 REGEXP_ROWS = /<tr.+?<\/tr>/m #:nodoc:
@@ -10,7 +10,6 @@ REGEXP_ACTION_CELL = /<td class=\"action\"><a .*?href.+?<\/a><\/td>/m #:nodoc:
 # This helper is used to test the CrudController and various helpers
 # without the need for an application based model.
 module CrudTestHelper
-
   # Controller helper methods for the tests
 
   def model_class
@@ -95,9 +94,9 @@ module CrudTestHelper
   # Removes the crud_test_models table from the database.
   def reset_db
     c = ActiveRecord::Base.connection
-    [:crud_test_models,
-     :other_crud_test_models,
-     :crud_test_models_other_crud_test_models].each do |table|
+    %i[crud_test_models
+       other_crud_test_models
+       crud_test_models_other_crud_test_models].each do |table|
       c.drop_table(table) if c.data_source_exists?(table)
     end
   end
@@ -110,7 +109,7 @@ module CrudTestHelper
 
   # Fixture-style accessor method to get CrudTestModel instances by name
   def crud_test_models(name)
-    CrudTestModel.find_by_name(name.to_s)
+    CrudTestModel.find_by(name: name.to_s)
   end
 
   def with_test_routing
@@ -150,7 +149,8 @@ module CrudTestHelper
                  "1#{index}:2#{index}",
       human: index.even?,
       remarks: "#{c} #{str(index + 1)} #{str(index + 2)}\n" *
-                  (index % 3 + 1))
+                  (index % 3 + 1)
+    )
     m.companion = companion
     m.save!
     m
@@ -182,5 +182,4 @@ module CrudTestHelper
 
     c.execute('BEGIN') if start_transaction
   end
-
 end

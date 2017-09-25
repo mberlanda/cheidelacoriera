@@ -1,16 +1,15 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 # Controller for the dummy model.
 class CrudTestModelsController < CrudController #:nodoc:
+  HANDLE_PREFIX = 'handle_'
 
-  HANDLE_PREFIX = 'handle_'.freeze
-
-  self.search_columns = [:name, :whatever, :remarks]
+  self.search_columns = %i[name whatever remarks]
   self.sort_mappings = { chatty: 'length(remarks)' }
   self.default_sort = 'name'
-  self.permitted_attrs = [:name, :email, :password, :whatever, :children,
-                          :companion_id, :rating, :income, :birthdate,
-                          :gets_up_at, :last_seen, :human, :remarks]
+  self.permitted_attrs = %i[name email password whatever children
+                            companion_id rating income birthdate
+                            gets_up_at last_seen human remarks]
 
   before_create :possibly_redirect
   before_create :handle_name
@@ -79,7 +78,7 @@ class CrudTestModelsController < CrudController #:nodoc:
   end
 
   # create callback methods that record the before/after callbacks
-  [:create, :update, :save, :destroy].each do |a|
+  %i[create update save destroy].each do |a|
     callback = "before_#{a}"
     send(callback.to_sym, :"#{HANDLE_PREFIX}#{callback}")
     callback = "after_#{a}"
@@ -87,7 +86,7 @@ class CrudTestModelsController < CrudController #:nodoc:
   end
 
   # create callback methods that record the before_render callbacks
-  [:index, :show, :new, :edit, :form].each do |a|
+  %i[index show new edit form].each do |a|
     callback = "before_render_#{a}"
     send(callback.to_sym, :"#{HANDLE_PREFIX}#{callback}")
   end
@@ -104,5 +103,4 @@ class CrudTestModelsController < CrudController #:nodoc:
     @called_callbacks ||= []
     @called_callbacks << callback
   end
-
 end

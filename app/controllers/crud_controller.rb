@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 # Abstract controller providing basic CRUD actions.
 #
@@ -10,6 +10,7 @@
 # With the help of additional callbacks, it is possible to hook into the
 # action procedures without overriding the entire method.
 class CrudController < ListController
+  skip_before_action :authenticate_user!
 
   class_attribute :permitted_attrs
 
@@ -22,7 +23,7 @@ class CrudController < ListController
   # further down.
   define_render_callbacks :show, :new, :edit
 
-  before_action :entry, only: [:show, :new, :edit, :update, :destroy]
+  before_action :entry, only: %i[show new edit update destroy]
 
   helper_method :entry, :full_entry_label
 
@@ -32,8 +33,7 @@ class CrudController < ListController
   #   GET /entries/1.json
   #
   # Show one entry of this model.
-  def show
-  end
+  def show; end
 
   #   GET /entries/new
   #   GET /entries/new.json
@@ -74,8 +74,7 @@ class CrudController < ListController
   #   GET /entries/1/edit
   #
   # Display a form to edit an exisiting entry of this model.
-  def edit
-  end
+  def edit; end
 
   #   PUT /entries/1
   #   PUT /entries/1.json
@@ -224,5 +223,4 @@ class CrudController < ListController
       before_render_edit(*methods)
     end
   end
-
 end

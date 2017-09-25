@@ -1,14 +1,12 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module DryCrud
   module Table
-
     # Adds action columns to the table builder.
     # Predefined actions are available for show, edit and destroy.
     # Additionally, a special col type to define cells linked to the show page
     # of the row entry is provided.
     module Actions
-
       extend ActiveSupport::Concern
 
       included do
@@ -88,8 +86,6 @@ module DryCrud
       def action_path(e)
         block_given? ? yield(e) : path_args(e)
       end
-
     end
-
   end
 end

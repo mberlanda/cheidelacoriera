@@ -1,8 +1,9 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe UtilityHelper do
-
   include CrudTestHelper
 
   before(:all) do
@@ -32,20 +33,19 @@ describe UtilityHelper do
   end
 
   describe '#content_tag_nested' do
-
     it 'escapes safe content' do
-      html = content_tag_nested(:div, %w(a b)) { |e| content_tag(:span, e) }
+      html = content_tag_nested(:div, %w[a b]) { |e| content_tag(:span, e) }
       expect(html).to be_html_safe
       expect(html).to eq('<div><span>a</span><span>b</span></div>')
     end
 
     it 'escapes unsafe content' do
-      html = content_tag_nested(:div, %w(a b)) { |e| "<#{e}>" }
+      html = content_tag_nested(:div, %w[a b]) { |e| "<#{e}>" }
       expect(html).to eq('<div>&lt;a&gt;&lt;b&gt;</div>')
     end
 
     it 'simplys join without block' do
-      html = content_tag_nested(:div, %w(a b))
+      html = content_tag_nested(:div, %w[a b])
       expect(html).to eq('<div>ab</div>')
     end
   end
@@ -57,7 +57,7 @@ describe UtilityHelper do
     end
 
     it 'collects contents for array' do
-      html = safe_join(%w(a b)) { |e| content_tag(:span, e) }
+      html = safe_join(%w[a b]) { |e| content_tag(:span, e) }
       expect(html).to eq('<span>a</span><span>b</span>')
     end
   end
@@ -65,10 +65,10 @@ describe UtilityHelper do
   describe '#default_crud_attrs' do
     it 'do not contain id and password' do
       expect(default_crud_attrs).to eq(
-        [:name, :email, :whatever, :children, :companion_id, :rating, :income,
-         :birthdate, :gets_up_at, :last_seen, :human, :remarks,
-         :created_at, :updated_at])
+        %i[name email whatever children companion_id rating income
+           birthdate gets_up_at last_seen human remarks
+           created_at updated_at]
+      )
     end
   end
-
 end

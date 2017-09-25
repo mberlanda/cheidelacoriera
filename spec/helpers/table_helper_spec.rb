@@ -1,8 +1,9 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe TableHelper do
-
   include FormatHelper
   include UtilityHelper
   include I18nHelper
@@ -17,7 +18,7 @@ describe TableHelper do
   after(:all) { reset_db }
 
   describe '#plain_table' do
-    subject { plain_table(%w(foo bar), :size) { |t| t.attrs :upcase } }
+    subject { plain_table(%w[foo bar], :size) { |t| t.attrs :upcase } }
 
     it 'contains attrs' do
       is_expected.to match(/<th>Size<\/th>/)
@@ -41,7 +42,7 @@ describe TableHelper do
 
     context 'with data' do
       subject do
-        plain_table_or_message(%w(foo bar), :size) { |t| t.attrs :upcase }
+        plain_table_or_message(%w[foo bar], :size) { |t| t.attrs :upcase }
       end
 
       it { is_expected.to be_html_safe }
@@ -148,7 +149,8 @@ describe TableHelper do
 
       it 'has 1 ascending sort headers' do
         expect_pattern_count(
-          /<th><a .*?sort_dir=desc.*?>Children<\/a> &darr;<\/th>/, 1)
+          /<th><a .*?sort_dir=desc.*?>Children<\/a> &darr;<\/th>/, 1
+        )
       end
     end
 
@@ -164,7 +166,8 @@ describe TableHelper do
 
       it 'has 1 descending sort headers' do
         expect_pattern_count(
-          /<th><a .*?sort_dir=asc.*?>Children<\/a> &uarr;<\/th>/, 1)
+          /<th><a .*?sort_dir=asc.*?>Children<\/a> &uarr;<\/th>/, 1
+        )
       end
     end
 
@@ -180,7 +183,8 @@ describe TableHelper do
 
       it 'has 1 ascending sort headers' do
         expect_pattern_count(
-          /<th><a .*?sort_dir=desc.*?>Chatty<\/a> &darr;<\/th>/, 1)
+          /<th><a .*?sort_dir=desc.*?>Chatty<\/a> &darr;<\/th>/, 1
+        )
       end
     end
   end
@@ -265,5 +269,4 @@ describe TableHelper do
   def expect_pattern_count(pattern, count)
     expect(subject.scan(pattern).size).to eq(count)
   end
-
 end

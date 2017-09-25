@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 # Contains assertions for testing common crud controller use cases.
 # See crud_controller_examples for use cases.
@@ -47,7 +47,7 @@ module CrudControllerTestHelper
 
     # treat in-memory entry as committed in order to
     # avoid rollback of internal state.
-    entry.committed! if entry
+    entry&.committed!
   end
 
   def restore_request
@@ -79,7 +79,6 @@ module CrudControllerTestHelper
 
   # Helper methods to describe contexts.
   module ClassMethods
-
     # Describe a certain action and provide some usefull metadata.
     # Tests whether this action is configured to be skipped.
     def describe_action(method, action, metadata = {}, &block)
@@ -171,5 +170,4 @@ module CrudControllerTestHelper
       end
     end
   end
-
 end

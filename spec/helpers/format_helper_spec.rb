@@ -1,8 +1,9 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe FormatHelper do
-
   include UtilityHelper
   include I18nHelper
   include CrudTestHelper
@@ -32,7 +33,8 @@ describe FormatHelper do
       it do
         expect(subject.squish).to match(
           /^<dt>label<\/dt>
-           \ <dd\ class=['"]value['"]>value<\/dd>$/x)
+           \ <dd\ class=['"]value['"]>value<\/dd>$/x
+        )
       end
     end
 
@@ -45,7 +47,8 @@ describe FormatHelper do
           /<dt>label<\/dt>
            \ <dd\ class=['"]value['"]>
            #{UtilityHelper::EMPTY_STRING}
-           <\/dd>$/x)
+           <\/dd>$/x
+        )
       end
     end
 
@@ -58,7 +61,8 @@ describe FormatHelper do
           /<dt>label<\/dt>
            \ <dd\ class=['"]value['"]>
            value\ &lt;unsafe&gt;
-           <\/dd>$/x)
+           <\/dd>$/x
+        )
       end
     end
   end
@@ -70,12 +74,12 @@ describe FormatHelper do
     it do
       expect(subject.squish).to match(
         /<dt>Size<\/dt>
-         \ <dd\ class=['"]value['"]>3\ chars<\/dd>$/x)
+         \ <dd\ class=['"]value['"]>3\ chars<\/dd>$/x
+      )
     end
   end
 
   describe '#f' do
-
     unless ENV['NON_LOCALIZED'] # localization dependent tests
       context 'Floats' do
         it 'adds two digits' do
@@ -129,7 +133,6 @@ describe FormatHelper do
         expect(f('<injection>')).not_to be_html_safe
       end
     end
-
   end
 
   describe '#format_attr' do
@@ -147,7 +150,8 @@ describe FormatHelper do
 
     it 'formats empty belongs_to' do
       expect(format_attr(crud_test_models(:AAAAA), :companion)).to eq(
-        t('global.associations.no_entry'))
+        t('global.associations.no_entry')
+      )
     end
 
     it 'formats existing belongs_to' do
@@ -224,7 +228,8 @@ describe FormatHelper do
       string = format_type(model, :remarks)
       expect(string).to be_html_safe
       expect(string).to eq(
-        "<p>AAAAA BBBBB CCCCC\n<br />AAAAA BBBBB CCCCC\n</p>")
+        "<p>AAAAA BBBBB CCCCC\n<br />AAAAA BBBBB CCCCC\n</p>"
+      )
     end
 
     it 'escapes texts' do
@@ -255,5 +260,4 @@ describe FormatHelper do
       expect(captionize(:gets_up_at, CrudTestModel)).to eq('Gets up at')
     end
   end
-
 end

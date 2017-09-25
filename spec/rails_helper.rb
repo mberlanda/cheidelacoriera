@@ -72,4 +72,4 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Dir[File.expand_path('../support/*.rb', __FILE__)].each {|file| require file }
+Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }

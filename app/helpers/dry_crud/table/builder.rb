@@ -1,8 +1,7 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module DryCrud
   module Table
-
     # A simple helper to easily define tables listing several rows of the same
     # data type.
     #
@@ -12,7 +11,6 @@ module DryCrud
     #     t.attrs :name, :city
     #   end
     class Builder
-
       include Sorting
       include Actions
 
@@ -112,7 +110,6 @@ module DryCrud
           entries.first.class
         end
       end
-
     end
   end
 end

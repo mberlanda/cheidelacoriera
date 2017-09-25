@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 # Defines tables to display a list of entries. The helper methods come in
 # different granularities:
@@ -9,7 +9,6 @@
 # * #crud_table - A sortable #plain_table for the current +entries+, with the
 #   given attributes or default and the standard crud action links.
 module TableHelper
-
   # Renders a table for the given entries. One column is rendered for each
   # attribute passed. If a block is given, the columns defined therein are
   # appended to the attribute columns.
@@ -75,10 +74,7 @@ module TableHelper
 
   def explode_attrs_with_options(attrs)
     options = attrs.extract_options!
-    if !block_given? && attrs.blank?
-      attrs = default_crud_attrs
-    end
+    attrs = default_crud_attrs if !block_given? && attrs.blank?
     [attrs, options]
   end
-
 end

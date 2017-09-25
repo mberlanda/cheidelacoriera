@@ -1,7 +1,6 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module DryCrud
-
   # Connects the including controller to the model whose name corrsponds to
   # the controller's name.
   #
@@ -9,7 +8,6 @@ module DryCrud
   # Additional helper methods store and retrieve values in instance variables
   # named after their class.
   module GenericModel
-
     extend ActiveSupport::Concern
 
     included do
@@ -61,7 +59,6 @@ module DryCrud
 
     # Class methods from GenericModel.
     module ClassMethods
-
       # The ActiveRecord class of the model.
       def model_class
         @model_class ||= controller_name.classify.constantize
@@ -81,7 +78,6 @@ module DryCrud
 
         model_class.model_name.human(opts)
       end
-
     end
   end
 end

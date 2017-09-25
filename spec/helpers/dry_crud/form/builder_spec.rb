@@ -1,8 +1,9 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'DryCrud::Form::Builder' do
-
   include FormatHelper
   include FormHelper
   include UtilityHelper
@@ -21,7 +22,6 @@ describe 'DryCrud::Form::Builder' do
   let(:form)  { DryCrud::Form::Builder.new(:entry, entry, self, {}) }
 
   describe '#input_field' do
-
     it 'dispatches name attr to string field' do
       expect(form).to receive(:string_field)
         .with(:name, required: 'required')
@@ -41,8 +41,7 @@ describe 'DryCrud::Form::Builder' do
       last_seen: :datetime_field,
       companion_id: :belongs_to_field,
       other_ids: :has_many_field,
-      more_ids: :has_many_field
-    }.each do |attr, method|
+      more_ids: :has_many_field }.each do |attr, method|
       it 'dispatches #{attr} attr to #{method}' do
         expect(form).to receive(method).with(attr, {})
         form.input_field(attr)
@@ -50,7 +49,6 @@ describe 'DryCrud::Form::Builder' do
 
       it { expect(form.input_field(attr)).to be_html_safe }
     end
-
   end
 
   describe '#labeled_input_fields' do
@@ -153,7 +151,6 @@ describe 'DryCrud::Form::Builder' do
         is_expected.to match(/label [^>]*for.+hoho/)
       end
     end
-
   end
 
   describe '#labeled' do
@@ -230,5 +227,4 @@ describe 'DryCrud::Form::Builder' do
   def expect_n_options(f, n)
     expect(f.scan('</option>').size).to eq(n)
   end
-
 end

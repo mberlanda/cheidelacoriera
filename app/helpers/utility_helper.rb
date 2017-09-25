@@ -1,9 +1,10 @@
-# encoding: UTF-8
+
+# frozen_string_literal: true
+
 require 'English'
 
 # View helpers for basic functions used in various other helpers.
 module UtilityHelper
-
   # rubocop:disable Rails/OutputSafety
   EMPTY_STRING = '&nbsp;'.html_safe # non-breaking space asserts better css.
   # rubocop:enable Rails/OutputSafety
@@ -43,7 +44,7 @@ module UtilityHelper
   # 'id' or 'position'.
   def default_crud_attrs
     attrs = model_class.column_names.map(&:to_sym)
-    attrs - [:id, :position, :password]
+    attrs - %i[id position password]
   end
 
   # Returns the ActiveRecord column type or nil.
@@ -82,5 +83,4 @@ module UtilityHelper
       [attr, "#{attr}_id"]
     end
   end
-
 end
