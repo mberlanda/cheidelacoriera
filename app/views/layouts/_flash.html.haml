@@ -1,2 +1,4 @@
 - if flash[level].present?
-  %div{ class: "alert alert-#{flash_class(level)}" }= flash[level].html_safe
+  .alert{ align: 'center', class: "alert-#{flash_class(level)} alert-dismissable" }
+    %a.close{ 'aria-label' => 'close', 'data-dismiss' => 'alert', href: '#' } ×
+    = flash[level].html_safe

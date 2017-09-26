@@ -3,4 +3,5 @@
   content_for(:tools, render('search')) if search_support?
   content_for(:actions, render('actions_index'))
 
-= render 'list'
+.table-responsive
+  = render 'list'
