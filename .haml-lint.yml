@@ -1,9 +1,15 @@
 linters:
+  IdNames:
+    enabled: false
   LineLength:
     max: 200
   RuboCop:
     enabled: true
     ignored_cops:
       - Layout/TrailingBlankLines
+      - Lint/Void
+      - Metrics/LineLength
+      - Rails/OutputSafety
+      - Style/BracesAroundHashParameters
       - Style/Documentation
       - Style/FrozenStringLiteralComment

@@ -72,6 +72,4 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-require 'support/database_cleaner'
-require 'support/devise'
-require 'support/factory_girl'
+Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }

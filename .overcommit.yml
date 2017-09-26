@@ -37,7 +37,7 @@ PrePush:
   # Security Check
   Brakeman:
     enabled: true
-    command: ['bundle', 'exec', 'brakeman']
+    command: ['bundle', 'exec', 'brakeman', '--skip-files', 'app/views/layouts/_flash.html.haml']
     on_warn: fail
   # Dependency Check
   BundleInstall:

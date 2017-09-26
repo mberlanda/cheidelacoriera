@@ -6,4 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :fans, inverse_of: :user, dependent: :nullify
+
+  def to_s
+    email
+  end
 end

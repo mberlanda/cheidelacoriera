@@ -10,6 +10,17 @@ AllCops:
     - vendor/**/*
     - Rakefile
     - Gemfile
+    - '**/helpers/dry_crud/**/*.rb'
+    - '**/helpers/actions_helper*.rb'
+    - '**/helpers/form_helper*.rb'
+    - '**/helpers/format_helper*.rb'
+    - '**/helpers/i18n_helper*.rb'
+    - '**/helpers/table_helper*.rb'
+    - '**/helpers/utility_helper*.rb'
+    - app/controllers/dry_crud/*.rb
+    - app/controllers/crud_controller.rb
+    - spec/support/crud_*.rb
+    - spec/controllers/crud_test_models_controller_spec.rb
   DisplayCopNames: true
 
 Metrics/AbcSize:
@@ -38,4 +49,7 @@ Rails:
   Enabled: true
 
 Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false

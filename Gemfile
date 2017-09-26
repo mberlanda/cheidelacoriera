@@ -16,9 +16,11 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'haml-rails', '~> 0.9'
 
 gem 'drape', '~> 1.0.0.beta1'
-gem 'devise', '~> 4.2'  # Authentication
+gem 'devise', '~> 4.3'  # Authentication
 gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
+
+gem 'dry_crud', '~> 5.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
