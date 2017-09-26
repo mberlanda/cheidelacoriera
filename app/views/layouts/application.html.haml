@@ -5,7 +5,7 @@
     %meta{ charset: 'utf-8' }
     %title
       = strip_tags(@title)
-      \- MyApp
+      \- CheiDeLaCoriera
 
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     = csrf_meta_tag
@@ -36,8 +36,9 @@
       = render 'layouts/nav'
 
     .container
-      %h1= @title
+      #flash= render partial: 'layouts/flash', collection: %i[notice alert], as: :level
 
+      %h1= @title
       .row.actions
         .col-md-5
           = yield :tools
@@ -45,12 +46,11 @@
           .btn-toolbar.pull-right
             = yield :actions
 
-      #flash= render partial: 'layouts/flash', collection: %i[notice alert], as: :level
-
       #content= yield
 
-    %footer
-      %p
-        &copy; code!z #{Time.zone.now.year}
+      .row
+        %footer
+          %p
+            &copy; code!z #{Time.zone.now.year}
 
   = javascript_tag yield(:javascripts) if content_for?(:javascripts)
