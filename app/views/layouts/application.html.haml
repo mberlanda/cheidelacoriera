@@ -32,8 +32,7 @@
     = yield :head
 
   %body
-    %nav.navbar.navbar-default{ role: 'navigation' }
-      = render 'layouts/nav'
+    = render 'layouts/nav'
 
     .container
       #flash= render partial: 'layouts/flash', collection: %i[notice alert], as: :level

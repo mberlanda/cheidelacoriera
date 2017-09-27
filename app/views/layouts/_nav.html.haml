@@ -1,29 +1,26 @@
-.navbar-header
-  .navbar.navbar-inverse.navbar-fixed-top{ role: 'navigation' }
-    %button.navbar-toggle.collapsed{ 'aria-expanded' => false, 'data-target' => '#navbar-collapse-1', 'data-toggle' => 'collapse', type: 'button' }
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    %a.navbar-brand{ href: root_path }
-      CheiDeLaCoriera
-    .container-fluid
-      .collapse.navbar-collapse#navbar-collapse-1
-        %ul.nav.navbar-nav
-          %li= link_to 'Users', users_path
-          %li= link_to 'Link2', '/path2'
-          %li= link_to 'Link3', '/path3'
-        %ul.nav.navbar-nav.navbar-right
-          - if user_signed_in?
-            %li
-              %a.user-profile.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
-                %i.fa.fa-user.hidden-xs
-                = current_user.email
-                %span.fa.fa-angle-down
-              %ul.dropdown-menu.dropdown-usermenu.pull-right
-                %li
-                  = link_to('Edit Password', edit_user_registration_path)
-                  = link_to('Log Out', destroy_user_session_path, method: :delete)
-          - else
-            %li
-              = link_to('Login', new_user_session_path)
+%nav.navbar.navbar-inverse.navbar-fixed-top{ role: 'navigation' }
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{ 'aria-expanded' => false, 'data-target' => '#navbar-collapse-1', 'data-toggle' => 'collapse', type: 'button' }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{ href: root_path } CheiDeLaCoriera
+    .navbar-collapse.collapse#navbar-collapse-1
+      %ul.nav.navbar-nav
+        %li= link_to 'Users', users_path
+        %li= link_to 'Link2', '/path2'
+        %li= link_to 'Link3', '/path3'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            %a.user-profile.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
+              %i.fa.fa-user.hidden-xs
+              = current_user.email
+              %span.fa.fa-angle-down
+            %ul.dropdown-menu
+              %li= link_to('Edit Password', edit_user_registration_path)
+              %li= link_to('Log Out', destroy_user_session_path, method: :delete)
+        - else
+          %li= link_to('Login', new_user_session_path)
