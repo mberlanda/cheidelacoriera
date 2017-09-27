@@ -47,9 +47,9 @@
 
       #content= yield
 
-      .row
-        %footer
-          %p
-            &copy; code!z #{Time.zone.now.year}
+    .footer
+      .container
+        %span.text-muted
+          &copy; kupta #{Time.zone.now.year}
 
   = javascript_tag yield(:javascripts) if content_for?(:javascripts)

@@ -1,0 +1,152 @@
+$general-background-color: #101010;
+$general-color: #080808;
+$text-color: #006ccd; /*#9d9d9d*/
+$text-focus-color: #ffffff;
+$text-disabled-color: #444444;
+$toggle-focus-color: #333333;
+
+.navbar-cheidelacoriera {
+  background-color: $general-background-color;
+  border-color: $general-color;
+}
+.navbar-cheidelacoriera .navbar-brand {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .navbar-brand:hover,
+.navbar-cheidelacoriera .navbar-brand:focus {
+  color: $text-focus-color;
+  background-color: transparent;
+}
+.navbar-cheidelacoriera .navbar-text {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .navbar-nav > li > a {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .navbar-nav > li > a:hover,
+.navbar-cheidelacoriera .navbar-nav > li > a:focus {
+  color: $text-focus-color;
+  background-color: transparent;
+}
+.navbar-cheidelacoriera .navbar-nav > .active > a,
+.navbar-cheidelacoriera .navbar-nav > .active > a:hover,
+.navbar-cheidelacoriera .navbar-nav > .active > a:focus {
+  color: $text-focus-color;
+  background-color: $general-color;
+}
+.navbar-cheidelacoriera .navbar-nav > .disabled > a,
+.navbar-cheidelacoriera .navbar-nav > .disabled > a:hover,
+.navbar-cheidelacoriera .navbar-nav > .disabled > a:focus {
+  color: $text-disabled-color;
+  background-color: transparent;
+}
+.navbar-cheidelacoriera .navbar-toggle {
+  border-color: $toggle-focus-color;
+}
+.navbar-cheidelacoriera .navbar-toggle:hover,
+.navbar-cheidelacoriera .navbar-toggle:focus {
+  background-color: $toggle-focus-color;
+}
+.navbar-cheidelacoriera .navbar-toggle .icon-bar {
+  background-color: $text-focus-color;
+}
+.navbar-cheidelacoriera .navbar-collapse,
+.navbar-cheidelacoriera .navbar-form {
+  border-color: $general-background-color;
+}
+.navbar-cheidelacoriera .navbar-nav > .open > a,
+.navbar-cheidelacoriera .navbar-nav > .open > a:hover,
+.navbar-cheidelacoriera .navbar-nav > .open > a:focus {
+  color: $text-focus-color;
+  background-color: $general-color;
+}
+
+/* DROPDOWN MENU STYLE START */
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu {
+  background-color: $general-background-color;
+}
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: $text-focus-color;
+  background-color: transparent;
+}
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: $text-focus-color;
+  background-color: $general-color;
+}
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a,
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+.navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+  color: $text-disabled-color;
+  background-color: transparent;
+}
+/* DROPDOWN MENU STYLE END */
+
+@media (max-width: 767px) {
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .dropdown-header {
+    border-color: $general-color;
+  }
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu .divider {
+    background-color: $general-color;
+  }
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a {
+    color: $text-color;
+  }
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: $text-focus-color;
+    background-color: transparent;
+  }
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: $text-focus-color;
+    background-color: $general-color;
+  }
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-cheidelacoriera .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: $text-disabled-color;
+    background-color: transparent;
+  }
+}
+.navbar-cheidelacoriera .navbar-link {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .navbar-link:hover {
+  color: $text-focus-color;
+}
+.navbar-cheidelacoriera .btn-link {
+  color: $text-color;
+}
+.navbar-cheidelacoriera .btn-link:hover,
+.navbar-cheidelacoriera .btn-link:focus {
+  color: $text-focus-color;
+}
+.navbar-cheidelacoriera .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-cheidelacoriera .btn-link:hover,
+.navbar-cheidelacoriera .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-cheidelacoriera .btn-link:focus {
+  color: $text-disabled-color;
+}
+/* NAVBAR LOGO STYLE START */
+.navbar-cheidelacoriera .navbar-logo {
+  float: left;
+  height: 50px;
+  padding: 7px 7px;
+  line-height: 20px;
+  background-color: $general-background-color;
+}
+.navbar-cheidelacoriera .navbar-logo img {
+  height: 100%;
+}
+.navbar-cheidelacoriera .navbar-logo:hover,
+.navbar-cheidelacoriera .navbar-logo:focus {
+  color: $text-focus-color;
+}
+/* NAVBAR LOGO STYLE END */
