@@ -1,0 +1,124 @@
+{
+  "teams": [
+    {
+      "name": "Atalanta",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/2.png",
+      "url": "https://it.wikipedia.org/wiki/Atalanta_Bergamasca_Calcio"
+    },
+    {
+      "name": "Benevento",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/478.png",
+      "url": "https://it.wikipedia.org/wiki/Benevento_Calcio"
+    },
+    {
+      "name": "Bologna",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/19.png",
+      "url": "https://it.wikipedia.org/wiki/Bologna_Football_Club_1909"
+    },
+    {
+      "name": "Cagliari",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/20.png",
+      "url": "https://it.wikipedia.org/wiki/Cagliari_Calcio"
+    },
+    {
+      "name": "Chievo",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/466.png",
+      "url": "https://it.wikipedia.org/wiki/Associazione_Calcio_ChievoVerona"
+    },
+    {
+      "name": "Crotone",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/7200.png",
+      "url": "https://it.wikipedia.org/wiki/Football_Club_Crotone"
+    },
+    {
+      "name": "Fiorentina",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/7.png",
+      "url": "https://it.wikipedia.org/wiki/ACF_Fiorentina"
+    },
+    {
+      "name": "Genoa",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/25.png",
+      "url": "https://it.wikipedia.org/wiki/Genoa_Cricket_and_Football_Club"
+    },
+    {
+      "name": "Hellas Verona",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/16.png",
+      "url": "https://it.wikipedia.org/wiki/Hellas_Verona_Football_Club"
+    },
+    {
+      "name": "Inter",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/8.png",
+      "url": "https://it.wikipedia.org/wiki/Football_Club_Internazionale_Milano"
+    },
+    {
+      "name": "Juventus",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/9.png",
+      "url": "https://it.wikipedia.org/wiki/Juventus_Football_Club"
+    },
+    {
+      "name": "Lazio",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/26.png",
+      "url": "https://it.wikipedia.org/wiki/Societ%C3%A0_Sportiva_Lazio"
+    },
+    {
+      "name": "Milan",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/10.png",
+      "url": "https://it.wikipedia.org/wiki/Associazione_Calcio_Milan"
+    },
+    {
+      "name": "Napoli",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/11.png",
+      "url": "https://it.wikipedia.org/wiki/Societ%C3%A0_Sportiva_Calcio_Napoli"
+    },
+    {
+      "name": "Roma",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/12.png",
+      "url": "https://it.wikipedia.org/wiki/Associazione_Sportiva_Roma"
+    },
+    {
+      "name": "Sampdoria",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/13.png",
+      "url": ""
+    },
+    {
+      "name": "Sassuolo",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/456.",
+      "url": ""
+    },
+    {
+      "name": "Spal",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/401.png",
+      "url": ""
+    },
+    {
+      "name": "Torino",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/14.png",
+      "url": ""
+    },
+    {
+      "name": "Udinese",
+      "country": "Italy",
+      "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/15.png",
+      "url": ""
+    }
+  ]
+}

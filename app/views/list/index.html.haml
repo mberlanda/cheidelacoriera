@@ -3,5 +3,6 @@
   content_for(:tools, render('search')) if search_support?
   content_for(:actions, render('actions_index'))
 
-.table-responsive
-  = render 'list'
+.crud-content
+  .table-responsive
+    = render 'list'

@@ -26,6 +26,9 @@ body {
   margin-bottom: 60px;
 }
 
+.crud-content {
+  margin-bottom: 60px;
+}
 .footer {
   position: fixed;
   bottom: 0;
