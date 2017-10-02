@@ -11,9 +11,14 @@
     .navbar-collapse.collapse#navbar-collapse-1
       %ul.nav.navbar-nav
         - if user_signed_in?
-          %li= link_to 'Users', users_path
-          %li= link_to 'Link2', '#'
-          %li= link_to 'Link3', '#'
+          %li.dropdown
+            %a.admin-dropdown.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
+              Admin
+              %span.fa.fa-angle-down
+            %ul.dropdown-menu
+              %li= link_to 'Users', users_path
+              %li= link_to 'Teams', teams_path
+              %li= link_to 'Link3', '#'
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li.dropdown

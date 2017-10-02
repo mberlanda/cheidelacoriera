@@ -16,4 +16,8 @@ class Team < ApplicationRecord
   def events
     [*home_events, *away_events]
   end
+
+  def to_s
+    "#{name} (#{country})"
+  end
 end
