@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       scope module: :crud do
         resources :competitions
+        resources :events
         resources :users
         resources :teams
       end
