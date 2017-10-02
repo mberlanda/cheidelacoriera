@@ -1,6 +1,8 @@
 linters:
   IdNames:
     enabled: false
+  InstanceVariables:
+    enabled: false
   LineLength:
     max: 200
   RuboCop:

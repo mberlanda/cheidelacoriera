@@ -1,0 +1,11 @@
+= simple_form_for(@user, method: :put, url: user_path) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email
+    = f.input :role, collection: User::ROLES, include_blank: false
+    = f.input :status, collection: User::STATUSES, include_blank: false
+    = f.input :password, required: false
+    = f.input :password_confirmation, required: false
+  .btn-group{ role: :group }
+    = f.button :submit, 'Save', class: 'btn-success'
+    = link_to('Back', user_path(@user.id), class: 'btn btn-default')
