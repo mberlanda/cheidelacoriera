@@ -1,0 +1,12 @@
+en:
+  navbar:
+    admin:
+      users: Users
+      teams: Teams
+      competitions: Competitions
+      events: Events
+      transport_means: Transport Means
+    session:
+      edit_password: Edit Password
+      logout: Log Out
+      login: Login

@@ -1,0 +1,31 @@
+# Traduzione in Italiano del file /config/locales/simple_form.*.yml del lavoro 
+#https://github.com/mariochavez/trabajosti
+# tradotto da Astr0surfer (cercalo su Github.com)
+it:
+  simple_form:
+    "yes": 'Sì'
+    "no": 'No'
+
+    required:
+      text: 'obbligatorio'
+      mark: '*'
+
+    error_notification:
+      default_message: 'Sono stati rilevati alcuni errori, ti preghiamo di controllarlo:'
+
+    labels:
+      title: 'Titolo'
+      category: 'Categoria'
+      location: 'Ubicazione'
+      description: 'Descrizione'
+      contact: 'Contatto'
+      company_name: 'Azienda'
+      url: 'Sito web'
+      email: 'Indirizzo di posta elettronica'
+
+    hints:
+      title: '"Sviluppatore Sig/ra." oppure "Amministratore di Sistema"'
+      location: '"Tijuana, Messico" oppure "Buenos Aires, Argentina"'
+      contact: 'Esempio: Invia CV a trabajos@empresa.com'
+      url: 'Esempio: http://www.miempresa.com.mx'
+      email: 'Indirizzo di posta elettronica valido dove ricevere la notifica di avvenuta pubblicazione della offerta'

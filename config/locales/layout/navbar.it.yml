@@ -1,0 +1,12 @@
+it:
+  navbar:
+    admin:
+      users: Utenti
+      teams: Squadre
+      competitions: Competizioni
+      events: Eventi
+      transport_means: Mezzi di Trasporto
+    session:
+      edit_password: Modifica Password
+      logout: Disconnetti
+      login: Accedi

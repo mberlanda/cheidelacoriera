@@ -16,11 +16,11 @@
               Admin
               %span.fa.fa-angle-down
             %ul.dropdown-menu
-              %li= link_to 'Users', users_path
-              %li= link_to 'Teams', teams_path
-              %li= link_to 'Competitions', competitions_path
-              %li= link_to 'Events', events_path
-              %li= link_to 'Transport Means', transport_means_path
+              %li= link_to t('navbar.admin.users'), users_path
+              %li= link_to t('navbar.admin.teams'), teams_path
+              %li= link_to t('navbar.admin.competitions'), competitions_path
+              %li= link_to t('navbar.admin.events'), events_path
+              %li= link_to t('navbar.admin.transport_means'), transport_means_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li.dropdown
@@ -29,7 +29,7 @@
               = current_user.email
               %span.fa.fa-angle-down
             %ul.dropdown-menu
-              %li= link_to('Edit Password', edit_user_registration_path)
-              %li= link_to('Log Out', destroy_user_session_path, method: :delete)
+              %li= link_to t('navbar.session.edit_password'), edit_user_registration_path
+              %li= link_to t('navbar.session.logout'), destroy_user_session_path, method: :delete
         - else
-          %li= link_to('Login', new_user_session_path)
+          %li= link_to t('navbar.session.login'), new_user_session_path
