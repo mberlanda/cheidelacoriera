@@ -22,6 +22,10 @@
               %li= link_to t('navbar.admin.events'), events_path
               %li= link_to t('navbar.admin.transport_means'), transport_means_path
       %ul.nav.navbar-nav.navbar-right
+        - unless I18n.locale == :en
+          %li= link_to 'English', locale: :en
+        - unless I18n.locale == :it
+          %li= link_to 'Italiano', locale: :it
         - if user_signed_in?
           %li.dropdown
             %a.user-profile.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }

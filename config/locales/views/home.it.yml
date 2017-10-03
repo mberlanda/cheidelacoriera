@@ -1,0 +1,7 @@
+it:
+  home:
+    index:
+      title: Benvenuto su CheiDeLaCoriera
+      logged: Utilizza il menù per continuare a navigare su questo sito
+      not_logged: Per poter continuare su questo sito %{login}
+      login: accedi qui
