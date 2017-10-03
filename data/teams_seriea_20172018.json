@@ -94,31 +94,31 @@
       "name": "Sampdoria",
       "country": "Italy",
       "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/13.png",
-      "url": ""
+      "url": "https://it.wikipedia.org/wiki/Unione_Calcio_Sampdoria"
     },
     {
       "name": "Sassuolo",
       "country": "Italy",
       "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/456.",
-      "url": ""
+      "url": "https://it.wikipedia.org/wiki/Unione_Sportiva_Sassuolo_Calcio"
     },
     {
       "name": "Spal",
       "country": "Italy",
       "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/401.png",
-      "url": ""
+      "url": "https://it.wikipedia.org/wiki/S.P.A.L._2013"
     },
     {
       "name": "Torino",
       "country": "Italy",
       "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/14.png",
-      "url": ""
+      "url": "https://it.wikipedia.org/wiki/Torino_Football_Club"
     },
     {
       "name": "Udinese",
       "country": "Italy",
       "image_url": "http://images2.gazzettaobjects.it/trsport/tempo-reale/img/loghi_squadre/small/15.png",
-      "url": ""
+      "url": "https://it.wikipedia.org/wiki/Udinese_Calcio"
     }
   ]
 }

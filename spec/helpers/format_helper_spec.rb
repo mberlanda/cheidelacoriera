@@ -11,9 +11,13 @@ describe FormatHelper do
     reset_db
     setup_db
     create_test_data
+    I18n.locale = :en
   end
 
-  after(:all) { reset_db }
+  after(:all) do
+    reset_db
+    I18n.locale = I18n.default_locale
+  end
 
   # define some test format_ methods
   def format_size(obj) #:nodoc:
