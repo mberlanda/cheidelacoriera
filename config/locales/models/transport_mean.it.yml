@@ -1,0 +1,16 @@
+it:
+  activerecord:
+    models:
+      transport_mean:
+        one: Mezzo di Trasporto
+        other: Mezzi di Trasporto
+    attributes:
+      transport_mean:
+        company: Società
+        created_at: Data Creazione
+        description: Descrizione
+        email: Email
+        id: Id
+        kind: Tipologia
+        phone_number: Numero di Telefono
+        updated_at: Data Aggiornamento

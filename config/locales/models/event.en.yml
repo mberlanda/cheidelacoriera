@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    models:
+      event:
+        one: Event
+        other: Events
+    attributes:
+      event:
+        away_team_id: Away Team
+        competition_id: Competition
+        created_at: Created At
+        date: Date
+        home_team_id: Home Team
+        id: Id
+        notes: Notes
+        score: Score
+        season: Season
+        time: Time
+        updated_at: Updated At

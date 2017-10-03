@@ -1,0 +1,17 @@
+it:
+  activerecord:
+    models:
+      fan:
+        one: Tifoso
+        other: Tifosi
+    attributes:
+      fan:
+        created_at: Data Creazione
+        date_of_birth: Data di Nascita
+        fidelity_card_no: No Tessera Tifoso
+        first_name: Nome
+        id: Id
+        last_name: Cognome
+        place_of_birth: Luogo di Nascita
+        updated_at: Data Aggiornamento
+        user_id: Utente

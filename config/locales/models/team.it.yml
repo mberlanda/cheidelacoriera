@@ -1,0 +1,16 @@
+it:
+  activerecord:
+    models:
+      team:
+        one: Squadra
+        other: Squadre
+    attributes:
+      team:
+        country: Nazione
+        created_at: Data Creazione
+        description: Descrizione
+        id: Id
+        image_url: Url Immagine
+        name: Nome
+        updated_at: Data Aggiornamento
+        url: Url

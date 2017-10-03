@@ -1,0 +1,12 @@
+it:
+  activerecord:
+    models:
+      competition:
+        one: Competizione
+        other: Competizioni
+    attributes:
+      competition:
+        created_at: Data Creazione
+        id: Id
+        name: Nome
+        updated_at: Data Aggiornamento

@@ -1,0 +1,19 @@
+it:
+  activerecord:
+    models:
+      event:
+        one: Partita
+        other: Partite
+    attributes:
+      event:
+        away_team_id: Squadra Ospite
+        competition_id: Competizione
+        created_at: Data Creazione
+        date: Data
+        home_team_id: Squadra di Casa
+        id: Id
+        notes: Note
+        score: Risultato
+        season: Stagione
+        time: Ora
+        updated_at: Data Aggiornamento

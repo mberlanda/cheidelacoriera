@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      team:
+        one: Team
+        other: Teams
+    attributes:
+      team:
+        country: Country
+        created_at: Created At
+        description: Description
+        id: Id
+        image_url: Image Url
+        name: Name
+        updated_at: Updated At
+        url: Url

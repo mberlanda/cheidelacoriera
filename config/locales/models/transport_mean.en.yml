@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      transport_mean:
+        one: Transport Mean
+        other: Transport Means
+    attributes:
+      transport_mean:
+        company: Company
+        created_at: Created At
+        description: Description
+        email: Email
+        id: Id
+        kind: Kind
+        phone_number: Phone Number
+        updated_at: Updated At

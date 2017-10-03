@@ -1,0 +1,17 @@
+en:
+  activerecord:
+    models:
+      fan:
+        one: Fan
+        other: Fans
+    attributes:
+      fan:
+        created_at: Created At
+        date_of_birth: Date Of Birth
+        fidelity_card_no: Fidelity Card No
+        first_name: First Name
+        id: Id
+        last_name: Last Name
+        place_of_birth: Place Of Birth
+        updated_at: Updated At
+        user_id: User

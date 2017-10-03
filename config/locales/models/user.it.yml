@@ -1,0 +1,24 @@
+it:
+  activerecord:
+    models:
+      user:
+        one: Utente
+        other: Utenti
+    attributes:
+      user:
+        created_at: Data Creazione
+        current_sign_in_at: Data Sessione Corrente
+        current_sign_in_ip: Ip Sessione Corrente
+        email: Email
+        encrypted_password: Password Criptata
+        id: Id
+        last_sign_in_at: Data Ultimo Accesso
+        last_sign_in_ip: Ip Ultimo Accesso
+        remember_created_at: Data Salvataggio Accesso
+        reset_password_token: Reset Password Token
+        reset_password_sent_at: Data Invio Password Reset
+        role: Ruolo
+        sign_in_count: No Accessi
+        status: Status
+        updated_at: Data Aggiornamento
+
