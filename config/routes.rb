@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         resources :events
         resources :users
         resources :teams
+        resources :transport_means
       end
     end
   end
