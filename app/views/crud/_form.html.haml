@@ -5,15 +5,21 @@
   $(function(){
     $('input[type=time]').timepicker({
         timeFormat: 'HH:mm',
-        interval: 60,
+        interval: 15,
         minTime: '00:00',
         maxTime: '23:59',
-        // defaultTime: '15:00',
         startTime: '00:00',
         dynamic: false,
         dropdown: true,
         scrollbar: true
     });
+    $('input[type=date]').datepicker({
+      language: '#{I18n.locale}',
+      format: 'yyyy-mm-dd',
+      startDate: '1907-10-17',
+      endDate: '2100-12-31',
+      todayBtn: true
+    })
   })
 
 
