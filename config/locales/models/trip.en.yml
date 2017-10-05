@@ -1,0 +1,17 @@
+en:
+  activerecord:
+    models:
+      trip:
+        one: Trip
+        other: Trips
+    attributes:
+      trip:
+        available_seats: Available Seats
+        created_at: Created At
+        event_id: Event
+        id: Id
+        requested_seats: Requested Seats
+        reserved_seats: Reserved Seats
+        total_seats: Total Seats
+        transport_mean_id: Transport Mean
+        updated_at: Updated At

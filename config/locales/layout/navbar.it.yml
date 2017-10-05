@@ -6,6 +6,7 @@ it:
       competitions: Competizioni
       events: Eventi
       transport_means: Mezzi di Trasporto
+      trips: Trasferte
     session:
       edit_password: Modifica Password
       logout: Disconnetti

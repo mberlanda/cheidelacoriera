@@ -1,0 +1,17 @@
+it:
+  activerecord:
+    models:
+      trip:
+        one: Trasferta
+        other: Trasferte
+    attributes:
+      trip:
+        available_seats: Posti Disponibili
+        created_at: Data Creazione
+        event_id: Partita
+        id: Id
+        requested_seats: Posti Richiesti
+        reserved_seats: Posti Riservati
+        total_seats: Posti Totali
+        transport_mean_id: Mezzo di Trasporto
+        updated_at: Data Aggiornamento

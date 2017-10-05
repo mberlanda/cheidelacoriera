@@ -6,6 +6,7 @@ en:
       competitions: Competitions
       events: Events
       transport_means: Transport Means
+      trips: Trips
     session:
       edit_password: Edit Password
       logout: Log Out

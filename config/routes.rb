@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         resources :users
         resources :teams
         resources :transport_means
+        resources :trips
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003065818) do
+ActiveRecord::Schema.define(version: 20171004061308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 20171003065818) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.integer  "total_seats"
+    t.integer  "available_seats"
+    t.integer  "requested_seats"
+    t.integer  "reserved_seats"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "event_id"
+    t.integer  "transport_mean_id"
+    t.index ["event_id"], name: "index_trips_on_event_id", using: :btree
+    t.index ["transport_mean_id"], name: "index_trips_on_transport_mean_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
     t.string   "encrypted_password",     default: "",        null: false
@@ -92,4 +105,6 @@ ActiveRecord::Schema.define(version: 20171003065818) do
   add_foreign_key "events", "teams", column: "away_team_id"
   add_foreign_key "events", "teams", column: "home_team_id"
   add_foreign_key "fans", "users"
+  add_foreign_key "trips", "events"
+  add_foreign_key "trips", "transport_means"
 end
