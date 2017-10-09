@@ -22,7 +22,7 @@
               %li= link_to t('navbar.admin.events'), events_path
               %li= link_to t('navbar.admin.transport_means'), transport_means_path
               %li= link_to t('navbar.admin.trips'), trips_path
-        %li= link_to t('navbar.user.fans'), fans_path
+          %li= link_to t('navbar.user.fans'), fans_path
       %ul.nav.navbar-nav.navbar-right
         - unless I18n.locale == :en
           %li= link_to 'English', locale: :en

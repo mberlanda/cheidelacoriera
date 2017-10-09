@@ -13,4 +13,16 @@ class User < ApplicationRecord
   def to_s
     email
   end
+
+  def admin?
+    role == 'admin'
+  end
+
+  def visible_users
+    admin? ? User.all : [self]
+  end
+
+  def allowed_fans
+    admin? ? Fan.all : fans
+  end
 end

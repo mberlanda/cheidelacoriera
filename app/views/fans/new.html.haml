@@ -1,0 +1,38 @@
+- @title ||= ti(:title, model: models_label(false))
+- content_for(:actions, index_action_link)
+
+= simple_form_for(@fan, method: :post, url: fans_path) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :date_of_birth, as: :string, input_html: { type: :date }
+    = f.input :place_of_birth
+    = f.input :fidelity_card_no
+    = f.input :user_id, collection: current_user.visible_users, include_blank: false
+  .btn-group{ role: :group }
+    = f.button :submit, 'Save', class: 'btn-primary'
+    = link_to('Back', fans_path, class: 'btn btn-default')
+
+:javascript
+
+  $(function(){
+    $('input[type=time]').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 15,
+        minTime: '00:00',
+        maxTime: '23:59',
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+    $('input[type=date]').datepicker({
+      language: '#{I18n.locale}',
+      format: 'yyyy-mm-dd',
+      startDate: '1907-10-17',
+      endDate: '2100-12-31',
+      todayBtn: true
+    })
+  })
+
