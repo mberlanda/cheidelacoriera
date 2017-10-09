@@ -42,7 +42,8 @@
         .col-md-7
           .btn-toolbar.pull-right
             = yield :actions
-      #content= yield
+      .row.crud-content
+        #content= yield
     .footer
       .container
         %span.text-muted
