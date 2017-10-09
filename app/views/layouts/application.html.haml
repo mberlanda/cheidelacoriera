@@ -36,7 +36,7 @@
       #flash= render partial: 'layouts/flash', collection: %i[notice alert], as: :level
 
       %h1= @title
-      .row.actions
+      .row.actions.crud-actions
         .col-md-5
           = yield :tools
         .col-md-7

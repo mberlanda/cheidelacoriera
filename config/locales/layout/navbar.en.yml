@@ -11,3 +11,5 @@ en:
       edit_password: Edit Password
       logout: Log Out
       login: Login
+    user:
+      fans: Fans

@@ -11,3 +11,5 @@ it:
       edit_password: Modifica Password
       logout: Disconnetti
       login: Accedi
+    user:
+      fans: Tifosi
