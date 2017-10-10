@@ -25,6 +25,7 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:home_team) }
     it { should respond_to(:away_team) }
     it { should respond_to(:competition) }
+    it { should respond_to(:venue) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -38,6 +39,24 @@ RSpec.describe Event, type: :model do
       expect(team1.home_events).to match_array([event1, event2])
       expect(team1.away_events).to match_array([event3])
       expect(team1.events).to match_array([event1, event2, event3])
+    end
+  end
+
+  context '.upcoming' do
+    before do
+      default_date = Date.new(2017, 10, 1)
+      allow(Date).to receive(:today).and_return(default_date)
+      @past_event = FactoryGirl.create(:event, date: default_date - 1.day)
+      @same_day_event = FactoryGirl.create(:event, date: default_date)
+      @future_event = FactoryGirl.create(:event, date: default_date + 1.day)
+    end
+
+    it 'should mock date today' do
+      expect(Date.today).to eq(Date.new(2017, 10, 1))
+    end
+
+    it 'should filter past events' do
+      expect(Event.upcoming).to match_array([@same_day_event, @future_event])
     end
   end
 end

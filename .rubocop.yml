@@ -48,6 +48,9 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+Rails/Date:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

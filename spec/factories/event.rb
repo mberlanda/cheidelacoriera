@@ -6,6 +6,7 @@ FactoryGirl.define do
     time { Time.new(2017, 9, 20, 20, 45).in_time_zone('UTC') }
     season { '2017/2018' }
     score { '5-1' }
+    venue { FFaker::Address.city }
     home_team { FactoryGirl.create :team }
     away_team { FactoryGirl.create :team }
     competition

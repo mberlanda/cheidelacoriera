@@ -1,0 +1,17 @@
+.col-md-4.col-sm-6.col-xs-12.text-center
+  .panel.panel-default
+    .panel-body
+      %small= event.competition
+      %p= I18n.l(event.date, format: :long)
+      %hr
+      .row
+        .col-md-5.right
+          %img.team-logo{ src: event.home_team.image_url, alt: event.home_team.name }
+          %p= event.home_team.name
+        .col-md-2.event-score
+          = event.score.to_s.blank? ? ' - ' : event.score
+        .col-md-5.left
+          %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
+          %p= event.away_team.name
+    .panel-footer
+      %button.btn.btn-primary Click

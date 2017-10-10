@@ -1,0 +1,6 @@
+- @title = t('events.upcoming.title')
+
+.crud-container
+  .row
+    - @events.each do |evt|
+      = render partial: 'events/event', locals: { event: evt }

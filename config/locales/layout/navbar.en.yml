@@ -7,6 +7,8 @@ en:
       events: Events
       transport_means: Transport Means
       trips: Trips
+    events:
+      upcoming: Upcoming Events
     session:
       edit_password: Edit Password
       logout: Log Out

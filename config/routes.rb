@@ -17,4 +17,9 @@ Rails.application.routes.draw do
     end
   end
   resources :fans
+  resources :events, only: [] do
+    collection do
+      get :upcoming
+    end
+  end
 end

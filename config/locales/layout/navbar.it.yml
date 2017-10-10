@@ -7,6 +7,8 @@ it:
       events: Eventi
       transport_means: Mezzi di Trasporto
       trips: Trasferte
+    events:
+      upcoming: Prossime Partite
     session:
       edit_password: Modifica Password
       logout: Disconnetti

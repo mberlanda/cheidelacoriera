@@ -42,3 +42,30 @@ body {
   line-height: 60px;
   background-color: #f5f5f5;
 }
+
+
+img.team-logo {
+  height: 30px;
+}
+
+.event-score {
+  text-align: center;
+  vertical-align:middle;
+}
+
+.event-tile {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  float: left;
+  border-left: 0px solid #333;
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+/*  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: inherit;
+  background-color: #eee;*/
+}
+
