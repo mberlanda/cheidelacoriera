@@ -83,3 +83,10 @@ production:
   database: cheidelacoriera_production
   username: cheidelacoriera
   password: <%= ENV['CHEIDELACORIERA_DATABASE_PASSWORD'] %>
+
+heroku:
+  <<: *default
+  host: 'ec2-54-75-228-125.eu-west-1.compute.amazonaws.com'
+  database: 'ddpq1r541tcehc'
+  port: 5432
+

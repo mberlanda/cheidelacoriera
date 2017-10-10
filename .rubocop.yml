@@ -31,12 +31,14 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Enabled: true
   Exclude:
+    - lib/tasks/*.rake
     - spec/**/*_spec.rb
 
 Metrics/LineLength:
   Enabled: true
   Exclude:
     - db/**/*
+    - lib/tasks/dbdata.rake
     - spec/*_helper.rb
 
 Metrics/MethodLength:
@@ -55,4 +57,7 @@ Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ModuleFunction:
   Enabled: false
