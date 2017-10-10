@@ -2,6 +2,8 @@ en:
   home:
     index:
       title: Welcome on CheiDeLaCoriera
-      logged: Continue the navigation using the menu
-      not_logged: Please %{login} in order to continue
-      login: login
+      body:
+        active: Continue the navigation using the menu
+        pending: Your registration is still pending. It should be approved within the next 48 hours.
+        not_logged: Please %{login} in order to continue
+        login: login

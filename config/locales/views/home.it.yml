@@ -2,6 +2,8 @@ it:
   home:
     index:
       title: Benvenuto su CheiDeLaCoriera
-      logged: Utilizza il menù per continuare a navigare su questo sito
-      not_logged: Per poter continuare su questo sito %{login}
-      login: accedi qui
+      body:
+        active: Utilizza il menù per continuare a navigare su questo sito
+        pending: La tua registrazione è in attesa di approvazione. Il processo potrebbe richiedere fino a 48 ore.
+        not_logged: Per poter continuare su questo sito %{login}
+        login: accedi qui

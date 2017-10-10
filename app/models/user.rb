@@ -18,6 +18,10 @@ class User < ApplicationRecord
     role == 'admin'
   end
 
+  def active?
+    status == 'active'
+  end
+
   def visible_users
     admin? ? User.all : [self]
   end
