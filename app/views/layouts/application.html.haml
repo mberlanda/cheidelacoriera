@@ -31,6 +31,8 @@
     = yield :head
 
     - if Rails.env.production?
+      :javascript
+        dataLayer = [];
       / Google Tag Manager
       :javascript
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
