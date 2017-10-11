@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Crud::UsersController, type: :controller do
-  include Devise::Test::IntegrationHelpers
-
   describe 'GET index with user not logger' do
     it 'has http status 302' do
       get :index
@@ -17,16 +15,29 @@ RSpec.describe Crud::UsersController, type: :controller do
     end
   end
 
-  describe 'GET index with logged user' do
+  describe 'GET index with admin user' do
     it 'has http status 200' do
-      authenticate_user!
+      sign_in admin_user
       get :index
-      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(:ok)
+      sign_out admin_user
     end
   end
 
-  def authenticate_user!
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+  describe 'GET index with fan user' do
+    it 'has http status 302' do
+      sign_in fan_user
+      get :index
+      expect(response).to have_http_status(:found)
+      sign_out fan_user
+    end
+  end
+
+  def admin_user
+    @admin_user ||= FactoryGirl.create(:user, role: 'admin', status: 'active')
+  end
+
+  def fan_user
+    @fan_user ||= FactoryGirl.create(:user, role: 'fan', status: 'active')
   end
 end

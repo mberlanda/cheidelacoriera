@@ -1,0 +1,5 @@
+it:
+  controllers:
+    permissions:
+      denied: 'Purtroppo non hai i diritti per accedere a questa pagina!'
+      pending: 'La tua registrazione è ancora in fase di approvazione'

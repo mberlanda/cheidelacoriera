@@ -33,7 +33,7 @@
   %body
     = render 'layouts/nav'
     .container
-      #flash= render partial: 'layouts/flash', collection: %i[notice alert], as: :level
+      #flash= render partial: 'layouts/flash', collection: %i[notice alert danger warning], as: :level
 
       %h1= @title
       .row.actions.crud-actions

@@ -1,0 +1,5 @@
+en:
+  controllers:
+    permissions:
+      denied: 'Sorry! You are not allowed to access this page'
+      pending: 'Your registration is still pending'

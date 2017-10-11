@@ -2,6 +2,8 @@
 
 class Crud::UsersController < CrudController
   before_action :authenticate_user!
+  before_action :admin_user?
+
   self.permitted_attrs = %i[email password password_confirmation status role]
   self.search_columns = %i[email status role]
   include Crud::UsersHelper
