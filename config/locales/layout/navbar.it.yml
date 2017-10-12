@@ -7,6 +7,7 @@ it:
       events: Eventi
       transport_means: Mezzi di Trasporto
       trips: Trasferte
+      demo: Aiuto
     events:
       upcoming: Prossime Partite
     session:
@@ -15,3 +16,22 @@ it:
       login: Accedi
     user:
       fans: Tifosi
+    infojs:
+      users:
+        step: '1'
+        intro: 'Controlla gli utenti registrati, attiva le registrazioni in attesa'
+      teams:
+        step: '2'
+        intro: 'Crea e gestisci le squadre che si affrontano nelle partite'
+      competitions:
+        step: '3'
+        intro: 'Crea e gestisci le competizioni in cui si svolgono le partite'
+      events:
+        step: '4'
+        intro: 'Crea e gestisci le partite per cui creare trasferte'
+      transport_means:
+        step: '5'
+        intro: 'Crea e gestisci mezzi di trasporto con capienza e società'
+      trips:
+        step: '6'
+        intro: 'Crea e gestisci trasferte per partite e mezzi di trasporto'

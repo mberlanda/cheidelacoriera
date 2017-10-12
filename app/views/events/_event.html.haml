@@ -14,4 +14,7 @@
           %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
           %p= event.away_team.name
     .panel-footer
-      %button.btn.btn-primary Click
+      - if event.date >= Date.today
+        %button.btn.btn-primary#book-now= t('events.buttons.book_now')
+      - if current_user.admin?
+        %button.btn.btn-default= t('events.buttons.fans_list')

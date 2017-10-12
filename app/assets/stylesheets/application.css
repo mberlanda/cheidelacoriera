@@ -68,3 +68,7 @@ img.team-logo {
   display:none;
   visibility:hidden;
 }
+
+.introjs-fixedTooltip {
+  background-color: transparent;
+}

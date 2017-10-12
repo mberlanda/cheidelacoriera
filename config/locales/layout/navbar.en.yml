@@ -7,6 +7,7 @@ en:
       events: Events
       transport_means: Transport Means
       trips: Trips
+      demo: Help
     events:
       upcoming: Upcoming Events
     session:
@@ -15,3 +16,22 @@ en:
       login: Login
     user:
       fans: Fans
+    infojs:
+      users:
+        step: '1'
+        intro: 'Manage registered users'
+      teams:
+        step: '2'
+        intro: 'Manage teams'
+      competitions:
+        step: '3'
+        intro: 'Manage competitions'
+      events:
+        step: '4'
+        intro: 'Manage events'
+      transport_means:
+        step: '5'
+        intro: 'Manage events transport means with their occupancy and contact information'
+      trips:
+        step: '6'
+        intro: 'Manage trips'
