@@ -2,3 +2,6 @@ en:
   events:
     upcoming:
       title: Upcoming Events
+    buttons:
+      book_now: Book Now!
+      fans_list: Fans List

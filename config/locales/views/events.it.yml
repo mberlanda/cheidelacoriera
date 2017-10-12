@@ -2,3 +2,6 @@ it:
   events:
     upcoming:
       title: Prossime Partite
+    buttons:
+      book_now: Prenota ora!
+      fans_list: Elenco Partecipanti
