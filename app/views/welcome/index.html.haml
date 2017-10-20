@@ -6,11 +6,13 @@
     %p= t('home.index.body.not_logged', login: link_to(t('home.index.body.login'), new_user_session_path)).html_safe
 
   .text-center
+    %hr
     %img{ src: asset_path('images/cheidelacoriera_logo.png') }
-  .pull-right
-    %a.btn.fb-btn{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank' }
-      %i.fa.fa-facebook-square
-      = t('home.index.button.join')
+    %hr
+    .row
+      %a.btn.fb-btn{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank' }
+        %i.fa.fa-facebook-square
+        = t('home.index.button.join')
 - if current_user
-  :javascript
-    var a = [];
+  - @actions.each do |a, l|
+    = render partial: 'welcome/action', locals: { action: a, link: l }

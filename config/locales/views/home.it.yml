@@ -9,3 +9,13 @@ it:
         login: accedi qui
       button:
         join: Unisciti al gruppo
+        go: Vai!
+      panel:
+        fans:
+          heading: 1. Registra i tuoi Fan!
+          body: >
+            Per prima cosa, registra i nomi delle persone che sono associate alla tua utenza
+        upcoming_events:
+          heading: 2. Guarda le prossime partite!
+          body: >
+            Richiedi la partecipazione ai prossimi eventi per le persone associate alla tua utenza

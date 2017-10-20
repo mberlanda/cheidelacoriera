@@ -9,3 +9,13 @@ en:
         login: login
       button:
         join: Join our group!
+        go: Go!
+      panel:
+        fans:
+          heading: 1. Register your Fans!
+          body: >
+            Firstly, register the name of the people linked to your account
+        upcoming_events:
+          heading: 2. Check for the next events!
+          body: >
+            Request the participation to the next events for your fellow fans
