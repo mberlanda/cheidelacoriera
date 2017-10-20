@@ -11,3 +11,6 @@
     %a.btn.fb-btn{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank' }
       %i.fa.fa-facebook-square
       = t('home.index.button.join')
+- if current_user
+  :javascript
+    var a = [];

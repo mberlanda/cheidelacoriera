@@ -4,12 +4,13 @@ it:
       users: Utenti
       teams: Squadre
       competitions: Competizioni
-      events: Eventi
+      events: Partite
       transport_means: Mezzi di Trasporto
       trips: Trasferte
       demo: Aiuto
     events:
       upcoming: Prossime Partite
+      index: Tutte le partite
     session:
       edit_password: Modifica Password
       logout: Disconnetti

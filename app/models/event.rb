@@ -11,4 +11,10 @@ class Event < ApplicationRecord
   def to_s
     "#{home_team.name} vs #{away_team.name} (#{competition}, #{date})"
   end
+
+  class << self
+    def include_all
+      includes(:competition, :home_team, :away_team)
+    end
+  end
 end

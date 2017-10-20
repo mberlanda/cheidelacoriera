@@ -1,5 +1,7 @@
 en:
   events:
+    index:
+      title: All Events
     upcoming:
       title: Upcoming Events
     buttons:

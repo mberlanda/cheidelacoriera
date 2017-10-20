@@ -1,5 +1,7 @@
 it:
   events:
+    index:
+      title: Tutte le Partite
     upcoming:
       title: Prossime Partite
     buttons:

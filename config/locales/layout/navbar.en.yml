@@ -10,6 +10,7 @@ en:
       demo: Help
     events:
       upcoming: Upcoming Events
+      index: All Events
     session:
       edit_password: Edit Password
       logout: Log Out

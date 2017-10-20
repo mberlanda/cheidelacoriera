@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :events, only: [] do
     collection do
       get :upcoming
+      get :all
     end
   end
 end
