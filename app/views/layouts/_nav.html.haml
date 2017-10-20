@@ -47,17 +47,18 @@
         - else
           %li= link_to t('navbar.session.login'), new_user_session_path
 
-- if current_user.admin?
-  :javascript
-    $(function(){
-      $('#navbar-demo').click(function(e){
-        e.stopPropagation();
-        $('.admin-dropdown').on('hide.bs.dropdown', function(){ return false });
-        introJs().onexit(function() {
-          $('.admin-dropdown').on('hide.bs.dropdown', function () {
-            $('.admin-dropdown').removeClass('open');
-          })
-          $('#navbar-demo').remove();
-        }).start();
+- if user_signed_in?
+  - if current_user.admin?
+    :javascript
+      $(function(){
+        $('#navbar-demo').click(function(e){
+          e.stopPropagation();
+          $('.admin-dropdown').on('hide.bs.dropdown', function(){ return false });
+          introJs().onexit(function() {
+            $('.admin-dropdown').on('hide.bs.dropdown', function () {
+              $('.admin-dropdown').removeClass('open');
+            })
+            $('#navbar-demo').remove();
+          }).start();
+        })
       })
-    })
