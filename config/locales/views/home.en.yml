@@ -7,3 +7,5 @@ en:
         pending: Your registration is still pending. It should be approved within the next 48 hours.
         not_logged: Please %{login} in order to continue
         login: login
+      button:
+        join: Join our group!

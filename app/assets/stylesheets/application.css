@@ -72,3 +72,25 @@ img.team-logo {
 .introjs-fixedTooltip {
   background-color: transparent;
 }
+.fb-btn{
+  font-family: Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+  position: relative;
+  top: 1px;
+  font-weight: bold;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 11px;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  line-height: 1.28;
+  background: #4267b2;
+  border: 1px solid #4267b2;
+}
+.fb-btn:hover, .fb-btn:visited{
+  color: #fff;
+}

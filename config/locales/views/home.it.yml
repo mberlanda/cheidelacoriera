@@ -7,3 +7,5 @@ it:
         pending: La tua registrazione è in attesa di approvazione. Il processo potrebbe richiedere fino a 48 ore.
         not_logged: Per poter continuare su questo sito %{login}
         login: accedi qui
+      button:
+        join: Unisciti al gruppo
