@@ -9,7 +9,7 @@
           %img.team-logo{ src: event.home_team.image_url, alt: event.home_team.name }
           %p= event.home_team.name
         .col-md-2.event-score
-          = event.score.to_s.blank? ? ' - ' : event.score
+          = event.score.to_s.blank? ? event.time.strftime('%H:%M') : event.score
         .col-md-5.left
           %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
           %p= event.away_team.name

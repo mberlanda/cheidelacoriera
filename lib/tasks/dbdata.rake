@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# pg_restore --verbose --clean --no-acl --no-owner -h localhost -d cheidelacoriera_development tmp/3aac1ea5-b2e0-4132-bdb8-7739397fefff.dump
 desc 'DB Data manipulation'
 namespace :dbdata do
   def task_logger

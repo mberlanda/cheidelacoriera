@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :active_user?
 
   def upcoming
-    @events = Event.include_all.upcoming
+    @events = Event.include_all.order(:date).upcoming
   end
 
   def all
