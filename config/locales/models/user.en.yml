@@ -14,6 +14,8 @@ en:
         id: Id
         last_sign_in_at: Last Sign In At
         last_sign_in_ip: Last Sign In Ip
+        password: Password
+        password_confirmation: Password Confirmation
         remember_created_at: Remember Created At
         reset_password_token: Reset Password Token
         reset_password_sent_at: Reset Password Token Sent At
@@ -21,4 +23,5 @@ en:
         sign_in_count: Sign In Count
         status: Status
         updated_at: Updated At
-
+        remember_me: Remember Me
+        current_password: Current Password

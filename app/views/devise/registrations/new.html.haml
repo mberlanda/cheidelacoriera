@@ -1,0 +1,12 @@
+.jumbotron
+  %h2= t('devise.registrations.new')
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, required: true, autofocus: true
+      = f.input :password, required: true, hint: (t('simple_form.hints.password', min: @minimum_password_length) if @minimum_password_length)
+      = f.input :password_confirmation, required: true
+    .form-actions
+      = f.button :submit, t('devise.registrations.new')
+  %br/
+  = render 'devise/shared/links'

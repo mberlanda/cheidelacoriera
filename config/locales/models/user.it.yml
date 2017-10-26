@@ -14,6 +14,8 @@ it:
         id: Id
         last_sign_in_at: Data Ultimo Accesso
         last_sign_in_ip: Ip Ultimo Accesso
+        password: Password
+        password_confirmation: Conferma Password
         remember_created_at: Data Salvataggio Accesso
         reset_password_token: Reset Password Token
         reset_password_sent_at: Data Invio Password Reset
@@ -21,4 +23,5 @@ it:
         sign_in_count: No Accessi
         status: Status
         updated_at: Data Aggiornamento
-
+        remember_me: Ricordami
+        current_password: Password Attuale

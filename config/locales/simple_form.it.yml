@@ -1,4 +1,4 @@
-# Traduzione in Italiano del file /config/locales/simple_form.*.yml del lavoro 
+# Traduzione in Italiano del file /config/locales/simple_form.*.yml del lavoro
 #https://github.com/mariochavez/trabajosti
 # tradotto da Astr0surfer (cercalo su Github.com)
 it:
@@ -29,3 +29,6 @@ it:
       contact: 'Esempio: Invia CV a trabajos@empresa.com'
       url: 'Esempio: http://www.miempresa.com.mx'
       email: 'Indirizzo di posta elettronica valido dove ricevere la notifica di avvenuta pubblicazione della offerta'
+      password: '%{min} caratteri minimo'
+      edit_password: 'Lascia vuoto se non desideri cambiarla'
+      current_password: 'Abbiamo bisogno della tua password attuale per confermare i cambiamenti'

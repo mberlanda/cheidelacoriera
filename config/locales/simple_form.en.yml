@@ -29,3 +29,7 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    hints:
+      password: '%{min} characters minimum'
+      edit_password: "leave it blank if you don't want to change it"
+      current_password: 'we need your current password to confirm your changes'
