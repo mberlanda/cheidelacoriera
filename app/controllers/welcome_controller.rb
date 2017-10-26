@@ -5,7 +5,8 @@ class WelcomeController < ApplicationController
   def index
     @actions = {
       fans: fans_path,
-      upcoming_events: upcoming_events_path
+      upcoming_events: upcoming_events_path,
+      gadgets: '#'
     }
   end
 end

@@ -19,3 +19,7 @@ it:
           heading: 2. Guarda le prossime partite!
           body: >
             Richiedi la partecipazione ai prossimi eventi per le persone associate alla tua utenza
+        gadgets:
+          heading: Richiedi i nostri gadgets
+          body: >
+            Sciarpe e magliette che ci accompagnano durante le nostre trasferte.
