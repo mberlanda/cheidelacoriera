@@ -15,3 +15,7 @@ it:
         total_seats: Posti Totali
         transport_mean_id: Mezzo di Trasporto
         updated_at: Data Aggiornamento
+        bookable_from: Prenotabile da
+        bookable_until: Prenotabile fino a
+        poster_url: Url locandina
+        name: Nome

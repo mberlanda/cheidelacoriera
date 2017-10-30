@@ -7,6 +7,10 @@ FactoryGirl.define do
     requested_seats { 20 }
     reserved_seats { 5 }
     transport_mean
+    name { FFaker::Animal.common_name }
+    bookable_from { Date.new(2017, 9, 20) }
+    bookable_until { Date.new(2019, 9, 20) }
+    poster_url { FFaker::Avatar.image }
     event
   end
 end

@@ -5,12 +5,12 @@
       %p= I18n.l(event.date, format: :long)
       %hr
       .row
-        .col-md-5.right
+        .col-md-5.right.event-team
           %img.team-logo{ src: event.home_team.image_url, alt: event.home_team.name }
           %p= event.home_team.name
         .col-md-2.event-score
           = event.score.to_s.blank? ? event.time.strftime('%H:%M') : event.score
-        .col-md-5.left
+        .col-md-5.left.event-team
           %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
           %p= event.away_team.name
     .panel-footer
