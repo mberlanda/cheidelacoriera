@@ -7,3 +7,6 @@ en:
     buttons:
       book_now: Book Now!
       fans_list: Fans List
+      show: Show
+    details:
+      title: Event Details

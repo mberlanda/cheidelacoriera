@@ -1,0 +1,5 @@
+- @title = t('events.details.title')
+
+.jumbotron.text-center
+  - unless @event.poster_url.nil?
+    %img.img-responsive{ src: @event.poster_url }

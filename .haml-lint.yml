@@ -11,6 +11,7 @@ linters:
       - Layout/TrailingBlankLines
       - Lint/Void
       - Metrics/LineLength
+      - Metrics/BlockLength
       - Rails/OutputSafety
       - Style/BracesAroundHashParameters
       - Style/Documentation

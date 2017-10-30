@@ -1,0 +1,59 @@
+- @title ||= ti(:title, model: models_label(false))
+- content_for(:actions, index_action_link)
+
+= simple_form_for(@trip, method: :post, url: trips_path) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    .col-md-6.col-sm-12.col-xs-12
+      = f.input :bookable_from, as: :string, input_html: { type: :date }
+    .col-md-6.col-sm-12.col-xs-12
+      = f.input :bookable_until, as: :string, input_html: { type: :date }
+    .col-md-3.col-sm-6.col-xs-12
+      = f.input :total_seats
+    .col-md-3.col-sm-6.col-xs-12
+      = f.input :available_seats
+    .col-md-3.col-sm-6.col-xs-12
+      = f.input :reserved_seats, input_html: { value: 0 }
+    .col-md-3.col-sm-6.col-xs-12
+      = f.input :requested_seats, input_html: { value: 0 }
+    = f.input :event_id, collection: Event.include_all.order(:date).upcoming, include_blank: false
+    = f.input :transport_mean_id, collection: TransportMean.all, include_blank: false
+  .btn-group{ role: :group }
+    = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+    = link_to(t('simple_form.buttons.back'), trips_path, class: 'btn btn-default')
+
+:javascript
+
+  $(function(){
+    $('input[type=time]').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 15,
+        minTime: '00:00',
+        maxTime: '23:59',
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+    $('input[type=date]').datepicker({
+      language: '#{I18n.locale}',
+      format: 'yyyy-mm-dd',
+      startDate: '1907-10-17',
+      endDate: '2100-12-31',
+      todayBtn: true
+    });
+
+    $('#trip_total_seats').data('pre', $('#trip_total_seats').val());
+
+    $('#trip_total_seats').change(function(){
+        var previous_total = $(this).data('pre');
+        var total = $(this).val();
+        var available = $('#trip_available_seats').val();
+
+        if (available == '' || available == previous_total) {
+          $('#trip_available_seats').val(total);
+        }
+        $(this).data('pre', total);
+    })
+  })

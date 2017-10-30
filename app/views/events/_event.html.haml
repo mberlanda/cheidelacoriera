@@ -13,8 +13,10 @@
         .col-md-5.left.event-team
           %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
           %p= event.away_team.name
-    .panel-footer
-      - if event.date >= Date.today
-        %button.btn.btn-primary#book-now= t('events.buttons.book_now')
-      - if current_user.admin?
-        %button.btn.btn-default= t('events.buttons.fans_list')
+    .panel-footer.event-footer
+      - if event.any_trip?
+        = link_to(t('events.buttons.show'), details_event_path(event.id), class: 'btn btn-primary')
+        - if event.bookable?
+          %button.btn.btn-primary#book-now= t('events.buttons.book_now')
+        - if current_user.admin?
+          %button.btn.btn-default= t('events.buttons.fans_list')

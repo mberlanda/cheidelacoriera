@@ -26,6 +26,7 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:away_team) }
     it { should respond_to(:competition) }
     it { should respond_to(:venue) }
+    it { should respond_to(:poster_url) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -57,6 +58,21 @@ RSpec.describe Event, type: :model do
 
     it 'should filter past events' do
       expect(Event.upcoming).to match_array([@same_day_event, @future_event])
+    end
+  end
+
+  context '#any_trip?' do
+    before do
+      @event = FactoryGirl.create(:event)
+    end
+
+    it 'should return false if no trip present' do
+      expect(@event.any_trip?).to eq(false)
+    end
+
+    it 'should return true if any trip present' do
+      FactoryGirl.create(:trip, event: @event)
+      expect(@event.any_trip?).to eq(true)
     end
   end
 end

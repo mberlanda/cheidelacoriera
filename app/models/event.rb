@@ -12,9 +12,17 @@ class Event < ApplicationRecord
     "#{home_team.name} vs #{away_team.name} (#{competition}, #{date})"
   end
 
+  def any_trip?
+    trips.count.positive?
+  end
+
+  def bookable?
+    trips.bookable.count.positive?
+  end
+
   class << self
     def include_all
-      includes(:competition, :home_team, :away_team)
+      includes(:competition, :home_team, :away_team, :trips)
     end
   end
 end

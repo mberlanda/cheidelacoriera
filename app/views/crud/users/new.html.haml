@@ -10,5 +10,5 @@
     = f.input :password, required: false
     = f.input :password_confirmation, required: false
   .btn-group{ role: :group }
-    = f.button :submit, 'Save', class: 'btn-primary'
-    = link_to('Back', users_path, class: 'btn btn-default')
+    = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+    = link_to(t('simple_form.buttons.back'), users_path, class: 'btn btn-default')

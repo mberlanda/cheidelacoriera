@@ -9,6 +9,7 @@ FactoryGirl.define do
     venue { FFaker::Address.city }
     home_team { FactoryGirl.create :team }
     away_team { FactoryGirl.create :team }
+    poster_url { FFaker::Avatar.image }
     competition
   end
 end

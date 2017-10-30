@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030090629) do
+ActiveRecord::Schema.define(version: 20171030102602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171030090629) do
     t.datetime "updated_at",     null: false
     t.integer  "competition_id"
     t.string   "venue"
+    t.string   "poster_url"
     t.index ["away_team_id"], name: "index_events_on_away_team_id", using: :btree
     t.index ["competition_id"], name: "index_events_on_competition_id", using: :btree
     t.index ["home_team_id"], name: "index_events_on_home_team_id", using: :btree
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(version: 20171030090629) do
     t.integer  "transport_mean_id"
     t.date     "bookable_from"
     t.date     "bookable_until"
-    t.string   "poster_url"
     t.string   "name"
     t.index ["event_id"], name: "index_trips_on_event_id", using: :btree
     t.index ["transport_mean_id"], name: "index_trips_on_transport_mean_id", using: :btree

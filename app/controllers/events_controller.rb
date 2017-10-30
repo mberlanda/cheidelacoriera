@@ -10,4 +10,8 @@ class EventsController < ApplicationController
   def all
     @events = Event.include_all.order(:date).all
   end
+
+  def details
+    @event = Event.include_all.find(params.require(:id))
+  end
 end

@@ -32,3 +32,6 @@ it:
       password: '%{min} caratteri minimo'
       edit_password: 'Lascia vuoto se non desideri cambiarla'
       current_password: 'Abbiamo bisogno della tua password attuale per confermare i cambiamenti'
+    buttons:
+      save: Salva
+      back: Indietro

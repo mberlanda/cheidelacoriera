@@ -7,3 +7,6 @@ it:
     buttons:
       book_now: Prenota ora!
       fans_list: Elenco Partecipanti
+      show: Mostra
+    details:
+      title: Dettagli Trasferta

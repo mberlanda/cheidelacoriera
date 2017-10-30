@@ -5,7 +5,7 @@ class Crud::EventsController < CrudController
   before_action :admin_user?
 
   self.permitted_attrs = %i[date time season score notes home_team_id
-                            away_team_id competition_id venue]
+                            away_team_id competition_id venue poster_url]
   self.search_columns = %i[date season home_team_id away_team_id competition_id
-                           venue]
+                           venue poster_url]
 end

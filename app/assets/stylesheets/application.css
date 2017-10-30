@@ -57,6 +57,10 @@ img.team-logo {
   text-overflow: ellipsis;
 }
 
+.event-footer {
+  min-height: 55px;
+}
+
 .event-tile {
   box-sizing: border-box;
   position: relative;

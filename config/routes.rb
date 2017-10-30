@@ -22,5 +22,8 @@ Rails.application.routes.draw do
       get :upcoming
       get :all
     end
+    member do
+      get :details
+    end
   end
 end

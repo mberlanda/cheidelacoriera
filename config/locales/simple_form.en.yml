@@ -33,3 +33,6 @@ en:
       password: '%{min} characters minimum'
       edit_password: "leave it blank if you don't want to change it"
       current_password: 'we need your current password to confirm your changes'
+    buttons:
+      save: Save
+      back: Back
