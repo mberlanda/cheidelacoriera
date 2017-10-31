@@ -27,6 +27,7 @@ Metrics/AbcSize:
   Enabled: true
   Exclude:
     - db/migrate/*.rb
+    - app/decorators/*_decorator.rb
 
 Metrics/BlockLength:
   Enabled: true
@@ -52,6 +53,10 @@ Rails:
 
 Rails/Date:
   Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - app/helpers/datatable_helper.rb
 
 Style/Documentation:
   Enabled: false

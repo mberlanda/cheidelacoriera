@@ -102,3 +102,7 @@ img.team-logo {
 .fb-btn:hover, .fb-btn:visited{
   color: #fff;
 }
+
+.datatable-table th {
+  white-space: nowrap;
+}

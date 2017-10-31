@@ -1,0 +1,16 @@
+- @title ||= ti(:title, models: models_label)
+
+/- content_for(:tools, render('search')) if search_support?
+
+- content_for(:actions, render('actions_index'))
+
+= crud_datatable(model_class.name.underscore, *Crud::EventsController.search_columns)
+
+:javascript
+  $(function(){
+    initializeCrudTable(
+      '#{datatable_index_events_path}',
+      '##{model_class.name.underscore}-table',
+      '.#{model_class.name.underscore}-index-buttons'
+    )
+  })

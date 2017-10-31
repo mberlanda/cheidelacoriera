@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     collection do
       scope module: :crud do
         resources :competitions
-        resources :events
+        resources :events do
+          collection { get :datatable_index }
+        end
         resources :users
         resources :teams
         resources :transport_means
