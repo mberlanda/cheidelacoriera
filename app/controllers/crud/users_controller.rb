@@ -13,6 +13,15 @@ class Crud::UsersController < CrudController
     @datatable_columns ||= %i[email status role]
   end
 
+  def index; end
+
+  def approve_all
+    User.where(status: :pending).update(status: :active)
+    flash[:success] = I18n.t('controllers.users.approve_all.flash')
+    flash.keep
+    redirect_to action: :index
+  end
+
   def update
     @user = User.find(params.require(:id))
     user_params = params.require(:user).permit(*permitted_attrs)

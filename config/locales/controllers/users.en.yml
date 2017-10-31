@@ -1,0 +1,5 @@
+en:
+  controllers:
+    users:
+      approve_all:
+        flash: 'All users are now active!'

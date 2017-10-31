@@ -9,7 +9,7 @@ class UserDecorator < Drape::Decorator
 
   def datatable_index
     [
-      link_to(object.email, event_url(object.id)),
+      link_to(object.email, user_url(object.id)),
       object.status,
       object.role
     ]
