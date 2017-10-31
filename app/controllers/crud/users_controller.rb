@@ -7,6 +7,11 @@ class Crud::UsersController < CrudController
   self.permitted_attrs = %i[email password password_confirmation status role]
   self.search_columns = %i[email status role]
   include Crud::UsersHelper
+  include DatatableController
+
+  def datatable_columns
+    @datatable_columns ||= %i[email status role]
+  end
 
   def update
     @user = User.find(params.require(:id))

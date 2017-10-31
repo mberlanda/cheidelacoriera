@@ -11,7 +11,12 @@ Rails.application.routes.draw do
         resources :events do
           collection { get :datatable_index }
         end
-        resources :users
+        resources :users do
+          collection do
+            get :datatable_index
+            get :approve_all
+          end
+        end
         resources :teams
         resources :transport_means
         resources :trips
