@@ -23,3 +23,7 @@ it:
           heading: Richiedi i nostri gadgets
           body: >
             Sciarpe e magliette che ci accompagnano durante le nostre trasferte.
+        news:
+          heading: Leggi le ultime novità
+          body: >
+            Tieniti sempre aggiornato con le ultime novità da noi pubblicate. Leggi di più qui

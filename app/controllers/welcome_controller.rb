@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     @actions = {
       fans: fans_path,
       upcoming_events: upcoming_events_path,
-      gadgets: '#'
+      news: news_index_path
     }
   end
 end

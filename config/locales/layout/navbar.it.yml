@@ -36,3 +36,5 @@ it:
       trips:
         step: '6'
         intro: 'Crea e gestisci trasferte per partite e mezzi di trasporto'
+    news:
+      index: News

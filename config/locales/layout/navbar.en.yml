@@ -36,3 +36,5 @@ en:
       trips:
         step: '6'
         intro: 'Manage trips'
+    news:
+      index: News

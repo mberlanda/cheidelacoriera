@@ -16,17 +16,17 @@
     = render partial: 'layouts/javascripts'
 
     = favicon_link_tag
-    = favicon_link_tag '/apple-touch-icon.png',
-                       rel: 'apple-touch-icon',
-                       type: 'image/png'
-    = favicon_link_tag '/apple-touch-icon-72x72.png',
-                       rel: 'apple-touch-icon',
-                       type: 'image/png',
-                       sizes: '72x72'
-    = favicon_link_tag '/apple-touch-icon-114x114.png',
-                       rel: 'apple-touch-icon',
-                       type: 'image/png',
-                       sizes: '114x114'
+    / = favicon_link_tag '/apple-touch-icon.png',
+    /                    rel: 'apple-touch-icon',
+    /                    type: 'image/png'
+    / = favicon_link_tag '/apple-touch-icon-72x72.png',
+    /                    rel: 'apple-touch-icon',
+    /                    type: 'image/png',
+    /                    sizes: '72x72'
+    / = favicon_link_tag '/apple-touch-icon-114x114.png',
+    /                    rel: 'apple-touch-icon',
+    /                    type: 'image/png',
+    /                    sizes: '114x114'
 
     = yield :head
 
@@ -62,9 +62,11 @@
             = yield :actions
       .row.crud-content
         #content= yield
-    .footer
+    .footer#collapse-footer
       .container
         %span.text-muted
           &copy; kupta #{Time.zone.now.year}
-
+        .pull-right
+          %a{ 'aria-expanded' => false, 'data-toggle' => 'collapse', href: '#collapse-footer', 'aria-controls' => 'collapse-footer' }
+            %span.fa.fa-chevron-circle-down
     = javascript_tag yield(:javascripts) if content_for?(:javascripts)

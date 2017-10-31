@@ -28,4 +28,5 @@ Rails.application.routes.draw do
       get :details
     end
   end
+  resources :news
 end
