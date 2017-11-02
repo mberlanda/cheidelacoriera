@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :crud, only: [] do
     collection do
       scope module: :crud do
-        resources :competitions
+        resources :competitions do
+          collection { get :datatable_index }
+        end
         resources :events do
           collection { get :datatable_index }
         end
@@ -17,9 +19,15 @@ Rails.application.routes.draw do
             get :approve_all
           end
         end
-        resources :teams
-        resources :transport_means
-        resources :trips
+        resources :teams do
+          collection { get :datatable_index }
+        end
+        resources :transport_means do
+          collection { get :datatable_index }
+        end
+        resources :trips do
+          collection { get :datatable_index }
+        end
       end
     end
   end

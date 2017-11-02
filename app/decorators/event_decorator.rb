@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-class EventDecorator < Draper::Decorator
-  include Draper::LazyHelpers
-  include ActionView::Helpers::UrlHelper
-  include ActionView::Helpers::OutputSafetyHelper
-
-  delegate_all
-
+class EventDecorator < ApplicationDecorator
   def datatable_index
     [
       link_to(object.date, event_url(object.id)),

@@ -14,4 +14,13 @@ class Crud::TripsController < CrudController
     event_id transport_mean_id bookable_from bookable_until
     name
   ]
+
+  include DatatableController
+
+  def datatable_columns
+    %i[
+      name bookable_from bookable_until total_seats available_seats
+      reserved_seats requested_seats event_id transport_mean_id
+    ]
+  end
 end

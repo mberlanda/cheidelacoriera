@@ -6,4 +6,10 @@ class Crud::TransportMeansController < CrudController
 
   self.permitted_attrs = %i[kind company email phone_number description]
   self.search_columns = %i[kind company email phone_number description]
+
+  include DatatableController
+
+  def datatable_columns
+    %i[kind company email phone_number description]
+  end
 end

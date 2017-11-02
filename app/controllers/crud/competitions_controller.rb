@@ -6,4 +6,10 @@ class Crud::CompetitionsController < CrudController
 
   self.permitted_attrs = %i[name]
   self.search_columns = %i[name]
+
+  include DatatableController
+
+  def datatable_columns
+    %i[name created_at updated_at]
+  end
 end
