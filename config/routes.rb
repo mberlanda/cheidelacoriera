@@ -42,4 +42,5 @@ Rails.application.routes.draw do
     end
   end
   resources :news
+  resources :albums
 end

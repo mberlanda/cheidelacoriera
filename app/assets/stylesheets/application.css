@@ -109,3 +109,7 @@ img.team-logo {
 .datatable-table {
   width: 100% !important;
 }
+
+.photogallery-item {
+  margin: 10px;
+}

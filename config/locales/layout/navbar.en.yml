@@ -38,3 +38,5 @@ en:
         intro: 'Manage trips'
     news:
       index: News
+    albums:
+      index: Photogallery

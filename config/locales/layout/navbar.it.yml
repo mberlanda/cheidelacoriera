@@ -38,3 +38,5 @@ it:
         intro: 'Crea e gestisci trasferte per partite e mezzi di trasporto'
     news:
       index: News
+    albums:
+      index: Photogallery
