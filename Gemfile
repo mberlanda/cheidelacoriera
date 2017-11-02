@@ -16,7 +16,7 @@ gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readm
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'haml-rails', '~> 0.9'
 
-gem 'drape', '~> 1.0.0.beta1'
+gem 'draper', '~> 3.0'
 gem 'devise', '~> 4.3'  # Authentication
 gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files

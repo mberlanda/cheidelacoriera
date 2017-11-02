@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class UserDecorator < Drape::Decorator
-  include Drape::LazyHelpers
+class UserDecorator < Draper::Decorator
+  include Draper::LazyHelpers
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::OutputSafetyHelper
 
