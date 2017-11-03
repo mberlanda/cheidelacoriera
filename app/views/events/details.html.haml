@@ -1,5 +1,8 @@
 - @title = @event.to_s
 
 .jumbotron.text-center
+  - unless @event.notes.nil?
+    .row
+      = @event.notes.html_safe
   - unless @event.poster_url.nil?
     %img.img-responsive{ src: @event.poster_url }
