@@ -7,16 +7,18 @@
       .embed-responsive-item
         %iframe.iframe-fullscreen{ allowfullscreen: '', height: '100%', scrolling: 'no', src: 'https://albumizr.com/a/tq-4', width: '100%' }
       .text-center
-        %button.btn.btn-primary.fullscreen-btn#test-btn FullScreen
+        %button.btn.btn-primary.fullscreen-btn
+          %i.glyphicon.glyphicon-fullscreen
+          FullScreen
   .col-md-6.col-sm-12.col-xs-12
     .photogallery-item
       .embed-responsive-item
         %iframe.iframe-fullscreen{ allowfullscreen: '', height: '100%', scrolling: 'no', src: 'https://albumizr.com/a/tq-4', width: '100%' }
       .text-center
-        %button.btn.btn-primary.fullscreen-btn FullScreen
-
+        %button.btn.btn-primary.fullscreen-btn
+          %i.glyphicon.glyphicon-fullscreen
+          FullScreen
 :javascript
-  var button = document.querySelector('#test-btn');
   var fullScreenBtns = document.getElementsByClassName('fullscreen-btn');
 
   $().ready(function(){
@@ -42,6 +44,7 @@
         // console.log('enter fullscreen');
       }
       else {
+        // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
         var activeIframes = document.querySelectorAll('[full-screen-enabled="true"]');
         for (i = 0; i < activeIframes.length; i++) {
           var iframe = activeIframes[i];
@@ -50,13 +53,6 @@
         }
         // console.log('exit fullscreen');
       }
-      // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
-      // comment this line and you will see
-      // var iframes = document.querySelectorAll('iframe');
-      // for (i = 0; i < iframes.length; i++) {
-      //  var iframe = iframes[i];
-      //  iframe.src = iframe.src;
-      // }
     }
   }
 
@@ -64,23 +60,20 @@
     button.addEventListener('click', function(){
       fullscreen(button);
     }, false);
-    // when you are in fullscreen, ESC and F11 may not be trigger by keydown listener.
-    // so don't use it to detect exit fullscreen
-    // document.addEventListener('keydown', function (e) {
-    //   console.log('key press' + e.keyCode);
-    // });
+
     function fullscreen(button) {
       // check if fullscreen mode is available
       if (document.fullscreenEnabled ||
         document.webkitFullscreenEnabled ||
         document.mozFullScreenEnabled ||
         document.msFullscreenEnabled) {
+
         // which element will be fullscreen
-        // var iframe = document.querySelector('#pippo');
         var iframe = button.closest('.photogallery-item').getElementsByClassName('embed-responsive-item')[0].getElementsByClassName('iframe-fullscreen')[0];
         // Do fullscreen
         if (iframe.requestFullscreen) {
           iframe.requestFullscreen();
+          // Set attribute full-screen-enabled to tag the current iframe expanded
           iframe.setAttribute('full-screen-enabled', 'true');
         } else if (iframe.webkitRequestFullscreen) {
           iframe.webkitRequestFullscreen();
