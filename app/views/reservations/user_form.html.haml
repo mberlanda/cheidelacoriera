@@ -1,0 +1,13 @@
+.row
+  = simple_form_for(@reservation, method: :post, url: reservations_path) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :fan_ids, collection: @fans, input_html: { multiple: true }, include_blank: false
+      = f.input :notes
+    .btn-group{ role: :group }
+      = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+
+:javascript
+  $(function(){
+    $("#reservation_fan_ids").multiSelect();
+  })

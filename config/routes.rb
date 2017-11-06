@@ -43,4 +43,9 @@ Rails.application.routes.draw do
   end
   resources :news
   resources :albums
+  resources :reservations do
+    collection do
+      get :user_form
+    end
+  end
 end

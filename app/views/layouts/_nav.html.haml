@@ -41,9 +41,9 @@
 
       %ul.nav.navbar-nav.navbar-right
         - unless I18n.locale == :en
-          %li= link_to 'English', locale: :en, **nav_opt(:en)
+          %li= link_to image_tag('flags/4x3/gb.svg', size: '20x15', alt: 'English'), { locale: :en }, **nav_opt(:en)
         - unless I18n.locale == :it
-          %li= link_to 'Italiano', locale: :it, **nav_opt(:it)
+          %li= link_to image_tag('flags/4x3/it.svg', size: '20x15', alt: 'Italiano'), { locale: :it }, **nav_opt(:it)
         - if user_signed_in?
           %li.dropdown
             %a.user-profile.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
