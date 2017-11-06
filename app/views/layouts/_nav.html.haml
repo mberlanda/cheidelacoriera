@@ -17,33 +17,33 @@
                 Admin
                 %span.fa.fa-angle-down
               %ul.dropdown-menu
-                %li{ navbar_intro(:users) }= link_to t('navbar.admin.users'), users_path
-                %li{ navbar_intro(:teams) }= link_to t('navbar.admin.teams'), teams_path
-                %li{ navbar_intro(:competitions) }= link_to t('navbar.admin.competitions'), competitions_path
-                %li{ navbar_intro(:events) }= link_to t('navbar.admin.events'), events_path
-                %li{ navbar_intro(:transport_means) }= link_to t('navbar.admin.transport_means'), transport_means_path
-                %li{ navbar_intro(:trips) }= link_to t('navbar.admin.trips'), trips_path
+                %li.gtm-nav{ navbar_intro(:users) }= link_to t('navbar.admin.users'), users_path
+                %li.gtm-nav{ navbar_intro(:teams) }= link_to t('navbar.admin.teams'), teams_path
+                %li.gtm-nav{ navbar_intro(:competitions) }= link_to t('navbar.admin.competitions'), competitions_path
+                %li.gtm-nav{ navbar_intro(:events) }= link_to t('navbar.admin.events'), events_path
+                %li.gtm-nav{ navbar_intro(:transport_means) }= link_to t('navbar.admin.transport_means'), transport_means_path
+                %li.gtm-nav{ navbar_intro(:trips) }= link_to t('navbar.admin.trips'), trips_path
                 %li#navbar-demo
                   %a{ href: 'javascript:;' }
                     %i.fa.fa-question-circle
                     = t('navbar.admin.demo')
           - if current_user.active?
-            %li= link_to t('navbar.user.fans'), fans_path
+            %li.gtm-nav{ 'data-action' => :fans }= link_to t('navbar.user.fans'), fans_path
             %li.dropdown.events-dropdown
               %a.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
                 = t('activerecord.models.event.other')
                 %span.fa.fa-angle-down
               %ul.dropdown-menu
-                %li= link_to t('navbar.events.upcoming'), upcoming_events_path
-                %li= link_to t('navbar.events.index'), all_events_path
-            %li= link_to t('navbar.news.index'), news_index_path
-            %li= link_to t('navbar.albums.index'), albums_path
+                %li.gtm-nav{ 'data-action' => :upcoming_events }= link_to t('navbar.events.upcoming'), upcoming_events_path
+                %li.gtm-nav{ 'data-action' => :all_events }= link_to t('navbar.events.index'), all_events_path
+            %li.gtm-nav{ 'data-action' => :news }= link_to t('navbar.news.index'), news_index_path
+            %li.gtm-nav{ 'data-action' => :albums }= link_to t('navbar.albums.index'), albums_path
 
       %ul.nav.navbar-nav.navbar-right
         - unless I18n.locale == :en
-          %li= link_to 'English', locale: :en
+          %li.gtm-nav{ 'data-action' => :en }= link_to 'English', locale: :en
         - unless I18n.locale == :it
-          %li= link_to 'Italiano', locale: :it
+          %li.gtm-nav{ 'data-action' => :it }= link_to 'Italiano', locale: :it
         - if user_signed_in?
           %li.dropdown
             %a.user-profile.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
@@ -51,10 +51,10 @@
               = current_user.email
               %span.fa.fa-angle-down
             %ul.dropdown-menu
-              %li= link_to t('navbar.session.edit_password'), edit_user_registration_path
-              %li= link_to t('navbar.session.logout'), destroy_user_session_path, method: :delete
+              %li.gtm-nav{ 'data-action' => :edit_password }= link_to t('navbar.session.edit_password'), edit_user_registration_path
+              %li.gtm-nav{ 'data-action' => :logout }= link_to t('navbar.session.logout'), destroy_user_session_path, method: :delete
         - else
-          %li= link_to t('navbar.session.login'), new_user_session_path
+          %li.gtm-nav{ 'data-action' => :login }= link_to t('navbar.session.login'), new_user_session_path
 
 - if user_signed_in?
   - if current_user.admin?
