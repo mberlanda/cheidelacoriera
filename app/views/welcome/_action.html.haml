@@ -5,4 +5,4 @@
     .panel-body
       = t("home.index.panel.#{action}.body")
     .panel-footer
-      %a.btn.btn-primary.gtm-home-action{ href: link, 'data-action' => action }= t('home.index.button.go')
+      = link_to(t('home.index.button.go'), link, class: 'btn btn-primary gtm-home-action', data: { action: action })

@@ -3,14 +3,14 @@
   - if current_user
     %p= t("home.index.body.#{current_user.status}")
   - else
-    %p= t('home.index.body.not_logged', login: link_to(t('home.index.body.login'), new_user_session_path)).html_safe
+    %p= t('home.index.body.not_logged', login: link_to(t('home.index.body.login'), new_user_session_path, class: 'gtm-home-action', data: { action: :login })).html_safe
 
   .text-center
     %hr
     %img{ src: asset_path('images/cheidelacoriera_logo.png') }
     %hr
     .row
-      %a.btn.fb-btn{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank' }
+      %a.btn.fb-btn.gtm-home-action{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank', 'data-action' => :fb_group }
         %i.fa.fa-facebook-square
         = t('home.index.button.join')
 - if current_user
