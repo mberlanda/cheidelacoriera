@@ -3,7 +3,7 @@
 module IntrojsHelper
   def navbar_intro(element)
     el = I18n.t("navbar.infojs.#{element}")
-    class_attributes(el[:step], el[:intro]).merge('data-action' => element)
+    class_attributes(el[:step], el[:intro])
   end
 
   private
