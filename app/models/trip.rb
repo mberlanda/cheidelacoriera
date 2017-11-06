@@ -6,6 +6,8 @@ class Trip < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
 
+  has_many :reservations, inverse_of: :trip, dependent: :destroy
+
   class << self
     def bookable(d = Date.today)
       where('bookable_from <= ? and bookable_until >= ?', d, d)

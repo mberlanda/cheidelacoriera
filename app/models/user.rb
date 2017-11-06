@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :fans, inverse_of: :user, dependent: :nullify
+  has_many :reservations, inverse_of: :user, dependent: :nullify
 
   ROLES = %w[fan admin].freeze
   STATUSES = %w[active pending].freeze
