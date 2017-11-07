@@ -32,7 +32,8 @@ RSpec.describe Reservation, type: :model do
     end
 
     it '.check_fans if valid' do
-      actual = FactoryGirl.build(:reservation, fan_ids: fan_ids)
+      actual = FactoryGirl.build(:reservation,
+                                 fan_ids: fan_ids, phone_number: phone_number)
       expect(actual.valid?).to be true
     end
 
@@ -43,7 +44,8 @@ RSpec.describe Reservation, type: :model do
     end
 
     it '.process_fans! after save' do
-      actual = FactoryGirl.create(:reservation, fan_ids: fan_ids)
+      actual = FactoryGirl.create(:reservation,
+                                  fan_ids: fan_ids, phone_number: phone_number)
       expect(actual.total_seats).to eq fans.count
       expect(actual.fan_names).to match_array(fans.map(&:to_s))
     end
