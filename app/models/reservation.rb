@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :trip, inverse_of: :reservations
 
   validates :phone_number, presence: true, allow_blank: false,
-                           format: { with: /\A[\d\(\)\s\-]{5,}\z/ }
+                           format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
   validate :check_fans
 
   before_save :process_fans!
