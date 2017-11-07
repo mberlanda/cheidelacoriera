@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 class Trip < ApplicationRecord
-  belongs_to :event, inverse_of: :trips
+  belongs_to :event, inverse_of: :trip
   belongs_to :transport_mean, inverse_of: :trips, optional: true
 
   validates :name, presence: true, allow_blank: false
 
   has_many :reservations, inverse_of: :trip, dependent: :destroy
 
-  class << self
-    def bookable(d = Date.today)
-      where('bookable_from <= ? and bookable_until >= ?', d, d)
-    end
+  def bookable(d = Date.today)
+    return false unless bookable_from && bookable_until
+    bookable_from <= d && bookable_until >= d
   end
 
   def to_s

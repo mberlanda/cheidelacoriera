@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   belongs_to :away_team, class_name: Team
   belongs_to :competition, inverse_of: :events
 
-  has_many :trips, inverse_of: :event, dependent: :nullify
+  has_one :trip, inverse_of: :event, dependent: :nullify
   scope :upcoming, ->() { where('date >= ?', Date.today) }
 
   def to_s
@@ -13,16 +13,17 @@ class Event < ApplicationRecord
   end
 
   def any_trip?
-    trips.count.positive?
+    trip.present?
   end
 
   def bookable?
-    trips.bookable.count.positive?
+    return false unless any_trip?
+    trip.bookable.present?
   end
 
   class << self
     def include_all
-      includes(:competition, :home_team, :away_team, :trips)
+      includes(:competition, :home_team, :away_team, :trip)
     end
   end
 end

@@ -1,0 +1,7 @@
+.row
+  %p= t("reservations.show.status.#{@reservation.status}")
+  %p= t('reservations.show.fans')
+  %ul
+    - @reservation.fan_names.each do |n|
+      %li= n
+  %p= t('reservations.show.phone_number', number: @reservation.phone_number)

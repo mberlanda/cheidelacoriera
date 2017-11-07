@@ -3,21 +3,26 @@
 /.jumbotron
 .panel.panel-default
   .panel-body
-  - unless @event.notes.nil?
-    .col-md-6.col-sm-12
-      = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
-      %hr
-      #reservation-form
-      %hr
-  - unless @event.poster_url.nil?
-    .col-md-6.col-sm-12
-      %img.img-responsive{ src: @event.poster_url }
+    - unless @event.notes.nil?
+      .col-md-6.col-sm-12
+        .event-detail-item
+          = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
+          %hr
+          #reservation-form
+          %hr
+    - unless @event.poster_url.nil?
+      .col-md-6.col-sm-12
+        .event-detail-item
+          %img.img-responsive{ src: @event.poster_url }
 
 :javascript
   $(function(){
     $.ajax({
       method: 'GET',
       url: '#{user_form_reservations_path}',
+      data: {
+        event_id: #{@event.id}
+      },
       success: function(data){
         $('#reservation-form').html(data);
       }

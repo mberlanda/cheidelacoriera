@@ -28,6 +28,7 @@ Metrics/AbcSize:
   Exclude:
     - db/migrate/*.rb
     - app/decorators/*_decorator.rb
+    - app/controllers/reservations_controller.rb
 
 Metrics/BlockLength:
   Enabled: true
@@ -47,6 +48,7 @@ Metrics/MethodLength:
   Exclude:
     - db/**/*
     - spec/*_helper.rb
+    - app/controllers/reservations_controller.rb
 
 Rails:
   Enabled: true

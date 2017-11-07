@@ -1,0 +1,8 @@
+it:
+  reservations:
+    show:
+      status:
+        active: 'La tua prenotazione è approvata!'
+        pending: 'La tua prenotazione è in attesa di conferma.'
+      fans: 'La lista dei tifosi per la trasferta è:'
+      phone_number: 'Il numero di telefono fornito è: %{number}'

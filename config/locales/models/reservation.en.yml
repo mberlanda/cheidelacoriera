@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      reservation:
+        one: Reservation
+        other: Reservations
+    attributes:
+      reservation:
+        fan_ids: Fans
+        fan_names: Fan Names
+        total_seats: Total Seats
+        notes: Notes
+        status: Status
+        phone_number: Phone Number
+        trip_id: Trip
+        user_id: User

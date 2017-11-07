@@ -34,13 +34,15 @@ RSpec.describe Trip, type: :model do
     end
 
     it 'uses by default Date.today' do
-      actual = Trip.bookable
+      actual = Trip.all.select(&:bookable)
       expect(actual.count).to eq(2)
       expect(actual).to match_array([@trip1, @trip2])
     end
 
     it 'can use custom date' do
-      actual = Trip.bookable(Date.today - 2.days)
+      actual = Trip.all.select do |t|
+        t.bookable(Date.today - 2.days)
+      end
       expect(actual.count).to eq(1)
       expect(actual).to match_array([@trip2])
     end

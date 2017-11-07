@@ -1,0 +1,16 @@
+it:
+  activerecord:
+    models:
+      reservation:
+        one: Prenotazione
+        other: Prenotazioni
+    attributes:
+      reservation:
+        fan_ids: Partecipanti
+        fan_names: Nomi Partecipanti
+        total_seats: Posti Totali
+        notes: Note
+        status: Status
+        phone_number: No di Telefono
+        trip_id: Trasferta
+        user_id: Utente

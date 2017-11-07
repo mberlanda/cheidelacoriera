@@ -1,7 +1,9 @@
 .row
-  = simple_form_for(@reservation, method: :post, url: reservations_path) do |f|
+  = simple_form_for(@reservation, method: :post, url: reservations_path, remote: true, authenticity_token: true) do |f|
     = f.error_notification
     .form-inputs
+      = f.input :trip_id, as: :hidden
+      = f.input :phone_number
       = f.input :fan_ids, collection: @fans, input_html: { multiple: true }, include_blank: false
       = f.input :notes
     .btn-group{ role: :group }
@@ -9,5 +11,13 @@
 
 :javascript
   $(function(){
-    $("#reservation_fan_ids").multiSelect();
+    initializeForm();
   })
+
+  function initializeForm(){
+    $("#reservation_fan_ids").multiSelect();
+    $("#new_reservation").on("ajax:success", function(xhr, data, status){
+      $("#reservation-form").html(data);
+    }
+    );
+  }
