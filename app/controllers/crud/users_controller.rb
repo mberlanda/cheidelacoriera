@@ -16,7 +16,10 @@ class Crud::UsersController < CrudController
   def index; end
 
   def approve_all
-    User.where(status: :pending).update(status: :active)
+    pending_users = User.where(status: :pending)
+    pending_users.update(status: :active)
+
+    pending_users.each { |u| UserMailer.activation_email(u).deliver }
     flash[:success] = I18n.t('controllers.users.approve_all.flash')
     flash.keep
     redirect_to action: :index

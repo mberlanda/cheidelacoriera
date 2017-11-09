@@ -8,7 +8,7 @@ it:
       fan:
         created_at: Data Creazione
         date_of_birth: Data di Nascita
-        fidelity_card_no: No Tessera Tifoso
+        fidelity_card_no: N. Tessera Tifoso
         first_name: Nome
         id: Id
         last_name: Cognome
