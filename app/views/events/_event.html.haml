@@ -14,9 +14,11 @@
           %img.team-logo{ src: event.away_team.image_url, alt: event.away_team.name }
           %p= event.away_team.name
     .panel-footer.event-footer
-      = link_to(t('events.buttons.show'), details_event_path(event.id), class: 'btn btn-primary')
-      - if event.any_trip?
-        - if event.bookable?
-          %button.btn.btn-primary#book-now= t('events.buttons.book_now')
-        - if current_user.admin?
-          = link_to(t('events.buttons.fans_list'), reservations_event_path(event.id), class: 'btn btn-default')
+      - if event.booked_by?(current_user.id)
+        = link_to(t('events.buttons.booked'), details_event_path(event.id), class: 'btn btn-default', id: 'booked')
+      - elsif event.bookable?
+        = link_to(t('events.buttons.book_now'), details_event_path(event.id), class: 'btn btn-primary', id: 'book-now')
+      - else
+        = link_to(t('events.buttons.show'), details_event_path(event.id), class: 'btn btn-primary')
+      - if event.any_trip? && current_user.admin?
+        = link_to(t('events.buttons.fans_list'), reservations_event_path(event.id), class: 'btn btn-default')

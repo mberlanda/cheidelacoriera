@@ -14,6 +14,7 @@ class Reservation < ApplicationRecord
   after_create :assign_requested!
 
   scope :pending, ->() { where(status: :pending) }
+  delegate :event, :event_id, to: :trip
 
   def to_s
     "#{user} #{trip}"

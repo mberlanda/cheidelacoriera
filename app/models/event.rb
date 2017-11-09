@@ -7,6 +7,7 @@ class Event < ApplicationRecord
 
   has_one :trip, inverse_of: :event, dependent: :nullify
   scope :upcoming, ->() { where('date >= ?', Date.today) }
+  delegate :reservations, to: :trip
 
   def to_s
     "#{home_team.name} vs #{away_team.name} (#{competition}, #{date})"
@@ -14,6 +15,11 @@ class Event < ApplicationRecord
 
   def any_trip?
     trip.present?
+  end
+
+  def booked_by?(user_id)
+    return false unless any_trip?
+    reservations.where(user_id: user_id).present?
   end
 
   def bookable?
