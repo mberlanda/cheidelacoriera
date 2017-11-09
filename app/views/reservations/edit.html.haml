@@ -1,0 +1,25 @@
+- @title ||= ti(:title, model: full_entry_label).html_safe
+- content_for(:actions, render('actions_edit'))
+
+= simple_form_for(@reservation, method: :put, url: reservation_path) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :trip_id, readonly: true, as: :hidden
+    = f.input :user_id, readonly: true, as: :hidden
+    .col-md-12.col-sm-12.col-xs-12
+      = f.input :total_seats, readonly: true
+    .col-md-12.col-sm-6.col-xs-12
+      = f.input :status, collection: %i[active pending]
+    .col-md-12.col-sm-12.col-xs-12
+      = f.input :fan_ids, collection: Fan.where(user_id: @reservation.user_id), input_html: { multiple: true }, include_blank: false
+    .col-md-12.col-sm-6.col-xs-12
+      = f.input :phone_number
+  .btn-group{ role: :group }
+    = f.button :submit, 'Save', class: 'btn-primary'
+    = link_to('Back', reservation_path(@reservation.id), class: 'btn btn-default')
+
+:javascript
+
+  $(function(){
+    $("#reservation_fan_ids").multiSelect();
+  })

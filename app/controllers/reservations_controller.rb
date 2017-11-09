@@ -1,10 +1,25 @@
 # frozen_string_literal: truebookable_until
 
-class ReservationsController < ApplicationController
+class ReservationsController < CrudController
   before_action :active_user?
-  before_action :admin_user?, only: :approve_all
+  before_action :admin_user?, only: %i[approve_all show update edit]
   layout false, only: %i[user_form status]
   respond_to :html, :js
+
+  self.permitted_attrs = %i[
+    total_seats fan_names fan_ids notes
+    status phone_number trip_id user_id
+  ]
+
+  include DatatableController
+
+  def datatable_columns
+    %i[trip_id user_id total_seats status fan_names phone_number notes]
+  end
+
+  def model_scope
+    Reservation.includes(:user, :trip).all
+  end
 
   def status
     @reservation = Reservation.find(params[:id])

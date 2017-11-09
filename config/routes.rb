@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     collection do
       get :user_form
       get :approve_all
+      get :datatable_index
     end
   end
 end

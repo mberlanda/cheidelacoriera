@@ -15,6 +15,10 @@ class Reservation < ApplicationRecord
 
   scope :pending, ->() { where(status: :pending) }
 
+  def to_s
+    "#{user} #{trip}"
+  end
+
   class << self
     def approve_all
       all.find_each(&:approve)
