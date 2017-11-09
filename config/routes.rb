@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         end
         resources :trips do
           collection { get :datatable_index }
+          member { get :datatable_reservations }
         end
       end
     end
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     end
     member do
       get :details
+      get :reservations
     end
   end
   resources :news

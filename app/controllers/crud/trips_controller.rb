@@ -23,4 +23,15 @@ class Crud::TripsController < CrudController
       reserved_seats requested_seats event_id transport_mean_id
     ]
   end
+
+  def datatable_reservations
+    trip_id = Trip.find(params[:id]).id
+    @response = Reservation.includes(:user).where(trip_id: trip_id)
+    @data = @response.map do |r|
+      ReservationDecorator.new(r).datatable_reservations
+    end
+    respond_to do |format|
+      format.json { render 'shared/search' }
+    end
+  end
 end

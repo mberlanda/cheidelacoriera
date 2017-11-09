@@ -1,0 +1,51 @@
+- @title = [@models_label].join(' - ')
+
+/- content_for(:tools, render('search')) if search_support?
+
+/ - content_for(:actions, render('actions_index'))
+
+.row
+  .alert{ align: 'center' }
+    .col-md-12
+      %h3= @trip
+      %hr
+    .col-md-6.col-sm-12
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.bookable_from')
+      .col-md-6.col-sm-6
+        %span= I18n.l(@trip.bookable_from)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.total_seats')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@trip.total_seats)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.reserved_seats')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@trip.reserved_seats)
+    .col-md-6.col-sm-12
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.bookable_until')
+      .col-md-6.col-sm-6
+        %span= I18n.l(@trip.bookable_until)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.requested_seats')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@trip.requested_seats)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.trip.available_seats')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@trip.available_seats)
+    .col-md-12
+      %button Approva tutti
+      %hr
+.row
+  = crud_datatable(@model_name, *@datatable_columns)
+
+:javascript
+  $(function(){
+    initializeCrudTable(
+      '#{datatable_reservations_trip_path(@trip.id)}',
+      '##{@model_name}-table',
+      '.#{@model_name}-index-buttons'
+    )
+  })

@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: truebookable_until
 
 class ReservationsController < ApplicationController
   before_action :active_user?

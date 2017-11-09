@@ -14,3 +14,4 @@ it:
         phone_number: No di Telefono
         trip_id: Trasferta
         user_id: Utente
+        email: Email

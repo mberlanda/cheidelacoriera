@@ -19,4 +19,4 @@
         - if event.bookable?
           %button.btn.btn-primary#book-now= t('events.buttons.book_now')
         - if current_user.admin?
-          %button.btn.btn-default= t('events.buttons.fans_list')
+          = link_to(t('events.buttons.fans_list'), reservations_event_path(event.id), class: 'btn btn-default')
