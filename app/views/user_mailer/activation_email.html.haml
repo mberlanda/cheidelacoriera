@@ -1,0 +1,10 @@
+%p Ciao #{@user.email.split('@')[0].split('.').map(&:capitalize).join(' ')},
+
+%img{ src: asset_path('images/cheidelacoriera_logo.png') }
+
+%p
+  Ti confermiamo l'avvenuta registrazione su
+  = link_to(' cheidelacoriera', 'http://cheidelacoriera.herokuapp.com?gtm_source=email&gtm_campaign=activation', target: '_blank')
+  !
+
+%p Il Team di CheiDeLaCoriera
