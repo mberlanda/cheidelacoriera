@@ -15,6 +15,10 @@ class User < ApplicationRecord
     email
   end
 
+  def any_fan?
+    allowed_fans.present?
+  end
+
   def admin?
     role == 'admin'
   end

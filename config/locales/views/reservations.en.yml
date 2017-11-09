@@ -6,3 +6,5 @@ en:
         pending: 'Your reservation is still pending.'
       fans: 'The fan list for this reservation is:'
       phone_number: 'The phone number provided is: %{number}'
+    user_form:
+      no_fans: You should provide at least one fan in order to make a reservation

@@ -6,3 +6,5 @@ it:
         pending: 'La tua prenotazione è in attesa di conferma.'
       fans: 'La lista dei tifosi per la trasferta è:'
       phone_number: 'Il numero di telefono fornito è: %{number}'
+    user_form:
+      no_fans: Attenzione! Devi aggiungere almeno un tifoso per effettuare una prenotazione

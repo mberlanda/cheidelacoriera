@@ -1,13 +1,18 @@
-.row
-  = simple_form_for(@reservation, method: :post, url: reservations_path, remote: true, authenticity_token: true) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :trip_id, as: :hidden
-      = f.input :phone_number
-      = f.input :fan_ids, collection: @fans, input_html: { multiple: true }, include_blank: false
-      = f.input :notes
-    .btn-group{ role: :group }
-      = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+- if current_user.any_fan?
+  .row
+    = simple_form_for(@reservation, method: :post, url: reservations_path, remote: true, authenticity_token: true) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :trip_id, as: :hidden
+        = f.input :phone_number
+        = f.input :fan_ids, collection: @fans, input_html: { multiple: true }, include_blank: false
+        = f.input :notes
+      .btn-group{ role: :group }
+        = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+- else
+  .row.text-center
+    %p= t('reservations.user_form.no_fans')
+    = link_to(t('home.index.button.go'), fans_path, class: 'btn btn-primary gtm-home-action', data: { action: :fans })
 
 :javascript
   $(function(){
