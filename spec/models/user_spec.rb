@@ -3,8 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   context 'default user' do
-    subject { FactoryGirl.create :user }
+    subject { FactoryGirl.build :user }
 
     it { should respond_to(:email) }
     it { should respond_to(:encrypted_password) }

@@ -21,6 +21,7 @@ RSpec.describe Trip, type: :model do
 
   context '.bookable' do
     before do
+      DatabaseCleaner.clean_with(:truncation)
       @trip1 = FactoryGirl.create(
         :trip,
         bookable_from: Date.today,
