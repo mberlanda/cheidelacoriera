@@ -46,8 +46,12 @@ Rails.application.routes.draw do
   resources :news
   resources :albums
   resources :reservations do
+    member do
+      get :status
+    end
     collection do
       get :user_form
+      get :approve_all
     end
   end
 end

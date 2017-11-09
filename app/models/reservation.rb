@@ -13,12 +13,21 @@ class Reservation < ApplicationRecord
   before_create :set_default_status!
   after_create :assign_requested!
 
+  scope :pending, ->() { where(status: :pending) }
+
+  class << self
+    def approve_all
+      all.find_each(&:approve)
+    end
+  end
+
   def approve
     return unless status == 'pending'
     self.status = 'active'
     trip.decrement_with_sql!(:requested_seats, total_seats)
     trip.decrement_with_sql!(:available_seats, total_seats)
     trip.increment_with_sql!(:reserved_seats, total_seats)
+    save!
   end
 
   private

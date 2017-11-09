@@ -1,0 +1,5 @@
+it:
+  controllers:
+    reservations:
+      approve_all:
+        flash: 'Tutte le prenotazioni sono ora attive!'

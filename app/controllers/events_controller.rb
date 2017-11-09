@@ -2,6 +2,7 @@
 
 class EventsController < ApplicationController
   before_action :active_user?
+  before_action :admin_user?, only: :reservations
 
   def upcoming
     @events = Event.include_all.order(:date).upcoming

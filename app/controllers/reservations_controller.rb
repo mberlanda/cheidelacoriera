@@ -2,10 +2,11 @@
 
 class ReservationsController < ApplicationController
   before_action :active_user?
-  layout false, only: %i[user_form show]
+  before_action :admin_user?, only: :approve_all
+  layout false, only: %i[user_form status]
   respond_to :html, :js
 
-  def show
+  def status
     @reservation = Reservation.find(params[:id])
   end
 
@@ -17,7 +18,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find_by(
       trip_id: trip.id, user_id: current_user.id
     )
-    redirect_to @reservation if @reservation
+    redirect_to action: :status, id: @reservation.id if @reservation
 
     @fans = current_user.allowed_fans
     @reservation = Reservation.new(trip_id: trip.id)
@@ -35,10 +36,16 @@ class ReservationsController < ApplicationController
     )
     if @reservation.valid?
       @reservation.save
-      redirect_to @reservation
+      redirect_to action: :status, id: @reservation.id
     else
       @fans = current_user.allowed_fans
       render 'reservations/user_form', layout: false
     end
+  end
+
+  def approve_all
+    flash[:success] = t('controllers.reservations.approve_all.flash')
+    Reservation.where(trip_id: params[:trip_id]).pending.approve_all
+    redirect_to reservations_event_url(id: params[:id])
   end
 end

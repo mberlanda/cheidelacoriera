@@ -8,5 +8,6 @@ it:
       book_now: Prenota ora!
       fans_list: Elenco Partecipanti
       show: Mostra
+      approve_all: Approva tutte
     details:
       title: Dettagli Trasferta
