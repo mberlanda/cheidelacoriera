@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class EventsController < ApplicationController
-  before_action :active_user?
+class EventsController < PublicController
+  # before_action :active_user?
+  include PermissionsScopeHelper
+
   before_action :admin_user?, only: :reservations
 
   def upcoming

@@ -4,7 +4,10 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   before(:all) do
-    @fans = [FactoryGirl.create(:fan), FactoryGirl.create(:fan)]
+    @fans = [
+      OpenStruct.new(id: 1, name: 'fan_refactoring'),
+      OpenStruct.new(id: 2, name: 'fan_refactoring')
+    ]
     @fan_ids = @fans.map(&:id)
   end
 
@@ -52,7 +55,7 @@ RSpec.describe Reservation, type: :model do
         :reservation, fan_ids: @fan_ids, phone_number: default_phone_number
       )
       expect(actual.total_seats).to eq @fans.count
-      expect(actual.fan_names).to match_array(@fans.map(&:to_s))
+      expect(actual.fan_names).to match_array(@fans.map(&:name))
     end
 
     it '.assign_requested!' do

@@ -43,7 +43,7 @@ class Reservation < ApplicationRecord
   end
 
   def process_fans!
-    self.fan_names = Fan.where(id: fan_ids).map(&:to_s)
+    self.fan_names = ['fan_refactoring'] * fan_ids.count
     self.total_seats = fan_ids.count
   end
 

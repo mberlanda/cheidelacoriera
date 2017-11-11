@@ -27,17 +27,11 @@
                   %a{ href: 'javascript:;' }
                     %i.fa.fa-question-circle
                     = t('navbar.admin.demo')
-          - if current_user.active?
-            %li= link_to t('navbar.user.fans'), fans_path, **nav_opt(:fans)
-            %li.dropdown.events-dropdown
-              %a.dropdown-toggle{ 'aria-expanded' => false, 'data-toggle' => 'dropdown', href: 'javascript:;' }
-                = t('activerecord.models.event.other')
-                %span.fa.fa-angle-down
-              %ul.dropdown-menu
-                %li= link_to t('navbar.events.upcoming'), upcoming_events_path, **nav_opt(:upcoming_events)
-                %li= link_to t('navbar.events.index'), all_events_path, **nav_opt(:all_events)
-            %li= link_to t('navbar.news.index'), news_index_path, **nav_opt(:news)
-            %li= link_to t('navbar.albums.index'), albums_path, **nav_opt(:albums)
+          / - if current_user.active?
+          /  %li= link_to t('navbar.user.fans'), fans_path, **nav_opt(:fans)
+        %li= link_to t('navbar.events.upcoming'), upcoming_events_path, **nav_opt(:upcoming_events)
+        %li= link_to t('navbar.news.index'), news_index_path, **nav_opt(:news)
+        %li= link_to t('navbar.albums.index'), albums_path, **nav_opt(:albums)
 
       %ul.nav.navbar-nav.navbar-right
         - unless I18n.locale == :en

@@ -1,6 +1,11 @@
 - @title = t('events.upcoming.title')
 
 .crud-container
+  %hr
   .row
     - @events.each do |evt|
       = render partial: 'events/event', locals: { event: evt }
+  %hr
+  .row.text-center
+    %p
+      = link_to('History', all_events_path, class: 'btn btn-default')

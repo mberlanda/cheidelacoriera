@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106170719) do
+ActiveRecord::Schema.define(version: 20171110160020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,18 +37,6 @@ ActiveRecord::Schema.define(version: 20171106170719) do
     t.index ["away_team_id"], name: "index_events_on_away_team_id", using: :btree
     t.index ["competition_id"], name: "index_events_on_competition_id", using: :btree
     t.index ["home_team_id"], name: "index_events_on_home_team_id", using: :btree
-  end
-
-  create_table "fans", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "date_of_birth"
-    t.string   "place_of_birth"
-    t.string   "fidelity_card_no"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_fans_on_user_id", using: :btree
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -124,7 +112,6 @@ ActiveRecord::Schema.define(version: 20171106170719) do
   add_foreign_key "events", "competitions"
   add_foreign_key "events", "teams", column: "away_team_id"
   add_foreign_key "events", "teams", column: "home_team_id"
-  add_foreign_key "fans", "users"
   add_foreign_key "reservations", "trips"
   add_foreign_key "reservations", "users"
   add_foreign_key "trips", "events"

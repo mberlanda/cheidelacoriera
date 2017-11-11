@@ -115,3 +115,6 @@ img.team-logo {
 .event-detail-item {
   margin: 10px;
 }
+.event-panel {
+  min-height: 230px;
+}
