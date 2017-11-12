@@ -12,7 +12,7 @@ class Crud::EventsController < CrudController
   include DatatableController
 
   def datatable_columns
-    %i[date season home_team_id away_team_id competition_id
-       venue poster_url]
+    %i[date season bookable_from bookable_until home_team_id
+       away_team_id competition_id venue poster_url]
   end
 end

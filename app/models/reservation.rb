@@ -2,7 +2,7 @@
 
 class Reservation < ApplicationRecord
   belongs_to :user, inverse_of: :reservations
-  belongs_to :trip, inverse_of: :reservations
+  belongs_to :event, inverse_of: :reservations
 
   validates :phone_number, presence: true, allow_blank: false,
                            format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }

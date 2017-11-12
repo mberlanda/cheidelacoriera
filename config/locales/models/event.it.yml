@@ -19,3 +19,7 @@ it:
         updated_at: Data Aggiornamento
         venue: Luogo
         poster_url: Url locandina
+        requested_seats: Richieste in sospeso
+        confirmed_seats: Richieste confermate
+        bookable_from: Prenotabile da
+        bookable_until: Prenotabile fino a

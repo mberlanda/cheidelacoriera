@@ -9,7 +9,7 @@ RSpec.describe Event, type: :model do
 
   context 'default event' do
     subject do
-      FactoryGirl.create(
+      FactoryGirl.build(
         :event,
         competition: competition,
         home_team: team1,
@@ -27,6 +27,10 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:competition) }
     it { should respond_to(:venue) }
     it { should respond_to(:poster_url) }
+    it { should respond_to(:requested_seats) }
+    it { should respond_to(:confirmed_seats) }
+    it { should respond_to(:bookable_from) }
+    it { should respond_to(:bookable_until) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -61,18 +65,31 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  context '#any_trip?' do
+  context '.bookable' do
     before do
-      @event = FactoryGirl.create(:event)
+      DatabaseCleaner.clean_with(:truncation)
+      @event1 = FactoryGirl.create(
+        :event,
+        bookable_from: Date.today,
+        bookable_until: Date.today + 5.days
+      )
+      @event2 = FactoryGirl.create(
+        :event,
+        bookable_from: Date.today - 5.days,
+        bookable_until: Date.today + 1.day
+      )
     end
 
-    it 'should return false if no trip present' do
-      expect(@event.any_trip?).to eq(false)
+    it 'uses by default Date.today' do
+      actual = Event.bookable
+      expect(actual.count).to eq(2)
+      expect(actual).to match_array([@event1, @event2])
     end
 
-    it 'should return true if any trip present' do
-      FactoryGirl.create(:trip, event: @event)
-      expect(@event.any_trip?).to eq(true)
+    it 'can use custom date' do
+      actual = Event.bookable(Date.today - 2.days)
+      expect(actual.count).to eq(1)
+      expect(actual).to match_array([@trip2])
     end
   end
 end

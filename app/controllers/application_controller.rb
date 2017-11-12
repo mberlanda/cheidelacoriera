@@ -6,6 +6,19 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   include PermissionsScopeHelper
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    permitted = %i[
+      first_name last_name profile_name email password
+      date_of_birth place_of_birth newsletter phone_number
+    ]
+    devise_parameter_sanitizer.permit(:sign_up, keys: permitted)
+    devise_parameter_sanitizer.permit(:account_update, keys: permitted)
+  end
+
   private
 
   def set_locale

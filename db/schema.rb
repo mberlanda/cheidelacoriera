@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111080647) do
+ActiveRecord::Schema.define(version: 20171112115601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,15 @@ ActiveRecord::Schema.define(version: 20171111080647) do
     t.text     "notes"
     t.integer  "home_team_id"
     t.integer  "away_team_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "competition_id"
     t.string   "venue"
     t.string   "poster_url"
+    t.date     "bookable_from"
+    t.date     "bookable_until"
+    t.integer  "requested_seats", default: 0
+    t.integer  "confirmed_seats", default: 0
     t.index ["away_team_id"], name: "index_events_on_away_team_id", using: :btree
     t.index ["competition_id"], name: "index_events_on_competition_id", using: :btree
     t.index ["home_team_id"], name: "index_events_on_home_team_id", using: :btree
@@ -48,9 +52,9 @@ ActiveRecord::Schema.define(version: 20171111080647) do
     t.string   "phone_number"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "trip_id"
     t.integer  "user_id"
-    t.index ["trip_id"], name: "index_reservations_on_trip_id", using: :btree
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_reservations_on_event_id", using: :btree
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
@@ -72,22 +76,6 @@ ActiveRecord::Schema.define(version: 20171111080647) do
     t.text     "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.integer  "total_seats"
-    t.integer  "available_seats"
-    t.integer  "requested_seats"
-    t.integer  "reserved_seats"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "event_id"
-    t.integer  "transport_mean_id"
-    t.date     "bookable_from"
-    t.date     "bookable_until"
-    t.string   "name"
-    t.index ["event_id"], name: "index_trips_on_event_id", using: :btree
-    t.index ["transport_mean_id"], name: "index_trips_on_transport_mean_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -119,8 +107,6 @@ ActiveRecord::Schema.define(version: 20171111080647) do
   add_foreign_key "events", "competitions"
   add_foreign_key "events", "teams", column: "away_team_id"
   add_foreign_key "events", "teams", column: "home_team_id"
-  add_foreign_key "reservations", "trips"
+  add_foreign_key "reservations", "events"
   add_foreign_key "reservations", "users"
-  add_foreign_key "trips", "events"
-  add_foreign_key "trips", "transport_means"
 end

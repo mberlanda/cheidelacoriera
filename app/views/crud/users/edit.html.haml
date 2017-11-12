@@ -8,7 +8,7 @@
     = f.input :last_name
     = f.input :phone_number
     = f.input :email
-    = f.input :date_of_birth
+    = f.input :date_of_birth, as: :string, input_html: { type: :date }
     = f.input :place_of_birth
     = f.input :role, collection: User::ROLES, include_blank: false
     = f.input :status, collection: User::STATUSES, include_blank: false

@@ -19,3 +19,7 @@ en:
         updated_at: Updated At
         venue: Luogo
         poster_url: Poster Url
+        requested_seats: Requested Seats
+        confirmed_seats: Reserved Seats
+        bookable_from: Bookable From
+        bookable_until: Bookable Until

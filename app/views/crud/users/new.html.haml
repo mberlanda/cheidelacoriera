@@ -7,7 +7,7 @@
     = f.input :first_name
     = f.input :last_name
     = f.input :phone_number
-    = f.input :date_of_birth
+    = f.input :date_of_birth, as: :string, input_html: { type: :date }
     = f.input :place_of_birth
     = f.input :email
     = f.input :role, collection: User::ROLES, include_blank: false
@@ -17,6 +17,7 @@
   .btn-group{ role: :group }
     = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
     = link_to(t('simple_form.buttons.back'), users_path, class: 'btn btn-default')
+
 :javascript
   $(function(){
     $('input[type=time]').timepicker({

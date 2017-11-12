@@ -4,7 +4,11 @@ class Crud::UsersController < CrudController
   before_action :authenticate_user!
   before_action :admin_user?
 
-  self.permitted_attrs = %i[email password password_confirmation status role]
+  self.permitted_attrs = %i[
+    email password password_confirmation status role
+    first_name last_name phone_number date_of_birth
+    place_of_birth
+  ]
   self.search_columns = %i[email status role]
   include Crud::UsersHelper
   include DatatableController
