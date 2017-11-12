@@ -25,3 +25,10 @@ it:
         updated_at: Data Aggiornamento
         remember_me: Ricordami
         current_password: Password Attuale
+        date_of_birth: Data di Nascita
+        first_name: Nome
+        last_name: Cognome
+        place_of_birth: Luogo di Nascita
+        phone_number: Numero di Telefono
+        newsletter: Newsletter
+        activation_date: Data Approvazione

@@ -3,10 +3,39 @@
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs
+      = f.input :first_name, required: true
+      = f.input :last_name, required: true
+      = f.input :date_of_birth, as: :string, input_html: { type: :date }
+      = f.input :place_of_birth
+      = f.input :phone_number, required: true
       = f.input :email, required: true, autofocus: true
       = f.input :password, required: true, hint: (t('simple_form.hints.password', min: @minimum_password_length) if @minimum_password_length)
       = f.input :password_confirmation, required: true
+      = f.input :newsletter
     .form-actions
       = f.button :submit, t('devise.registrations.new')
   %br/
   = render 'devise/shared/links'
+
+:javascript
+
+  $(function(){
+    $('input[type=time]').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 15,
+        minTime: '00:00',
+        maxTime: '23:59',
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+    $('input[type=date]').datepicker({
+      language: '#{I18n.locale}',
+      format: 'yyyy-mm-dd',
+      startDate: '1907-10-17',
+      endDate: '2100-12-31',
+      todayBtn: true
+    });
+    nicEditors.allTextAreas();
+  })

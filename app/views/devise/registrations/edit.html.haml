@@ -3,6 +3,11 @@
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :first_name, required: true
+    = f.input :last_name, required: true
+    = f.input :date_of_birth, as: :string, input_html: { type: :date }
+    = f.input :place_of_birth
+    = f.input :phone_number, required: true
     = f.input :email, required: true, autofocus: true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %p
@@ -10,6 +15,7 @@
     = f.input :password, autocomplete: :off, hint: t('simple_form.hints.edit_password'), required: false
     = f.input :password_confirmation, required: false
     = f.input :current_password, hint: t('simple_form.hints.current_password'), required: true
+    = f.input :newsletter
   .form-actions
     = f.button :submit, t('devise.registrations.update')
 
@@ -18,3 +24,25 @@
 / %h3 Cancel my account
 / %p
 /   Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+:javascript
+
+  $(function(){
+    $('input[type=time]').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 15,
+        minTime: '00:00',
+        maxTime: '23:59',
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+    $('input[type=date]').datepicker({
+      language: '#{I18n.locale}',
+      format: 'yyyy-mm-dd',
+      startDate: '1907-10-17',
+      endDate: '2100-12-31',
+      todayBtn: true
+    });
+    nicEditors.allTextAreas();
+  })

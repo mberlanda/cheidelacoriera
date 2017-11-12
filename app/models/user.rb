@@ -10,6 +10,11 @@ class User < ApplicationRecord
   ROLES = %w[fan admin].freeze
   STATUSES = %w[active pending].freeze
 
+  validates :phone_number, format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
+
+  scope :actives, ->() { where(status: :active) }
+  scope :to_notify, ->() { where(activation_date: nil) }
+
   def to_s
     email
   end

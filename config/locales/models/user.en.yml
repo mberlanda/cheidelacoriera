@@ -25,3 +25,10 @@ en:
         updated_at: Updated At
         remember_me: Remember Me
         current_password: Current Password
+        date_of_birth: Date Of Birth
+        first_name: First Name
+        last_name: Last Name
+        place_of_birth: Place Of Birth
+        phone_number: Phone Number
+        newsletter: Newsletter
+        activation_date: Activation Date

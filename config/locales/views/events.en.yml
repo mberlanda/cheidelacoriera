@@ -4,6 +4,7 @@ en:
       title: All Events
     upcoming:
       title: Upcoming Events
+      history: Show History
     buttons:
       book_now: Book Now!
       fans_list: Fans List

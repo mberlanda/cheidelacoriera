@@ -45,7 +45,7 @@
               = current_user.email
               %span.fa.fa-angle-down
             %ul.dropdown-menu
-              %li= link_to t('navbar.session.edit_password'), edit_user_registration_path, **nav_opt(:edit_password)
+              %li= link_to t('navbar.session.edit_profile'), edit_user_registration_path, **nav_opt(:edit_profile)
               %li= link_to t('navbar.session.logout'), destroy_user_session_path, method: :delete, **nav_opt(:logout)
         - else
           %li= link_to t('navbar.session.login'), new_user_session_path, **nav_opt(:login)

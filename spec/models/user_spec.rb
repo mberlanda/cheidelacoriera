@@ -14,6 +14,13 @@ RSpec.describe User, type: :model do
     it { should respond_to(:encrypted_password) }
     it { should respond_to(:role) }
     it { should respond_to(:status) }
+    it { should respond_to(:first_name) }
+    it { should respond_to(:last_name) }
+    it { should respond_to(:date_of_birth) }
+    it { should respond_to(:place_of_birth) }
+    it { should respond_to(:phone_number) }
+    it { should respond_to(:newsletter) }
+    it { should respond_to(:activation_date) }
 
     it 'has default role' do
       expect(subject.role).to eq('fan')

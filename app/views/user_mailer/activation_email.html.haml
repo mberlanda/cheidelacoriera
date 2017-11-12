@@ -3,8 +3,14 @@
 %img{ src: asset_path('images/cheidelacoriera_logo.png') }
 
 %p
-  Ti confermiamo l'avvenuta registrazione su
+  Ti confermiamo che la tua registrazione su
   = link_to(' cheidelacoriera', 'http://cheidelacoriera.herokuapp.com?gtm_source=email&gtm_campaign=activation', target: '_blank')
-  !
+  è stata approvata!
+
+%p
+  Effettua l'accesso e verifica di avere inserito tutti i dati correttamente (nome, cognome, numero di telefono).
+%p
+  Potrai verificare i tuoi dati a
+  = link_to('questo indirizzo', 'http://cheidelacoriera.herokuapp.com/users/edit?gtm_source=email&gtm_campaign=activation', target: '_blank')
 
 %p Il Team di CheiDeLaCoriera

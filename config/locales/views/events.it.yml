@@ -4,6 +4,7 @@ it:
       title: Tutte le Partite
     upcoming:
       title: Prossime Partite
+      history: Vedi tutte
     buttons:
       book_now: Prenota ora!
       fans_list: Elenco Partecipanti

@@ -13,6 +13,7 @@ it:
       index: Tutte le partite
     session:
       edit_password: Modifica Password
+      edit_profile: Modifica Profilo
       logout: Disconnetti
       login: Accedi
     user:

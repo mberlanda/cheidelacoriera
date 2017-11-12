@@ -10,7 +10,10 @@ class Crud::UsersController < CrudController
   include DatatableController
 
   def datatable_columns
-    @datatable_columns ||= %i[email status role]
+    @datatable_columns ||= %i[
+      email first_name last_name phone_number
+      newsletter status activation_date role
+    ]
   end
 
   def index; end
@@ -19,7 +22,7 @@ class Crud::UsersController < CrudController
     pending_users = User.where(status: :pending)
     pending_users.update(status: :active)
 
-    pending_users.each { |u| UserMailer.activation_email(u).deliver }
+    User.actives.to_notify.each { |u| UserMailer.activation_email(u).deliver }
     flash[:success] = I18n.t('controllers.users.approve_all.flash')
     flash.keep
     redirect_to action: :index
