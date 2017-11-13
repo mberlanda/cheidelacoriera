@@ -15,3 +15,4 @@ en:
         trip_id: Trip
         user_id: User
         email: Email
+        event_id: Event

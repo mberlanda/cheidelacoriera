@@ -4,16 +4,13 @@
 = simple_form_for(@reservation, method: :put, url: reservation_path) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :trip_id, readonly: true, as: :hidden
-    = f.input :user_id, readonly: true, as: :hidden
     .col-md-12.col-sm-12.col-xs-12
       = f.input :total_seats, readonly: true
-    .col-md-12.col-sm-6.col-xs-12
-      = f.input :status, collection: %i[active pending]
-    .col-md-12.col-sm-12.col-xs-12
-      = f.input :fan_ids, collection: Fan.where(user_id: @reservation.user_id), input_html: { multiple: true }, include_blank: false
-    .col-md-12.col-sm-6.col-xs-12
+      = f.input :status, collection: %i[active pending], include_blank: false
+      = f.input :fan_names, as: :array
       = f.input :phone_number
+      = f.input :event_id, collection: Event.include_all.order(:date).bookable, include_blank: false
+      = f.input :user_id, collection: User.order(:email), include_blank: false
   .btn-group{ role: :group }
     = f.button :submit, 'Save', class: 'btn-primary'
     = link_to('Back', reservation_path(@reservation.id), class: 'btn btn-default')
@@ -21,5 +18,50 @@
 :javascript
 
   $(function(){
-    $("#reservation_fan_ids").multiSelect();
+    initializeFanNames();
   })
+
+  function initializeFanNames(){
+    var inputSelector = 'input[name="reservation[fan_names][]"]';
+    var addButton = $('.add_fan_names_button');
+    var removeButton = $('.remove_fan_names_button');
+    var wrapper = $('.reservation_fan_names');
+
+    var addButtonHtml = '<button type="button" class="add_fan_names_button btn btn-primary">+</button>';
+    var removeButtonHtml = '<button type="button" class="remove_fan_names_button btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+
+    var emptyInput = '<div class="form-control-inline"><input class="text optional" name="reservation[fan_names][]" type="text"></div>';
+
+
+    var min_field_size  = 6;
+    var max_fields      = 10;
+
+    var x = $(inputSelector).length; //initial text box count
+
+    function inputFromBtn(btn, inputSelector){
+      return $(btn).closest('.form-control-inline').find(inputSelector);
+    }
+
+    $(addButton).click(function(e){ //on add input button click
+        var clickedInput = inputFromBtn($(this), inputSelector);
+        if($(clickedInput).val().length < min_field_size){
+          alert("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
+          return;
+        };
+
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(inputSelector).last().after(removeButtonHtml);
+            $(emptyInput).appendTo(wrapper).append(addButton);
+        } else {
+          alert("Hai raggiunto il limite massimo di partecipanti iscrivibili a questa trasferta");
+          return;
+        }
+    });
+
+    $(wrapper).on('click', '.remove_fan_names_button',function(){ //user click on remove text
+        $(this).parent('.form-control-inline').remove();
+        x--;
+    });
+
+  }

@@ -26,9 +26,6 @@ Rails.application.routes.draw do
         resources :transport_means do
           collection { get :datatable_index }
         end
-        resources :trips do
-          collection { get :datatable_index }
-        end
       end
     end
   end
@@ -51,6 +48,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :user_form
+      post :form_create
       get :approve_all
       get :datatable_index
     end

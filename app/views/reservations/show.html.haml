@@ -1,0 +1,10 @@
+- @title ||= ti(:title, model: full_entry_label).html_safe
+
+- content_for(:actions, render('actions_show'))
+
+= render 'attrs'
+
+- if @reservation.event
+  .row.col-md-12
+    .text-center
+      = link_to(t('events.buttons.fans_list'), reservations_event_path(@reservation.event.id), class: 'btn btn-default')

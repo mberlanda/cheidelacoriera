@@ -6,10 +6,7 @@ class ReservationsController < CrudController
   layout false, only: %i[user_form status]
   respond_to :html, :js
 
-  self.permitted_attrs = %i[
-    total_seats fan_names fan_ids notes
-    status phone_number event_id user_id
-  ]
+  self.permitted_attrs = [:phone_number, :notes, :event_id, fan_names: []]
 
   include DatatableController
 
@@ -41,7 +38,7 @@ class ReservationsController < CrudController
     )
   end
 
-  def create
+  def form_create
     permitted = params.require(:reservation)
                       .permit(:phone_number, :notes, :event_id, fan_names: [])
     @reservation = Reservation.new(
@@ -56,6 +53,24 @@ class ReservationsController < CrudController
       redirect_to action: :status, id: @reservation.id
     else
       render 'reservations/user_form', layout: false
+    end
+  end
+
+  def create
+    permitted = params.require(:reservation)
+                      .permit(:phone_number, :notes, :event_id, :user_id, fan_names: [])
+    @reservation = Reservation.new(
+      event_id: permitted[:event_id],
+      user_id: permitted[:user_id],
+      notes: permitted[:notes],
+      phone_number: permitted[:phone_number],
+      fan_names: permitted[:fan_names].to_a.reject(&:blank?)
+    )
+    if @reservation.valid?
+      @reservation.save
+      redirect_to @reservation
+    else
+      render action: :new
     end
   end
 

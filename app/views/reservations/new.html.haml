@@ -1,28 +1,25 @@
+- @title ||= ti(:title, model: models_label(false))
+- content_for(:actions, index_action_link)
 
-.row
-  = simple_form_for(@reservation, method: :post, url: form_create_reservations_path, remote: true, authenticity_token: true) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :event_id, as: :hidden
-      = f.input :phone_number, input_html: { value: current_user.phone_number }
+= simple_form_for(@reservation, method: :post, url: reservations_path) do |f|
+  = f.error_notification
+  .form-inputs
+    .col-md-12.col-sm-12.col-xs-12
+      = f.input :total_seats, readonly: true
+      = f.input :status, collection: %i[active pending], include_blank: false
       = f.input :fan_names, as: :array
-      = f.input :notes
-      = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-    .btn-group{ role: :group }
-      = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
+      = f.input :phone_number
+      = f.input :event_id, collection: Event.include_all.order(:date).bookable.upcoming, include_blank: false
+      = f.input :user_id, collection: User.order(:email).all, include_blank: false
+  .btn-group{ role: :group }
+    = f.button :submit, 'Save', class: 'btn-primary'
+    = link_to('Back', reservations_path, class: 'btn btn-default')
 
 :javascript
+
   $(function(){
-    initializeForm();
-  })
-
-  function initializeForm(){
-
-    $("#new_reservation").on("ajax:success", function(xhr, data, status){
-      $("#reservation-form").html(data);
-    });
     initializeFanNames();
-  }
+  })
 
   function initializeFanNames(){
     var inputSelector = 'input[name="reservation[fan_names][]"]';

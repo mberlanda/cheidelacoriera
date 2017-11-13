@@ -6,15 +6,19 @@ class Reservation < ApplicationRecord
 
   validates :phone_number, presence: true, allow_blank: false,
                            format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
+  before_validation :process_fans!
+
   validate :check_fans
   validates :notes, length: { maximum: 150 }
+  validates :user_id, presence: true, allow_nil: false
+  validates :event_id, presence: true, allow_nil: false, uniqueness: { scope: :user_id }
 
-  before_save :process_fans!
   before_create :set_default_status!
   after_create :assign_requested!
+  before_destroy :remove_requested!
 
   scope :pending, ->() { where(status: :pending) }
-  belongs_to :event, inverse_of: :reservations, dependent: :destroy
+  belongs_to :event, inverse_of: :reservations
 
   def to_s
     "#{user} #{event}"
@@ -37,13 +41,13 @@ class Reservation < ApplicationRecord
   private
 
   def check_fans
-    return true unless fan_ids.empty?
-    errors.add(:fan_ids, I18n.t('errors.messages.blank'))
+    return true unless fan_names.empty?
+    errors.add(:fan_names, I18n.t('errors.messages.blank'))
   end
 
   def process_fans!
-    self.fan_names = ['fan_refactoring'] * fan_ids.count
-    self.total_seats = fan_ids.count
+    self.fan_names = fan_names.to_a.reject { |f| f.blank? || f.size < 6 }
+    self.total_seats = fan_names.count
   end
 
   def set_default_status!
@@ -52,5 +56,10 @@ class Reservation < ApplicationRecord
 
   def assign_requested!
     event.increment_with_sql!(:requested_seats, total_seats)
+  end
+
+  def remove_requested!
+    event.decrement_with_sql!(:requested_seats, total_seats) if status == 'pending'
+    event.decrement_with_sql!(:confirmed_seats, total_seats) if status == 'active'
   end
 end

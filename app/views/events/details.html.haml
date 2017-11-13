@@ -1,16 +1,18 @@
 - @title = @event.to_s
 
-/.jumbotron
+/.jumbotro
+- has_post_url = @event.poster_url.nil?
+- md_size = has_post_url ? 6 : 12
 .panel.panel-default
   .panel-body
-    - unless @event.notes.nil?
-      .col-md-6.col-sm-12
-        .event-detail-item
+    .col-sm-12{ class: "col-md-#{md_size}" }
+      .event-detail-item
+        - unless @event.notes.nil?
           = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
-          %hr
-          #reservation-form
-          %hr
-    - unless @event.poster_url.nil?
+        %hr
+        #reservation-form
+        %hr
+    - unless has_post_url
       .col-md-6.col-sm-12
         .event-detail-item
           %img.img-responsive{ src: @event.poster_url }

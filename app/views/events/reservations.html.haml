@@ -31,6 +31,10 @@
       = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(id: params[:id], event_id: @event.id), class: %w[btn btn-primary])
       %hr
 .row
+  .alert{ align: 'center' }
+    = action_link(ti('link.add'), 'plus', new_reservation_path)
+    %hr
+.row
   = crud_datatable(@model_name, *@datatable_columns)
 
 :javascript

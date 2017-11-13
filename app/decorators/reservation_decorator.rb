@@ -14,7 +14,7 @@ class ReservationDecorator < ApplicationDecorator
 
   def datatable_index
     [
-      link_to(object.trip.to_s, reservation_url(object.id)),
+      link_to(object.event.to_s, reservation_url(object.id)),
       object.user.to_s,
       object.total_seats,
       object.status,

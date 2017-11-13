@@ -6,12 +6,12 @@ class ArrayInput < SimpleForm::Inputs::StringInput
   def input(wrapper_options = nil)
     input_html_options[:type] ||= input_type
 
-    existing_values = Array(object.public_send(attribute_name)).map do |elem|
-      build_single_elem(elem, remove_button)
-    end
-    last_elem = build_single_elem(nil, add_button)
+    *existing_elements, last_elem = Array(object.public_send(attribute_name))
 
-    existing_values.push last_elem
+    existing_values = existing_elements.map do |_elem|
+      build_single_elem(existing_elements, remove_button)
+    end
+    existing_values.push build_single_elem(last_elem, add_button)
     # rubocop:disable Rails/OutputSafety
     existing_values.join.html_safe
     # rubocop:enable Rails/OutputSafety
