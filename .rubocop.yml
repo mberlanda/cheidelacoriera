@@ -23,12 +23,17 @@ AllCops:
     - spec/controllers/crud_test_models_controller_spec.rb
   DisplayCopNames: true
 
+Lint/UnusedMethodArgument:
+  Exclude:
+    - app/inputs/array_input.rb
+
 Metrics/AbcSize:
   Enabled: true
   Exclude:
     - db/migrate/*.rb
     - app/decorators/*_decorator.rb
     - app/controllers/reservations_controller.rb
+    - app/inputs/array_input.rb
 
 Metrics/BlockLength:
   Enabled: true
@@ -37,6 +42,7 @@ Metrics/BlockLength:
     - spec/**/*_spec.rb
 
 Metrics/LineLength:
+  Max: 90
   Enabled: true
   Exclude:
     - db/**/*
@@ -44,6 +50,7 @@ Metrics/LineLength:
     - spec/*_helper.rb
 
 Metrics/MethodLength:
+  Max: 15
   Enabled: true
   Exclude:
     - db/**/*
@@ -60,10 +67,10 @@ Rails/OutputSafety:
   Exclude:
     - app/helpers/datatable_helper.rb
 
-Style/Documentation:
+Style/ClassAndModuleChildren:
   Enabled: false
 
-Style/ClassAndModuleChildren:
+Style/Documentation:
   Enabled: false
 
 Style/ModuleFunction:

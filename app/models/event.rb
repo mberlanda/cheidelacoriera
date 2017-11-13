@@ -7,7 +7,7 @@ class Event < ApplicationRecord
 
   scope :upcoming, ->() { where('date >= ?', Date.today) }
 
-  has_many :reservations, inverse_of: :event
+  has_many :reservations, inverse_of: :event, dependent: :destroy
 
   class << self
     def include_all

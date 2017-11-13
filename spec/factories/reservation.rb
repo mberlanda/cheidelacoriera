@@ -9,6 +9,6 @@ FactoryGirl.define do
     status { 'pending' }
     phone_number { FFaker::PhoneNumber.phone_number }
     user
-    trip
+    event
   end
 end

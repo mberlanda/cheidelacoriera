@@ -21,7 +21,6 @@ class EventsController < PublicController
   def reservations
     @event_id = params[:id]
     @event = Event.find(@event_id)
-    @trip = @event.trip
 
     @models_label = I18n.t('activerecord.models.reservation.other')
     @model_name = 'reservation'

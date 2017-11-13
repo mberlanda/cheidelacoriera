@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TripDecorator < ApplicationDecorator
-  # rubocop:disable Metrics/MethodLength
   def datatable_index
     [
       link_to(object.name || 'n/a', trip_url(object.id)),

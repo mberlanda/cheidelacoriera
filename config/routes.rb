@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         end
         resources :events do
           collection { get :datatable_index }
+          member { get :datatable_reservations }
         end
         resources :users do
           collection do
@@ -27,7 +28,6 @@ Rails.application.routes.draw do
         end
         resources :trips do
           collection { get :datatable_index }
-          member { get :datatable_reservations }
         end
       end
     end

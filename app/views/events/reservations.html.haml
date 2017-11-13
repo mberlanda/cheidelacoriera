@@ -7,36 +7,28 @@
 .row
   .alert{ align: 'center' }
     .col-md-12
-      %h3= @trip
+      %h3= @event
       %hr
     .col-md-6.col-sm-12
       .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.bookable_from')
+        %span= t('activerecord.attributes.event.bookable_from')
       .col-md-6.col-sm-6
-        %span= I18n.l(@trip.bookable_from)
+        %span= I18n.l(@event.bookable_from)
       .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.total_seats')
+        %span= t('activerecord.attributes.event.requested_seats')
       .col-md-6.col-sm-6
-        %span= number_with_delimiter(@trip.total_seats)
-      .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.reserved_seats')
-      .col-md-6.col-sm-6
-        %span= number_with_delimiter(@trip.reserved_seats)
+        %span= number_with_delimiter(@event.requested_seats)
     .col-md-6.col-sm-12
       .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.bookable_until')
+        %span= t('activerecord.attributes.event.bookable_until')
       .col-md-6.col-sm-6
-        %span= I18n.l(@trip.bookable_until)
+        %span= I18n.l(@event.bookable_until)
       .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.requested_seats')
+        %span= t('activerecord.attributes.event.confirmed_seats')
       .col-md-6.col-sm-6
-        %span= number_with_delimiter(@trip.requested_seats)
-      .col-md-6.col-sm-6
-        %span= t('activerecord.attributes.trip.available_seats')
-      .col-md-6.col-sm-6
-        %span= number_with_delimiter(@trip.available_seats)
+        %span= number_with_delimiter(@event.confirmed_seats)
     .col-md-12
-      = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(id: params[:id], trip_id: @trip.id), class: %w[btn btn-primary])
+      = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(id: params[:id], event_id: @event.id), class: %w[btn btn-primary])
       %hr
 .row
   = crud_datatable(@model_name, *@datatable_columns)
@@ -44,7 +36,7 @@
 :javascript
   $(function(){
     initializeCrudTable(
-      '#{datatable_reservations_trip_path(@trip.id)}',
+      '#{datatable_reservations_event_path(@event.id)}',
       '##{@model_name}-table',
       '.#{@model_name}-index-buttons'
     )

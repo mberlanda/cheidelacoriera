@@ -6,7 +6,6 @@
       = f.input :event_id, as: :hidden
       = f.input :phone_number, input_html: { value: current_user.phone_number }
       = f.input :fan_names, as: :array
-      %button.add-fan-button{ type: :button} Add additional fan
       = f.input :notes
     .btn-group{ role: :group }
       = f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary'
@@ -17,8 +16,54 @@
   })
 
   function initializeForm(){
-    // $("#reservation_fan_ids").multiSelect();
+
     $("#new_reservation").on("ajax:success", function(xhr, data, status){
       $("#reservation-form").html(data);
     });
+    initializeFanNames();
+  }
+
+  function initializeFanNames(){
+    var inputSelector = 'input[name="reservation[fan_names][]"]';
+    var addButton = $('.add_fan_names_button');
+    var removeButton = $('.remove_fan_names_button');
+    var wrapper = $('.reservation_fan_names');
+
+    var addButtonHtml = '<button type="button" class="add_fan_names_button btn btn-primary">+</button>';
+    var removeButtonHtml = '<button type="button" class="remove_fan_names_button btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+
+    var emptyInput = '<div class="form-control-inline"><input class="text optional" name="reservation[fan_names][]" type="text"></div>';
+
+
+    var min_field_size  = 6;
+    var max_fields      = 10;
+
+    var x = $(inputSelector).length; //initial text box count
+
+    function inputFromBtn(btn, inputSelector){
+      return $(btn).closest('.form-control-inline').find(inputSelector);
+    }
+
+    $(addButton).click(function(e){ //on add input button click
+        var clickedInput = inputFromBtn($(this), inputSelector);
+        if($(clickedInput).val().length < min_field_size){
+          alert("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
+          return;
+        };
+
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(inputSelector).last().after(removeButtonHtml);
+            $(emptyInput).appendTo(wrapper).append(addButton);
+        } else {
+          alert("Hai raggiunto il limite massimo di partecipanti iscrivibili a questa trasferta");
+          return;
+        }
+    });
+
+    $(wrapper).on('click', '.remove_fan_names_button',function(){ //user click on remove text
+        $(this).parent('.form-control-inline').remove();
+        x--;
+    });
+
   }

@@ -21,7 +21,7 @@ RSpec.describe Reservation, type: :model do
     it { should respond_to(:status) }
     it { should respond_to(:phone_number) }
     it { should respond_to(:user_id) }
-    it { should respond_to(:trip_id) }
+    it { should respond_to(:event_id) }
 
     it 'should not be valid' do
       expect(subject.valid?).to be false
@@ -29,7 +29,7 @@ RSpec.describe Reservation, type: :model do
   end
 
   context 'validate reservation' do
-    let!(:trip) { FactoryGirl.create(:trip) }
+    let!(:event) { FactoryGirl.create(:event) }
 
     it '.check_fans if invalid' do
       expect do
@@ -61,46 +61,39 @@ RSpec.describe Reservation, type: :model do
     it '.assign_requested!' do
       expect do
         FactoryGirl.create(
-          :reservation, trip: trip, fan_ids: @fan_ids,
+          :reservation, event: event, fan_ids: @fan_ids,
                         phone_number: default_phone_number
         )
-      end.to change { trip.requested_seats }.by(@fan_ids.size)
+      end.to change { event.requested_seats }.by(@fan_ids.size)
     end
   end
 
   context 'valid reservation' do
     before(:context) do
-      @trip = FactoryGirl.create(
-        :trip, total_seats: 100, available_seats: 100,
-               requested_seats: 0, reserved_seats: 0
+      @event = FactoryGirl.create(
+        :event, confirmed_seats: 0, requested_seats: 0
       )
       @reservation = FactoryGirl.create(
-        :reservation, trip: @trip, fan_ids: @fan_ids,
+        :reservation, event: @event, fan_ids: @fan_ids,
                       phone_number: default_phone_number
       )
     end
 
     it { expect(@reservation.status).to eq 'pending' }
     it { expect(@reservation.total_seats).to eq @fan_ids.size }
-    it { expect(@trip.requested_seats).to eq @reservation.total_seats }
-    it { expect(@trip.available_seats).to eq @trip.total_seats }
-    it { expect(@trip.reserved_seats).to eq 0 }
+    it { expect(@event.requested_seats).to eq @reservation.total_seats }
+    it { expect(@event.confirmed_seats).to eq 0 }
 
     describe 'approved' do
       before(:context) do
-        @prev_trip = @trip.dup
+        @prev_event = @event.dup
         @reservation.approve
       end
 
       it { expect(@reservation.status).to eq 'active' }
       it { expect(@reservation.total_seats).to eq @fan_ids.size }
-      it { expect(@trip.requested_seats).to eq 0 }
-      it do
-        expect(@trip.available_seats).to eq(
-          @prev_trip.total_seats - @reservation.total_seats
-        )
-      end
-      it { expect(@trip.reserved_seats).to eq @reservation.total_seats }
+      it { expect(@event.requested_seats).to eq 0 }
+      it { expect(@event.confirmed_seats).to eq @reservation.total_seats }
     end
   end
 

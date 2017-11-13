@@ -89,7 +89,7 @@ RSpec.describe Event, type: :model do
     it 'can use custom date' do
       actual = Event.bookable(Date.today - 2.days)
       expect(actual.count).to eq(1)
-      expect(actual).to match_array([@trip2])
+      expect(actual).to match_array([@event2])
     end
   end
 end

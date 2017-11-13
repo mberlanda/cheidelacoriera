@@ -14,10 +14,10 @@ class Reservation < ApplicationRecord
   after_create :assign_requested!
 
   scope :pending, ->() { where(status: :pending) }
-  delegate :event, :event_id, to: :trip
+  belongs_to :event, inverse_of: :reservations, dependent: :destroy
 
   def to_s
-    "#{user} #{trip}"
+    "#{user} #{event}"
   end
 
   class << self
@@ -29,9 +29,8 @@ class Reservation < ApplicationRecord
   def approve
     return unless status == 'pending'
     self.status = 'active'
-    trip.decrement_with_sql!(:requested_seats, total_seats)
-    trip.decrement_with_sql!(:available_seats, total_seats)
-    trip.increment_with_sql!(:reserved_seats, total_seats)
+    event.decrement_with_sql!(:requested_seats, total_seats)
+    event.increment_with_sql!(:confirmed_seats, total_seats)
     save!
   end
 
@@ -52,6 +51,6 @@ class Reservation < ApplicationRecord
   end
 
   def assign_requested!
-    trip.increment_with_sql!(:requested_seats, total_seats)
+    event.increment_with_sql!(:requested_seats, total_seats)
   end
 end
