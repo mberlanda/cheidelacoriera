@@ -1,0 +1,14 @@
+it:
+  activerecord:
+    models:
+      album:
+        one: Album
+        other: Albums
+    attributes:
+      album:
+        created_at: Data Creazione
+        event_id: Partita
+        id: Id
+        title: Titolo
+        updated_at: Data Aggiornamento
+        url: Url

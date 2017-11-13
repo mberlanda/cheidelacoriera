@@ -8,6 +8,7 @@ en:
       transport_means: Transport Means
       trips: Trips
       demo: Help
+      albums: Albums
     events:
       upcoming: Upcoming Events
       index: All Events
@@ -35,8 +36,12 @@ en:
         step: '5'
         intro: 'Manage events transport means with their occupancy and contact information'
       trips:
-        step: '6'
+        step: '100'
         intro: 'Manage trips'
+      albums:
+        step: '6'
+        intro: >
+          Add link to albumizr's albums and link it to an event
     news:
       index: News
     albums:

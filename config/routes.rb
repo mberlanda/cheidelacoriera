@@ -26,6 +26,9 @@ Rails.application.routes.draw do
         resources :transport_means do
           collection { get :datatable_index }
         end
+        resources :albums do
+          collection { get :datatable_index }
+        end
       end
     end
   end
@@ -41,7 +44,6 @@ Rails.application.routes.draw do
     end
   end
   resources :news
-  resources :albums
   resources :reservations do
     member do
       get :status
@@ -51,6 +53,11 @@ Rails.application.routes.draw do
       post :form_create
       get :approve_all
       get :datatable_index
+    end
+  end
+  resources :albums, only: [] do
+    collection do
+      get :all
     end
   end
 end

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113115223) do
+ActiveRecord::Schema.define(version: 20171113151343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_albums_on_event_id", using: :btree
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string   "name"
@@ -103,6 +112,7 @@ ActiveRecord::Schema.define(version: 20171113115223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "albums", "events"
   add_foreign_key "events", "competitions"
   add_foreign_key "events", "teams", column: "away_team_id"
   add_foreign_key "events", "teams", column: "home_team_id"
