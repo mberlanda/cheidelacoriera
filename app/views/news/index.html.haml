@@ -1,4 +1,14 @@
 - @title = 'News'
 
-%a.twitter-timeline{ href: 'https://twitter.com/CheiDeLaCoriera?ref_src=twsrc%5Etfw' } Tweets by CheiDeLaCoriera
-%script{ async: '', charset: 'utf-8', src: 'https://platform.twitter.com/widgets.js' }
+.container
+  .col-md-12
+    .row
+    / start feedwind code
+    %script{ 'data-fw-param' => '53896/', src: 'https://feed.mikle.com/js/fw-loader.js', type: 'text/javascript' }
+    %noscript
+      %iframe{ src: 'https://feed.mikle.com/widget/v2/53896/' }
+    / end feedwind code
+  .col-md-12
+    .row
+      %a.twitter-timeline{ href: 'https://twitter.com/CheiDeLaCoriera?ref_src=twsrc%5Etfw' } Tweets by CheiDeLaCoriera
+      %script{ async: '', charset: 'utf-8', src: 'https://platform.twitter.com/widgets.js' }
