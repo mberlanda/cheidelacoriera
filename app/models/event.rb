@@ -11,7 +11,7 @@ class Event < ApplicationRecord
 
   class << self
     def include_all
-      includes(:competition, :home_team, :away_team)
+      includes(:competition, :home_team, :away_team, :reservations)
     end
 
     def bookable(d = Date.today)

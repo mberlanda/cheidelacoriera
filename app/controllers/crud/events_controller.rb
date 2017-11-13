@@ -12,6 +12,10 @@ class Crud::EventsController < CrudController
 
   include DatatableController
 
+  def model_scope
+    Event.include_all
+  end
+
   def datatable_columns
     %i[date season bookable_from bookable_until home_team_id
        away_team_id competition_id venue poster_url]
