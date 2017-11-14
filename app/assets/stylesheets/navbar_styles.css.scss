@@ -1,9 +1,17 @@
-$general-background-color: #101010;
-$general-color: #080808;
-$text-color: #006ccd; /*#9d9d9d*/
-$text-focus-color: #ffffff;
+/*$general-background-color: #101010;*/
+/*$general-color: #080808;*/
+/*$text-color: #006ccd; #9d9d9d*/
+/*$text-focus-color: #ffffff;*/
+/*$text-disabled-color: #444444;*/
+/*$toggle-focus-color: #333333;*/
+
+$general-background-color:#006ccd;
+$general-color: #004089;
+$text-color: #101010;
+$text-focus-color: #c6c5dA;
 $text-disabled-color: #444444;
-$toggle-focus-color: #333333;
+$toggle-focus-color: #004089;
+
 
 .navbar-cheidelacoriera {
   background-color: $general-background-color;

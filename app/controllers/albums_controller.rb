@@ -2,6 +2,6 @@
 
 class AlbumsController < PublicController
   def all
-    @albums = Album.all
+    @albums = Album.includes(:event).order('events.date DESC').all
   end
 end

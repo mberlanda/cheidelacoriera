@@ -10,7 +10,7 @@ it:
       demo: Aiuto
       albums: Albums
     events:
-      upcoming: Prossime Partite
+      upcoming: Prossime Trasferte
       index: Tutte le partite
     session:
       edit_password: Modifica Password

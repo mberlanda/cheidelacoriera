@@ -6,18 +6,20 @@ class AlbumizrBuilder
 
   # attr_accessor :output_buffer
 
-  def self.build(url)
-    new(url).photogallery_item
+  def self.build(album)
+    new(album).photogallery_item
   end
 
-  def initialize(url)
-    @url = url
+  def initialize(album)
+    @album = album
   end
 
   def photogallery_item
     # rubocop:disable Rails/OutputSafety
     content_tag :div, class: 'photogallery-item' do
-      content_tag(:div, build_albumizr_iframe(@url), class: 'embed-responsive-item') +
+      content_tag(:p, @album.title) +
+        content_tag(:div, build_albumizr_iframe(@album.url),
+                    class: 'embed-responsive-item') +
         content_tag(:div, build_albumizr_button, class: 'text-center')
     end.html_safe
     # rubocop:enable Rails/OutputSafety
@@ -27,7 +29,7 @@ class AlbumizrBuilder
 
   def build_albumizr_iframe(url)
     content_tag(
-      :iframe, nil, class: 'iframe-fullscreen', allowfullscreen: '', height: '100%',
+      :iframe, nil, class: 'iframe-fullscreen', allowfullscreen: '', height: '300px',
                     scrolling: 'no', src: url, width: '100%'
     )
   end

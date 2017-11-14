@@ -1,9 +1,9 @@
 it:
   home:
     index:
-      title: Benvenuto su CheiDeLaCoriera
+      title: Benvenuto su Chei De La Coriera
       body:
-        active: Utilizza il menù per continuare a navigare su questo sito
+        active: Utilizza il menù sopra per continuare a navigare su questo sito
         pending: La tua registrazione è in attesa di approvazione. Il processo potrebbe richiedere fino a 48 ore.
         not_logged: Per poter continuare su questo sito %{login}
         login: accedi qui
@@ -16,9 +16,9 @@ it:
           body: >
             Per prima cosa, registra i nomi delle persone che sono associate alla tua utenza
         upcoming_events:
-          heading: Guarda le prossime partite!
+          heading: Prossime Trasferte
           body: >
-            Richiedi la partecipazione ai prossimi eventi per le persone associate alla tua utenza
+            Guarda il calendario delle trasferte e iscriviti con noi
         gadgets:
           heading: Richiedi i nostri gadgets
           body: >
@@ -26,4 +26,4 @@ it:
         news:
           heading: Leggi le ultime novità
           body: >
-            Tieniti sempre aggiornato con le ultime novità da noi pubblicate. Leggi di più qui
+            Tieniti sempre aggiornato con noi!

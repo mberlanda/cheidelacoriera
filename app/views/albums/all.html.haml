@@ -2,10 +2,11 @@
 
 .row
   .error
+  - @albums.each do |al|
+    .col-md-6.col-sm-12.col-xs-12
+      = AlbumizrBuilder.build(al)
   .col-md-6.col-sm-12.col-xs-12
-    = AlbumizrBuilder.build('https://albumizr.com/a/tq-4')
-  .col-md-6.col-sm-12.col-xs-12
-    = AlbumizrBuilder.build('https://albumizr.com/a/tq-4')
+    /= AlbumizrBuilder.build('https://albumizr.com/a/HVJz')
 
 :javascript
   var fullScreenBtns = document.getElementsByClassName('fullscreen-btn');
