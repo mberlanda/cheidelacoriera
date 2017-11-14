@@ -1,14 +1,23 @@
 # frozen_string_literal: true
 
-module AlbumizrHelper
+class AlbumizrBuilder
+  include ActionView::Context
   include ActionView::Helpers::TagHelper
 
-  attr_accessor :output_buffer
+  # attr_accessor :output_buffer
 
-  def photogallery_item(url)
+  def self.build(url)
+    new(url).photogallery_item
+  end
+
+  def initialize(url)
+    @url = url
+  end
+
+  def photogallery_item
     # rubocop:disable Rails/OutputSafety
     content_tag :div, class: 'photogallery-item' do
-      content_tag(:div, build_albumizr_iframe(url), class: 'embed-responsive-item') +
+      content_tag(:div, build_albumizr_iframe(@url), class: 'embed-responsive-item') +
         content_tag(:div, build_albumizr_button, class: 'text-center')
     end.html_safe
     # rubocop:enable Rails/OutputSafety
