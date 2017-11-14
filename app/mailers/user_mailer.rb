@@ -9,5 +9,6 @@ class UserMailer < ApplicationMailer
     #   Rails.root.join('public', 'images', 'cheidelacoriera_logo.png')
     # )
     mail(to: @user.email, subject: 'Conferma Attivazione | Chei De La Coriera')
+    @user.update(activation_date: Date.today)
   end
 end
