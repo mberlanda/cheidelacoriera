@@ -3,21 +3,10 @@
 .row
   .error
   .col-md-6.col-sm-12.col-xs-12
-    .photogallery-item
-      .embed-responsive-item
-        %iframe.iframe-fullscreen{ allowfullscreen: '', height: '100%', scrolling: 'no', src: 'https://albumizr.com/a/tq-4', width: '100%' }
-      .text-center
-        %button.btn.btn-primary.fullscreen-btn
-          %i.glyphicon.glyphicon-fullscreen
-          FullScreen
+    = AlbumizrBuilder.build('https://albumizr.com/a/tq-4')
   .col-md-6.col-sm-12.col-xs-12
-    .photogallery-item
-      .embed-responsive-item
-        %iframe.iframe-fullscreen{ allowfullscreen: '', height: '100%', scrolling: 'no', src: 'https://albumizr.com/a/tq-4', width: '100%' }
-      .text-center
-        %button.btn.btn-primary.fullscreen-btn
-          %i.glyphicon.glyphicon-fullscreen
-          FullScreen
+    = AlbumizrBuilder.build('https://albumizr.com/a/tq-4')
+
 :javascript
   var fullScreenBtns = document.getElementsByClassName('fullscreen-btn');
 

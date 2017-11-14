@@ -8,6 +8,7 @@ it:
       transport_means: Mezzi di Trasporto
       trips: Trasferte
       demo: Aiuto
+      albums: Albums
     events:
       upcoming: Prossime Partite
       index: Tutte le partite
@@ -35,8 +36,11 @@ it:
         step: '5'
         intro: 'Crea e gestisci mezzi di trasporto con capienza e società'
       trips:
-        step: '6'
+        step: '100'
         intro: 'Crea e gestisci trasferte per partite e mezzi di trasporto'
+      albums:
+        step: '6'
+        intro: 'Aggiungi link ad Album su albumizr e associali a una partita'
     news:
       index: News
     albums:

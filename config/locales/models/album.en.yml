@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      album:
+        one: Album
+        other: Albums
+    attributes:
+      album:
+        created_at: Created At
+        event_id: Event
+        id: Id
+        title: Title
+        updated_at: Updated At
+        url: Url
