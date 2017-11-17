@@ -12,4 +12,8 @@ class Crud::CompetitionsController < CrudController
   def datatable_columns
     %i[name created_at updated_at]
   end
+
+  def find_entry
+    model_scope.friendly.find(params[:id])
+  end
 end
