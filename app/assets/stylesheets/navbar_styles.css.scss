@@ -1,13 +1,13 @@
-/*$general-background-color: #101010;*/
 /*$general-color: #080808;*/
 /*$text-color: #006ccd; #9d9d9d*/
 /*$text-focus-color: #ffffff;*/
 /*$text-disabled-color: #444444;*/
 /*$toggle-focus-color: #333333;*/
 
-$general-background-color:#006ccd;
+$general-background-color: #444444;
+/*$general-background-color:#006ccd;*/
 $general-color: #004089;
-$text-color: #101010;
+$text-color: #7fb5e6;
 $text-focus-color: #c6c5dA;
 $text-disabled-color: #444444;
 $toggle-focus-color: #004089;
@@ -143,16 +143,21 @@ fieldset[disabled] .navbar-cheidelacoriera .btn-link:focus {
   color: $text-disabled-color;
 }
 /* NAVBAR LOGO STYLE START */
-.navbar-cheidelacoriera .navbar-logo {
+/*** custom styles ***/
+.navbar-brand {
+  background: transparent;
+}
+.navbar-logo {
   float: left;
   height: 50px;
   padding: 7px 7px;
   line-height: 20px;
-  background-color: $general-background-color;
+  background-color: transparent;
 }
-.navbar-cheidelacoriera .navbar-logo img {
+.navbar-logo img {
   height: 100%;
 }
+
 .navbar-cheidelacoriera .navbar-logo:hover,
 .navbar-cheidelacoriera .navbar-logo:focus {
   color: $text-focus-color;
