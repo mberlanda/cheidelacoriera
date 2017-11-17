@@ -1,0 +1,35 @@
+- provide :styles do
+  = stylesheet_link_tag 'css/bootstrap.css'
+  %link{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext', rel: 'stylesheet' }
+  = stylesheet_link_tag 'css/font-awesome.css'
+  :css
+    .img-logo {
+      max-width: 200px;
+    }
+
+.container
+
+  %p Gentile #{@user.full_name},
+
+  %p
+    Ti confermiamo di aver ricevuto la tua prenotazione per la partita
+    = link_to(" #{@event}", details_event_url(@event.id), target: '_blank')
+    !
+    %br/
+    Non appena avremo raggiunto il numero minimo di partecipanti per assicurare il servizio, riceverai una mail di conferma contenente tutti i dettagli.
+  %hr
+
+  %p= t('reservations.show.fans')
+  %ul
+    - @reservation.fan_names.each do |n|
+      %li= n
+  %p= t('reservations.show.phone_number', number: @reservation.phone_number)
+
+  - if @event.poster_url
+    %hr
+    %a{ href: @event.poster_url, target: '_blank' }
+      %img.img-logo{ src: @event.poster_url }
+  %hr
+  %strong Il Team di Chei De La Coriera
+  %p Mangiamo chilometri per sfamare la nostra passione, la nostra Dea corre, ovunque la seguirem!
+  %img.img-logo{ src: asset_path('images/logo.png') }

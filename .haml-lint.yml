@@ -16,3 +16,4 @@ linters:
       - Style/BracesAroundHashParameters
       - Style/Documentation
       - Style/FrozenStringLiteralComment
+      - Style/UnneededInterpolation

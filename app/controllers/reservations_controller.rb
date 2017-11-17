@@ -11,7 +11,7 @@ class ReservationsController < CrudController
   include DatatableController
 
   def datatable_columns
-    %i[event_id user_id total_seats status fan_names phone_number notes]
+    %i[event_id user_id total_seats status fan_names phone_number mail_sent notes]
   end
 
   def model_scope
@@ -50,6 +50,7 @@ class ReservationsController < CrudController
     )
     if @reservation.valid?
       @reservation.save
+      ReservationMailer.received(@reservation).deliver
       redirect_to action: :status, id: @reservation.id
     else
       render 'reservations/user_form', layout: false

@@ -20,6 +20,7 @@ class ReservationDecorator < ApplicationDecorator
       object.status,
       object.fan_names,
       object.phone_number,
+      object.mail_sent,
       object.notes
     ]
   end
