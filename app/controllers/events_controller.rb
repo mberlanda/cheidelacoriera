@@ -15,12 +15,12 @@ class EventsController < PublicController
   end
 
   def details
-    @event = Event.include_all.find(params.require(:id))
+    @event = Event.include_all.friendly.find(params.require(:id))
   end
 
   def reservations
     @event_id = params[:id]
-    @event = Event.find(@event_id)
+    @event = Event.friendly.find(@event_id)
 
     @models_label = I18n.t('activerecord.models.reservation.other')
     @model_name = 'reservation'

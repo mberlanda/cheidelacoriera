@@ -10,6 +10,12 @@ class Event < ApplicationRecord
   has_many :reservations, inverse_of: :event, dependent: :destroy
   has_one :album, inverse_of: :event, dependent: :nullify
 
+  extend FriendlyId
+
+  before_validation :set_slug_name!
+  validates :custom_name, presence: true
+  friendly_id :custom_name, use: %i[slugged history finders]
+
   class << self
     def include_all
       includes(:competition, :home_team, :away_team, :reservations)
@@ -36,5 +42,27 @@ class Event < ApplicationRecord
   def booked_by?(user_id)
     return false unless book_range?
     reservations.where(user_id: user_id).present?
+  end
+
+  private
+
+  def set_slug_name!
+    self.custom_name = custom_slug_name
+  end
+
+  def custom_slug_name
+    [
+      home_team.name.downcase.tr(' ', '-'),
+      away_team.name.downcase.tr(' ', '-'),
+      competition.name.downcase.tr(' ', '-'),
+      date
+    ].join('-')
+  rescue NoMethodError
+    nil
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || home_team_id_changed? ||
+      away_team_id_changed? || competition_id_changed? || date_changed?
   end
 end

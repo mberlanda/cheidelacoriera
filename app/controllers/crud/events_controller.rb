@@ -16,6 +16,10 @@ class Crud::EventsController < CrudController
     Event.include_all
   end
 
+  def find_entry
+    model_scope.friendly.find(params[:id])
+  end
+
   def datatable_columns
     %i[date season bookable_from bookable_until home_team_id
        away_team_id competition_id venue poster_url]
