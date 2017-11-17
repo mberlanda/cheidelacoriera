@@ -17,6 +17,7 @@ RSpec.describe Reservation, type: :model do
     it { should respond_to(:phone_number) }
     it { should respond_to(:user_id) }
     it { should respond_to(:event_id) }
+    it { should respond_to(:mail_sent) }
 
     it 'should not be valid' do
       expect(subject.valid?).to be false

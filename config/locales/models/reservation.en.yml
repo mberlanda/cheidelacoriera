@@ -16,3 +16,4 @@ en:
         user_id: User
         email: Email
         event_id: Event
+        mail_sent: Mail Sent

@@ -1,5 +1,6 @@
 %hmtl
   %head
     %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }/
+    = yield(:styles) if content_for?(:styles)
   %body
     = yield

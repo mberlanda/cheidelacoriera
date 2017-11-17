@@ -16,3 +16,4 @@ it:
         user_id: Utente
         email: Email
         event_id: Partita
+        mail_sent: Mail Inviata
