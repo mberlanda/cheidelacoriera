@@ -24,6 +24,9 @@ gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
 gem 'dry_crud', '~> 5.0'
 gem 'friendly_id', '~> 5.2.1'
 
+# API
+gem 'imgurapi', '~> 3.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
