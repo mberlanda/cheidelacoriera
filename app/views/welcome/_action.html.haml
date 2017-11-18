@@ -1,8 +1,10 @@
-.col-md-6.col-sm-6.col-xs-12.text-center
-  .panel.panel-default
-    .panel-heading
-      %strong= t("home.index.panel.#{action}.heading")
-    .panel-body
-      = t("home.index.panel.#{action}.body")
-    .panel-footer
+.col-sm-6.features-box.wow.fadeInLeft
+  .row
+    .col-sm-3.features-box-icon
+      %i{ class: t("home.index.panel.#{action}.icon_class") }
+    .col-sm-9
+      %h3= t("home.index.panel.#{action}.heading")
+      %p= t("home.index.panel.#{action}.body")
+      %br
       = link_to(t('home.index.button.go'), link, class: 'btn btn-primary gtm-home-action', data: { action: action })
+      .line

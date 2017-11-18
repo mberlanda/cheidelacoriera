@@ -1,18 +1,24 @@
-.jumbotron
-  /%h1= t('home.index.title')
+- @title = 'Benvenuto su Chei de la Coriera'
+- provide :head do
+  :css
+    img.img-content {
+      max-width:80%;
+      margin:auto;
+    }
+    p.content-paragraph {
+      color: black;
+      font-weight: bolder;
+      text-shadow: 2px 2px #d3d3d3;
+    }
 
-  .text-center
-    %img.img-responsive{ src: asset_path('images/logo.png'), alt: 'Chei De La Coriera' }
-    %hr
-    .row
-      - if current_user
-        %p= t("home.index.body.#{current_user.status}")
-      - else
-        %p= t('home.index.body.not_logged', login: link_to(t('home.index.body.login'), new_user_session_path, class: 'gtm-home-action', data: { action: :login })).html_safe
-    .row
-      %a.btn.fb-btn.gtm-home-action{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank', 'data-action' => :fb_group }
-        %i.fa.fa-facebook-square
-        = t('home.index.button.join')
-/- if current_user
-- @actions.each do |a, l|
-  = render partial: 'welcome/action', locals: { action: a, link: l }
+- provide :top_content do
+  .row
+    .col-sm-12.text.wow.fadeInLeft
+      %img.img-responsive.img-content{ src: asset_path('images/logo.png') }/
+      .description
+        / %p.medium-paragraph.content-paragraph
+
+- @actions.each_slice(2) do |chunk|
+  .row
+    - chunk.each do |a, l|
+      = render partial: 'welcome/action', locals: { action: a, link: l }

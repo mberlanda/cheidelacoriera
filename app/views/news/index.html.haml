@@ -1,14 +1,36 @@
 - @title = 'News'
+- provide :head do
+  :css
+    .img-news {
+      max-height: 80px;
+      margin: auto;
+    }
+    @media (max-width: 767px) {
+      .img-news {
+        max-height: 50px;
+        margin: auto;
+      }
+    }
 
-.container
-  .col-md-12
+.divider-1
+  .line
+
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
     .row
-    / start feedwind code
-    %script{ 'data-fw-param' => '53896/', src: 'https://feed.mikle.com/js/fw-loader.js', type: 'text/javascript' }
-    %noscript
-      %iframe{ src: 'https://feed.mikle.com/widget/v2/53896/' }
-    / end feedwind code
-  .col-md-12
+      .col-sm-3.features-box-icon
+        %img.img-responsive.img-news{ src: asset_path('images/bergamopost.png') }
+      .col-sm-9
+        / start feedwind code
+        %script{ 'data-fw-param' => '53896/', src: 'https://feed.mikle.com/js/fw-loader.js', type: 'text/javascript' }
+        %noscript
+          %iframe{ src: 'https://feed.mikle.com/widget/v2/53896/' }
+        / end feedwind code
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
     .row
-      %a.twitter-timeline{ href: 'https://twitter.com/CheiDeLaCoriera?ref_src=twsrc%5Etfw' } Tweets by CheiDeLaCoriera
-      %script{ async: '', charset: 'utf-8', src: 'https://platform.twitter.com/widgets.js' }
+      .col-sm-3.features-box-icon
+        %img.img-responsive.img-news{ src: asset_path('images/twitter.png') }
+      .col-sm-9
+        %a.twitter-timeline{ href: 'https://twitter.com/CheiDeLaCoriera?ref_src=twsrc%5Etfw' } Tweets by CheiDeLaCoriera
+        %script{ async: '', charset: 'utf-8', src: 'https://platform.twitter.com/widgets.js' }
