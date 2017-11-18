@@ -1,19 +1,41 @@
 - @title ||= ti(:title, model: full_entry_label).html_safe
 - content_for(:actions, render('actions_edit'))
 
-= simple_form_for(@reservation, method: :put, url: reservation_path) do |f|
-  = f.error_notification
-  .form-inputs
-    .col-md-12.col-sm-12.col-xs-12
-      = f.input :total_seats, readonly: true
-      = f.input :status, collection: %i[active pending], include_blank: false
-      = f.input :fan_names, as: :array
-      = f.input :phone_number
-      = f.input :event_id, collection: Event.include_all.order(:date).bookable, include_blank: false
-      = f.input :user_id, collection: User.order(:email), include_blank: false
-  .btn-group{ role: :group }
-    = f.button :submit, 'Save', class: 'btn-primary'
-    = link_to('Back', reservation_path(@reservation.id), class: 'btn btn-default')
+- provide :head do
+  :css
+    .form-control-inline {
+      display:block;
+      height:34px;
+      margin: 8px auto;
+    }
+    .form-control-inline input {
+      width:85%;
+      heigth:inherit;
+      border: 1px solid #ccc
+      border-radius:4px;
+      font-size: 14px;
+    }
+    .form-control-inline button {
+      width:15%;
+      heigth:inherit;
+    }
+
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .jumbotron
+      = simple_form_for(@reservation, method: :put, url: reservation_path) do |f|
+        = f.error_notification
+        .form-inputs
+          .col-md-12.col-sm-12.col-xs-12
+            = f.input :total_seats, readonly: true
+            = f.input :status, collection: %i[active pending], include_blank: false
+            = f.input :fan_names, as: :array
+            = f.input :phone_number
+            = f.input :event_id, collection: Event.include_all.order(:date).bookable, include_blank: false
+            = f.input :user_id, collection: User.order(:email), include_blank: false
+        .btn-group{ role: :group }
+          = f.button :submit, 'Save', class: 'btn-primary'
+          = link_to('Back', reservation_path(@reservation.id), class: 'btn btn-default')
 
 :javascript
 

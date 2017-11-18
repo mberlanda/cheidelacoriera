@@ -1,19 +1,41 @@
 - @title ||= ti(:title, model: models_label(false))
 - content_for(:actions, index_action_link)
 
-= simple_form_for(@reservation, method: :post, url: reservations_path) do |f|
-  = f.error_notification
-  .form-inputs
-    .col-md-12.col-sm-12.col-xs-12
-      = f.input :total_seats, readonly: true
-      = f.input :status, collection: %i[active pending], include_blank: false
-      = f.input :fan_names, as: :array
-      = f.input :phone_number
-      = f.input :event_id, collection: Event.include_all.order(:date).bookable.upcoming, include_blank: false
-      = f.input :user_id, collection: User.order(:email).all, include_blank: false
-  .btn-group{ role: :group }
-    = f.button :submit, 'Save', class: 'btn-primary'
-    = link_to('Back', reservations_path, class: 'btn btn-default')
+- provide :head do
+  :css
+    .form-control-inline {
+      display:block;
+      height:34px;
+      margin: 8px auto;
+    }
+    .form-control-inline input {
+      width:85%;
+      heigth:inherit;
+      border: 1px solid #ccc
+      border-radius:4px;
+      font-size: 14px;
+    }
+    .form-control-inline button {
+      width:15%;
+      heigth:inherit;
+    }
+
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .jumbotron
+      = simple_form_for(@reservation, method: :post, url: reservations_path) do |f|
+        = f.error_notification
+        .form-inputs
+          .col-md-12.col-sm-12.col-xs-12
+            = f.input :total_seats, readonly: true
+            = f.input :status, collection: %i[active pending], include_blank: false
+            = f.input :fan_names, as: :array
+            = f.input :phone_number
+            = f.input :event_id, collection: Event.include_all.order(:date).bookable.upcoming, include_blank: false
+            = f.input :user_id, collection: User.order(:email).all, include_blank: false
+        .btn-group{ role: :group }
+          = f.button :submit, 'Save', class: 'btn-primary'
+          = link_to('Back', reservations_path, class: 'btn btn-default')
 
 :javascript
 

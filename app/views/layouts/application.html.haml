@@ -66,8 +66,12 @@
             %h1= @title
             .divider-1
               .line
-            %p.medium-paragraph
-              Mangiamo chilometri per sfamare la nostra passione, la nostra Dea corre, ovunque la seguirem!
+            - unless @disable_subtitle
+              - if content_for?(:subtitle)
+                = yield :subtitle
+              - else
+                %p.medium-paragraph
+                  Mangiamo chilometri per sfamare la nostra passione, la nostra Dea corre, ovunque la seguirem!
         - if content_for(:tools) || content_for(:actions)
           .row.actions.crud-actions
             .col-md-5

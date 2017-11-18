@@ -5,6 +5,7 @@ class EventsController < PublicController
   include PermissionsScopeHelper
 
   before_action :admin_user?, only: :reservations
+  before_action :disable_subtitle, only: :reservations
 
   def upcoming
     @events = Event.include_all.order(:date).upcoming
@@ -16,6 +17,8 @@ class EventsController < PublicController
 
   def details
     @event = Event.include_all.friendly.find(params.require(:id))
+    @title = @event.to_s
+    @meta_description = 'Trasferta ' + @title
   end
 
   def reservations

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include PermissionsScopeHelper
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :disable_subtitle, if: :devise_controller?
 
   protected
 
@@ -17,6 +18,10 @@ class ApplicationController < ActionController::Base
     ]
     devise_parameter_sanitizer.permit(:sign_up, keys: permitted)
     devise_parameter_sanitizer.permit(:account_update, keys: permitted)
+  end
+
+  def disable_subtitle
+    @disable_subtitle = true
   end
 
   private

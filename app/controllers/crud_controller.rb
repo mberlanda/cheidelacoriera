@@ -9,6 +9,7 @@
 # action procedures without overriding the entire method.
 class CrudController < ListController
   skip_before_action :authenticate_user!
+  before_action :disable_subtitle
 
   class_attribute :permitted_attrs
 

@@ -2,10 +2,11 @@
   .container
     .row
       .col-sm-12.footer-copyright
-        &copy; kupta #{Time.zone.now.year}
+        %a{ href: 'https://github.com/mberlanda', target: '_blank' }
+          %small &copy; kupta #{Time.zone.now.year}
         .pull-right
           %a.btn.fb-btn.gtm-home-action{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank', 'data-action' => :fb_group }
             %i.fa.fa-facebook-square
             = t('home.index.button.join')
-          %a{ 'aria-expanded' => false, 'data-toggle' => 'collapse', href: '#collapse-footer', 'aria-controls' => 'collapse-footer' }
-            %span.fa.fa-chevron-circle-down
+          / %a{ 'aria-expanded' => false, 'data-toggle' => 'collapse', href: '#collapse-footer', 'aria-controls' => 'collapse-footer' }
+          /  %span.fa.fa-chevron-circle-down

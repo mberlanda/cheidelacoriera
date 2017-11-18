@@ -1,5 +1,6 @@
+- @title = t('devise.registrations.new')
+
 .jumbotron
-  %h2= t('devise.registrations.new')
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs

@@ -3,10 +3,8 @@
 .row
   .error
   - @albums.each do |al|
-    .col-md-6.col-sm-12.col-xs-12
+    .col-sm-6.features-box.wow.fadeInLeft
       = AlbumizrBuilder.build(al)
-  .col-md-6.col-sm-12.col-xs-12
-    /= AlbumizrBuilder.build('https://albumizr.com/a/HVJz')
 
 :javascript
   var fullScreenBtns = document.getElementsByClassName('fullscreen-btn');
