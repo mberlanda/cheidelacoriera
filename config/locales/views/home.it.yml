@@ -15,15 +15,19 @@ it:
           heading: Registra i tuoi Fan!
           body: >
             Per prima cosa, registra i nomi delle persone che sono associate alla tua utenza
+          icon_class: fa fa-user
         upcoming_events:
           heading: Prossime Trasferte
           body: >
             Guarda il calendario delle trasferte e iscriviti con noi
-        gadgets:
-          heading: Richiedi i nostri gadgets
+          icon_class: fa fa-bus
+        photogallery:
+          heading: Photogallery
           body: >
-            Sciarpe e magliette che ci accompagnano durante le nostre trasferte.
+            Rivivi i momenti delle nostre trasferte.
+          icon_class: fa fa-camera
         news:
-          heading: Leggi le ultime novità
+          heading: News
           body: >
-            Tieniti sempre aggiornato con noi!
+            Tieniti sempre aggiornato con noi
+          icon_class: fa fa-newspaper-o

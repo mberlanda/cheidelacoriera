@@ -5,7 +5,8 @@ class WelcomeController < ApplicationController
   def index
     @actions = {
       upcoming_events: upcoming_events_path,
-      news: news_index_path
+      news: news_index_path,
+      photogallery: all_albums_path
     }
   end
 end

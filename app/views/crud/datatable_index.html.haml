@@ -3,8 +3,10 @@
 /- content_for(:tools, render('search')) if search_support?
 
 - content_for(:actions, render('actions_index'))
-
-= crud_datatable(model_name, *datatable_columns)
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .jumbotron
+      = crud_datatable(model_name, *datatable_columns)
 
 :javascript
   $(function(){

@@ -15,15 +15,19 @@ en:
           heading: Register your Fans!
           body: >
             Firstly, register the name of the people linked to your account
+          icon_class: fa fa-user
         upcoming_events:
-          heading: Check for the next events!
+          heading: Next Events
           body: >
             Request the participation to the next events for your fellow fans
-        gadgets:
-          heading: Ask for our Gadgets
+          icon_class: fa fa-bus
+        photogallery:
+          heading: Photogallery
           body: >
-            Scarfs, T-Shirts and other gadgets we created for our trips.
+            See the pictures of the great moments we shared.
+          icon_class: fa fa-camera
         news:
           heading: Read our News
           body: >
             Keep updated with our latest news! Find more here...
+          icon_class: fa fa-newspaper-o

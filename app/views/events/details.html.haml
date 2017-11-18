@@ -1,20 +1,36 @@
-- @title = @event.to_s
-- @meta_description = 'Trasferta ' + @title
-
-/.jumbotro
 - has_post_url = @event.poster_url.nil?
-- md_size = has_post_url ? 6 : 12
-.panel.panel-default
-  .panel-body
-    .col-sm-12{ class: "col-md-#{md_size}" }
-      .event-detail-item
-        - unless @event.notes.nil?
+- md_size = has_post_url ? 12 : 6
+
+- provide :head do
+  :css
+    .form-control-inline {
+      display:block;
+      height:34px;
+      margin: 8px auto;
+    }
+    .form-control-inline input {
+      width:85%;
+      heigth:inherit;
+      border: 1px solid #ccc
+      border-radius:4px;
+      font-size: 14px;
+    }
+    .form-control-inline button {
+      width:15%;
+      heigth:inherit;
+    }
+
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .features-box{ class: "col-sm-#{md_size}" }
+      - unless @event.notes.nil?
+        .nicEdit-main
           = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
-        %hr
-        #reservation-form
-        %hr
+      %hr
+      #reservation-form
+      %hr
     - unless has_post_url
-      .col-md-6.col-sm-12
+      .col-sm-6.features-box
         .event-detail-item
           %img.img-responsive{ src: @event.poster_url }
 

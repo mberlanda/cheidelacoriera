@@ -51,23 +51,34 @@
       / End Google Tag Manager (noscript)
 
     = render 'layouts/nav'
-    .container
-      #flash= render partial: 'layouts/flash', collection: %i[notice alert danger warning success], as: :level
-
-      %h1= @title
-      .row.actions.crud-actions
-        .col-md-5
-          = yield :tools
-        .col-md-7
-          .btn-toolbar.pull-right
-            = yield :actions
-      .row.crud-content
-        #content= yield
-    .footer#collapse-footer
+    / Top content
+    .top-content
       .container
-        %span.text-muted
-          &copy; kupta #{Time.zone.now.year}
-        .pull-right
-          %a{ 'aria-expanded' => false, 'data-toggle' => 'collapse', href: '#collapse-footer', 'aria-controls' => 'collapse-footer' }
-            %span.fa.fa-chevron-circle-down
+        = yield :top_content if content_for?(:top_content)
+
+    / Features
+    .features-container.section-container
+      .container
+        #flash= render partial: 'layouts/flash', collection: %i[notice alert danger warning success], as: :level
+
+        .row
+          .col-sm-12.features.section-description.wow.fadeIn
+            %h1= @title
+            .divider-1
+              .line
+            - unless @disable_subtitle
+              - if content_for?(:subtitle)
+                = yield :subtitle
+              - else
+                %p.medium-paragraph
+                  Mangiamo chilometri per sfamare la nostra passione, la nostra Dea corre, ovunque la seguirem!
+        - if content_for(:tools) || content_for(:actions)
+          .row.actions.crud-actions
+            .col-md-5
+              = yield :tools
+            .col-md-7
+              .btn-toolbar.pull-right
+                = yield :actions
+        = yield
+    = render 'layouts/footer'
     = javascript_tag yield(:javascripts) if content_for?(:javascripts)

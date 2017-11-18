@@ -1,5 +1,7 @@
 - @title ||= ti(:title, model: models_label(false))
 
 - content_for(:actions, index_action_link)
-
-= render 'form'
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .jumbotron
+      = render 'form'
