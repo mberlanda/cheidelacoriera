@@ -8,6 +8,7 @@ class UserDecorator < ApplicationDecorator
       object.last_name,
       object.phone_number,
       object.newsletter,
+      object.mailing_listed,
       object.status,
       object.activation_date,
       object.role

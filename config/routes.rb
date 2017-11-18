@@ -18,6 +18,7 @@ Rails.application.routes.draw do
           collection do
             get :datatable_index
             get :approve_all
+            get :mailing_list
           end
         end
         resources :teams do

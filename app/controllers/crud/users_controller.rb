@@ -16,7 +16,7 @@ class Crud::UsersController < CrudController
   def datatable_columns
     @datatable_columns ||= %i[
       email first_name last_name phone_number
-      newsletter status activation_date role
+      newsletter mailing_listed status activation_date role
     ]
   end
 
@@ -31,6 +31,32 @@ class Crud::UsersController < CrudController
     flash.keep
     redirect_to action: :index
   end
+
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def mailing_list
+    users_to_add = User.actives.where(newsletter: true, mailing_listed: false)
+
+    gibbon = Gibbon::Request.new
+    users_to_add.each do |u|
+      begin
+        gibbon.lists(Mailchimp.list_id).members(Mailchimp.calculate_id(u.email)).upsert(
+          body: {
+            email_address: u.email,
+            status: 'subscribed',
+            merge_fields: { FNAME: u.first_name || '', LNAME: u.last_name || '' }
+          }
+        )
+        u.update(mailing_listed: true)
+      rescue Gibbon::MailChimpError => e
+        Rails.logger.warn(e)
+      end
+    end
+
+    flash[:success] = I18n.t('controllers.users.mailing_list.flash')
+    flash.keep
+    redirect_to action: :index
+  end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def update
     @user = User.find(params.require(:id))

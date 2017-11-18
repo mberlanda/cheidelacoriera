@@ -3,3 +3,5 @@ en:
     users:
       approve_all:
         flash: 'All users are now active!'
+      mailing_list:
+        flash: 'All users have been added to the mailing list'

@@ -3,3 +3,5 @@ it:
     users:
       approve_all:
         flash: 'Tutti gli utenti sono ora attivi!'
+      mailing_list:
+        flash: 'Tutti gli utenti sono stati aggiunti alla mailing list'
