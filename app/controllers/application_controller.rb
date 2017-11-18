@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: permitted)
   end
 
+  private
+
   def disable_subtitle
     @disable_subtitle = true
   end
-
-  private
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
