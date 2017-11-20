@@ -131,3 +131,7 @@ img.team-logo {
 .event-panel {
   min-height: 230px;
 }
+
+#flash .alert{
+  margin: 10px auto;
+}

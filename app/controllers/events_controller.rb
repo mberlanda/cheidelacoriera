@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class EventsController < PublicController
-  # before_action :active_user?
   include PermissionsScopeHelper
 
+  before_action :authenticate_user!, only: %i[details reservations]
   before_action :admin_user?, only: :reservations
+  before_action :active_user?, only: :details
 
   def upcoming
     @events = Event.include_all.order(:date).upcoming

@@ -8,14 +8,16 @@ module PermissionsScopeHelper
   def admin_user?
     return true if current_user&.admin?
     flash[:danger] = I18n.t('controllers.permissions.denied')
-    redirect_to root_path
+    session[:return_to] = request.referer || root_path
+    redirect_to session[:return_to]
     false
   end
 
   def active_user?
     return true if current_user&.active?
     flash[:warning] = I18n.t('controllers.permissions.pending')
-    redirect_to root_path
+    session[:return_to] = request.referer || root_path
+    redirect_to session[:return_to]
     false
   end
 end
