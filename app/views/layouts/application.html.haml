@@ -7,7 +7,7 @@
       = strip_tags(@title) + ' - ' if @title
       Chei De La Coriera
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-    %meta{ name: 'description', content: "#{@meta_description ? @meta_description : 'Il sito delle Trasferte dell\'Atalanta in Italia e in Europa'}" }
+    %meta{ name: 'description', content: "#{@meta_description ? @meta_description : 'Il sito delle Trasferte dell\'Atalanta in Italia e nel mondo. ' + @title}" }
     = csrf_meta_tag
 
     = render partial: 'layouts/stylesheets'

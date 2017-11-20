@@ -103,6 +103,13 @@ img.team-logo {
   color: #fff;
 }
 
+.fb-color {
+  color: #4267b2;
+}
+.fb-color:hover, .fb-color:visited{
+  color: #fff;
+}
+
 .datatable-table th {
   white-space: nowrap;
 }

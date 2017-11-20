@@ -17,3 +17,6 @@ linters:
       - Style/Documentation
       - Style/FrozenStringLiteralComment
       - Style/UnneededInterpolation
+
+  ViewLength:
+    max: 150
