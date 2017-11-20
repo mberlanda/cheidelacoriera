@@ -44,7 +44,6 @@ Rails.application.routes.draw do
       get :reservations
     end
   end
-  resources :news
   resources :reservations do
     member do
       get :status
@@ -62,5 +61,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :news
   get :regolamento, to: 'welcome#regolamento', as: :regolamento
+  get 'news-atalantine', to: 'news#index', as: :news_index
 end
