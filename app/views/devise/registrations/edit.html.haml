@@ -6,7 +6,7 @@
     .form-inputs
       = f.input :first_name, required: true
       = f.input :last_name, required: true
-      = f.input :date_of_birth, as: :string, input_html: { type: :date }
+      = f.input :date_of_birth, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12
       = f.input :place_of_birth
       = f.input :phone_number, required: true
       = f.input :email, required: true, autofocus: true
@@ -25,25 +25,4 @@
 / %h3 Cancel my account
 / %p
 /   Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-:javascript
-
-  $(function(){
-    $('input[type=time]').timepicker({
-        timeFormat: 'HH:mm',
-        interval: 15,
-        minTime: '00:00',
-        maxTime: '23:59',
-        startTime: '00:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true
-    }).attr('type','string');
-    $('input[type=date]').datepicker({
-      language: '#{I18n.locale}',
-      format: 'yyyy-mm-dd',
-      startDate: '1907-10-17',
-      endDate: '2100-12-31',
-      todayBtn: true
-    }).attr('type','string');
-    nicEditors.allTextAreas();
-  })
+= render partial: 'shared/form_html5_support'
