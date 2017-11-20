@@ -13,6 +13,10 @@
       = f.input :password, required: true, hint: (t('simple_form.hints.password', min: @minimum_password_length) if @minimum_password_length)
       = f.input :password_confirmation, required: true
       = f.input :newsletter
+      %small
+        Tutti i dati forniti saranno trattati nel rispetto delle disposizione del
+        Codice in materia di protezione dei dati personali
+        = link_to('D.lgs 193/2006', 'http://www.camera.it/parlam/leggi/deleghe/03196dl.htm', target: '_blank')
     .form-actions
       = f.button :submit, t('devise.registrations.new')
   %br/
