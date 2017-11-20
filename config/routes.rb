@@ -61,4 +61,6 @@ Rails.application.routes.draw do
       get :all
     end
   end
+
+  get :regolamento, to: 'welcome#regolamento', as: :regolamento
 end

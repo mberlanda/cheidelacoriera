@@ -11,6 +11,11 @@ en:
         join: Join our group!
         go: Go!
       panel:
+        login:
+          heading: Login or Sign Up!
+          body: >
+            In order to get the best experience, login or sign up!
+          icon_class: fa fa-user
         fans:
           heading: Register your Fans!
           body: >
@@ -31,3 +36,8 @@ en:
           body: >
             Keep updated with our latest news! Find more here...
           icon_class: fa fa-newspaper-o
+        regolamento:
+          heading: Read our Rules
+          body: >
+            Find here the Rules of our Community
+          icon_class: fa fa-gavel

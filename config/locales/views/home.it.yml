@@ -11,6 +11,11 @@ it:
         join: Unisciti al gruppo
         go: Vai!
       panel:
+        login:
+          heading: Accedi o Registrati
+          body: >
+            Per sbloccare tutte le funzionalità entra qui.
+          icon_class: fa fa-user
         fans:
           heading: Registra i tuoi Fan!
           body: >
@@ -27,7 +32,12 @@ it:
             Rivivi i momenti delle nostre trasferte.
           icon_class: fa fa-camera
         news:
-          heading: News
+          heading: News Atalantine
           body: >
             Tieniti sempre aggiornato con noi
           icon_class: fa fa-newspaper-o
+        regolamento:
+          heading: Regolamento
+          body: >
+            Trovi qui il regolamento del nostro gruppo
+          icon_class: fa fa-gavel
