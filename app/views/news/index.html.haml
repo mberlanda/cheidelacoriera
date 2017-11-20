@@ -33,6 +33,17 @@
   .col-sm-12.features-box.wow.fadeInLeft
     .row
       .col-sm-3.features-box-icon
+        %img.img-responsive.img-news{ src: asset_path('images/atalantinicom.png') }
+      .col-sm-9
+        / start feedwind code
+        %script{ 'data-fw-param' => '54879/', src: 'https://feed.mikle.com/js/fw-loader.js', type: 'text/javascript' }
+        %noscript
+          %iframe{ src: 'https://feed.mikle.com/widget/v2/54879/' }
+        / end feedwind code
+.row
+  .col-sm-12.features-box.wow.fadeInLeft
+    .row
+      .col-sm-3.features-box-icon
         %img.img-responsive.img-news{ src: asset_path('images/twitter.png') }
       .col-sm-9
         %a.twitter-timeline{ href: 'https://twitter.com/CheiDeLaCoriera?ref_src=twsrc%5Etfw' } Tweets by CheiDeLaCoriera

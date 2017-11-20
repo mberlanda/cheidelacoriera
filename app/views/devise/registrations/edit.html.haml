@@ -37,13 +37,13 @@
         dynamic: false,
         dropdown: true,
         scrollbar: true
-    });
+    }).attr('type','string');
     $('input[type=date]').datepicker({
       language: '#{I18n.locale}',
       format: 'yyyy-mm-dd',
       startDate: '1907-10-17',
       endDate: '2100-12-31',
       todayBtn: true
-    });
+    }).attr('type','string');
     nicEditors.allTextAreas();
   })

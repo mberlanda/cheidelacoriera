@@ -10,21 +10,27 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- */
+ *= require cookies_eu
+*/
 
-/* Show fixed-nav on the top */
+/* Show fixed-nav on the top *= require cookies_eu
+*/
 /*html {
   position: relative;
   min-height: 100%;
-}*/
+}*= require cookies_eu
+*/
 html, body {
   height: 100%;
 }
 body {
   min-height: 75rem;
-  /*margin-top: 4.5rem;*/
-  /*padding-top: 4.5rem;*/
-  /*margin-bottom: 60px;*/
+  /*margin-top: 4.5rem;*= require cookies_eu
+*/
+  /*padding-top: 4.5rem;*= require cookies_eu
+*/
+  /*margin-bottom: 60px;*= require cookies_eu
+*/
 }
 
 .crud-actions {
