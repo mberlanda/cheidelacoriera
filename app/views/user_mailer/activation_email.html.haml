@@ -1,32 +1,15 @@
-- provide :styles do
-  = stylesheet_link_tag 'css/bootstrap.css'
-  %link{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext', rel: 'stylesheet' }
-  = stylesheet_link_tag 'css/font-awesome.css'
-  :css
-    .img-logo {
-      max-width: 200px;
-    }
+%p Gentile #{@user.full_name},
 
-.container
+%p
+  Ti confermiamo che la tua registrazione su
+  = link_to(' www.cheidelacoriera.com', 'http://www.cheidelacoriera.com?utm_source=email&utm_campaign=activation', target: '_blank')
+  è stata approvata!
+  %br/
+  Effettua l'accesso e verifica di avere inserito tutti i dati correttamente (nome, cognome, numero di telefono).
+%p
+  Potrai verificare i tuoi dati
+  = link_to('accedendo qui', 'http://www.cheidelacoriera.com/users/edit?gtm_source=email&gtm_campaign=activation', target: '_blank')
 
-  %p Gentile #{@user.full_name},
-
-  %p
-    Ti confermiamo che la tua registrazione su
-    = link_to(' www.cheidelacoriera.com', 'http://www.cheidelacoriera.com?utm_source=email&utm_campaign=activation', target: '_blank')
-    è stata approvata!
-    %br/
-    Effettua l'accesso e verifica di avere inserito tutti i dati correttamente (nome, cognome, numero di telefono).
-  %p
-    Potrai verificare i tuoi dati
-    = link_to('accedendo qui', 'http://www.cheidelacoriera.com/users/edit?gtm_source=email&gtm_campaign=activation', target: '_blank')
-
-  %p
-    Continuando la navigazione dichiari implicitamente di accettare il nostro
-    = link_to(' regolamento', 'http://www.cheidelacoriera.com/regolamento?gtm_source=email&gtm_campaign=activation', target: '_blank')
-
-
-  %hr
-  %strong Il Team di Chei De La Coriera
-  %p Divoriamo chilometri per sfamare la nostra passione, la nostra Dea corre, ovunque la seguirem!
-  %img.img-logo{ src: asset_path('images/logo.png') }
+%p
+  Continuando la navigazione dichiari implicitamente di accettare il nostro
+  = link_to(' regolamento', 'http://www.cheidelacoriera.com/regolamento?gtm_source=email&gtm_campaign=activation', target: '_blank')

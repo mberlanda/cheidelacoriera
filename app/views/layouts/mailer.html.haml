@@ -1,6 +1,16 @@
 %hmtl
   %head
     %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }/
+    = stylesheet_link_tag 'css/bootstrap.css'
+    %link{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext', rel: 'stylesheet' }
+    = stylesheet_link_tag 'css/font-awesome.css'
+    :css
+      .img-logo {
+        max-width: 200px;
+      }
     = yield(:styles) if content_for?(:styles)
   %body
-    = yield
+    .container
+
+      = yield
+      = render partial: 'layouts/mail/signature'
