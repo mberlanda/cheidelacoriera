@@ -52,7 +52,7 @@ class ReservationsController < CrudController
     )
     if @reservation.valid?
       @reservation.save
-      ReservationMailer.received(@reservation).deliver
+      ReservationMailer.received(@reservation).deliver_later
       redirect_to action: :status, id: @reservation.id
     else
       render 'reservations/user_form', layout: false

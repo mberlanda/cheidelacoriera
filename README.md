@@ -18,3 +18,10 @@ In terms of models, it should include:
 - travels : event, transport_mean
   - travel_seats: total, requested, reserved, available
   - fan_travels: travel, fan, status
+
+
+### How to run the queue
+
+```
+$ bundle exec sidekiq --environment development -C config/sidekiq.yml
+```

@@ -26,7 +26,7 @@ class Crud::UsersController < CrudController
     pending_users = User.where(status: :pending)
     pending_users.update(status: :active)
 
-    User.actives.to_notify.each { |u| UserMailer.activation_email(u).deliver }
+    User.actives.to_notify.each { |u| UserMailer.activation_email(u).deliver_later }
     flash[:success] = I18n.t('controllers.users.approve_all.flash')
     flash.keep
     redirect_to action: :index

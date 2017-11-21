@@ -28,7 +28,9 @@ gem 'gibbon', '~> 3.2' # MailChimp API
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'cookies_eu' # cookies policy
+gem 'cookies_eu', '~> 1.6' # cookies policy
+
+gem 'sidekiq', '~> 5.0' # Async queue
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

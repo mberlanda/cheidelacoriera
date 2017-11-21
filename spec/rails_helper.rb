@@ -73,3 +73,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
+
+# sidekiq
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
