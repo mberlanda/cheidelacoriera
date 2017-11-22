@@ -68,4 +68,6 @@ Rails.application.routes.draw do
   get :regolamento, to: 'welcome#regolamento', as: :regolamento
   get 'news-atalantine', to: 'news#index', as: :news_index
   get 'comunicazioni', to: 'posts#all', as: :all_posts
+
+  get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 end
