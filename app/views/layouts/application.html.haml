@@ -2,14 +2,7 @@
 
 %html{ lang: 'it' }
   %head
-    %meta{ charset: 'utf-8' }
-    %title
-      = strip_tags(@title) + ' - ' if @title
-      Chei De La Coriera
-    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-    %meta{ name: 'description', content: "#{@meta_description ? @meta_description : 'Il sito delle Trasferte dell\'Atalanta in Italia e nel mondo. ' + @title}" }
-    = csrf_meta_tag
-
+    = render partial: 'layouts/metadata'
     = render partial: 'layouts/stylesheets'
     / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     / = javascript_include_tag 'application', 'data-turbolinks-track' => true

@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+    attributes:
+      post:
+        created_at: Data Creazione
+        content: Contenuto
+        date: Data
+        id: Id
+        title: Titolo
+        image_url: Url Immagine
+        updated_at: Data Aggiornamento

@@ -9,6 +9,7 @@ en:
       trips: Trips
       demo: Help
       albums: Albums
+      posts: Posts
     events:
       upcoming: Upcoming Events
       index: All Events
@@ -42,7 +43,12 @@ en:
         step: '6'
         intro: >
           Add link to albumizr's albums and link it to an event
+      posts:
+        step: '7'
+        intro: Add posts for short communications to the community
     news:
       index: News
     albums:
       index: Photogallery
+    posts:
+      index: Posts
