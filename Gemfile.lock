@@ -116,6 +116,8 @@ GEM
       rake (>= 10, < 13)
       rubocop (>= 0.49.0)
       sysexits (~> 1.1)
+    heroku-deflater (0.6.3)
+      rack (>= 1.4.5)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -188,11 +190,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.0.6)
       actionpack (= 5.0.6)
       activesupport (= 5.0.6)
@@ -315,6 +312,7 @@ DEPENDENCIES
   gibbon (~> 3.2)
   haml-lint (~> 0.26)
   haml-rails (~> 0.9)
+  heroku-deflater
   jbuilder (~> 2.5)
   listen (~> 3.0.5)
   lograge (~> 0.5.1)
@@ -323,7 +321,6 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-controller-testing (= 1.0.2)
-  rails_12factor
   rspec-rails (~> 3.6.0)
   rubocop (~> 0.50)
   ruby_css_lint (~> 0.1)

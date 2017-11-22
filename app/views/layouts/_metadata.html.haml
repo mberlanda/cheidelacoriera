@@ -8,16 +8,16 @@
 %meta{ charset: 'utf-8' }
 %title= @displayed_title
 %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-%meta{ name: 'description', content: @meta_description }
+%meta{ name: 'description', content: strip_tags(@meta_description) }
 
 / OpenGraph Meta
 %meta{ property: 'og:title', content: @displayed_title }
-%meta{ property: 'og:description', content: @meta_description }
+%meta{ property: 'og:description', content: strip_tags(@meta_description) }
 %meta{ property: 'og:image', content: @meta_image }
 %meta{ property: 'og:url', content: @meta_url }
 
 / Twitter Meta
 %meta{ property: 'twitter:title', content: @displayed_title.truncate(65) }
-%meta{ property: 'twitter:description', content: @meta_description.truncate(190) }
+%meta{ property: 'twitter:description', content: strip_tags(@meta_description).truncate(190) }
 %meta{ property: 'twitter:image', content: @meta_image }
 %meta{ property: 'twitter:card', content: @title ? @title : 'Chei de la Coriera' }

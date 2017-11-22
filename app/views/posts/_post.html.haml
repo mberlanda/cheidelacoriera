@@ -4,6 +4,8 @@
       %h2= post.title
       .right
         %small= post.date ? I18n.l(post.date) : nil
+        %br/
+        %small= link_to('Permalink', detail_post_url(post.slug))
       .content
         - unless post.image_url.nil?
           %img.img-post-left{ src: post.image_url, alt: post.slug }
