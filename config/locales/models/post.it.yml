@@ -6,10 +6,10 @@ it:
         other: Comunicazioni
     attributes:
       post:
-        created_at: Created At
-        content: Content
-        date: Date
+        created_at: Data Creazione
+        content: Contenuto
+        date: Data
         id: Id
-        title: Title
-        image_url: Image Url
-        updated_at: Updated At
+        title: Titolo
+        image_url: Url Immagine
+        updated_at: Data Aggiornamento

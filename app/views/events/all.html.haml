@@ -1,6 +1,7 @@
 - @title = t('events.index.title')
 
 .crud-container
+  %hr
   .row
     - @events.each do |evt|
       = render partial: 'events/event', locals: { event: evt }

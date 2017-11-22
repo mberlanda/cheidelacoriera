@@ -1,0 +1,13 @@
+.row{ id: post.slug }
+  .col-sm-12.features-box.wow.fadeInLeft
+    .features-box
+      %h2= post.title
+      .right
+        %small= post.date ? I18n.l(post.date) : nil
+      .content
+        - unless post.image_url.nil?
+          %img.img-post-left{ src: post.image_url, alt: post.slug }
+        - unless post.content.nil?
+          .nicEdit-main
+            = sanitize post.content.html_safe, scrubber: EventScrubber.new
+    %hr

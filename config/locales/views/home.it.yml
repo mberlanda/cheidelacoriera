@@ -41,3 +41,8 @@ it:
           body: >
             Trovi qui il regolamento del nostro gruppo
           icon_class: fa fa-gavel
+        posts:
+          heading: Comunicazioni
+          body: >
+            Brevi aggiornamenti per i corieristi!
+          icon_class: fa fa-comment-o

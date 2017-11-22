@@ -1,0 +1,28 @@
+- provide :head do
+  :css
+    .img-post-left {
+      float:left;
+      width:200px;
+      height:auto;
+      margin-right: 10px;
+    }
+
+    .right {
+      text-align:right;
+      margin-right: 14px;
+    }
+
+    @media (max-width: 767px) {
+      .img-post-left {
+        width:auto;
+        height:auto;
+        margin:auto;
+        padding: 10px;
+      }
+    }
+
+.crud-container
+  %hr
+  .row
+    - @posts.each do |pst|
+      = render partial: 'posts/post', locals: { post: pst }

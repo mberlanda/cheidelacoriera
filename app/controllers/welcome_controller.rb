@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
     @actions = default.merge(
       upcoming_events: upcoming_events_path,
       news: news_index_path,
+      posts: all_posts_path,
       photogallery: all_albums_path,
       regolamento: regolamento_path
 

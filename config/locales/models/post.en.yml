@@ -6,10 +6,10 @@ en:
         other: Posts
     attributes:
       post:
-        created_at: Data Creazione
-        content: Contenuto
-        date: Data
+        created_at: Created At
+        content: Content
+        date: Date
         id: Id
-        title: Titolo
-        image_url: Url Immagine
-        updated_at: Data Aggiornamento
+        title: Title
+        image_url: Image Url
+        updated_at: Updated At

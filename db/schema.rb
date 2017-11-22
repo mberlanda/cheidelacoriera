@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20171122134341) do
   create_table "posts", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "image_url"
-    t.text     "content",    null: false
+    t.text     "content"
     t.date     "date"
     t.string   "slug"
     t.datetime "created_at", null: false
