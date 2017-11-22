@@ -41,3 +41,8 @@ en:
           body: >
             Find here the Rules of our Community
           icon_class: fa fa-gavel
+        posts:
+          heading: Updates
+          body: >
+            Short updates for our Community
+          icon_class: fa fa-comment-o

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Album, type: :model do
-  context 'default transport_mean' do
+  context 'default album' do
     subject { FactoryGirl.build :album }
 
     it { should respond_to(:title) }

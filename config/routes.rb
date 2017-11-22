@@ -21,6 +21,9 @@ Rails.application.routes.draw do
             get :mailing_list
           end
         end
+        resources :posts do
+          collection { get :datatable_index }
+        end
         resources :teams do
           collection { get :datatable_index }
         end
@@ -64,4 +67,5 @@ Rails.application.routes.draw do
   # resources :news
   get :regolamento, to: 'welcome#regolamento', as: :regolamento
   get 'news-atalantine', to: 'news#index', as: :news_index
+  get 'comunicazioni', to: 'posts#all', as: :all_posts
 end

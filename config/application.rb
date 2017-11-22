@@ -29,5 +29,7 @@ module Cheidelacoriera
     config.i18n.default_locale = :it
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.active_record.time_zone_aware_types = %i[datetime time]
   end
 end

@@ -9,6 +9,7 @@ it:
       trips: Trasferte
       demo: Aiuto
       albums: Albums
+      posts: Comunicazioni
     events:
       upcoming: Prossime Trasferte
       index: Tutte le partite
@@ -41,7 +42,12 @@ it:
       albums:
         step: '6'
         intro: 'Aggiungi link ad Album su albumizr e associali a una partita'
+      posts:
+        step: '7'
+        intro: Aggiungi brevi comunicazioni per nostra community
     news:
-      index: News
+      index: News Atalantine
     albums:
       index: Photogallery
+    posts:
+      index: Comunicazioni
