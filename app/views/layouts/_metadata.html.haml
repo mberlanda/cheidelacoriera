@@ -1,8 +1,8 @@
 :ruby
-  @displayed_title = strip_tags [@title, 'Chei De La Coriera'].compact.join(' - ')
+  @displayed_title = strip_tags [@title, 'Chei De La Coriera', 'Gruppo Trasferte Atalanta'].compact.join(' - ')
   @meta_description ||= 'Il sito delle Trasferte dell\'Atalanta in Italia e nel mondo. ' + @title.to_s
   @meta_image ||= asset_url('images/background.png')
-  @meta_url ||= request.original_url.split('?')[0]
+  @meta_url ||= seo_url(request.original_url)
 
 = csrf_meta_tag
 %meta{ charset: 'utf-8' }

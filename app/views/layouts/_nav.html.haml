@@ -28,10 +28,10 @@
                   %a{ href: 'javascript:;' }
                     %i.fa.fa-question-circle
                     = t('navbar.admin.demo')
-        %li= link_to t('navbar.events.upcoming'), upcoming_events_path, **nav_opt(:upcoming_events)
-        %li= link_to t('navbar.news.index'), news_index_path, **nav_opt(:news)
-        %li= link_to t('navbar.posts.index'), all_posts_path, **nav_opt(:all_posts)
-        %li= link_to t('navbar.albums.index'), all_albums_path, **nav_opt(:all_albums)
+        %li= link_to t('navbar.events.upcoming'), seo_url(upcoming_events_path), **nav_opt(:upcoming_events)
+        %li= link_to t('navbar.news.index'), seo_url(news_index_path), **nav_opt(:news)
+        %li= link_to t('navbar.posts.index'), seo_url(all_posts_path), **nav_opt(:all_posts)
+        %li= link_to t('navbar.albums.index'), seo_url(all_albums_path), **nav_opt(:all_albums)
 
       %ul.nav.navbar-nav.navbar-right
         - unless I18n.locale == :en
@@ -48,7 +48,7 @@
               %li= link_to t('navbar.session.edit_profile'), edit_user_registration_path, **nav_opt(:edit_profile)
               %li= link_to t('navbar.session.logout'), destroy_user_session_path, method: :delete, **nav_opt(:logout)
         - else
-          %li= link_to t('navbar.session.login'), new_user_session_path, **nav_opt(:login)
+          %li= link_to t('navbar.session.login'), seo_url(new_user_session_path), **nav_opt(:login)
 
 - if user_signed_in?
   - if current_user.admin?

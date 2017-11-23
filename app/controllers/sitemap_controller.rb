@@ -19,13 +19,12 @@ class SitemapController < PublicController
     [
       upcoming_events_url, news_index_url, all_albums_url,
       all_posts_url, new_user_session_url
-    ].map { |u| u.split('?')[0] }
+    ]
   end
 
   def prepare_items
     Event.all.map do |e|
-      u = details_event_url(e.slug)
-      u.split('?')[0]
+      details_event_url(e.slug)
     end
   end
 end

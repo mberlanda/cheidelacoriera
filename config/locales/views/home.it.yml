@@ -24,22 +24,22 @@ it:
         upcoming_events:
           heading: Prossime Trasferte
           body: >
-            Guarda il calendario delle trasferte e iscriviti con noi
+            Guarda il calendario delle trasferte dell'Atalanta e iscriviti con noi
           icon_class: fa fa-bus
         photogallery:
           heading: Photogallery
           body: >
-            Rivivi i momenti delle nostre trasferte.
+            Rivivi i momenti delle nostre trasferte al seguito dell'Atalanta.
           icon_class: fa fa-camera
         news:
           heading: News Atalantine
           body: >
-            Tieniti sempre aggiornato con noi
+            Tieniti sempre aggiornato con noi sulla Dea con i nostri siti amici
           icon_class: fa fa-newspaper-o
         regolamento:
           heading: Regolamento
           body: >
-            Trovi qui il regolamento del nostro gruppo
+            Trovi qui il regolamento di Chei de la Coriera
           icon_class: fa fa-gavel
         posts:
           heading: Comunicazioni

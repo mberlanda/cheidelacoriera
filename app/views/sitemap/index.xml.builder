@@ -6,13 +6,13 @@ xml.tag! :urlset, xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',\
                   'xmlns:video' => 'http://www.google.com/schemas/sitemap-video/1.1' do
   @pages.each do |u|
     xml.url do
-      xml.loc u
+      xml.loc seo_url(u)
       xml.priority 0.9
     end
   end
   @items.each do |u|
     xml.url do
-      xml.loc u
+      xml.loc seo_url(u)
       xml.priority 0.7
     end
   end
