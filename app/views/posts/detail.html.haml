@@ -1,3 +1,10 @@
+- post_url = detail_post_url(@post.slug)
+.row
+  .text-center#share-buttons
+    %a.email{ href: "mailto:?Subject=#{@post.title}&Body=#{post_url}" }
+    %a.facebook{ href: "http://www.facebook.com/sharer.php?u=#{post_url}", target: '_blank' }
+    %a.whatsapp{ href: "https://api.whatsapp.com/send?text=#{post_url}", target: '_blank' }
+
 .row{ id: @post.slug }
   .col-sm-12.features-box.wow.fadeInLeft
     .features-box

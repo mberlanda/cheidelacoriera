@@ -1,15 +1,23 @@
+- md_size = post.image_url ? 9 : 12
+- post_url = detail_post_url(post.slug)
 .row{ id: post.slug }
   .col-sm-12.features-box.wow.fadeInLeft
     .features-box
-      %h2= post.title
+
+      %h2= link_to(post.title, post_url)
       .right
         %small= post.date ? I18n.l(post.date) : nil
         %br/
-        %small= link_to('Permalink', detail_post_url(post.slug))
+        #share-buttons
+          %a.email{ href: "mailto:?Subject=#{post.title}&Body=#{post_url}" }
+          %a.facebook{ href: "http://www.facebook.com/sharer.php?u=#{post_url}", target: '_blank' }
+          %a.whatsapp{ href: "https://api.whatsapp.com/send?text=#{post_url}", target: '_blank' }
       .content
         - unless post.image_url.nil?
-          %img.img-post-left{ src: post.image_url, alt: post.slug }
+          .col-md-3.col-sm-12
+            %img{ src: post.image_url, alt: post.slug }
         - unless post.content.nil?
-          .nicEdit-main
-            = sanitize post.content.html_safe, scrubber: EventScrubber.new
+          .col-sm-12{ class: "col-md-#{md_size}" }
+            .nicEdit-main
+              = sanitize post.content.html_safe, scrubber: EventScrubber.new
     %hr

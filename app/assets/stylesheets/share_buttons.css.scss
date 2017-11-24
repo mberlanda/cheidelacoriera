@@ -1,0 +1,50 @@
+#share-buttons a {
+  width: 32px;
+  height: 32px;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0;
+  display: inline;
+}
+
+#share-buttons .cloud {
+  background: asset-url('images/buttons/cloud@32.png') center no-repeat;
+}
+
+#share-buttons .email {
+  background: asset-url('images/buttons/email@32.png') center no-repeat;
+}
+
+#share-buttons .facebook {
+  background: asset-url('images/buttons/facebook@32.png') center no-repeat;
+}
+
+#share-buttons .whatsapp {
+  display: none;
+}
+
+
+@media (max-width: 767px) {
+  #share-buttons a {
+    width: 20px;
+    height: 20px;
+    padding: 12px;
+  }
+
+  #share-buttons .cloud {
+    background: asset-url('images/buttons/cloud@20.png') center no-repeat;
+  }
+
+  #share-buttons .facebook {
+    background: asset-url('images/buttons/facebook@20.png') center no-repeat;
+  }
+
+  #share-buttons .email {
+    background: asset-url('images/buttons/email@20.png') center no-repeat;
+  }
+
+  #share-buttons .whatsapp {
+    display: inline;
+    background: asset-url('images/buttons/whatsapp@20.png') center no-repeat;
+  }
+}
