@@ -60,6 +60,28 @@ Select a load balancer type
 (default is 1):
 ```
 
+
+Errors found
+
+| Error | Solution |
+|-------|----------|
+| No such middleware to insert before: ActionDispatch::Static | setenv RAILS_SERVE_STATIC_FILES=enabled |
+| PG::ConnectionBad: could not connect to server | Create/Use a DB in Configuration > Data Tier |
+
+Setting envirnoment variables
+```
+$ eb printenv
+ Environment Variables:
+     RACK_ENV = production
+     RAILS_SKIP_MIGRATIONS = false
+     RAILS_SKIP_ASSET_COMPILATION = false
+     BUNDLE_WITHOUT = test:development
+# rake secret
+$ eb setenv RAILS_SERVE_STATIC_FILES=enabled SECRET_KEY_BASE=244f3dc5a66c2b5bca0cdab6d74986fad7ddd241225e2e3ae81ec20c19ed42102f9ea55e510fbb5f1055e0e44f688bfa7ebcb9c40290df4fd264b2e1415e26b0
+```
+
+
 ### Resources
 
+- [Using EB with git](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html)
 - [medium.com](https://medium.com/@benhansen/setting-up-sidekiq-redis-on-aws-elastic-beanstalk-with-elasticache-2efeb32935fe)
