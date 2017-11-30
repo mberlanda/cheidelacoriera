@@ -65,4 +65,6 @@ Rails.application.routes.draw do
   get 'foto-trasferte', to: 'albums#all', as: :all_albums
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
+
+  get '*unmatched_route', to: 'application#raise_not_found'
 end

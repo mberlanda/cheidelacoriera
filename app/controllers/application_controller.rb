@@ -9,6 +9,32 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :disable_subtitle, if: :devise_controller?
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from ActionController::RoutingError, with: :not_found
+
+  def raise_not_found
+    raise ActionController::RoutingError,
+          "No route matches #{params[:unmatched_route]}"
+  end
+
+  def not_found
+    flash[:danger] = 'Non ho trovato la pagina che stai cercando'
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.xml { head :not_found }
+      format.any { head :not_found }
+    end
+  end
+
+  def error
+    flash[:danger] = 'Attenzione. Si è verificato un errore'
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.xml { head :not_found }
+      format.any { head :not_found }
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
