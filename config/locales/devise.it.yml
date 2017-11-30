@@ -38,6 +38,7 @@ it:
       send_paranoid_instructions: "Se il tuo indirizzo email esiste nel nostro database, entro qualche minuto riceverai un messaggio email con le istruzioni per ripristinare la password."
       updated: "La tua password è stata cambiata correttamente. Ora sei collegato."
       updated_not_active: "La tua password è stata cambiata correttamente."
+      new: Password Dimenticata?
     registrations:
       destroyed: "Arrivederci! Il tuo account è stato cancellato. Speriamo di rivederti presto."
       signed_up: "Benvenuto! Ti sei registrato correttamente."

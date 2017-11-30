@@ -3,9 +3,9 @@
 class EventsController < PublicController
   include PermissionsScopeHelper
 
-  before_action :authenticate_user!, only: %i[details reservations]
+  before_action :authenticate_user!, only: %i[reservations]
   before_action :admin_user?, only: :reservations
-  before_action :active_user?, only: :details
+  # before_action :active_user?, only: :details
 
   def upcoming
     @events = Event.include_all.order(:date).upcoming

@@ -1,3 +1,5 @@
+- event_slugged = seo_url(details_event_path(event.slug))
+
 .col-sm-6.col-xs-12.text-center.wow.fadeInLeft
   .panel.panel-default.event-panel
     .panel-body
@@ -16,13 +18,13 @@
     .panel-footer.event-footer
       - if current_user
         - if event.booked_by?(current_user.id)
-          = link_to(t('events.buttons.booked'), details_event_path(event.slug), class: 'btn btn-default', id: 'booked')
+          = link_to(t('events.buttons.booked'), event_slugged, class: 'btn btn-default', id: 'booked')
         - elsif event.bookable?
-          = link_to(t('events.buttons.book_now'), details_event_path(event.slug), class: 'btn btn-primary', id: 'book-now')
+          = link_to(t('events.buttons.book_now'), event_slugged, class: 'btn btn-primary', id: 'book-now')
         - else
-          = link_to(t('events.buttons.show'), details_event_path(event.slug), class: 'btn btn-primary')
+          = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary')
         - if event.book_range? && current_user.admin?
           = link_to(t('events.buttons.fans_list'), reservations_event_path(event.slug), class: 'btn btn-default')
       - else
-        = link_to(t('events.buttons.show'), details_event_path(event.slug), class: 'btn btn-primary gtm-home-action', data: { action: :inactive_event })
+        = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary gtm-home-action', data: { action: :inactive_event })
 

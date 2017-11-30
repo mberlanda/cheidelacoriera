@@ -20,25 +20,36 @@
       heigth:inherit;
     }
 
-.row
-  .col-sm-12.features-box.wow.fadeInLeft
-    .features-box{ class: "col-sm-#{md_size}" }
-      - unless @event.notes.nil?
-        .nicEdit-main
-          = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
-      %hr
-      #reservation-form
-      %hr
-    - unless has_post_url
-      .col-sm-6.features-box
-        .event-detail-item
-          %img.img-responsive{ src: @event.poster_url }
-  - @event.albums.each do |al|
-    .col-sm-6.features-box.wow.fadeInLeft
-      = AlbumizrBuilder.build(al)
+- if current_user
+  .row
+    .col-sm-12.features-box.wow.fadeInLeft
+      .features-box{ class: "col-sm-#{md_size}" }
+        - unless @event.notes.nil?
+          .nicEdit-main
+            = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
+        %hr
+          #reservation-form
+        %hr
+      - unless has_post_url
+        .col-sm-6.features-box
+          .event-detail-item
+            %img.img-responsive{ src: @event.poster_url }
+    - @event.albums.each do |al|
+      .col-sm-6.features-box.wow.fadeInLeft
+        = AlbumizrBuilder.build(al)
+- else
+  .row
+    .col-sm-12.features-box.wow.fadeInLeft
+      .text-center
+        %p Per continuare la navigazione è necessario essere iscritti al sito.
+        = link_to(t('devise.sessions.new'), new_user_session_path, class: 'btn btn-primary gtm-home-action', data: { action: :login_match })
 
 :javascript
   $(function(){
+    #{current_user ? 'renderUserForm();' : ''}
+  })
+
+  function renderUserForm() {
     $.ajax({
       method: 'GET',
       url: '#{user_form_reservations_path}',
@@ -49,4 +60,4 @@
         $('#reservation-form').html(data);
       }
     })
-  })
+  }

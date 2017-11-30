@@ -1,7 +1,8 @@
 # frozen_string_literal: truebookable_until
 
 class ReservationsController < CrudController
-  before_action :active_user?
+  before_action :authenticate_user!, only: %i[user_form]
+  before_action :active_user?, except: %i[user_form]
   before_action :admin_user?, only: %i[approve_all show update edit]
   layout false, only: %i[user_form status]
   respond_to :html, :js
@@ -23,6 +24,8 @@ class ReservationsController < CrudController
   end
 
   def user_form
+    render 'reservations/pending_user', layout: false unless current_user.active?
+
     event_id = params[:event_id]
     event = Event.find(event_id)
     render 'reservations/no_user_form', layout: false unless event.book_range?
