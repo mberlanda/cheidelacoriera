@@ -1,10 +1,10 @@
 it:
   events:
     index:
-      title: Tutte le Partite
+      title: Tutte le Trasferte
     upcoming:
-      title: Prossime Partite
-      history: Vedi tutte
+      title: Prossime Trasferte
+      history: Vedi tutte le Trasferte
     buttons:
       book_now: Prenota ora!
       fans_list: Elenco Partecipanti

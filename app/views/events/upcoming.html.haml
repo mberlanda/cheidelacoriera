@@ -8,4 +8,4 @@
   %hr
   .row.text-center
     %p
-      = link_to(t('events.upcoming.history'), all_events_path, class: 'btn btn-default')
+      = link_to(t('events.upcoming.history'), all_events_path, class: 'btn btn-default gtm-home-action', data: { action: :events_history })

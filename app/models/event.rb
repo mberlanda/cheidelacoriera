@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   scope :upcoming, ->() { where('date >= ?', Date.today) }
 
   has_many :reservations, inverse_of: :event, dependent: :destroy
-  has_one :album, inverse_of: :event, dependent: :nullify
+  has_many :albums, inverse_of: :event, dependent: :nullify
 
   extend FriendlyId
 

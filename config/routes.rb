@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
 
-  resources :crud, only: [] do
+  resources :crud, path: 'admin/', only: [] do
     collection do
       scope module: :crud do
         resources :competitions do
@@ -37,11 +37,7 @@ Rails.application.routes.draw do
     end
   end
   resources :fans
-  resources :events, only: [] do
-    collection do
-      get :upcoming
-      get :all
-    end
+  resources :events, path: 'trasferta/', only: [] do
     member do
       get :details
       get :reservations
@@ -58,17 +54,15 @@ Rails.application.routes.draw do
       get :datatable_index
     end
   end
-  resources :albums, only: [] do
-    collection do
-      get :all
-    end
-  end
 
   # resources :news
   get :regolamento, to: 'welcome#regolamento', as: :regolamento
   get 'news-atalantine', to: 'news#index', as: :news_index
   get 'comunicazioni', to: 'posts#all', as: :all_posts
   get 'comunicazioni/:slug', to: 'posts#detail', as: :detail_post
+  get 'prossime-trasferte', to: 'events#upcoming', as: :upcoming_events
+  get 'tutte-le-trasferte', to: 'events#all', as: :all_events
+  get 'foto-trasferte', to: 'albums#all', as: :all_albums
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 end

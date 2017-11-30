@@ -33,6 +33,9 @@
       .col-sm-6.features-box
         .event-detail-item
           %img.img-responsive{ src: @event.poster_url }
+  - @event.albums.each do |al|
+    .col-sm-6.features-box.wow.fadeInLeft
+      = AlbumizrBuilder.build(al)
 
 :javascript
   $(function(){
