@@ -13,24 +13,19 @@
  *= require cookies_eu
 */
 
-/* Show fixed-nav on the top *= require cookies_eu
-*/
+/* Show fixed-nav on the top */
 /*html {
   position: relative;
   min-height: 100%;
-}*= require cookies_eu
-*/
+}*/
 html, body {
   height: 100%;
 }
 body {
   min-height: 75rem;
-  /*margin-top: 4.5rem;*= require cookies_eu
-*/
-  /*padding-top: 4.5rem;*= require cookies_eu
-*/
-  /*margin-bottom: 60px;*= require cookies_eu
-*/
+  /*margin-top: 4.5rem;*/
+  /*padding-top: 4.5rem;*/
+  /*margin-bottom: 60px;*/
 }
 
 .crud-actions {
