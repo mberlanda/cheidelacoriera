@@ -66,5 +66,5 @@ Rails.application.routes.draw do
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 
-  get '*unmatched_route', to: 'application#raise_not_found'
+  # get '*unmatched_route', to: 'application#raise_not_found'
 end
