@@ -1,4 +1,29 @@
 - post_url = detail_post_url(@post.slug)
+- provide :head do
+  :css
+    .img-post-left {
+      float:left;
+      width:200px;
+      height:auto;
+      margin-right: 10px;
+    }
+
+    .right {
+      text-align:right;
+      margin-right: 14px;
+    }
+
+    @media (max-width: 767px) {
+      #share-buttons {
+        padding: 10px 0px;
+      }
+      .img-post-left {
+        width:auto;
+        height:auto;
+        margin:auto;
+        padding: 10px;
+      }
+    }
 .row
   .text-center#share-buttons
     %a.email{ href: "mailto:?Subject=#{@post.title}&Body=#{post_url}" }
