@@ -1,4 +1,4 @@
-- md_size = post.image_url ? 9 : 12
+- md_size = post.image_url.to_s.empty? ? 12 : 9
 - post_url = detail_post_url(post.slug)
 .row{ id: post.slug }
   .col-sm-12.features-box.wow.fadeInLeft
@@ -13,7 +13,7 @@
           %a.facebook{ href: "http://www.facebook.com/sharer.php?u=#{post_url}", target: '_blank' }
           %a.whatsapp{ href: "https://api.whatsapp.com/send?text=#{post_url}", target: '_blank' }
       .content
-        - unless post.image_url.nil?
+        - unless post.image_url.to_s.empty?
           .col-md-3.col-sm-12
             %img{ src: post.image_url, alt: post.slug }
         - unless post.content.nil?
