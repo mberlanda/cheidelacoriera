@@ -1,5 +1,5 @@
 .row
-  %p= t("reservations.show.status.#{@reservation.status}")
+  %p{ class: "status-#{@reservation.status}" }= t("reservations.show.status.#{@reservation.status}")
   %p= t('reservations.show.fans')
   %ul
     - @reservation.fan_names.each do |n|

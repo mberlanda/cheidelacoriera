@@ -31,6 +31,9 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:confirmed_seats) }
     it { should respond_to(:bookable_from) }
     it { should respond_to(:bookable_until) }
+    it { should respond_to(:rejected_seats) }
+    it { should respond_to(:pax) }
+    it { should respond_to(:audience) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)

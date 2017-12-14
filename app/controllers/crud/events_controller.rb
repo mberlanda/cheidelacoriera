@@ -6,7 +6,8 @@ class Crud::EventsController < CrudController
 
   self.permitted_attrs = %i[date time season score notes venue home_team_id
                             bookable_from bookable_until requested_seats poster_url
-                            confirmed_seats away_team_id competition_id]
+                            confirmed_seats away_team_id competition_id
+                            rejected_seats pax audience]
   self.search_columns = %i[date season home_team_id away_team_id competition_id
                            venue poster_url]
 
@@ -21,7 +22,7 @@ class Crud::EventsController < CrudController
   end
 
   def datatable_columns
-    %i[date season bookable_from bookable_until home_team_id
+    %i[date season audience pax bookable_from bookable_until home_team_id
        away_team_id competition_id venue poster_url]
   end
 

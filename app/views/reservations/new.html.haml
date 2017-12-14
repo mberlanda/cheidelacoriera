@@ -28,7 +28,7 @@
         .form-inputs
           .col-md-12.col-sm-12.col-xs-12
             = f.input :total_seats, readonly: true
-            = f.input :status, collection: %i[active pending], include_blank: false
+            = f.input :status, collection: Reservation::STATUSES, include_blank: false
             = f.input :fan_names, as: :array
             = f.input :phone_number
             = f.input :event_id, collection: Event.include_all.order(:date).bookable.upcoming, include_blank: false

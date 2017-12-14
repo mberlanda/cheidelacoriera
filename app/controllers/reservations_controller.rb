@@ -24,18 +24,19 @@ class ReservationsController < CrudController
   end
 
   def user_form
+    render 'reservations/rejected_user', layout: false if current_user.rejected?
     render 'reservations/pending_user', layout: false unless current_user.active?
 
     event_id = params[:event_id]
-    event = Event.find(event_id)
-    render 'reservations/no_user_form', layout: false unless event.book_range?
+    @event = Event.find(event_id)
+    render 'reservations/no_user_form', layout: false unless @event.book_range?
 
     @reservation = Reservation.find_by(
       event_id: event_id, user_id: current_user.id
     )
     redirect_to action: :status, id: @reservation.id if @reservation
 
-    render 'reservations/no_user_form', layout: false unless event.bookable?
+    render 'reservations/no_user_form', layout: false unless @event.bookable?
 
     @reservation = Reservation.new(
       event_id: event_id,

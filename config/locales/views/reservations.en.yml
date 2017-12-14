@@ -4,6 +4,7 @@ en:
       status:
         active: 'Your reservation is now completed!'
         pending: 'Your reservation is still pending.'
+        rejected: 'Your reservation was rejected.'
       fans: 'The fan list for this reservation is:'
       phone_number: 'The phone number provided is: %{number}'
     user_form:

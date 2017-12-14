@@ -23,3 +23,6 @@ it:
         confirmed_seats: Richieste confermate
         bookable_from: Prenotabile da
         bookable_until: Prenotabile fino a
+        rejected_seats: Richieste rifiutate
+        pax: PAX
+        audience: Audience

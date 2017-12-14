@@ -5,6 +5,8 @@ class EventDecorator < ApplicationDecorator
     [
       link_to(object.date, event_url(object.id)),
       object.season,
+      object.audience,
+      object.pax,
       object.bookable_from,
       object.bookable_until,
       object.home_team.to_s,

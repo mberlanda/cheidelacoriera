@@ -23,3 +23,6 @@ en:
         confirmed_seats: Reserved Seats
         bookable_from: Bookable From
         bookable_until: Bookable Until
+        rejected_seats: Rejected Seats
+        pax: PAX
+        audience: Audience

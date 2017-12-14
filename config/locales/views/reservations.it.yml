@@ -4,6 +4,7 @@ it:
       status:
         active: 'La tua prenotazione è approvata!'
         pending: 'La tua prenotazione è in attesa di conferma.'
+        rejected: 'La tua prenotazione è stata declinata.'
       fans: 'La lista dei tifosi per la trasferta è:'
       phone_number: 'Il numero di telefono fornito è: %{number}'
     user_form:

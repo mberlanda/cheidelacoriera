@@ -1,0 +1,12 @@
+%p Gentile #{@user.full_name},
+
+%p
+  Purtroppo non ci è possibile accettare in questo momento la tua prenotazione per la partita
+  = link_to(" #{@event}", details_event_url(@event.slug), target: '_blank')
+  !
+  %br/
+  Qualora si liberassero dei posti o la situazione dovesse cambiare, avremo cura di ricontattarti.
+%hr
+
+
+

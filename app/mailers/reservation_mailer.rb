@@ -8,7 +8,31 @@ class ReservationMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Prenotazione Ricevuta | #{@event} | Chei De La Coriera"
+      subject: "Richiesta Ricevuta | #{@event} | Chei De La Coriera"
+    )
+    @reservation.update(mail_sent: Date.today)
+  end
+
+  def approved(reservation)
+    @reservation = reservation
+    @user = @reservation.user
+    @event = @reservation.event
+
+    mail(
+      to: @user.email,
+      subject: "Richiesta Approvata | #{@event} | Chei De La Coriera"
+    )
+    @reservation.update(mail_sent: Date.today)
+  end
+
+  def rejected(reservation)
+    @reservation = reservation
+    @user = @reservation.user
+    @event = @reservation.event
+
+    mail(
+      to: @user.email,
+      subject: "Richiesta Declinata | #{@event} | Chei De La Coriera"
     )
     @reservation.update(mail_sent: Date.today)
   end

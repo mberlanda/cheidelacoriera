@@ -1,4 +1,8 @@
-
+.row
+  %p
+    Per questa partita potrai prenotare un massimo di
+    = @event.pax
+    posti
 .row
   = simple_form_for(@reservation, method: :post, url: form_create_reservations_path, remote: true, authenticity_token: true) do |f|
     = f.error_notification
@@ -37,7 +41,7 @@
 
 
     var min_field_size  = 6;
-    var max_fields      = 10;
+    var max_fields      = #{@event.pax};
 
     var x = $(inputSelector).length; //initial text box count
 
