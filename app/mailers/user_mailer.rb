@@ -12,4 +12,13 @@ class UserMailer < ApplicationMailer
     )
     @user.update(activation_date: Date.today)
   end
+
+  def rejection_email(user)
+    @user = user
+    mail(
+      to: @user.email,
+      subject: 'Utenza Sospesa | Chei De La Coriera'
+    )
+    @user.update(activation_date: Date.today)
+  end
 end

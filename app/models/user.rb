@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservations, inverse_of: :user, dependent: :nullify
 
+  after_update :send_rejection_email
+
   ROLES = %w[fan preferred admin].freeze
   STATUSES = %w[active pending rejected].freeze
 
@@ -31,7 +33,15 @@ class User < ApplicationRecord
     status == 'active'
   end
 
+  def rejected?
+    status == 'rejected'
+  end
+
   def visible_users
     admin? ? User.all : [self]
+  end
+
+  def send_rejection_email
+    UserMailer.rejection_email(self).deliver_later if status_changed? && rejected?
   end
 end

@@ -30,8 +30,8 @@ RSpec.describe User, type: :model do
     end
   end
   context 'admin user' do
-    let(:fan_user) { FactoryGirl.create(:user, role: 'fan') }
-    let(:admin_user) { FactoryGirl.create(:user, role: 'admin') }
+    let(:fan_user) { FactoryGirl.build(:user, role: 'fan') }
+    let(:admin_user) { FactoryGirl.build(:user, role: 'admin') }
 
     subject { admin_user }
 
@@ -41,8 +41,8 @@ RSpec.describe User, type: :model do
   end
 
   context 'fan user' do
-    let(:fan_user) { FactoryGirl.create(:user, role: 'fan') }
-    let(:admin_user) { FactoryGirl.create(:user, role: 'admin') }
+    let(:fan_user) { FactoryGirl.build(:user, role: 'fan') }
+    let(:admin_user) { FactoryGirl.build(:user, role: 'admin') }
 
     subject { fan_user }
 

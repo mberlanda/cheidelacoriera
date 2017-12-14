@@ -6,4 +6,9 @@ class UserMailerPreview < ActionMailer::Preview
     user = User.first
     UserMailer.activation_email(user)
   end
+
+  def rejection_email
+    user = User.first
+    UserMailer.rejection_email(user)
+  end
 end
