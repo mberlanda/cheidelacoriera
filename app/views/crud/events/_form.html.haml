@@ -1,3 +1,15 @@
+.alert{ align: 'center', class: 'alert-info alert-dismissable' }
+  %a.close{ 'aria-label' => 'close', 'data-dismiss' => 'alert', href: '#' } ×
+  %p
+    Ecco alcuni piccoli accorgimenti di cui tenere conto:
+  %hr
+  %ul
+    %li "Prenotabile da" e "Prenotabile a": giorni in cui la trasferta sarà prenotabile
+    %li "Audience": se everyone, tutti gli utenti attivi possono prenotare, altrimenti solo preferred e admin
+    %li "PAX": numero massimo di partecipanti per prenotazione
+    %li "Url locandina": fondamentale, link alla locandina
+    %li "Note": testo con informazioni utili (es. tdt, link acquisto biglietti etc)
+  %hr
 = crud_form(:competition_id, :date, :time, :venue, :home_team_id, :away_team_id, :season, :poster_url, :bookable_from,
             :bookable_until, :audience, :pax, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :score)
 = render partial: 'shared/form_html5_support'
