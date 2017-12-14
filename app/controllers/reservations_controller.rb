@@ -7,7 +7,7 @@ class ReservationsController < CrudController
   layout false, only: %i[user_form status]
   respond_to :html, :js
 
-  self.permitted_attrs = [:phone_number, :notes, :event_id, fan_names: []]
+  self.permitted_attrs = [:phone_number, :notes, :status, :event_id, fan_names: []]
 
   include DatatableController
 

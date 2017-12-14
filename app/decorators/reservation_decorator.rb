@@ -3,7 +3,7 @@
 class ReservationDecorator < ApplicationDecorator
   def datatable_reservations
     [
-      link_to(object.status, reservation_url(object.id)),
+      link_to(status_field(object), reservation_url(object.id)),
       number_with_delimiter(object.total_seats),
       object.user.to_s,
       object.fan_names,

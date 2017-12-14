@@ -18,6 +18,10 @@
         %span= t('activerecord.attributes.event.requested_seats')
       .col-md-6.col-sm-6
         %span= number_with_delimiter(@event.requested_seats)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.event.rejected_seats')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@event.rejected_seats)
     .col-md-6.col-sm-12
       .col-md-6.col-sm-6
         %span= t('activerecord.attributes.event.bookable_until')
@@ -27,7 +31,12 @@
         %span= t('activerecord.attributes.event.confirmed_seats')
       .col-md-6.col-sm-6
         %span= number_with_delimiter(@event.confirmed_seats)
+      .col-md-6.col-sm-6
+        %span= t('activerecord.attributes.event.pax')
+      .col-md-6.col-sm-6
+        %span= number_with_delimiter(@event.pax)
     .col-md-12
+      %br/
       = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(id: params[:id], event_id: @event.id), class: %w[btn btn-primary])
       %hr
 .row
