@@ -54,6 +54,7 @@ class ReservationsController < CrudController
       phone_number: permitted[:phone_number],
       fan_names: permitted[:fan_names].to_a.reject(&:blank?)
     )
+    @event = Event.find(permitted[:event_id])
     if @reservation.valid?
       @reservation.save
       ReservationMailer.received(@reservation).deliver_later

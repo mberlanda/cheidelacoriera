@@ -20,7 +20,14 @@ class Reservation < ApplicationRecord
   scope :pending, ->() { where(status: :pending) }
   belongs_to :event, inverse_of: :reservations
 
+  after_update :handle_statuses
+
   STATUSES = %w[active pending rejected].freeze
+
+  STATUSES.each do |s|
+    define_method("#{s}?") { status == s }
+    define_method("#{s}!") { update(status: s) }
+  end
 
   def to_s
     "#{user} #{event}"
@@ -33,14 +40,50 @@ class Reservation < ApplicationRecord
   end
 
   def approve
-    return unless status == 'pending'
-    self.status = 'active'
-    event.decrement_with_sql!(:requested_seats, total_seats)
-    event.increment_with_sql!(:confirmed_seats, total_seats)
-    save!
+    return unless pending?
+    active!
+  end
+
+  def handle_statuses
+    return unless status_changed?
+    handle_active if active?
+    handle_pending if pending?
+    handle_rejected if rejected?
   end
 
   private
+
+  def handle_active
+    event.increment_with_sql!(:confirmed_seats, total_seats)
+    decrement_requested if status_was == 'pending'
+    decrement_rejected if status_was == 'rejected'
+    ReservationMailer.approved(Reservation.includes(:user, :event).find(id)).deliver_later
+  end
+
+  def handle_pending
+    event.increment_with_sql!(:requested_seats, total_seats)
+    decrement_confirmed if status_was == 'active'
+    decrement_rejected if status_was == 'rejected'
+  end
+
+  def handle_rejected
+    event.increment_with_sql!(:rejected_seats, total_seats)
+    decrement_requested if status_was == 'pending'
+    decrement_confirmed if status_was == 'active'
+    ReservationMailer.rejected(Reservation.includes(:user, :event).find(id)).deliver_later
+  end
+
+  def decrement_confirmed
+    event.decrement_with_sql!(:confirmed_seats, total_seats)
+  end
+
+  def decrement_rejected
+    event.decrement_with_sql!(:rejected_seats, total_seats)
+  end
+
+  def decrement_requested
+    event.decrement_with_sql!(:requested_seats, total_seats)
+  end
 
   def check_fans
     return true unless fan_names.empty?
