@@ -15,8 +15,8 @@ class Crud::UsersController < CrudController
 
   def datatable_columns
     @datatable_columns ||= %i[
-      email first_name last_name phone_number
-      newsletter mailing_listed status activation_date role
+      email first_name last_name status role phone_number
+      newsletter mailing_listed activation_date
     ]
   end
 

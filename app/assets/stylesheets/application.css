@@ -130,3 +130,33 @@ img.team-logo {
 #flash .alert{
   margin: 10px auto;
 }
+
+/* STATUSES FOR TABLES*/
+
+.status-active {
+  color: #449d44;
+  font-weight: bolder;
+}
+
+.status-pending, .role-preferred {
+  color: #ec971f;
+  font-weight: bolder;
+}
+
+.status-rejected {
+  color: #c9302c;
+  font-weight: bolder;
+}
+
+.role-admin {
+  color: #337ab7;
+  font-weight: bolder;
+}
+
+.bool-true {
+  color: #449d44;
+}
+
+.bool-false {
+  color: #c9302c;
+}

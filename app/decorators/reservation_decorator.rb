@@ -17,7 +17,7 @@ class ReservationDecorator < ApplicationDecorator
       link_to(object.event.to_s, reservation_url(object.id)),
       object.user.to_s,
       object.total_seats,
-      object.status,
+      status_field(object),
       object.fan_names,
       object.phone_number,
       object.mail_sent,

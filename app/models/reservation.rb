@@ -20,6 +20,8 @@ class Reservation < ApplicationRecord
   scope :pending, ->() { where(status: :pending) }
   belongs_to :event, inverse_of: :reservations
 
+  STATUSES = %w[active pending rejected].freeze
+
   def to_s
     "#{user} #{event}"
   end

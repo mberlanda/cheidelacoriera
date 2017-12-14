@@ -6,12 +6,12 @@ class UserDecorator < ApplicationDecorator
       link_to(object.email, user_url(object.id)),
       object.first_name,
       object.last_name,
+      status_field(object),
+      role_field(object),
       object.phone_number,
-      object.newsletter,
-      object.mailing_listed,
-      object.status,
-      object.activation_date,
-      object.role
+      bool_field(object.newsletter),
+      bool_field(object.mailing_listed),
+      object.activation_date
     ]
   end
 end

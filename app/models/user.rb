@@ -7,8 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reservations, inverse_of: :user, dependent: :nullify
 
-  ROLES = %w[fan admin].freeze
-  STATUSES = %w[active pending].freeze
+  ROLES = %w[fan preferred admin].freeze
+  STATUSES = %w[active pending rejected].freeze
 
   # validates :phone_number, format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
 
