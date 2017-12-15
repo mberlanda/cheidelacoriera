@@ -1,11 +1,10 @@
-%p Gentile #{@user.full_name},
+%p Ciao #{@user.full_name},
 
 %p
-  Ti confermiamo di aver ricevuto la tua prenotazione per la partita
-  = link_to(" #{@event}", details_event_url(@event.slug), target: '_blank')
-  !
+  Abbiamo preso in carico la tua richiesta di adesione alla trasferta
+  = link_to(" #{@event}.", details_event_url(@event.slug), target: '_blank')
   %br/
-  Riceverai nelle prossime una mail che ti confermerà la presa in carico della prenotazione.
+  Prossimamente riceverai comunicazione dallo staff riguardo la conferma definitiva o non conferma della tua prenotazione.
 %hr
 
 %p= t('reservations.show.fans')

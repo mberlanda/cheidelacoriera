@@ -1,11 +1,11 @@
-%p Gentile #{@user.full_name},
+%p Ciao #{@user.full_name},
 
 %p
-  Ti confermiamo di aver approvato la tua prenotazione per la partita
-  = link_to(" #{@event}", details_event_url(@event.slug), target: '_blank')
-  !
+  Ti confermiamo che la tua prenotazione per la partita
+  = link_to(" #{@event} ", details_event_url(@event.slug), target: '_blank')
+  è stata accettata.
   %br/
-  Non appena avremo raggiunto il numero minimo di partecipanti per assicurare il servizio, riceverai una mail di conferma contenente tutti i dettagli.
+  Non appena avremo raggiunto il numero minimo di partecipanti per assicurare il servizio, ti comunicheremo ulteriori dettagli.
 %hr
 
 %p= t('reservations.show.fans')
