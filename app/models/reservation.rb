@@ -22,6 +22,7 @@ class Reservation < ApplicationRecord
   belongs_to :event, inverse_of: :reservations
 
   after_update :handle_updates
+  # after_destroy :handle_destroy
 
   STATUSES = %w[active pending rejected].freeze
 
@@ -68,6 +69,12 @@ class Reservation < ApplicationRecord
     decrement_confirmed(seats_diff) if was_active?
     decrement_requested(seats_diff) if was_pending?
     decrement_rejected(seats_diff) if was_rejected?
+  end
+
+  def handle_destroy
+    decrement_confirmed(total_seats_was) if was_active?
+    decrement_requested(total_seats_was) if was_pending?
+    decrement_rejected(total_seats_was) if was_rejected?
   end
 
   private

@@ -44,6 +44,10 @@ class Event < ApplicationRecord
     reservations.where(user_id: user_id).present?
   end
 
+  def everyone?
+    audience == 'everyone'
+  end
+
   private
 
   def set_slug_name!

@@ -36,7 +36,7 @@ class ReservationsController < CrudController
     )
     redirect_to action: :status, id: @reservation.id if @reservation
 
-    render 'reservations/no_user_form', layout: false unless @event.bookable?
+    render 'reservations/no_user_form', layout: false unless current_user.can_book?(@event)
 
     @reservation = Reservation.new(
       event_id: event_id,

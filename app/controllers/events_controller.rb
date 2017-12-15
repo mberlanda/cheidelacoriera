@@ -12,7 +12,7 @@ class EventsController < PublicController
   end
 
   def all
-    @events = Event.include_all.order(:date).all
+    @events = Event.include_all.order(date: :desc).all
   end
 
   def details

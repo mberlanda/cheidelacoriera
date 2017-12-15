@@ -17,6 +17,18 @@ class User < ApplicationRecord
   scope :actives, ->() { where(status: :active) }
   scope :to_notify, ->() { where(activation_date: nil) }
 
+  STATUSES.each do |s|
+    define_method("#{s}?") { status == s }
+    define_method("#{s}!") { update(status: s) }
+    define_method("was_#{s}?") { status_was == s }
+  end
+
+  ROLES.each do |r|
+    define_method("#{r}?") { role == r }
+    define_method("#{r}!") { update(role: r) }
+    define_method("was_#{r}?") { role_was == r }
+  end
+
   def to_s
     email
   end
@@ -43,5 +55,11 @@ class User < ApplicationRecord
 
   def send_rejection_email
     UserMailer.rejection_email(self).deliver_later if status_changed? && rejected?
+  end
+
+  def can_book?(event)
+    return false unless event.bookable?
+    return false if fan? && !event.everyone?
+    true
   end
 end

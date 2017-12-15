@@ -41,6 +41,11 @@ Metrics/BlockLength:
     - lib/tasks/*.rake
     - spec/**/*_spec.rb
 
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - app/models/reservation.rb
+
 Metrics/LineLength:
   Max: 90
   Enabled: true
@@ -48,6 +53,7 @@ Metrics/LineLength:
     - db/**/*
     - lib/tasks/dbdata.rake
     - spec/*_helper.rb
+    - app/controllers/reservations_controller.rb
 
 Metrics/MethodLength:
   Max: 15
