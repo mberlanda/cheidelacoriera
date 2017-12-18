@@ -33,16 +33,18 @@ module BookableEvent
   def handle_seats_changes
     decrease_availability!(confirmed_seats_delta) if confirmed_seats_changed?
     decrease_availability!(requested_seats_delta) if requested_seats_changed?
-    increase_availability!(rejected_seats_delta) if rejected_seats_changed?
+    # increase_availability!(rejected_seats_delta) if rejected_seats_changed?
   end
 
   private
 
   def decrease_availability!(amount)
-    decrement_with_sql!(:available_seats, amount)
+    # decrement_with_sql!(:available_seats, amount)
+    self.available_seats -= amount
   end
 
   def increase_availability!(amount)
-    increment_with_sql!(:available_seats, amount)
+    # increment_with_sql!(:available_seats, amount)
+    self.available_seats += amount
   end
 end

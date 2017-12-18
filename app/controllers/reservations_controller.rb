@@ -85,6 +85,7 @@ class ReservationsController < CrudController
   def approve_all
     flash[:success] = t('controllers.reservations.approve_all.flash')
     Reservation.where(event_id: params[:event_id]).pending.approve_all
+    Event.find_by(params[:event_id]).recalculate_seats!
     redirect_to reservations_event_url(id: params[:id])
   end
 end
