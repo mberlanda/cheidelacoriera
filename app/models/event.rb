@@ -46,6 +46,16 @@ class Event < ApplicationRecord
     set_slug_name!
   end
 
+  def recalculate_seats!
+    reservations_hash = reservations.group(:status).sum(
+      :total_seats
+    ).with_indifferent_access
+    self.requested_seats = reservations_hash[:pending] || 0
+    self.confirmed_seats = reservations_hash[:active] || 0
+    self.rejected_seats = reservations_hash[:rejected] || 0
+    self.available_seats = total_seats - confirmed_seats - requested_seats
+  end
+
   private
 
   def set_slug_name!
@@ -73,16 +83,6 @@ class Event < ApplicationRecord
   def check_availability
     handle_seats_changes
     recalculate_seats! if total_seats_changed?
-  end
-
-  def recalculate_seats!
-    reservations_hash = reservations.group(:status).sum(
-      :total_seats
-    ).with_indifferent_access
-    self.requested_seats = reservations_hash[:pending] || 0
-    self.confirmed_seats = reservations_hash[:active] || 0
-    self.rejected_seats = reservations_hash[:rejected] || 0
-    self.available_seats = total_seats - confirmed_seats - requested_seats
   end
 
   def send_availability_alert
