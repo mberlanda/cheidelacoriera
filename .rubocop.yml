@@ -63,6 +63,7 @@ Metrics/MethodLength:
     - db/**/*
     - spec/*_helper.rb
     - app/controllers/reservations_controller.rb
+    - app/decorators/*.rb
 
 Rails:
   Enabled: true
