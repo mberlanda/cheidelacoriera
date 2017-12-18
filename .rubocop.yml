@@ -34,6 +34,7 @@ Metrics/AbcSize:
     - app/decorators/*_decorator.rb
     - app/controllers/reservations_controller.rb
     - app/inputs/array_input.rb
+    - app/models/event.rb
 
 Metrics/BlockLength:
   Enabled: true

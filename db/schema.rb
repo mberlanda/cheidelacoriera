@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214100641) do
+ActiveRecord::Schema.define(version: 20171218085717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20171214100641) do
     t.string   "audience",        default: "everyone"
     t.integer  "pax",             default: 10
     t.integer  "rejected_seats",  default: 0
+    t.string   "transport_mean"
+    t.integer  "available_seats", default: 0
     t.index ["away_team_id"], name: "index_events_on_away_team_id", using: :btree
     t.index ["competition_id"], name: "index_events_on_competition_id", using: :btree
     t.index ["home_team_id"], name: "index_events_on_home_team_id", using: :btree

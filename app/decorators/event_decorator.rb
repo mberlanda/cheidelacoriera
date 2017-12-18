@@ -11,6 +11,7 @@ class EventDecorator < ApplicationDecorator
       object.bookable_until,
       object.home_team.to_s,
       object.away_team.to_s,
+      object.transport_mean,
       object.competition.to_s,
       object.venue,
       object.poster_url

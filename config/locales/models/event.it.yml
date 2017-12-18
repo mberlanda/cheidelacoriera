@@ -26,3 +26,5 @@ it:
         rejected_seats: Richieste rifiutate
         pax: PAX
         audience: Audience
+        transport_mean: Mezzo di trasporto
+        available_seats: Posti Disponibili

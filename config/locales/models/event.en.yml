@@ -26,3 +26,5 @@ en:
         rejected_seats: Rejected Seats
         pax: PAX
         audience: Audience
+        transport_mean: Transport Mean
+        available_seats: Available Seats

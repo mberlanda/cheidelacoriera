@@ -12,7 +12,8 @@ class Event < ApplicationRecord
 
   extend FriendlyId
 
-  before_validation :set_slug_name!
+  before_validation :cleanup_params
+  # before_validation :set_slug_name!
   validates :custom_name, presence: true
   friendly_id :custom_name, use: %i[slugged history finders]
 
@@ -27,7 +28,7 @@ class Event < ApplicationRecord
   end
 
   def to_s
-    "#{home_team.name} vs #{away_team.name} (#{competition}, #{date})"
+    "#{home_team.name} vs #{away_team.name} #{transport_mean} (#{competition}, #{date})"
   end
 
   def book_range?
@@ -48,6 +49,12 @@ class Event < ApplicationRecord
     audience == 'everyone'
   end
 
+  def cleanup_params
+    transport_mean.strip!
+    self.transport_mean = nil unless %w[bus aereo].include?(transport_mean)
+    set_slug_name!
+  end
+
   private
 
   def set_slug_name!
@@ -59,14 +66,16 @@ class Event < ApplicationRecord
       home_team.name.downcase.tr(' ', '-'),
       away_team.name.downcase.tr(' ', '-'),
       competition.name.downcase.tr(' ', '-'),
-      date
-    ].join('-')
+      date,
+      transport_mean
+    ].compact.join('-')
   rescue NoMethodError
     nil
   end
 
   def should_generate_new_friendly_id?
     slug.blank? || home_team_id_changed? ||
-      away_team_id_changed? || competition_id_changed? || date_changed?
+      away_team_id_changed? || competition_id_changed? || date_changed? ||
+      transport_mean_changed?
   end
 end

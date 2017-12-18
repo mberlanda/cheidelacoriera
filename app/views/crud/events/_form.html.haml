@@ -9,7 +9,8 @@
     %li "PAX": numero massimo di partecipanti per prenotazione
     %li "Url locandina": fondamentale, link alla locandina
     %li "Note": testo con informazioni utili (es. tdt, link acquisto biglietti etc)
+    %li "Mezzo di trasporto": inserire bus, aereo oppure lasciare vuoto. Gli altri valori verrano filtrati e rimossi
   %hr
 = crud_form(:competition_id, :date, :time, :venue, :home_team_id, :away_team_id, :season, :poster_url, :bookable_from,
-            :bookable_until, :audience, :pax, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :score)
+            :bookable_until, :audience, :pax, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :score, :transport_mean)
 = render partial: 'shared/form_html5_support'

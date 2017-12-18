@@ -34,6 +34,7 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:rejected_seats) }
     it { should respond_to(:pax) }
     it { should respond_to(:audience) }
+    it { should respond_to(:transport_mean) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -93,6 +94,42 @@ RSpec.describe Event, type: :model do
       actual = Event.bookable(Date.today - 2.days)
       expect(actual.count).to eq(1)
       expect(actual).to match_array([@event2])
+    end
+  end
+
+  context 'slug_name generation' do
+    let(:event_date) { Date.new(2017, 1, 1) }
+    subject do
+      FactoryGirl.build(
+        :event,
+        competition: competition,
+        date: event_date,
+        home_team: team1,
+        away_team: team2,
+        transport_mean: nil
+      )
+    end
+
+    it 'should not include transport mean if null' do
+      expect(subject.send(:custom_slug_name)).to eq([
+        subject.home_team.name.downcase.tr(' ', '-').to_s,
+        subject.away_team.name.downcase.tr(' ', '-').to_s,
+        subject.competition.name.downcase.tr(' ', '-').to_s,
+        event_date.to_s
+      ].join('-'))
+    end
+
+    it 'should include transport mean if present' do
+      transport_mean = 'bus'
+      subject.update(transport_mean: transport_mean)
+
+      expect(subject.send(:custom_slug_name)).to eq([
+        subject.home_team.name.downcase.tr(' ', '-').to_s,
+        subject.away_team.name.downcase.tr(' ', '-').to_s,
+        subject.competition.name.downcase.tr(' ', '-').to_s,
+        event_date.to_s,
+        transport_mean.to_s
+      ].join('-'))
     end
   end
 end
