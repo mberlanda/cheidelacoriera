@@ -14,6 +14,8 @@ class Event < ApplicationRecord
   include BookableEvent
 
   before_validation :cleanup_params
+  before_save :check_availability
+
   validates :custom_name, presence: true
   friendly_id :custom_name, use: %i[slugged history finders]
 
@@ -64,5 +66,20 @@ class Event < ApplicationRecord
     slug.blank? || home_team_id_changed? ||
       away_team_id_changed? || competition_id_changed? || date_changed? ||
       transport_mean_changed?
+  end
+
+  def check_availability
+    handle_seats_changes
+    recalculate_seats! if total_seats_changed?
+  end
+
+  def recalculate_seats!
+    reservations_hash = reservations.group(:status).sum(
+      :total_seats
+    ).with_indifferent_access
+    self.requested_seats = reservations_hash[:pending] || 0
+    self.confirmed_seats = reservations_hash[:active] || 0
+    self.rejected_seats = reservations_hash[:rejected] || 0
+    self.available_seats = total_seats - confirmed_seats - requested_seats
   end
 end

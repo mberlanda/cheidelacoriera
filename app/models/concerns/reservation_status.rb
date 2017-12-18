@@ -40,12 +40,14 @@ module ReservationStatus
     decrement_confirmed(seats_diff) if was_active?
     decrement_requested(seats_diff) if was_pending?
     decrement_rejected(seats_diff) if was_rejected?
+    event.save
   end
 
   def handle_destroy
     decrement_confirmed(total_seats_was) if was_active?
     decrement_requested(total_seats_was) if was_pending?
     decrement_rejected(total_seats_was) if was_rejected?
+    event.save
   end
 
   private
@@ -68,6 +70,7 @@ module ReservationStatus
     decrement_requested if was_pending?
     decrement_confirmed if was_active?
     ReservationMailer.rejected(Reservation.includes_all.find(id)).deliver_later
+    event.save
   end
 
   def decrement_confirmed(amount = total_seats)
