@@ -3,7 +3,7 @@ function initializeCrudTable(url,tableId, buttonsIdOrClass){
     'buttons': ['copy', 'excel', 'pdf'],
     'processing': true,
     'scrollX': true,
-    'pageLength': 50,
+    'pageLength': 25,
     'order': [[0, 'asc']],
     'ordering': true,
     'dom': 'fl<"table-scrollable"t>irp',

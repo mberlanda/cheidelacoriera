@@ -36,4 +36,12 @@ class ReservationMailer < ApplicationMailer
     )
     @reservation.update(mail_sent: Date.today)
   end
+
+  def overbooking(event)
+    @event = event
+    mail(
+      to: 'cheidelacoriera@gmail.com',
+      subject: "Disponibilità esaurita | #{@event}"
+    )
+  end
 end

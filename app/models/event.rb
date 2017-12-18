@@ -16,6 +16,8 @@ class Event < ApplicationRecord
   before_validation :cleanup_params
   before_save :check_availability
 
+  after_update :send_availability_alert
+
   validates :custom_name, presence: true
   friendly_id :custom_name, use: %i[slugged history finders]
 
@@ -81,5 +83,10 @@ class Event < ApplicationRecord
     self.confirmed_seats = reservations_hash[:active] || 0
     self.rejected_seats = reservations_hash[:rejected] || 0
     self.available_seats = total_seats - confirmed_seats - requested_seats
+  end
+
+  def send_availability_alert
+    return true unless available_seats_changed?
+    ReservationMailer.overbooking(self).deliver_later unless available_seats.positive?
   end
 end

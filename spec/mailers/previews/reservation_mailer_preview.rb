@@ -27,4 +27,9 @@ class ReservationMailerPreview < ActionMailer::Preview
     end
     ReservationMailer.received(reservation)
   end
+
+  def overbooking
+    event = FactoryGirl.create(:event, transport_mean: :bus)
+    ReservationMailer.overbooking(event)
+  end
 end

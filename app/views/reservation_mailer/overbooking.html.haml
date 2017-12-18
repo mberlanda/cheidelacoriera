@@ -1,0 +1,24 @@
+%p Gentile Staff,
+
+%p
+  Ti informiamo che la disponibilità per la partita #{@event} è esaurita.
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Posti Totali
+      %th Prenotazioni Confermate
+      %th Prenotazioni In Sospeso
+      %th Prenotazioni Rifiutate
+      %th Posti Disponbili
+  %tbody
+    %tr
+      %th= @event.total_seats
+      %th= @event.confirmed_seats
+      %th= @event.requested_seats
+      %th= @event.rejected_seats
+      %th= @event.available_seats
+%hr
+  .btn-group
+    = link_to('Modifica Posti Totali', edit_event_url(@event.slug), target: '_blank', class: 'btn btn-primary')
+    = link_to('Gestisci le Prenotazioni', reservations_event_url(@event.slug), target: '_blank', class: 'btn btn-info')
