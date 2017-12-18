@@ -11,9 +11,9 @@ class Event < ApplicationRecord
   has_many :albums, inverse_of: :event, dependent: :nullify
 
   extend FriendlyId
+  include BookableEvent
 
   before_validation :cleanup_params
-  # before_validation :set_slug_name!
   validates :custom_name, presence: true
   friendly_id :custom_name, use: %i[slugged history finders]
 
@@ -21,28 +21,10 @@ class Event < ApplicationRecord
     def include_all
       includes(:competition, :home_team, :away_team, :reservations)
     end
-
-    def bookable(d = Date.today)
-      where('bookable_from <= ? and bookable_until >= ?', d, d)
-    end
   end
 
   def to_s
     "#{home_team.name} vs #{away_team.name} #{transport_mean} (#{competition}, #{date})"
-  end
-
-  def book_range?
-    bookable_from && bookable_until
-  end
-
-  def bookable?(d = Date.today)
-    return false unless book_range?
-    bookable_from <= d && bookable_until >= d
-  end
-
-  def booked_by?(user_id)
-    return false unless book_range?
-    reservations.where(user_id: user_id).present?
   end
 
   def everyone?
@@ -50,7 +32,7 @@ class Event < ApplicationRecord
   end
 
   def cleanup_params
-    transport_mean.strip!
+    transport_mean&.strip!
     self.transport_mean = nil unless %w[bus aereo].include?(transport_mean)
     set_slug_name!
   end
