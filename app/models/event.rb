@@ -21,6 +21,11 @@ class Event < ApplicationRecord
     def include_all
       includes(:competition, :home_team, :away_team, :reservations)
     end
+
+    def transport_mean_class(transport_mean)
+      return 'fa fa-bus' if transport_mean == 'bus'
+      return 'fa fa-plane' if transport_mean == 'aereo'
+    end
   end
 
   def to_s

@@ -11,5 +11,6 @@ en:
       show: Show
       approve_all: Approve All
       booked: Booked
+      book: Book
     details:
       title: Event Details

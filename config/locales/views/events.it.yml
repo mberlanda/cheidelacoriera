@@ -11,5 +11,6 @@ it:
       show: Mostra
       approve_all: Approva tutte
       booked: Prenotato
+      book: Prenota
     details:
       title: Dettagli Trasferta
