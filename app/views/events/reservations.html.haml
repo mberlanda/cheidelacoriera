@@ -45,7 +45,7 @@
         %span= number_with_delimiter(@event.pax)
     .col-md-12
       %br/
-      = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(id: params[:id], event_id: @event.id), class: %w[btn btn-primary])
+      = link_to(t('events.buttons.approve_all'), approve_all_reservations_path(slug: params[:id], event_id: @event.id), class: %w[btn btn-primary])
       %hr
 .row
   .alert{ align: 'center' }
