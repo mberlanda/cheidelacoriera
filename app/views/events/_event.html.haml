@@ -3,10 +3,10 @@
 .col-sm-6.col-xs-12.text-center.wow.fadeInLeft
   .panel.panel-default.event-panel
     .panel-body
-      - unless event.everyone?
-        .pull-right
-          %i.fa.fa-star.event-star{ 'aria-hidden' => true, 'data-toggle' => 'tooltip',
-                          title: 'Solo Corieristi Semper Fidelis' }
+      .pull-right
+        - if event.bookable_period?
+          = EventIconBuilder.build("#{event.bookable? ? :available : :fully_booked}".to_sym)
+        = EventIconBuilder.build(:preferred) unless event.everyone?
       %small= event.competition
       %p= I18n.l(event.date, format: :long)
       - if current_user.can_book?(event)
@@ -31,7 +31,7 @@
       - if current_user
         - if event.booked_by?(current_user.id)
           = link_to(t('events.buttons.booked'), event_slugged, class: 'btn btn-default', id: 'booked')
-        - elsif event.bookable?
+        - elsif current_user.can_book?(event)
           = link_to(t('events.buttons.book_now'), event_slugged, class: 'btn btn-primary', id: 'book-now')
         - else
           = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary')

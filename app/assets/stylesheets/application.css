@@ -77,8 +77,16 @@ img.team-logo {
   height: 5px;
 }
 
-.event-star {
+.icon-yellow {
   color: #f0ad4e;
+}
+
+.icon-red {
+  color: #d9534f;
+}
+
+.icon-green {
+  color: #5cb85c;
 }
 
 #gtm-iframe {

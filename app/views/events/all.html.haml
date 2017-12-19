@@ -5,3 +5,9 @@
   .row
     - @events.each do |evt|
       = render partial: 'events/event', locals: { event: evt }
+
+- provide :page_javascript do
+  :javascript
+    $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });

@@ -32,7 +32,7 @@ class ProgressbarBuilder
       'aria-valuenow' => 0,
       'aria-valuemin' => 0,
       'aria-valuemax' => 100,
-      style: "width: #{availability}%;"
+      style: "width: #{occupancy}%;"
     }
   end
 
@@ -44,10 +44,14 @@ class ProgressbarBuilder
     @availability ||= @event.percentage_availability
   end
 
+  def occupancy
+    @occupancy ||= 100 - availability
+  end
+
   def bar_class
-    return 'progress-bar-danger' if availability <= 25
-    return 'progress-bar-warning' if availability <= 50
-    return 'progress-bar-info' if availability <= 75
-    'progress-bar-success'
+    return 'progress-bar-success' if occupancy <= 25
+    return 'progress-bar-info' if occupancy <= 50
+    return 'progress-bar-warning' if occupancy <= 75
+    'progress-bar-danger'
   end
 end
