@@ -9,7 +9,7 @@
         = EventIconBuilder.build(:preferred) unless event.everyone?
       %small= event.competition
       %p= I18n.l(event.date, format: :long)
-      - if current_user.can_book?(event)
+      - if current_user&.can_book?(event)
         = ProgressbarBuilder.build(event)
       - else
         .progress.event-progress
