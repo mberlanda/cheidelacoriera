@@ -3,9 +3,16 @@
 .col-sm-6.col-xs-12.text-center.wow.fadeInLeft
   .panel.panel-default.event-panel
     .panel-body
+      - unless event.everyone?
+        .pull-right
+          %i.fa.fa-star.event-star{ 'aria-hidden' => true, 'data-toggle' => 'tooltip',
+                          title: 'Solo Corieristi Semper Fidelis' }
       %small= event.competition
       %p= I18n.l(event.date, format: :long)
-      %hr
+      - if current_user.can_book?(event)
+        = ProgressbarBuilder.build(event)
+      - else
+        .progress.event-progress
       .row
         .col-md-5.right.event-team
           %img.team-logo{ src: event.home_team.image_url, alt: event.home_team.name }

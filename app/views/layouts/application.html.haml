@@ -76,3 +76,4 @@
         = yield
     = render 'layouts/footer'
     = javascript_tag yield(:javascripts) if content_for?(:javascripts)
+    = yield :page_javascript if content_for?(:page_javascript)

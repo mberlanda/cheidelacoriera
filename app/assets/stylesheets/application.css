@@ -73,6 +73,14 @@ img.team-logo {
   padding-right: 10px;
 }
 
+.event-progress {
+  height: 5px;
+}
+
+.event-star {
+  color: #f0ad4e;
+}
+
 #gtm-iframe {
   display:none;
   visibility:hidden;
