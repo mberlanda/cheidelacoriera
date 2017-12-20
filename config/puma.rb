@@ -15,7 +15,8 @@ port        ENV.fetch('PORT') { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch('RAILS_ENV') { 'development' }
+current_env = ENV.fetch('RAILS_ENV') { 'development' }
+environment current_env
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -23,7 +24,7 @@ environment ENV.fetch('RAILS_ENV') { 'development' }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -32,7 +33,7 @@ environment ENV.fetch('RAILS_ENV') { 'development' }
 # you need to make sure to reconnect any threads in the `on_worker_boot`
 # block.
 #
-# preload_app!
+preload_app!
 
 # The code in the `on_worker_boot` will be called if you are using
 # clustered mode by specifying a number of `workers`. After each worker
@@ -44,6 +45,10 @@ environment ENV.fetch('RAILS_ENV') { 'development' }
 # on_worker_boot do
 #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
 # end
+
+on_worker_boot do
+  @sidekiq_pid ||= spawn("bundle exec sidekiq -e #{current_env} -C #{Rails.root.join('config', 'sidekiq.yml')}")
+end
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
