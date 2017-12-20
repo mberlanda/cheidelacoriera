@@ -7,7 +7,6 @@
       text-align: justify;
     }
 
-
 - provide :subtitle do
   %p.medium-paragraph
     Regolamento di Adesione alle Trasferte e Norme di Comportamento
@@ -124,3 +123,6 @@
         riscontrato un comportamento non consono alle norme di comportamento o al senso civile di reciproco rispetto con gli altri partecipanti all’evento,
         possono intervenire sospendendo la partecipazione al servizio in corso di svolgimento e all’adesione alle successive trasferte.
 
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, 'Regolamento')

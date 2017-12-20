@@ -1,5 +1,9 @@
 - @title = t('events.index.title')
 
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :all_events)
+
 .crud-container
   %hr
   .row

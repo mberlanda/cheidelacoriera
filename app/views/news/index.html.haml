@@ -40,6 +40,10 @@
         %noscript
           %iframe{ src: 'https://feed.mikle.com/widget/v2/54879/' }
         / end feedwind code
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :news)
+
 .row
   .col-sm-12.features-box.wow.fadeInLeft
     .row

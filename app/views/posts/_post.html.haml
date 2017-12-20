@@ -1,5 +1,5 @@
 - md_size = post.image_url.to_s.empty? ? 12 : 9
-- post_url = detail_post_url(post.slug)
+- post_url = seo_url(detail_post_url(post.slug))
 .row{ id: post.slug }
   .col-sm-12.features-box.wow.fadeInLeft
     .features-box

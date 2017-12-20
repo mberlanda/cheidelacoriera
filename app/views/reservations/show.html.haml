@@ -10,4 +10,8 @@
       - if @reservation.event
         .row.col-md-12
           .text-center
-            = link_to(t('events.buttons.fans_list'), reservations_event_path(@reservation.event.id), class: 'btn btn-default')
+            = link_to(t('events.buttons.fans_list'), seo_url(reservations_event_path(@reservation.event.id)), class: 'btn btn-default')
+
+.row
+  %hr
+  = BreadcrumbBuilder.build(:home, :upcoming_events, [@reservation.event, reservations_event_path(@reservation.event.id)], @reservation.user)

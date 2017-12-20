@@ -176,3 +176,8 @@ img.team-logo {
 .bool-false {
   color: #c9302c;
 }
+
+.breadcrumb-row .breadcrumb{
+  background-color: inherit;
+  margin-bottom: 10px;
+}
