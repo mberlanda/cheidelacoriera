@@ -111,4 +111,8 @@ Rails.application.configure do
   config.action_mailer.asset_host = 'http://www.cheidelacoriera.com'
 
   config.action_mailer.default_url_options = { host: 'www.cheidelacoriera.com' }
+
+  if ENV['RAILS_FORCE_SSL'].present?
+    config.force_ssl = true
+  end
 end
