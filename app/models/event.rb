@@ -56,6 +56,11 @@ class Event < ApplicationRecord
     self.available_seats = total_seats - confirmed_seats - requested_seats
   end
 
+  def percentage_availability
+    return 0 unless available_seats.positive?
+    100 * available_seats / total_seats
+  end
+
   private
 
   def set_slug_name!

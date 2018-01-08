@@ -1,4 +1,4 @@
-- post_url = detail_post_url(@post.slug)
+- post_url = seo_url(detail_post_url(@post.slug))
 - provide :head do
   :css
     .img-post-left {
@@ -43,4 +43,6 @@
         - unless @post.content.nil?
           .nicEdit-main
             = sanitize @post.content.html_safe, scrubber: EventScrubber.new
-    %hr
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :posts, strip_tags(@post.title))

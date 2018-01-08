@@ -1,0 +1,67 @@
+- @title = current_user.first_name ? current_user.full_name : current_user.email
+
+- provide :subtitle do
+  %p.medium-paragraph
+    Riepilogo della tua registrazione
+
+.row
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Nome:
+    .col-sm-6
+      = current_user.first_name
+    .col-sm-6
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Cognome:
+    .col-sm-6
+      = current_user.last_name
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Email:
+    .col-sm-6
+      = current_user.email
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Telefono:
+    .col-sm-6
+      = current_user.phone_number
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Data di Registrazione:
+    .col-sm-6
+      = I18n.l(current_user.created_at.to_date)
+  .col-md-6.col-sm-12
+    .col-sm-6
+      Tipo Corierista:
+    .col-sm-6
+      %p
+        - if current_user.role == 'fan'
+          %i.fa.fa-user
+          Neroblu
+        - else
+          %i.fa.fa-star.icon-yellow
+          Semper Fidelis
+
+- if current_user.reservations
+  .row
+    %hr
+    %p Le mie prenotazioni:
+
+    %table.table.table-striped.datatable-table
+      %tbody
+        - current_user.reservations.order(:date).find_each do |res|
+          %tr
+            %td= res.event
+            %td= res.status
+            %td= res.fan_names
+
+.row
+  .col-md-12.text-center
+    %hr
+    = link_to t('navbar.session.edit_profile'), edit_user_registration_path, class: 'btn btn-primary'
+
+
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, @title)

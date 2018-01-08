@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get 'prossime-trasferte', to: 'events#upcoming', as: :upcoming_events
   get 'tutte-le-trasferte', to: 'events#all', as: :all_events
   get 'foto-trasferte', to: 'albums#all', as: :all_albums
+  get 'profilo', to: 'users#profile', as: :profile_users
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 

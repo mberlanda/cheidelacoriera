@@ -8,4 +8,13 @@
   %hr
   .row.text-center
     %p
-      = link_to(t('events.upcoming.history'), all_events_path, class: 'btn btn-default gtm-home-action', data: { action: :events_history })
+      = link_to(t('events.upcoming.history'), seo_url(all_events_path), class: 'btn btn-default gtm-home-action', data: { action: :events_history })
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :upcoming_events)
+
+- provide :page_javascript do
+  :javascript
+    $(function(){
+        $('[data-toggle="tooltip"]').tooltip('show');
+    });

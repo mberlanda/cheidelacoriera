@@ -12,7 +12,7 @@ it:
       posts: Comunicazioni
     events:
       upcoming: Prossime Trasferte
-      index: Tutte le partite
+      index: Tutte le Trasferte
     session:
       edit_password: Modifica Password
       edit_profile: Modifica Profilo

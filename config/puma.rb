@@ -45,5 +45,9 @@ environment ENV.fetch('RAILS_ENV') { 'development' }
 #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
 # end
 
+# on_worker_boot do
+#   @sidekiq_pid ||= spawn("bundle exec sidekiq -e #{current_env} -C #{Rails.root.join('config', 'sidekiq.yml')}")
+# end
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart

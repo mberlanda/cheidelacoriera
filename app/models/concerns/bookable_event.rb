@@ -14,8 +14,12 @@ module BookableEvent
   end
 
   def bookable?(d = Date.today)
-    return false unless book_range?
     return false unless available_seats.positive?
+    bookable_period?(d)
+  end
+
+  def bookable_period?(d = Date.today)
+    return false unless book_range?
     bookable_from <= d && bookable_until >= d
   end
 

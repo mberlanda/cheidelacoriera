@@ -53,6 +53,9 @@
     %hr
 .row
   = crud_datatable(@model_name, *@datatable_columns)
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :upcoming_events, @event.to_s)
 
 :javascript
   $(function(){

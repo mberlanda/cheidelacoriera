@@ -30,3 +30,7 @@
   .row
     - @posts.each do |pst|
       = render partial: 'posts/post', locals: { post: pst }
+
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :posts)

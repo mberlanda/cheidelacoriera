@@ -35,6 +35,7 @@ Metrics/AbcSize:
     - app/controllers/reservations_controller.rb
     - app/inputs/array_input.rb
     - app/models/event.rb
+    - app/lib/breadcrumb_builder.rb
 
 Metrics/BlockLength:
   Enabled: true
@@ -55,6 +56,7 @@ Metrics/LineLength:
     - lib/tasks/dbdata.rake
     - spec/*_helper.rb
     - app/controllers/reservations_controller.rb
+    - app/lib/breadcrumb_builder.rb
 
 Metrics/MethodLength:
   Max: 15

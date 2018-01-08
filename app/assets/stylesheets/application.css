@@ -73,6 +73,22 @@ img.team-logo {
   padding-right: 10px;
 }
 
+.event-progress {
+  height: 5px;
+}
+
+.icon-yellow {
+  color: #f0ad4e;
+}
+
+.icon-red {
+  color: #d9534f;
+}
+
+.icon-green {
+  color: #5cb85c;
+}
+
 #gtm-iframe {
   display:none;
   visibility:hidden;
@@ -159,4 +175,9 @@ img.team-logo {
 
 .bool-false {
   color: #c9302c;
+}
+
+.breadcrumb-row .breadcrumb{
+  background-color: inherit;
+  margin-bottom: 10px;
 }

@@ -3,9 +3,16 @@
 .col-sm-6.col-xs-12.text-center.wow.fadeInLeft
   .panel.panel-default.event-panel
     .panel-body
+      .pull-right
+        - if event.bookable_period?
+          = EventIconBuilder.build("#{event.bookable? ? :available : :fully_booked}".to_sym)
+        = EventIconBuilder.build(:preferred) unless event.everyone?
       %small= event.competition
       %p= I18n.l(event.date, format: :long)
-      %hr
+      - if current_user&.can_book?(event)
+        = ProgressbarBuilder.build(event)
+      - else
+        .progress.event-progress
       .row
         .col-md-5.right.event-team
           %img.team-logo{ src: event.home_team.image_url, alt: event.home_team.name }
@@ -24,7 +31,7 @@
       - if current_user
         - if event.booked_by?(current_user.id)
           = link_to(t('events.buttons.booked'), event_slugged, class: 'btn btn-default', id: 'booked')
-        - elsif event.bookable?
+        - elsif current_user.can_book?(event)
           = link_to(t('events.buttons.book_now'), event_slugged, class: 'btn btn-primary', id: 'book-now')
         - else
           = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary')

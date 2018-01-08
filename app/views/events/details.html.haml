@@ -42,6 +42,10 @@
     .col-sm-6.features-box.wow.fadeInLeft
       = AlbumizrBuilder.build(al)
 
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :upcoming_events, @event.to_s)
+
 - if current_user
   :javascript
     $(function(){
