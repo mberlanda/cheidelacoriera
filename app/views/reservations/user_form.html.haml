@@ -11,7 +11,13 @@
     .form-inputs
       = f.input :event_id, as: :hidden
       = f.input :phone_number, input_html: { value: current_user.phone_number }
-      = f.input :fan_names, as: :array
+      %label Aggiungi partecipante
+      .form-inline
+        = f.input :fan_last_name, as: :fake, label: false, placeholder: 'Cognome', input_html: { value: current_user.last_name }
+        = f.input :fan_first_name, as: :fake, label: false, placeholder: 'Nome', input_html: { value: current_user.first_name }
+        %button.btn.btn-primary#add-guest{ type: :button } +
+      %small.text-danger#guest-error
+      = f.input :fan_names, as: :remove_array, label: 'Elenco Partecipanti', readonly: true
       = f.input :notes
       = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     .btn-group{ role: :group }
@@ -27,50 +33,74 @@
     $("#new_reservation").on("ajax:success", function(xhr, data, status){
       $("#reservation-form").html(data);
     });
-    initializeFanNames();
+    initializeAddGuest();
   }
 
-  function initializeFanNames(){
+  function initializeAddGuest(){
     var inputSelector = 'input[name="reservation[fan_names][]"]';
-    var addButton = $('.add_fan_names_button');
     var removeButton = $('.remove_fan_names_button');
     var wrapper = $('.reservation_fan_names');
 
-    var addButtonHtml = '<button type="button" class="add_fan_names_button btn btn-primary">+</button>';
+    var addButton = $('#add-guest');
     var removeButtonHtml = '<button type="button" class="remove_fan_names_button btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
 
-    var emptyInput = '<div class="form-control-inline"><input class="text optional" name="reservation[fan_names][]" type="text"></div>';
-
+    var emptyInput = '<div class="form-control-inline"><input class="text optional readonly" readonly="readonly" name="reservation[fan_names][]" type="text"></div>';
 
     var min_field_size  = 6;
     var max_fields      = #{@event.pax};
 
     var x = $(inputSelector).length; //initial text box count
 
-    function inputFromBtn(btn, inputSelector){
-      return $(btn).closest('.form-control-inline').find(inputSelector);
+    function guestErrorMsg(msg){
+      $('#guest-error').text(msg);
+    }
+
+    function existingGuests(){
+      var guests = [];
+      $('input[name="reservation[fan_names][]"]').map(function(){ guests.push($(this).val()) });
+      return guests;
+    }
+
+    function extractGuestName(){
+      var guestLastName = $('input#fan_last_name').val();
+      var guestFirstName = $('input#fan_first_name').val();
+
+      if((guestLastName + guestFirstName).length < min_field_size){
+        guestErrorMsg("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
+        return false;
+      } else {
+        return guestLastName + ' | ' + guestFirstName;
+      };
     }
 
     $(addButton).click(function(e){ //on add input button click
-        var clickedInput = inputFromBtn($(this), inputSelector);
-        if($(clickedInput).val().length < min_field_size){
-          alert("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
-          return;
-        };
-
         if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(inputSelector).last().after(removeButtonHtml);
-            $(emptyInput).appendTo(wrapper).append(addButton);
+          var guestName = extractGuestName();
+          if (guestName) {
+            var guests = existingGuests();
+            console.log($.inArray(guestName, guests));
+            if ($.inArray(guestName, guests) < 0){
+              x++; //text box increment
+              $(emptyInput).appendTo(wrapper).append(removeButtonHtml);
+              $(inputSelector).last().val(guestName);
+              guestErrorMsg('');
+              $('input#fan_last_name').val('');
+              $('input#fan_first_name').val('');
+            } else {
+              guestErrorMsg(guestName + " è già presente nell'elenco dei partecipanti");
+            }
+          }
         } else {
-          alert("Hai raggiunto il limite massimo di partecipanti iscrivibili a questa trasferta");
-          return;
+          guestErrorMsg(
+            "Hai raggiunto il limite massimo di partecipanti iscrivibili a questa trasferta (" +
+            max_fields + ")"
+           );
         }
+        return;
     });
 
     $(wrapper).on('click', '.remove_fan_names_button',function(){ //user click on remove text
         $(this).parent('.form-control-inline').remove();
         x--;
     });
-
   }

@@ -37,6 +37,11 @@ class User < ApplicationRecord
     "#{last_name} #{first_name}"
   end
 
+  def form_name
+    return unless last_name
+    "#{last_name} | #{first_name}"
+  end
+
   def admin?
     role == 'admin'
   end

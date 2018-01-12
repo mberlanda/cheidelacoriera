@@ -40,7 +40,7 @@ class ReservationsController < CrudController
 
     @reservation = Reservation.new(
       event_id: event_id,
-      fan_names: [current_user.full_name]
+      fan_names: [current_user.form_name].compact
     )
   end
 

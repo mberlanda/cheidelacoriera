@@ -25,7 +25,7 @@ AllCops:
 
 Lint/UnusedMethodArgument:
   Exclude:
-    - app/inputs/array_input.rb
+    - app/inputs/*array_input.rb
 
 Metrics/AbcSize:
   Enabled: true
