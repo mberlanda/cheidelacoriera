@@ -62,8 +62,8 @@
     }
 
     function extractGuestName(){
-      var guestLastName = $('input#fan_last_name').val();
-      var guestFirstName = $('input#fan_first_name').val();
+      var guestLastName = $.trim($('input#fan_last_name').val());
+      var guestFirstName = $.trim($('input#fan_first_name').val());
 
       if((guestLastName + guestFirstName).length < min_field_size){
         guestErrorMsg("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
@@ -78,7 +78,6 @@
           var guestName = extractGuestName();
           if (guestName) {
             var guests = existingGuests();
-            console.log($.inArray(guestName, guests));
             if ($.inArray(guestName, guests) < 0){
               x++; //text box increment
               $(emptyInput).appendTo(wrapper).append(removeButtonHtml);

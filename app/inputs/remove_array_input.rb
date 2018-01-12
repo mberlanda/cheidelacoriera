@@ -8,8 +8,8 @@ class RemoveArrayInput < SimpleForm::Inputs::StringInput
 
     existing_elements = Array(object.public_send(attribute_name))
 
-    existing_values = existing_elements.map do |_elem|
-      build_single_elem(existing_elements, remove_button)
+    existing_values = existing_elements.map do |elem|
+      build_single_elem(elem, remove_button)
     end
     # existing_values.push build_single_elem(last_elem, add_button)
     # rubocop:disable Rails/OutputSafety
