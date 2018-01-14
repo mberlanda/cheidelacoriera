@@ -10,7 +10,6 @@ class WelcomeController < ApplicationController
       posts: all_posts_path,
       photogallery: all_albums_path,
       regolamento: regolamento_path
-
     )
   end
 

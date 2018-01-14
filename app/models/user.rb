@@ -18,8 +18,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, presence: true
 
-  scope :actives, ->() { where(status: :active) }
-  scope :to_notify, ->() { where(activation_date: nil) }
+  scope :actives, -> { where(status: :active) }
+  scope :to_notify, -> { where(activation_date: nil) }
 
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }

@@ -73,6 +73,15 @@ Rails:
 Rails/Date:
   Enabled: false
 
+Rails/InverseOf:
+  Exclude:
+    - app/models/event.rb
+    - app/models/team.rb
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/reservations_controller.rb
+
 Rails/OutputSafety:
   Exclude:
     - app/helpers/datatable_helper.rb

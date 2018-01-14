@@ -17,9 +17,9 @@ class Reservation < ApplicationRecord
   after_create :assign_requested!
   before_destroy :remove_requested!
 
-  scope :pending, ->() { where(status: :pending) }
-  scope :active, ->() { where(status: :active) }
-  scope :rejected, ->() { where(status: :rejected) }
+  scope :pending, -> { where(status: :pending) }
+  scope :active, -> { where(status: :active) }
+  scope :rejected, -> { where(status: :rejected) }
   scope :for_event, ->(event_id) { where(event_id: event_id) }
   belongs_to :event, inverse_of: :reservations
 
