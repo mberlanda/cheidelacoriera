@@ -11,13 +11,15 @@
     .form-inputs
       = f.input :event_id, as: :hidden
       = f.input :phone_number, input_html: { value: current_user.phone_number }
-      %label Aggiungi partecipante
+      = f.input :fan_names, as: :remove_array, label: 'Elenco Partecipanti', readonly: true
+      %p
+        %label Aggiungi partecipante
+      %small.text-danger#guest-error
+      %small.text-success#guest-success
       .form-inline
         = f.input :fan_last_name, as: :fake, label: false, placeholder: 'Cognome', input_html: { value: current_user.last_name }
         = f.input :fan_first_name, as: :fake, label: false, placeholder: 'Nome', input_html: { value: current_user.first_name }
-        %button.btn.btn-primary#add-guest{ type: :button } +
-      %small.text-danger#guest-error
-      = f.input :fan_names, as: :remove_array, label: 'Elenco Partecipanti', readonly: true
+        %button.btn.btn-primary#add-guest{ type: :button } Aggiungi Partecipante
       = f.input :notes
       = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     .btn-group{ role: :group }
@@ -34,6 +36,17 @@
       $("#reservation-form").html(data);
     });
     initializeAddGuest();
+    updateFanNamesLabel();
+  }
+
+  function updateFanNamesLabel(){
+    var fansCount = $('input[name="reservation[fan_names][]"]').length;
+    $("label[for='reservation_fan_names']").text( "Partecipanti Aggiunti: " + fansCount)
+  }
+
+  function clearGuestInput(){
+    $('input#fan_last_name').val('');
+    $('input#fan_first_name').val('');
   }
 
   function initializeAddGuest(){
@@ -55,6 +68,10 @@
       $('#guest-error').text(msg);
     }
 
+    function guestSuccessMsg(msg){
+      $('#guest-success').text(msg);
+    }
+
     function existingGuests(){
       var guests = [];
       $('input[name="reservation[fan_names][]"]').map(function(){ guests.push($(this).val()) });
@@ -65,7 +82,15 @@
       var guestLastName = $.trim($('input#fan_last_name').val());
       var guestFirstName = $.trim($('input#fan_first_name').val());
 
-      if((guestLastName + guestFirstName).length < min_field_size){
+      if (guestLastName.length < 1) {
+        guestErrorMsg("Per favore indica il Cognome del partecipante");
+        return false;
+      }
+      else if (guestFirstName.length < 1) {
+        guestErrorMsg("Per favore indica il Nome del partecipante");
+        return false;
+      }
+      else if((guestLastName + guestFirstName).length < min_field_size){
         guestErrorMsg("Il nome di un partecipante deve essere almeno " + min_field_size + " caratteri");
         return false;
       } else {
@@ -74,6 +99,7 @@
     }
 
     $(addButton).click(function(e){ //on add input button click
+        resetGuestMsg();
         if(x < max_fields){ //max input box allowed
           var guestName = extractGuestName();
           if (guestName) {
@@ -82,11 +108,12 @@
               x++; //text box increment
               $(emptyInput).appendTo(wrapper).append(removeButtonHtml);
               $(inputSelector).last().val(guestName);
-              guestErrorMsg('');
-              $('input#fan_last_name').val('');
-              $('input#fan_first_name').val('');
+              clearGuestInput();
+              updateFanNamesLabel();
+              guestSuccessMsg(guestName + " è stato aggiunto all'elenco dei partecipanti");
             } else {
               guestErrorMsg(guestName + " è già presente nell'elenco dei partecipanti");
+              clearGuestInput();
             }
           }
         } else {
@@ -101,5 +128,11 @@
     $(wrapper).on('click', '.remove_fan_names_button',function(){ //user click on remove text
         $(this).parent('.form-control-inline').remove();
         x--;
+        updateFanNamesLabel();
     });
+
+    function resetGuestMsg(){
+      guestErrorMsg('');
+      guestSuccessMsg('');
+    }
   }
