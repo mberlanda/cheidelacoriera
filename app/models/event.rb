@@ -91,7 +91,7 @@ class Event < ApplicationRecord
   end
 
   def send_availability_alert
-    return true unless available_seats_changed?
+    return true unless saved_change_to_available_seats?
     ReservationMailer.overbooking(self).deliver_later unless available_seats.positive?
   end
 end
