@@ -22,6 +22,10 @@ class Event < ApplicationRecord
   friendly_id :custom_name, use: %i[slugged history finders]
 
   class << self
+    def sanitize(object)
+      connection.quote(object)
+    end
+
     def include_all
       includes(:competition, :home_team, :away_team, :reservations)
     end

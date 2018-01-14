@@ -57,6 +57,7 @@ Metrics/LineLength:
     - spec/*_helper.rb
     - app/controllers/reservations_controller.rb
     - app/lib/breadcrumb_builder.rb
+    - app/action_view/helpers/sanitize_helper.rb
 
 Metrics/MethodLength:
   Max: 15
