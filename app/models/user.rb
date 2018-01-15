@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def send_rejection_email
-    UserMailer.rejection_email(self).deliver_later if status_changed? && rejected?
+    UserMailer.rejection_email(self).deliver_later if saved_change_to_status? && rejected?
   end
 
   def can_book?(event)
