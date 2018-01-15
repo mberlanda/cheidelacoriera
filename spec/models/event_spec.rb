@@ -132,4 +132,58 @@ RSpec.describe Event, type: :model do
       ].join('-'))
     end
   end
+
+  context '.handle_seats_changes before save' do
+    let(:event_date) { Date.new(2017, 1, 1) }
+
+    def decrease_availability_test(subject, attribute, amount)
+      expect do
+        subject.update! attribute => amount
+      end.to change {
+        subject.available_seats
+      }.by amount * -1
+    end
+
+    subject do
+      FactoryGirl.create(
+        :event,
+        competition: competition,
+        date: event_date,
+        home_team: team1,
+        away_team: team2,
+        transport_mean: nil,
+        confirmed_seats: 0,
+        requested_seats: 0,
+        available_seats: 0,
+        total_seats: 50
+      )
+    end
+
+    it 'decrease availability if will_save_change_to_confirmed_seats?' do
+      decrease_availability_test(subject, :confirmed_seats, 7)
+    end
+
+    it 'decrease availability if will_save_change_to_requested_seats?' do
+      decrease_availability_test(subject, :requested_seats, 8)
+    end
+
+    it 'recalculate availability when total_seats changed and no reservations' do
+      amount = 15
+      subject.update! available_seats: 0
+      expect { subject.update! total_seats: amount }.to change {
+        subject.available_seats
+      }.from(0).to(amount)
+    end
+
+    it 'recalculate availability when total_seats changed and 1+ reservations' do
+      amount = 15
+      fans = ['one fan', 'another fan']
+      subject.update! available_seats: 0
+      FactoryGirl.create(:reservation, event: subject, fan_names: fans)
+
+      expect { subject.update! total_seats: amount }.to change {
+        subject.available_seats
+      }.from(fans.size * -1).to(amount - fans.size)
+    end
+  end
 end
