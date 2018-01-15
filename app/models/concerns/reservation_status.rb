@@ -27,6 +27,8 @@ module ReservationStatus
     handle_statuses
   end
 
+  # This is executed in an after_save hook
+  # https://github.com/rails/rails/pull/25337#issuecomment-225166796
   def handle_statuses
     return unless saved_change_to_status?
     handle_active if active?
