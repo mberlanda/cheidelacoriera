@@ -310,7 +310,7 @@ DEPENDENCIES
   dry_crud (~> 5.0)
   factory_girl_rails (~> 4.8.0)
   ffaker (~> 2.7.0)
-  friendly_id (~> 5.2.1)
+  friendly_id (~> 5.2.3)
   gibbon (~> 3.2)
   haml-lint (~> 0.26)
   haml-rails (~> 1.0)

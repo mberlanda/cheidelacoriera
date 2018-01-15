@@ -21,7 +21,7 @@ gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
 
 gem 'dry_crud', '~> 5.0'
-gem 'friendly_id', '~> 5.2.1'
+gem 'friendly_id', '~> 5.2.3'
 
 gem 'gibbon', '~> 3.2' # MailChimp API
 # Use Capistrano for deployment
