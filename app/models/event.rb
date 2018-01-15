@@ -84,14 +84,14 @@ class Event < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || home_team_id_changed? ||
-      away_team_id_changed? || competition_id_changed? || date_changed? ||
-      transport_mean_changed?
+    slug.blank? || will_save_change_to_home_team_id? ||
+      will_save_change_to_away_team_id? || will_save_change_to_competition_id? ||
+      will_save_change_to_date? || will_save_change_to_transport_mean?
   end
 
   def check_availability
     handle_seats_changes
-    recalculate_seats! if total_seats_changed?
+    recalculate_seats! if will_save_change_to_total_seats?
   end
 
   def send_availability_alert

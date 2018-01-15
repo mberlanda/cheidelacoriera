@@ -13,6 +13,6 @@ class Competition < ApplicationRecord
   private
 
   def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
+    slug.blank? || will_save_change_to_name?
   end
 end
