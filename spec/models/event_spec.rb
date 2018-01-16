@@ -7,6 +7,12 @@ RSpec.describe Event, type: :model do
   let!(:team1) { FactoryGirl.create :team }
   let!(:team2) { FactoryGirl.create :team }
 
+  it '#transport_mean_class method' do
+    expect(Event.transport_mean_class('bus')).to eq('fa fa-bus')
+    expect(Event.transport_mean_class('aereo')).to eq('fa fa-plane')
+    expect(Event.transport_mean_class('invalid')).to eq(nil)
+  end
+
   context 'default event' do
     subject do
       FactoryGirl.build(
@@ -184,6 +190,35 @@ RSpec.describe Event, type: :model do
       expect { subject.update! total_seats: amount }.to change {
         subject.available_seats
       }.from(fans.size * -1).to(amount - fans.size)
+    end
+  end
+
+  context 'clean up params before validation' do
+    subject do
+      FactoryGirl.build(
+        :event,
+        competition: competition,
+        home_team: team1,
+        away_team: team2
+      )
+    end
+
+    it 'should strip valid transport mean (bus|aereo)' do
+      subject.update(transport_mean: '  bus  ')
+      subject.save!
+
+      expect(subject.transport_mean).to eq('bus')
+    end
+
+    it 'should nullify invalid transport means' do
+      subject.update(transport_mean: '  invalid  ')
+      subject.save!
+
+      expect(subject.transport_mean).to eq(nil)
+    end
+
+    it 'should assign the custom_name as slug_name' do
+      expect(subject.slug).to eq(subject.custom_name)
     end
   end
 end

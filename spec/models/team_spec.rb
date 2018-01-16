@@ -15,6 +15,23 @@ RSpec.describe Team, type: :model do
     it { should respond_to(:description) }
   end
 
+  context 'events relationship' do
+    let!(:home_event) { FactoryGirl.create(:event, home_team: team) }
+    let!(:away_event) { FactoryGirl.create(:event, away_team: team) }
+
+    it 'home_events' do
+      expect(team.home_events).to eq([home_event])
+    end
+
+    it 'away_events' do
+      expect(team.away_events).to eq([away_event])
+    end
+
+    it 'all events' do
+      expect(team.events).to match_array([away_event, home_event])
+    end
+  end
+
   describe 'validates' do
     it 'name presence' do
       invalid_team = FactoryGirl.build(:team, name: nil)
