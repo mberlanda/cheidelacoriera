@@ -28,15 +28,17 @@ module BookableEvent
     reservations.where(user_id: user_id).present?
   end
 
+  # This is executed in a before_save hook
+  # https://github.com/rails/rails/pull/25337#issuecomment-225166796
   %i[confirmed_seats requested_seats rejected_seats].each do |seats|
     define_method("#{seats}_delta") do
-      send(seats) - send("#{seats}_was")
+      send(seats) - send("#{seats}_in_database")
     end
   end
 
   def handle_seats_changes
-    decrease_availability!(confirmed_seats_delta) if confirmed_seats_changed?
-    decrease_availability!(requested_seats_delta) if requested_seats_changed?
+    decrease_availability!(confirmed_seats_delta) if will_save_change_to_confirmed_seats?
+    decrease_availability!(requested_seats_delta) if will_save_change_to_requested_seats?
     # increase_availability!(rejected_seats_delta) if rejected_seats_changed?
   end
 

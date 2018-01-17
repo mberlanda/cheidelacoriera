@@ -9,7 +9,8 @@
 
     = render partial: 'layouts/javascripts'
 
-    = favicon_link_tag
+    %link{ href: asset_path('favicon.ico'), rel: 'shortcut icon', type: 'image/x-icon' }/
+
     / = favicon_link_tag '/apple-touch-icon.png',
     /                    rel: 'apple-touch-icon',
     /                    type: 'image/png'

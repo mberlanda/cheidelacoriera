@@ -18,8 +18,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, presence: true
 
-  scope :actives, ->() { where(status: :active) }
-  scope :to_notify, ->() { where(activation_date: nil) }
+  scope :actives, -> { where(status: :active) }
+  scope :to_notify, -> { where(activation_date: nil) }
 
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def send_rejection_email
-    UserMailer.rejection_email(self).deliver_later if status_changed? && rejected?
+    UserMailer.rejection_email(self).deliver_later if saved_change_to_status? && rejected?
   end
 
   def can_book?(event)

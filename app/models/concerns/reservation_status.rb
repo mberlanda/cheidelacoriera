@@ -8,7 +8,7 @@ module ReservationStatus
   STATUSES.each do |s|
     define_method("#{s}?") { status == s }
     define_method("#{s}!") { update(status: s) }
-    define_method("was_#{s}?") { status_was == s }
+    define_method("was_#{s}?") { status_before_last_save == s }
   end
 
   module ClassMethods
@@ -27,25 +27,27 @@ module ReservationStatus
     handle_statuses
   end
 
+  # This is executed in an after_save hook
+  # https://github.com/rails/rails/pull/25337#issuecomment-225166796
   def handle_statuses
-    return unless status_changed?
+    return unless saved_change_to_status?
     handle_active if active?
     handle_pending if pending?
     handle_rejected if rejected?
   end
 
   def handle_total_seats
-    return unless total_seats_changed?
-    seats_diff = total_seats_was - total_seats
+    return unless saved_change_to_total_seats?
+    seats_diff = total_seats_before_last_save - total_seats
     decrement_confirmed(seats_diff) if was_active?
     decrement_requested(seats_diff) if was_pending?
     decrement_rejected(seats_diff) if was_rejected?
   end
 
   def handle_destroy
-    decrement_confirmed(total_seats_was) if was_active?
-    decrement_requested(total_seats_was) if was_pending?
-    decrement_rejected(total_seats_was) if was_rejected?
+    decrement_confirmed(total_seats_before_last_save) if was_active?
+    decrement_requested(total_seats_before_last_save) if was_pending?
+    decrement_rejected(total_seats_before_last_save) if was_rejected?
   end
 
   private

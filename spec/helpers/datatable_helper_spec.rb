@@ -34,7 +34,6 @@ describe DatatableHelper do
         ' id="crud-table">'\
         '<thead></thead>'\
         '</table></div>'
-
       )
     end
   end

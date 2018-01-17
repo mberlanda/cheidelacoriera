@@ -57,6 +57,7 @@ Metrics/LineLength:
     - spec/*_helper.rb
     - app/controllers/reservations_controller.rb
     - app/lib/breadcrumb_builder.rb
+    - app/action_view/helpers/sanitize_helper.rb
 
 Metrics/MethodLength:
   Max: 15
@@ -72,6 +73,15 @@ Rails:
 
 Rails/Date:
   Enabled: false
+
+Rails/InverseOf:
+  Exclude:
+    - app/models/event.rb
+    - app/models/team.rb
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/reservations_controller.rb
 
 Rails/OutputSafety:
   Exclude:

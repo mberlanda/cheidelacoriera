@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-  belongs_to :home_team, class_name: Team
-  belongs_to :away_team, class_name: Team
+  belongs_to :home_team, class_name: 'Team'
+  belongs_to :away_team, class_name: 'Team'
   belongs_to :competition, inverse_of: :events
 
-  scope :upcoming, ->() { where('date >= ?', Date.today) }
+  scope :upcoming, -> { where('date >= ?', Date.today) }
 
   has_many :reservations, inverse_of: :event, dependent: :destroy
   has_many :albums, inverse_of: :event, dependent: :nullify
@@ -22,6 +22,10 @@ class Event < ApplicationRecord
   friendly_id :custom_name, use: %i[slugged history finders]
 
   class << self
+    def sanitize(object)
+      connection.quote(object)
+    end
+
     def include_all
       includes(:competition, :home_team, :away_team, :reservations)
     end
@@ -80,18 +84,18 @@ class Event < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || home_team_id_changed? ||
-      away_team_id_changed? || competition_id_changed? || date_changed? ||
-      transport_mean_changed?
+    slug.blank? || will_save_change_to_home_team_id? ||
+      will_save_change_to_away_team_id? || will_save_change_to_competition_id? ||
+      will_save_change_to_date? || will_save_change_to_transport_mean?
   end
 
   def check_availability
     handle_seats_changes
-    recalculate_seats! if total_seats_changed?
+    recalculate_seats! if will_save_change_to_total_seats?
   end
 
   def send_availability_alert
-    return true unless available_seats_changed?
+    return true unless saved_change_to_available_seats?
     ReservationMailer.overbooking(self).deliver_later unless available_seats.positive?
   end
 end

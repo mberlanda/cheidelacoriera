@@ -2,11 +2,11 @@ sudo: false
 language: ruby
 rvm:
   - 2.4.0
-before_install: gem install bundler -v 1.14.6
+before_install: gem install bundler -v 1.15.2
 script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec
 addons:
-  postgresql: '9.5'
+  postgresql: '9.6'
 before_script:
   - psql -c 'create database cheidelacoriera_test;' -U postgres

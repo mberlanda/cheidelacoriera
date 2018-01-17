@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.2' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.1' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'haml-rails', '~> 0.9'
+gem 'haml-rails', '~> 1.0'
 
 gem 'draper', '~> 3.0'
 gem 'devise', '~> 4.3'  # Authentication
@@ -21,7 +21,7 @@ gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
 
 gem 'dry_crud', '~> 5.0'
-gem 'friendly_id', '~> 5.2.1'
+gem 'friendly_id', '~> 5.2.3'
 
 gem 'gibbon', '~> 3.2' # MailChimp API
 # Use Capistrano for deployment
