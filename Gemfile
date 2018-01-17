@@ -46,6 +46,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.8.0'
   gem 'ffaker', '~> 2.7.0'
+  gem 'simplecov', '~>0.15.1', require: false
 end
 
 group :development do
