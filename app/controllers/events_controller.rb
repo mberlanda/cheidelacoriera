@@ -32,4 +32,11 @@ class EventsController < PublicController
       status total_seats user_id fan_names phone_number notes
     ]
   end
+
+  def csv_reservations
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      format.csv { send_data @event.csv_reservations, filename: "#{@event.slug}.csv" }
+    end
+  end
 end

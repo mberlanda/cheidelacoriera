@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < PublicController
-  FULL_POSTS_COUNT = 2
+  FULL_POSTS_COUNT = 5
 
   def all
     @title = I18n.t('posts.all.title')

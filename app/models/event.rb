@@ -12,6 +12,7 @@ class Event < ApplicationRecord
 
   extend FriendlyId
   include BookableEvent
+  include ReservationCsv
 
   before_validation :cleanup_params
   before_save :check_availability

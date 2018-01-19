@@ -36,7 +36,7 @@
         - else
           = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary')
         - if event.book_range? && current_user.admin?
-          = link_to(t('events.buttons.fans_list'), reservations_event_path(event.slug), class: 'btn btn-default')
+          = link_to(t('events.buttons.fans_list'), seo_url(reservations_event_path(event.slug)), class: 'btn btn-default')
       - else
         = link_to(t('events.buttons.show'), event_slugged, class: 'btn btn-primary gtm-home-action', data: { action: :inactive_event })
 

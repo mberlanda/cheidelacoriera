@@ -50,6 +50,7 @@
 .row
   .alert{ align: 'center' }
     = action_link(ti('link.add'), 'plus', new_reservation_path)
+    = link_to('CSV', csv_reservations_event_path(@event.id), class: 'btn btn-success')
     %hr
 .row
   = crud_datatable(@model_name, *@datatable_columns)

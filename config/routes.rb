@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     member do
       get :details
       get :reservations
+      get :csv_reservations, defaults: { format: :csv }
     end
   end
   resources :reservations do
