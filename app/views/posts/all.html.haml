@@ -24,12 +24,15 @@
       }
     }
 
-- @title = t('posts.all.title')
 .crud-container
   %hr
   .row
     - @posts.each do |pst|
       = render partial: 'posts/post', locals: { post: pst }
+
+.row.breadcrumb-row
+  %hr
+  = link_to(t('posts.archivio.button'), seo_url(archivio_posts_path), class: 'btn btn-default')
 
 .row.breadcrumb-row
   %hr

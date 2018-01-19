@@ -2,3 +2,6 @@ en:
   posts:
     all:
       title: News from our Community
+    archivio:
+      button: Archive
+      title: News Archive

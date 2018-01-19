@@ -1,0 +1,14 @@
+.crud-container
+  %hr
+  .row
+    .table-responsive
+      %table.table.table-striped.table-hover.datatable-table
+        %tbody
+          - @posts.each do |pst|
+            %tr{ role: :row }
+              %td= pst.date || pst.date.created_at.to_date
+              %td= link_to(pst.title, seo_url(detail_post_url(pst.slug)))
+
+.row.breadcrumb-row
+  %hr
+  = BreadcrumbBuilder.build(:home, :posts, t('posts.archivio.button'))

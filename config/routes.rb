@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   get :regolamento, to: 'welcome#regolamento', as: :regolamento
   get 'news-atalantine', to: 'news#index', as: :news_index
   get 'comunicazioni', to: 'posts#all', as: :all_posts
+  get 'comunicazioni/archivio', to: 'posts#archivio', as: :archivio_posts
   get 'comunicazioni/:slug', to: 'posts#detail', as: :detail_post
   get 'prossime-trasferte', to: 'events#upcoming', as: :upcoming_events
   get 'tutte-le-trasferte', to: 'events#all', as: :all_events

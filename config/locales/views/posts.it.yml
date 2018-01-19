@@ -2,3 +2,6 @@ it:
   posts:
     all:
       title: Comunicazioni ai corieristi
+    archivio:
+      button: Archivio
+      title: Archivio Comunicazioni ai corieristi
