@@ -5,18 +5,27 @@ require 'csv'
 module ReservationCsv
   extend ActiveSupport::Concern
 
+  CSV_HEADERS = %w[email telefono cognome nome status ultimo_aggiornamento].freeze
   def csv_reservations
     lines = reservations
     CSV.generate do |csv|
-      csv << %w[email telefono cognome nome]
+      csv << CSV_HEADERS
       lines.each do |l|
-        email = l.user
-        phone_number = l.phone_number
-        l.fan_names.each do |n|
-          last_name, first_name = n.split('|').map(&:strip)
-          csv << [email, phone_number, last_name, first_name]
-        end
+        process_csv_line(csv, l)
       end
+    end
+  end
+
+  private
+
+  def process_csv_line(csv, l)
+    email = l.user
+    phone_number = l.phone_number
+    status = l.status
+    last_update = l.updated_at
+    l.fan_names.each do |n|
+      last_name, first_name = n.split('|').map(&:strip)
+      csv << [email, phone_number, last_name, first_name, status, last_update]
     end
   end
 end
