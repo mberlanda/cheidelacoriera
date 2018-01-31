@@ -1,0 +1,8 @@
+{
+  "name": "cheidelacoriera",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:mberlanda/cheidelacoriera.git",
+  "author": "Mauro Berlanda <mauro.berlanda@gmail.com>",
+  "license": "MIT"
+}
