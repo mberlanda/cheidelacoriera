@@ -54,3 +54,14 @@ yarn add jquery-ujs
 yarn add bootstrap@3
 yarn add waypoints
 ```
+
+### Deploy to Heroku
+
+Add a new buildpack:
+
+```
+heroku buildpacks:set heroku/ruby
+heroku buildpacks:add --index 1 heroku/nodejs
+```
+
+[SO-43170792](https://stackoverflow.com/a/43170792)
