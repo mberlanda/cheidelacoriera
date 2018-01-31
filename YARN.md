@@ -45,3 +45,12 @@ question private:
 success Saved package.json
 Done in 27.43s.
 ```
+
+### Add packages and dependencies
+
+```
+yarn add jquery
+yarn add jquery-ujs
+yarn add bootstrap@3
+yarn add waypoints
+```

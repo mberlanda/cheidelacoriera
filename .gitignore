@@ -19,3 +19,5 @@
 .elasticbeanstalk/
 
 coverage/
+node_modules/
+*.log
