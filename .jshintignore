@@ -10,6 +10,9 @@ Gemfile
 Procfile
 Rakefile
 
+# Rails generated files
+app/assets/javascripts/cable.js
+
 # Directories
 coverage/
 node_modules/
