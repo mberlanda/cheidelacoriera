@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.log
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -19,3 +20,5 @@
 .elasticbeanstalk/
 
 coverage/
+node_modules/
+public/assets/

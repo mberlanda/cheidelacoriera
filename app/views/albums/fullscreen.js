@@ -2,7 +2,7 @@ var fullScreenBtns = document.getElementsByClassName('fullscreen-btn');
 
 $().ready(function(){
   initializeFullScreen();
-  for (i = 0; i < fullScreenBtns.length; i++) {
+  for (var i = 0; i < fullScreenBtns.length; i++) {
     var btn = fullScreenBtns[i];
     prepareButton(btn);
   }
@@ -20,12 +20,12 @@ function initializeFullScreen(){
          document.webkitIsFullScreen ||
          document.mozFullScreen ||
          document.msFullscreenElement) {
-      // console.log('enter fullscreen');
+      return;
     }
     else {
       // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
       var activeIframes = document.querySelectorAll('[full-screen-enabled="true"]');
-      for (i = 0; i < activeIframes.length; i++) {
+      for (var i = 0; i < activeIframes.length; i++) {
         var iframe = activeIframes[i];
         iframe.setAttribute('full-screen-enabled', 'false');
         iframe.src = iframe.src;

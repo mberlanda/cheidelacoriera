@@ -3,11 +3,18 @@
 %html{ lang: 'it' }
   %head
     = render partial: 'layouts/metadata'
-    = render partial: 'layouts/stylesheets'
+
+    %link{ href: 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Roboto:300,400,500', rel: 'stylesheet' }/
+    = stylesheet_link_tag 'node_modules.css'
+
     / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     / = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
-    = render partial: 'layouts/javascripts'
+    / [if lt IE 9]
+      = javascript_include_tag 'https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js'
+      = javascript_include_tag 'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'
+
+    = javascript_include_tag 'node_modules.js'
 
     %link{ href: asset_path('favicon.ico'), rel: 'shortcut icon', type: 'image/x-icon' }/
 

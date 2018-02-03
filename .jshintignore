@@ -1,0 +1,19 @@
+## Non JS files
+# File Extension
+*.lock
+*.log
+*.md
+
+# Files
+config.ru
+Gemfile
+Procfile
+Rakefile
+
+# Rails generated files
+app/assets/javascripts/cable.js
+
+# Directories
+coverage/
+node_modules/
+vendor/
