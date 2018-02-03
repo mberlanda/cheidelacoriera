@@ -65,3 +65,16 @@ heroku buildpacks:add --index 1 heroku/nodejs
 ```
 
 [SO-43170792](https://stackoverflow.com/a/43170792)
+
+### Code Linting
+
+It could be a good idea to add later jshint.
+For now I will just add the config files and use it as a global package:
+
+- `.jshintignore` : files to ignore
+- `.jshintrc` : general configuration
+
+```
+sudo npm install -g jshint
+jshint *
+```

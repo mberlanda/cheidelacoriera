@@ -1,0 +1,16 @@
+## Non JS files
+# File Extension
+*.lock
+*.log
+*.md
+
+# Files
+config.ru
+Gemfile
+Procfile
+Rakefile
+
+# Directories
+coverage/
+node_modules/
+vendor/
