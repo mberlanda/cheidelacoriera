@@ -1,0 +1,11 @@
+$bs-font-path: 'bootstrap/fonts';
+@import 'bootstrap/dist/css/bootstrap.min';
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: asset-url('#{$bs-font-path}/glyphicons-halflings-regular.eot');
+  src: asset-url('#{$bs-font-path}/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  asset-url('#{$bs-font-path}/glyphicons-halflings-regular.woff2') format('woff2'),
+  asset-url('#{$bs-font-path}/glyphicons-halflings-regular.woff') format('woff'),
+  asset-url('#{$bs-font-path}/glyphicons-halflings-regular.ttf') format('truetype'),
+  asset-url('#{$bs-font-path}/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+};
