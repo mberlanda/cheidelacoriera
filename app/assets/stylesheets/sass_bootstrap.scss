@@ -1,5 +1,5 @@
-$bs-font-path: 'bootstrap/fonts';
-@import 'bootstrap/dist/css/bootstrap.min';
+$bs-font-path: 'fonts';
+@import 'dist/css/bootstrap.min';
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: asset-url('#{$bs-font-path}/glyphicons-halflings-regular.eot');

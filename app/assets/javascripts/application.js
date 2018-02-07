@@ -10,19 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery/dist/jquery
-//= require jquery-ujs/src/rails
-//= require bootstrap/dist/js/bootstrap
-//= require jquery-backstretch
-//= require waypoints/lib/jquery.waypoints
-//= require jquery-timepicker/jquery.timepicker
-//= require bootstrap-datepicker/js/bootstrap-datepicker
-//= require bootstrap-datepicker/dist/locales/bootstrap-datepicker.it.min
-//= require bootstrap-datepicker/dist/locales/bootstrap-datepicker.it.min
-//= require multiselect/js/jquery.multi-select
-//= require wowjs/dist/wow
-//= require retinajs/dist/retina
-//= require intro.js/intro
+//= require jquery
+//= require rails
+//= require dist/js/bootstrap
+//= require jquery.backstretch
+//= require jquery.waypoints
+//= require jquery.timepicker
+//= require js/bootstrap-datepicker
+//= require dist/locales/bootstrap-datepicker.it.min
+//= require js/jquery.multi-select
+//= require wow
+//= require retina
+//= require intro
 //= require datatables.min
 //= require crud_datatables
 //= require cookies_eu
