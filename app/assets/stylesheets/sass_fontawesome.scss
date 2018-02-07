@@ -1,5 +1,5 @@
-$fa-font-path: "font-awesome/fonts";
-@import 'font-awesome/scss/font-awesome';
+$fa-font-path: "fonts";
+@import 'scss/font-awesome';
 @font-face {
   font-family: 'FontAwesome';
   src: asset-url('#{$fa-font-path}/fontawesome-webfont.eot');
