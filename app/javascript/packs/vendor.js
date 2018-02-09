@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'jquery-backstretch/jquery.backstretch.min.js';
 import 'waypoints/lib/jquery.waypoints.js';
 import 'jquery-timepicker/jquery.timepicker.js';
-import 'bootstrap-datepicker/js/bootstrap-datepicker.min.js';
+import 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.it.min.js';
 import 'multiselect/js/jquery.multi-select.js';
 import 'wowjs/dist/wow.min.js';
