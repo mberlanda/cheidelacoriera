@@ -35,7 +35,7 @@ class RemoveArrayInput < SimpleForm::Inputs::StringInput
       nil,
       input_html_options.merge(
         value: value, name: "#{object_name}[#{attribute_name}][]",
-        id: nil
+        id: nil, placeholder: value
       )
     )
   end
