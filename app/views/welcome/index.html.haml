@@ -18,9 +18,8 @@
     .col-sm-12.text.wow.fadeInLeft
       %img.img-responsive.img-content{ src: asset_path('logo.png'), alt: 'trasferte atalanta' }/
       .description
-        / %p.medium-paragraph.content-paragraph
 
 #welcome-actions
 
 - provide :page_javascript do
-  = javascript_pack_tag 'welcome/actions.js'
+  = javascript_pack_tag 'api/welcome_actions.js'

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import Action from './_action'
 
-class Actions extends Component {
+class WelcomeActions extends Component {
   constructor(){
     super();
     this.state = {
@@ -23,7 +23,7 @@ class Actions extends Component {
   _fetchActions = () => {
     jQuery.ajax({
       method: 'GET',
-      url: '/welcome/menu_actions',
+      url: '/api/actions/available',
       format: 'json',
       success: (actions) => {
         this.setState({ actions });
@@ -33,5 +33,5 @@ class Actions extends Component {
 }
 
 ReactDOM.render(
-  <Actions />, document.getElementById('welcome-actions')
+  <WelcomeActions />, document.getElementById('welcome-actions')
 )
