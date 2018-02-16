@@ -2,7 +2,11 @@
 
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
-  def index
+  def index; end
+
+  def regolamento; end
+
+  def menu_actions
     default = current_user ? {} : { login: new_user_session_path }
     @actions = default.merge(
       upcoming_events: upcoming_events_path,
@@ -12,6 +16,4 @@ class WelcomeController < ApplicationController
       regolamento: regolamento_path
     )
   end
-
-  def regolamento; end
 end

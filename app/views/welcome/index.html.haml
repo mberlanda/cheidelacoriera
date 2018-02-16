@@ -20,7 +20,7 @@
       .description
         / %p.medium-paragraph.content-paragraph
 
-- @actions.each_slice(2) do |chunk|
-  .row
-    - chunk.each do |a, l|
-      = render partial: 'welcome/action', locals: { action: a, link: l }
+#welcome-actions
+
+- provide :page_javascript do
+  = javascript_pack_tag 'welcome/actions.js'

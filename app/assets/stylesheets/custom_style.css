@@ -181,3 +181,21 @@ img.team-logo {
   background-color: inherit;
   margin-bottom: 10px;
 }
+
+.features-box {
+  min-height: 250px;
+}
+
+.features-box-body {
+  min-height: 60px;
+}
+
+.features-box-button {
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .features-box-button {
+    text-align: center;
+  }
+}

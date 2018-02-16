@@ -5,6 +5,7 @@ AllCops:
     - config/boot.rb
     - config/**/*
     - db/schema.rb
+    - node_modules/**/*
     - script/**/*
     - tmp/**/*
     - vendor/**/*

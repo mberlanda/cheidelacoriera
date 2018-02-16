@@ -69,5 +69,9 @@ Rails.application.routes.draw do
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 
+  resources :welcome, only: [] do
+    collection { get :menu_actions, defaults: { format: :json } }
+  end
+
   # get '*unmatched_route', to: 'application#raise_not_found'
 end
