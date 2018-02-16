@@ -42,7 +42,20 @@ wercker.yml
 .travis.yml
 
 # misc
-*.md
+# *.md
+# *.jst
+# *.def
 
-#specific files
-jquery/src
+# specific files
+# jquery/src
+
+# Uglifier::Error: Unexpected token: punc ({)}
+# ajv/dot
+# .jst files
+# fbjs/flow
+# Uglifier::Error: return outside of function
+# mkdirp/bin/cmd.js
+# node-gyp/bin/node-gyp.js
+# strip-indent/cli.js
+# webpack/bin/webpack.js
+# webpack-dev-server/bin/webpack-dev-server.js

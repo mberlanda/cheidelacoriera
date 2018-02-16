@@ -10,5 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
+
+//= require datatables.min
+//= require crud_datatables
 //= require cookies_eu
+//= require topnav
+//= require nicEdit

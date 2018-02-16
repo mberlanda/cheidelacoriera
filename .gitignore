@@ -22,3 +22,9 @@
 coverage/
 node_modules/
 public/assets/
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity

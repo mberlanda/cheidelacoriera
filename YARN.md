@@ -78,3 +78,5 @@ For now I will just add the config files and use it as a global package:
 sudo npm install -g jshint
 jshint *
 ```
+
+bundle exec rake assets:precompile RAILS_ENV=production RAILS_SERVE_STATIC_FILES=enable SECRET_KEY_BASE=$(bundle exec rake secret) NODE_ENV=production
