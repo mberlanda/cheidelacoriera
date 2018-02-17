@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import EventIcon from './event/icon'
 import EventAvailabilityProgressbar from './event/availability_progressbar'
+import EventTeams from './event/teams'
 
 class EventBox extends Component {
     render(){
         const game = this.props.game;
         let divStyle = {
-            visibility: 'hidden',
+            // visibility: 'hidden',
             animationName: 'none'
         }
         return(
@@ -17,6 +18,14 @@ class EventBox extends Component {
                         <small>{game.competition}</small>
                         <p>{game.date}</p>
                         <EventAvailabilityProgressbar game={game} />
+                        <EventTeams game={game} />
+                    </div>
+                    <div className="panel-footer event-footer">
+                        {game.buttons.map(button =>
+                            <a key={button.url} href={button.url} className={button.className}>
+                                {button.text}
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>

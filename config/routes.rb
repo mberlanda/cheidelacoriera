@@ -74,6 +74,9 @@ Rails.application.routes.draw do
       resources :actions, only: [] do
         collection { get :available }
       end
+      resources :events, only: [:index] do
+        collection { get :upcoming }
+      end
     end
   end
 end

@@ -8,8 +8,11 @@ class  Icon extends Component {
                 aria-hidden="true"
                 data-toggle="tooltip"
                 title={this.props.message}
-            />
-
+            >
+                <span className="sr-only">
+                    {this.props.message}
+                </span>
+            </i>
         )
     }
 }

@@ -2,6 +2,7 @@
 
 class Api::V1::ActionsController < ApplicationController
   skip_before_action :authenticate_user!
+  layout false
 
   def available
     default = current_user ? {} : { login: new_user_session_path }

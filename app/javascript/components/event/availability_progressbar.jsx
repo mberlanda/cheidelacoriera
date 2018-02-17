@@ -1,35 +1,48 @@
 import React, { Component } from 'react'
 
 class EventAvailabilityProgressbar extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        let availability = this.props.game.availability;
+        this.state = {
+            availability: availability,
+            occupancy: 100 - availability
+        }
     }
 
     render(){
-        const availability = this.props.game.availability;
-        const occupancy = 100 - availability;
-        let divStyle = {
-            width: occupancy + '%'
-        }
+        const game = this.props.game;
         return (
             <div className="progress event-progress">
-                <div
-                    className={this._getBarClass(occupancy)}
-                    role="progressbar"
-                    aria-valuenow="0"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style={divStyle}
-                >
-                    <span className="sr-only">
-                        {occupancy + '%'}
-                    </span>
-                </div>
+                {this._getVisibleBar(game)}
             </div>
         )
     }
 
-    _getBarClass = (occ) => {
+    _getVisibleBar = (game) => {
+        if (game.currentUser.canBook) {
+            let divStyle = {
+                width: this.state.occupancy + '%'
+            }
+        return(
+          <div
+            className={this._getBarClass()}
+            role="progressbar"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={divStyle}
+        >
+            <span className="sr-only">
+                {this.state.occupancy + '%'}
+            </span>
+          </div>
+        )
+      }
+    }
+
+    _getBarClass = () => {
+        const occ = this.state.occupancy
         if (occ <= 25) {
             return 'progress-bar progress-bar-success'
         }
