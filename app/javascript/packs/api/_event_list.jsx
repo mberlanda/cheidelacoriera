@@ -14,7 +14,6 @@ class EventList extends Component {
   }
 
   render(){
-    console.log(this.state);
     return(
       this.state.games.map((evt) =>
         <EventBox key={evt.id} game={evt} />
