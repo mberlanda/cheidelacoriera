@@ -6,6 +6,7 @@ import EventTeams from './event/teams'
 class EventBox extends Component {
     render(){
         const game = this.props.game;
+        const buttons = game ? game.buttons : []
         let divStyle = {
             // visibility: 'hidden',
             animationName: 'none'
@@ -21,7 +22,7 @@ class EventBox extends Component {
                         <EventTeams game={game} />
                     </div>
                     <div className="panel-footer event-footer">
-                        {game.buttons.map(button =>
+                        {buttons.map(button =>
                             <a key={button.url} href={button.url} className={button.className}>
                                 {button.text}
                             </a>
