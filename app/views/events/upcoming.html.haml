@@ -2,21 +2,17 @@
 
 .crud-container
   %hr
-  #event-list
   .row
-    - @events.each do |evt|
-      = render partial: 'events/event', locals: { event: evt }
-  %hr
+    #event-list
+
   .row.text-center
+  %hr
     %p
       = link_to(t('events.upcoming.history'), seo_url(all_events_path), class: 'btn btn-default gtm-home-action', data: { action: :events_history })
-.row.breadcrumb-row
-  %hr
-  = BreadcrumbBuilder.build(:home, :upcoming_events)
+
+  .row.breadcrumb-row
+    %hr
+    = BreadcrumbBuilder.build(:home, :upcoming_events)
 
 - provide :page_javascript do
   = javascript_pack_tag 'api/upcoming_events'
-  :javascript
-    $(function(){
-        $('[data-toggle="tooltip"]').tooltip('show');
-    });

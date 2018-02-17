@@ -7,13 +7,9 @@ class EventsController < PublicController
   before_action :admin_user?, only: :reservations
   # before_action :active_user?, only: :details
 
-  def upcoming
-    @events = Event.include_all.order(:date).upcoming
-  end
+  def upcoming; end
 
-  def all
-    @events = Event.include_all.order(date: :desc).all
-  end
+  def all; end
 
   def details
     @event = Event.include_all.friendly.find(params.require(:id))
