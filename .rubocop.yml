@@ -5,6 +5,7 @@ AllCops:
     - config/boot.rb
     - config/**/*
     - db/schema.rb
+    - node_modules/**/*
     - script/**/*
     - tmp/**/*
     - vendor/**/*
@@ -40,6 +41,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Enabled: true
   Exclude:
+    - app/views/api/v1/events/list.json.jbuilder
     - lib/tasks/*.rake
     - spec/**/*_spec.rb
 

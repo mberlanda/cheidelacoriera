@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-class WelcomeController < ApplicationController
+class Api::V1::ActionsController < ApplicationController
   skip_before_action :authenticate_user!
-  def index; end
+  layout false
 
-  def regolamento; end
-
-  def menu_actions
+  def available
     default = current_user ? {} : { login: new_user_session_path }
     @actions = default.merge(
       upcoming_events: upcoming_events_path,

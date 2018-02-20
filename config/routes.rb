@@ -69,5 +69,14 @@ Rails.application.routes.draw do
 
   get 'sitemap.xml', to: 'sitemap#index', format: :xml, as: :sitemap
 
-  # get '*unmatched_route', to: 'application#raise_not_found'
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1 do
+      resources :actions, only: [] do
+        collection { get :available }
+      end
+      resources :events, only: [:index] do
+        collection { get :upcoming }
+      end
+    end
+  end
 end

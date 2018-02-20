@@ -7,11 +7,7 @@
 .crud-container
   %hr
   .row
-    - @events.each do |evt|
-      = render partial: 'events/event', locals: { event: evt }
+    #event-list
 
 - provide :page_javascript do
-  :javascript
-    $(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+  = javascript_pack_tag 'api/all_events'
