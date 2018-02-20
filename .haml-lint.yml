@@ -4,7 +4,7 @@ linters:
   InstanceVariables:
     enabled: false
   LineLength:
-    max: 200
+    max: 313
   RuboCop:
     enabled: true
     ignored_cops:
