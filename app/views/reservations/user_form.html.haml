@@ -11,6 +11,7 @@
     .form-inputs
       = f.input :event_id, as: :hidden
       = f.input :phone_number, input_html: { value: current_user.phone_number }
+      = f.input :total_seats, collection: (1..@event.pax), include_blank: false
       = f.input :fan_names, as: :remove_array, label: 'Elenco Partecipanti', readonly: true
       %p
         %label Aggiungi partecipante
