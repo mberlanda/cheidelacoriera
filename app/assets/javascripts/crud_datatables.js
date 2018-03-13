@@ -1,4 +1,4 @@
-initializeCrudTable = (url,tableId, buttonsIdOrClass) => {
+function initializeCrudTable(url,tableId, buttonsIdOrClass) {
   var crudTable = $(tableId).DataTable({
     'buttons': ['copy', 'excel', 'pdf'],
     'processing': true,
