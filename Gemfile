@@ -16,6 +16,8 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'haml-rails', '~> 1.0'
 gem 'webpacker', '~> 3.0'
 
+gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
+
 gem 'draper', '~> 3.0'
 gem 'devise', '~> 4.3'  # Authentication
 gem 'simple_form', '~> 3.4' # Form helper
