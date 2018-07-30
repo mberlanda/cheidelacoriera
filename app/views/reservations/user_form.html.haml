@@ -25,6 +25,12 @@
     .btn-group{ role: :group }
       = f.button :submit, t('events.buttons.book'), class: 'btn-primary'
 
+.row
+  %br
+.row#react-reservation-form
+
+= javascript_pack_tag 'api/reservation_form.js'
+
 :javascript
   $(function(){
     initializeForm();
