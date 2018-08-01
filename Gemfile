@@ -15,6 +15,7 @@ gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readm
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'haml-rails', '~> 1.0'
 gem 'webpacker', '~> 3.5'
+gem 'react-rails', '~> 2.4'
 
 gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 
