@@ -1,4 +1,7 @@
 .row
+  / = react_component('ReservationForm', {schema: {}, formData: {}, uiSchema: {}, maxFans: 3}, {prerender: true})
+  = react_component('HelloWorld', {greeting: 'Ciao'}, {prerender: true})
+.row
   %p
     Per questa partita potrai prenotare un massimo di
     = @event.pax

@@ -25,6 +25,10 @@ default: &default
     - .jpeg
     - .jpg
 
+  exclude:
+    - HelloWorld.js
+    - ReservationForm.js
+
 development:
   <<: *default
   compile: true

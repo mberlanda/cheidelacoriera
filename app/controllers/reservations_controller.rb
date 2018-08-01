@@ -7,6 +7,8 @@ class ReservationsController < CrudController
   layout false, only: %i[user_form status]
   respond_to :html, :js
 
+  per_request_react_rails_prerenderer
+
   self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, fan_names: []]
 
   include DatatableController
@@ -24,6 +26,7 @@ class ReservationsController < CrudController
   end
 
   def user_form
+    byebug
     render 'reservations/rejected_user', layout: false if current_user.rejected?
     render 'reservations/pending_user', layout: false unless current_user.active?
 
