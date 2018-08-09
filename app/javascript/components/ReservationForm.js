@@ -1,6 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Form from "react-jsonschema-form"
+// import LayoutField from "react-jsonschema-form-layout-grid"
+
+// const fields = {
+//   layout_grid: LayoutField
+// }
 
 const schema = {
   title: "Prenota la trasferta",
@@ -11,14 +16,17 @@ const schema = {
     fans_count: {
     	type: "integer",
     	title: "Numero di Partecipanti",
+    	enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     	minimum: 1,
     	maximum: 10,
     	default: 1
     },
     fan_names: {
       type: "array",
-      title: "Elenco Partecipanti",
+      title: "", // "Elenco Partecipanti",
+      description: "Inserisci i dati di ciascun partecipante",
       items: {
+      	title: "", //"Partecipante",
       	type: "object",
       	required: ["first_name", "last_name"],
       	properties: {
@@ -43,15 +51,49 @@ const schema = {
 };
 
 const uiSchema = {
+  // 'ui:field': 'layout_grid',
+  // 'ui:layout_grid': { 'ui:row': [
+  //   { "ui:col": { md: 12, children: [
+  //     { "ui:row": [
+  //       { "ui:col": { md: 12, children: ["phone_number"]} }
+  //     ]},
+  //     { "ui:row": [
+  //       { "ui:col": { md: 12, children: ["fans_count"]} }
+  //     ]},
+  //     { "ui:row": [
+  //       { 'ui:col': { md: 12, children: ['fan_names'] } },
+  //       { 'ui:col': { md: 6, children: ['fan_names'] } },
+  //     ]}
+  //   ]}
+  //   }
+  // ]},
   "fans_count":{
-    "ui:widget": "range"
+    "ui:widget": "select",
+    "ui:options": {
+    	"inline": true
+    }
   },
   "fan_names": {
   	"ui:options": {
       "addable": false,
       "orderable": false,
       "removable": false,
-      "inline": true
+    },
+    "items": {
+    	"first_name" : {
+        "classNames" : "col-md-6",
+        "ui:placeholder": "Nome",
+        "ui:options": {
+        	"label": false
+        }
+    	},
+    	"last_name" : {
+        "classNames" : "col-md-6",
+        "ui:placeholder": "Cognome",
+        "ui:options": {
+        	"label": false
+        }
+    	}
     }
   },
   "notes": {
@@ -74,12 +116,13 @@ class ReservationForm extends React.Component {
   }
 
   onSubmit(event){
-  	console.log('Event', event);
-    alert(JSON.stringify(this.state.formData, null, 2))
+  	confirm(
+    	"Vuoi confermare questa prenotazione? " +
+    	JSON.stringify(this.state.formData, null, 2)
+    );
   }
 
   onChange(event) {
-  	console.log('Event', event);
   	const newSchema = event.schema;
   	const newFormData = Object.assign(event.formData);
   	const fansCount = newFormData.fans_count;
@@ -98,7 +141,7 @@ class ReservationForm extends React.Component {
 		let finalFormData = {
 			...newFormData, fan_names: Array(fansCount).fill({})
 		}
-		console.log(finalFormData)
+
 		this.setState({
 		  schema: newSchema,
 		  formData: finalFormData
@@ -136,10 +179,11 @@ class ReservationForm extends React.Component {
     return (
      <Form schema={this.state.schema}
      	uiSchema={this.state.uiSchema}
-		formData={this.state.formData}
-        onChange={this.onChange.bind(this)}
-        onSubmit={this.onSubmit.bind(this)}
-        onError={log("errors")} />
+		  formData={this.state.formData}
+		  // fields={fields}
+      onChange={this.onChange.bind(this)}
+      onSubmit={this.onSubmit.bind(this)}
+      onError={log("errors")} />
     );
   }
 }
