@@ -5,7 +5,8 @@ class WelcomeController < ApplicationController
   def index
     @reservation_form = {
       schema: ReservationSchema.jsonschema,
-      ui_schema: ReservationSchema.ui_schema
+      ui_schema: ReservationSchema.ui_schema,
+      form_data: {}
     }
   end
 
