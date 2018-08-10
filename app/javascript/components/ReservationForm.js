@@ -10,19 +10,43 @@ class ReservationForm extends React.Component {
   	this.state = {
   	  schema: this.props.schema,
   	  uiSchema: this.props.ui_schema,
-  	  formData: this.props.form_data
+  	  formData: this.props.form_data,
+      authenticity_token: this.props.authenticity_token
   	}
   }
 
   onSubmit(event){
-  	confirm(
-    	"Vuoi confermare questa prenotazione? " +
-    	JSON.stringify(this.state.formData, null, 2)
-    );
+  	let fansCountConfirmation = this._fansCountConfirmation()
+  	if (confirm(
+    	"Vuoi confermare questa prenotazione per " +
+    	fansCountConfirmation + "?"
+    )){
+      fetch(this.props.url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+
+        },
+        body: JSON.stringify({
+          authenticity_token: this.state.authenticity_token,
+          reservation: Object.assign(this.state.formData)
+        })
+      }).then(location.reload())
+    }
+  }
+
+  _fansCountConfirmation() {
+  	let fansCountFinal = this.state.formData.fans_count;
+  	if (fansCountFinal == 1) {
+  		return "una persona";
+  	} else {
+  		return fansCountFinal + " persone"
+  	}
   }
 
   onChange(event) {
-  	const newSchema = event.schema;
+  	const newSchema = Object.assign(event.schema);
   	const newFormData = Object.assign(event.formData);
   	const fansCount = newFormData.fans_count;
   	const fanNames = newFormData.fan_names || [];
@@ -36,9 +60,10 @@ class ReservationForm extends React.Component {
   		this._decreaseFansInputs(fanNames, fansCount),
   		fansCount
   	)
-  	*/
+		*/
+
   	let finalFormData = {
-  		...newFormData, fan_names: Array(fansCount).fill({})
+  		...newFormData, fan_names: Array(fansCount).fill({}) // newFanNames
   	}
 
   	this.setState({
@@ -77,11 +102,18 @@ class ReservationForm extends React.Component {
   render () {
     return (
      <Form schema={this.state.schema}
+      id="react-reservation-form"
      	uiSchema={this.state.uiSchema}
       formData={this.state.formData}
+      method="post"
+      action={this.props.url}
       onChange={this.onChange.bind(this)}
       onSubmit={this.onSubmit.bind(this)}
-      onError={log("errors")} />
+      onError={log("errors")} >
+      <p>
+      	<button className= "btn btn-info" type="submit">Prenota</button>
+      </p>
+      </Form>
     );
   }
 }
@@ -90,5 +122,6 @@ ReservationForm.propTypes = {
   schema: PropTypes.object,
   ui_schema: PropTypes.object,
   form_data: PropTypes.object,
+  url: PropTypes.string,
 };
 export default ReservationForm

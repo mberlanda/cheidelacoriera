@@ -2,13 +2,7 @@
 
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
-  def index
-    @reservation_form = {
-      schema: ReservationSchema.jsonschema,
-      ui_schema: ReservationSchema.ui_schema,
-      form_data: {}
-    }
-  end
+  def index; end
 
   def regolamento; end
 

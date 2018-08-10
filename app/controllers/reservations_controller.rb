@@ -38,35 +38,62 @@ class ReservationsController < CrudController
 
     render 'reservations/no_user_form', layout: false unless current_user.can_book?(@event)
 
-    @reservation = Reservation.new(
-      event_id: event_id,
-      fan_names: [current_user.form_name].compact
-    )
+    @react_form = ENV['REACT_FORMS'] || true
+
+    if @react_form
+      default_fans_count = 1
+      @reservation_form = {
+        schema: ReservationSchema.jsonschema(maximum: @event.pax, default: default_fans_count),
+        ui_schema: ReservationSchema.ui_schema,
+        form_data: {
+          authenticity_token: form_authenticity_token,
+          event_id: event_id,
+          user_id: current_user.id,
+          phone_number: current_user.phone_number,
+          fans_count: default_fans_count,
+          fan_names: [ { first_name: current_user.first_name, last_name: current_user.first_name }],
+        }
+      }
+    else
+      @reservation = Reservation.new(
+        event_id: event_id,
+        fan_names: [current_user.form_name].compact
+      )
+    end
   end
 
   def form_create
-    permitted = params.require(:reservation)
-                      .permit(:phone_number, :notes, :event_id, fan_names: [])
+    @react_form = ENV['REACT_FORMS'] || true
+
+    permitted = if @react_form
+                  params.require(:reservation)
+                        .permit(:phone_number, :notes, :event_id, fan_names: %i(first_name last_name))
+                else
+                  params.require(:reservation)
+                        .permit(:phone_number, :notes, :event_id, fan_names: [])
+                end
+    fan_names = permitted[:fan_names].to_a.reject(&:blank?)
+    if @react_form
+      fan_names.map!{ |h| "#{h[:last_name]}|#{h[:first_name]}" }
+    end
+
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
       user_id: current_user.id,
       notes: permitted[:notes],
       phone_number: permitted[:phone_number],
-      fan_names: permitted[:fan_names].to_a.reject(&:blank?)
+      fan_names: fan_names
     )
     @event = Event.find(permitted[:event_id])
     if @reservation.valid?
       @reservation.save
       ReservationMailer.received(@reservation).deliver_later
-      redirect_to action: :status, id: @reservation.id
-    else
-      render 'reservations/user_form', layout: false
     end
   end
 
   def create
     permitted = params.require(:reservation)
-                      .permit(:phone_number, :notes, :event_id, :user_id, fan_names: [])
+                      .permit(:phone_number, :notes, :event_id, :user_id, :fans_count, fan_names: [])
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
       user_id: permitted[:user_id],
@@ -80,6 +107,7 @@ class ReservationsController < CrudController
     else
       render action: :new
     end
+    redirect_to controller: :events_controller, action: :details, id: event_id
   end
 
   def approve_all
