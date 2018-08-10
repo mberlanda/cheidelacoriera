@@ -65,6 +65,7 @@ Metrics/MethodLength:
   Max: 15
   Enabled: true
   Exclude:
+    - app/schemas/*
     - db/**/*
     - spec/*_helper.rb
     - app/controllers/reservations_controller.rb

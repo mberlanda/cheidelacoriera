@@ -1,72 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Form from "react-jsonschema-form"
-// import LayoutField from "react-jsonschema-form-layout-grid"
-
-// const fields = {
-//   layout_grid: LayoutField
-// }
-
-const schema = {
-  title: "Prenota la trasferta",
-  type: "object",
-  required: ["phone_number", "fan_names"],
-  properties: {
-    phone_number: {type: "string", title: "Numero di telefono", minLength: 7},
-    fans_count: {
-    	type: "integer",
-    	title: "Numero di Partecipanti",
-    	enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    	minimum: 1,
-    	maximum: 10,
-    	default: 1
-    },
-    fan_names: {
-      type: "array",
-      title: "", // "Elenco Partecipanti",
-      description: "Inserisci i dati di ciascun partecipante",
-      items: {
-      	title: "", //"Partecipante",
-      	type: "object",
-      	required: ["first_name", "last_name"],
-      	properties: {
-          first_name: {
-            type: "string",
-            title: "Nome",
-            minLength: 3
-          },
-          last_name: {
-            type: "string",
-            title: "Cognome",
-            minLength: 3
-          },
-      	}
-      },
-      minItems: 1,
-      maxItems: 10,
-      uniqueItems: true
-    },
-    notes: { type: "string", title: "Note" }
-  }
-};
 
 const uiSchema = {
-  // 'ui:field': 'layout_grid',
-  // 'ui:layout_grid': { 'ui:row': [
-  //   { "ui:col": { md: 12, children: [
-  //     { "ui:row": [
-  //       { "ui:col": { md: 12, children: ["phone_number"]} }
-  //     ]},
-  //     { "ui:row": [
-  //       { "ui:col": { md: 12, children: ["fans_count"]} }
-  //     ]},
-  //     { "ui:row": [
-  //       { 'ui:col': { md: 12, children: ['fan_names'] } },
-  //       { 'ui:col': { md: 6, children: ['fan_names'] } },
-  //     ]}
-  //   ]}
-  //   }
-  // ]},
   "fans_count":{
     "ui:widget": "select",
     "ui:options": {
@@ -109,7 +45,7 @@ class ReservationForm extends React.Component {
   constructor(props){
   	super(props)
   	this.state = {
-  	  schema,
+  	  schema: this.props.schema,
   	  uiSchema,
   	  formData
   	}
@@ -180,7 +116,6 @@ class ReservationForm extends React.Component {
      <Form schema={this.state.schema}
      	uiSchema={this.state.uiSchema}
 		  formData={this.state.formData}
-		  // fields={fields}
       onChange={this.onChange.bind(this)}
       onSubmit={this.onSubmit.bind(this)}
       onError={log("errors")} />
@@ -189,5 +124,6 @@ class ReservationForm extends React.Component {
 }
 
 ReservationForm.propTypes = {
+	schema: PropTypes.object
 };
 export default ReservationForm
