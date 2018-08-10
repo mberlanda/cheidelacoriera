@@ -47,4 +47,41 @@ module ReservationSchema
       }
     }
   end
+
+  def ui_schema
+    {
+      "fans_count": {
+        "ui:widget": 'select',
+        "ui:options": {
+          "inline": true
+        }
+      },
+      "fan_names": {
+        "ui:options": {
+          "addable": false,
+          "orderable": false,
+          "removable": false
+        },
+        "items": {
+          "first_name": {
+            "classNames": 'col-md-6',
+            "ui:placeholder": 'Nome',
+            "ui:options": {
+              "label": false
+            }
+          },
+          "last_name": {
+            "classNames": 'col-md-6',
+            "ui:placeholder": 'Cognome',
+            "ui:options": {
+              "label": false
+            }
+          }
+        }
+      },
+      "notes": {
+        "ui:widget": 'textarea'
+      }
+    }
+  end
 end

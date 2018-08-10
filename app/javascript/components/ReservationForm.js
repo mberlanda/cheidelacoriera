@@ -2,41 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import Form from "react-jsonschema-form"
 
-const uiSchema = {
-  "fans_count":{
-    "ui:widget": "select",
-    "ui:options": {
-    	"inline": true
-    }
-  },
-  "fan_names": {
-  	"ui:options": {
-      "addable": false,
-      "orderable": false,
-      "removable": false,
-    },
-    "items": {
-    	"first_name" : {
-        "classNames" : "col-md-6",
-        "ui:placeholder": "Nome",
-        "ui:options": {
-        	"label": false
-        }
-    	},
-    	"last_name" : {
-        "classNames" : "col-md-6",
-        "ui:placeholder": "Cognome",
-        "ui:options": {
-        	"label": false
-        }
-    	}
-    }
-  },
-  "notes": {
-  	"ui:widget" : "textarea"
-  }
-}
-
 const formData = {};
 
 const log = (type) => console.log.bind(console, type);
@@ -46,7 +11,7 @@ class ReservationForm extends React.Component {
   	super(props)
   	this.state = {
   	  schema: this.props.schema,
-  	  uiSchema,
+  	  uiSchema: this.props.ui_schema,
   	  formData
   	}
   }
@@ -124,6 +89,7 @@ class ReservationForm extends React.Component {
 }
 
 ReservationForm.propTypes = {
-	schema: PropTypes.object
+	schema: PropTypes.object,
+	ui_schema: PropTypes.object
 };
 export default ReservationForm
