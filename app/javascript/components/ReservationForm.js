@@ -36,7 +36,7 @@ class ReservationForm extends React.Component {
         if (resp.ok) {
           location.reload()
         } else {
-          console.log(resp.body)
+          console.log(resp)
         }
       })
     }
