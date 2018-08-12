@@ -4,6 +4,9 @@ class ReservationsController < CrudController
   before_action :authenticate_user!, only: %i[user_form]
   before_action :active_user?, except: %i[user_form]
   before_action :admin_user?, only: %i[approve_all show update edit]
+
+  skip_before_action :verify_authenticity_token, except: :form_create
+
   layout false, only: %i[user_form status]
   respond_to :html, :js
 
@@ -51,7 +54,7 @@ class ReservationsController < CrudController
           user_id: current_user.id,
           phone_number: current_user.phone_number,
           fans_count: default_fans_count,
-          fan_names: [ { first_name: current_user.first_name, last_name: current_user.first_name }],
+          fan_names: [{ first_name: current_user.first_name, last_name: current_user.first_name }]
         }
       }
     else
@@ -67,15 +70,15 @@ class ReservationsController < CrudController
 
     permitted = if @react_form
                   params.require(:reservation)
-                        .permit(:phone_number, :notes, :event_id, fan_names: %i(first_name last_name))
+                        .permit(:phone_number, :notes, :event_id, fan_names: %i[first_name last_name])
                 else
                   params.require(:reservation)
                         .permit(:phone_number, :notes, :event_id, fan_names: [])
                 end
     fan_names = permitted[:fan_names].to_a.reject(&:blank?)
-    if @react_form
-      fan_names.map!{ |h| "#{h[:last_name]}|#{h[:first_name]}" }
-    end
+    fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" } if @react_form
+
+    head 400 if params[:user_id].to_i != current_user.id
 
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
@@ -88,6 +91,9 @@ class ReservationsController < CrudController
     if @reservation.valid?
       @reservation.save
       ReservationMailer.received(@reservation).deliver_later
+      head 200
+    else
+      render json: { errors: @reservation.errors.messages }, status: 400
     end
   end
 

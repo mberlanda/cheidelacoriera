@@ -95,7 +95,7 @@ module ReservationSchema
   def schema_description(max_pax)
     places = max_pax > 1 ? "#{max_pax} posti" : '1 posto'
     "Per questa partita potrai prenotare un massimo di #{places}. "\
-    "Per fini organizzativi, ti invitiamo ad indicare il Nome e il Cognome " \
-    "di ciascun partecipante che si unirà alla trasferta"
+    'Per fini organizzativi, ti invitiamo ad indicare il Nome e il Cognome ' \
+    'di ciascun partecipante che si unirà alla trasferta'
   end
 end

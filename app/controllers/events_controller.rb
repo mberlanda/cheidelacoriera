@@ -33,7 +33,7 @@ class EventsController < PublicController
             user_id: current_user.id,
             phone_number: current_user.phone_number,
             fans_count: default_fans_count,
-            fan_names: [ { first_name: current_user.first_name, last_name: current_user.first_name }],
+            fan_names: [{ first_name: current_user.first_name, last_name: current_user.first_name }]
           }
         }
       else

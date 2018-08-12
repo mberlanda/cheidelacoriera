@@ -33,6 +33,7 @@ Metrics/AbcSize:
   Exclude:
     - db/migrate/*.rb
     - app/decorators/*_decorator.rb
+    - app/controllers/events_controller.rb
     - app/controllers/reservations_controller.rb
     - app/inputs/array_input.rb
     - app/models/event.rb
@@ -49,6 +50,11 @@ Metrics/ClassLength:
   Enabled: true
   Exclude:
     - app/models/reservation.rb
+    - app/controllers/reservations_controller.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/controllers/reservations_controller.rb
 
 Metrics/LineLength:
   Max: 90
@@ -57,6 +63,7 @@ Metrics/LineLength:
     - db/**/*
     - lib/tasks/dbdata.rake
     - spec/*_helper.rb
+    - app/controllers/events_controller.rb
     - app/controllers/reservations_controller.rb
     - app/lib/breadcrumb_builder.rb
     - app/action_view/helpers/sanitize_helper.rb
@@ -68,8 +75,13 @@ Metrics/MethodLength:
     - app/schemas/*
     - db/**/*
     - spec/*_helper.rb
+    - app/controllers/events_controller.rb
     - app/controllers/reservations_controller.rb
     - app/decorators/*.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/controllers/reservations_controller.rb
 
 Rails:
   Enabled: true
@@ -95,6 +107,10 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Enabled: false
+
+Style/GuardClause:
+  Exclude:
+    - app/controllers/events_controller.rb
 
 Style/ModuleFunction:
   Enabled: false
