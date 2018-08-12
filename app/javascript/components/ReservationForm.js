@@ -16,7 +16,7 @@ class ReservationForm extends React.Component {
   }
 
   onSubmit(event){
-  	let fansCountConfirmation = this._fansCountConfirmation()
+    let fansCountConfirmation = this._fansCountConfirmation()
   	if (confirm(
     	"Vuoi confermare questa prenotazione per " +
     	fansCountConfirmation + "?"
@@ -32,7 +32,13 @@ class ReservationForm extends React.Component {
           authenticity_token: this.state.authenticity_token,
           reservation: Object.assign(this.state.formData)
         })
-      }).then(location.reload())
+      }).then( (resp)=> {
+        if (resp.ok) {
+          location.reload()
+        } else {
+          console.log(resp.body)
+        }
+      })
     }
   }
 

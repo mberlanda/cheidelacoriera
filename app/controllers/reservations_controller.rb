@@ -1,11 +1,11 @@
 # frozen_string_literal: truebookable_until
 
 class ReservationsController < CrudController
-  before_action :authenticate_user!, only: %i[user_form]
+  before_action :authenticate_user!, only: %i[user_form form_create]
   before_action :active_user?, except: %i[user_form form_create]
   before_action :admin_user?, only: %i[approve_all show update edit]
 
-  skip_before_action :verify_authenticity_token, only: %i[form_create]
+  # skip_before_action :verify_authenticity_token, only: %i[form_create]
 
   layout false, only: %i[user_form status]
   respond_to :html, :js
@@ -70,7 +70,8 @@ class ReservationsController < CrudController
 
     permitted = if @react_form
                   params.require(:reservation)
-                        .permit(:phone_number, :notes, :event_id, fan_names: %i[first_name last_name])
+                        .permit(:phone_number, :notes, :event_id,
+                                :user_id, :fans_count, fan_names: %i[first_name last_name])
                 else
                   params.require(:reservation)
                         .permit(:phone_number, :notes, :event_id, fan_names: [])
