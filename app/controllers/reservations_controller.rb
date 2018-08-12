@@ -2,10 +2,10 @@
 
 class ReservationsController < CrudController
   before_action :authenticate_user!, only: %i[user_form]
-  before_action :active_user?, except: %i[user_form]
+  before_action :active_user?, except: %i[user_form form_create]
   before_action :admin_user?, only: %i[approve_all show update edit]
 
-  skip_before_action :verify_authenticity_token, except: :form_create
+  skip_before_action :verify_authenticity_token, only: %i[form_create]
 
   layout false, only: %i[user_form status]
   respond_to :html, :js
