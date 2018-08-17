@@ -5,3 +5,7 @@
     - @reservation.fan_names.each do |n|
       %li= n
   %p= t('reservations.show.phone_number', number: @reservation.phone_number)
+- if @reservation.pending?
+  .row
+    %p Riceverai aggiornamenti sulla tua mail.
+	%p Per eventuali modifiche scrivi a : cheidelacoriera@gmail.com

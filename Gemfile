@@ -15,6 +15,7 @@ gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readm
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'haml-rails', '~> 1.0'
 gem 'webpacker', '~> 3.5'
+gem 'react-rails', '~> 2.4'
 
 gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 
@@ -66,7 +67,7 @@ group :lint do
   gem 'brakeman', '~> 3.7.2', require: false  # A static analysis security vulnerability scanner
   gem 'haml-lint', '~> 0.26', require: false  # Syntax checker for HAML
   gem 'ruby_css_lint', '~> 0.1', require: false  # Syntax checker for CSS
-  gem 'rubocop', '~> 0.50', require: false  # A Ruby static code analyzer
+  gem 'rubocop', '~> 0.52', require: false  # A Ruby static code analyzer
   gem 'bundler-audit', '~> 0.6'  # Check dependencies
 end
 
