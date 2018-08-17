@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'haml-rails', '~> 1.0'
-gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.5'
 
 gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 
