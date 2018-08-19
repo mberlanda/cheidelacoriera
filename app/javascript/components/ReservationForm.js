@@ -16,6 +16,7 @@ class ReservationForm extends React.Component {
   }
 
   onSubmit(event){
+    const AuthenticityToken = document.getElementsByName('csrf-token')[0].content;
     let fansCountConfirmation = this._fansCountConfirmation()
     if (confirm(
       "Vuoi confermare questa prenotazione per " +
@@ -26,10 +27,11 @@ class ReservationForm extends React.Component {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'X-CSRF-Token': this.state.authenticity_token,
+          'X-CSRF-Token': AuthenticityToken,
         },
         body: JSON.stringify({
           // authenticity_token: this.state.authenticity_token,
+          authenticity_token: AuthenticityToken,
           reservation: Object.assign(this.state.formData)
         })
       }).then( (resp)=> {
