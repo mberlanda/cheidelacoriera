@@ -39,10 +39,8 @@
             = render(file: 'reservations/status')
           - elsif !current_user.can_book?(@event)
             = render(file: 'reservations/no_user_form')
-          - elsif @react_form
-            = react_component('ReservationForm', @reservation_form.merge(url: form_create_reservations_path, authenticity_token: form_authenticity_token), prerender: true)
           - else
-            = render(file: 'reservations/user_form')
+            = react_component('ReservationForm', @reservation_form.merge(url: form_create_reservations_path, authenticity_token: form_authenticity_token), prerender: true)
       - else
         .text-center
           %p Per continuare la navigazione è necessario essere iscritti al sito.
@@ -65,16 +63,3 @@
     $(function(){
       ReactRailsUJS.mountComponents();
     })
-
-    function renderUserForm() {
-      $.ajax({
-        method: 'GET',
-        url: '#{user_form_reservations_path}',
-        data: {
-          event_id: #{@event.id}
-        },
-        success: function(data){
-          $('#reservation-form').html(data);
-        }
-      })
-    }

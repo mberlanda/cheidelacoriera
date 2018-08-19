@@ -21,27 +21,27 @@ class EventsController < PublicController
         event_id: @event.id, user_id: current_user.id
       )
 
-      @react_form = ENV['REACT_FORMS'] || true
+      # @react_form = ENV['REACT_FORMS'] || true
 
-      if @react_form
-        default_fans_count = 1
-        @reservation_form = {
-          schema: ReservationSchema.jsonschema(maximum: @event.pax, default: default_fans_count),
-          ui_schema: ReservationSchema.ui_schema,
-          form_data: {
-            event_id: @event.id,
-            user_id: current_user.id,
-            phone_number: current_user.phone_number,
-            fans_count: default_fans_count,
-            fan_names: [{ first_name: current_user.first_name, last_name: current_user.first_name }]
-          }
-        }
-      else
-        @reservation ||= Reservation.new(
+      # if @react_form
+      default_fans_count = 1
+      @reservation_form = {
+        schema: ReservationSchema.jsonschema(maximum: @event.pax, default: default_fans_count),
+        ui_schema: ReservationSchema.ui_schema,
+        form_data: {
           event_id: @event.id,
-          fan_names: [current_user.form_name].compact
-        )
-      end
+          user_id: current_user.id,
+          phone_number: current_user.phone_number,
+          fans_count: default_fans_count,
+          fan_names: [{ first_name: current_user.first_name, last_name: current_user.last_name }]
+        }
+      }
+      # else
+      #   @reservation ||= Reservation.new(
+      #     event_id: @event.id,
+      #     fan_names: [current_user.form_name].compact
+      #   )
+      # end
     end
   end
 
