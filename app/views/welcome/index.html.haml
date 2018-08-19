@@ -20,6 +20,10 @@
       .description
 
 #welcome-actions
+  - @actions.each do |action|
+    = react_component('IndexAction', action, prerender: true)
 
-- provide :page_javascript do
-  = javascript_pack_tag 'api/welcome_actions.js'
+:javascript
+  $(function(){
+    ReactRailsUJS.mountComponents();
+  })
