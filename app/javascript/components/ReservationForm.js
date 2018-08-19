@@ -26,10 +26,10 @@ class ReservationForm extends React.Component {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-
+          'X-CSRF-Token': this.state.authenticity_token,
         },
         body: JSON.stringify({
-          authenticity_token: this.state.authenticity_token,
+          // authenticity_token: this.state.authenticity_token,
           reservation: Object.assign(this.state.formData)
         })
       }).then( (resp)=> {
