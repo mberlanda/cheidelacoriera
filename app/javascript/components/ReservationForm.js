@@ -24,6 +24,7 @@ class ReservationForm extends React.Component {
     )){
       fetch(this.props.url, {
         method: 'POST',
+        credentials: 'same-origin',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ class ReservationForm extends React.Component {
         },
         body: JSON.stringify({
           authenticity_token: this.state.authenticity_token,
-          reservation: Object.assign(this.state.formData)
+          reservation: this.state.formData
         })
       }).then( (resp)=> {
         if (resp.ok) {
