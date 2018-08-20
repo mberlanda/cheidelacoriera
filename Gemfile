@@ -20,7 +20,7 @@ gem 'react-rails', '~> 2.4'
 gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 
 gem 'draper', '~> 3.0'
-gem 'devise', '~> 4.3'  # Authentication
+gem 'devise', '~> 4.3.0'  # Authentication
 gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
 

@@ -2,7 +2,9 @@
 
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
-  def index; end
+  def index
+    menu_actions
+  end
 
   def regolamento; end
 
@@ -14,6 +16,21 @@ class WelcomeController < ApplicationController
       posts: all_posts_path,
       photogallery: all_albums_path,
       regolamento: regolamento_path
-    )
+    ).map(&build_action)
+  end
+
+  private
+
+  def build_action
+    lambda do |action, url|
+      {
+        name: action,
+        url: url,
+        iconClass: t("home.index.panel.#{action}.icon_class"),
+        heading: t("home.index.panel.#{action}.heading"),
+        body: t("home.index.panel.#{action}.body").strip,
+        buttonText: t('home.index.button.go')
+      }
+    end
   end
 end
