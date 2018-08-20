@@ -11,6 +11,7 @@ import 'wowjs/dist/wow.min.js';
 import 'retinajs/dist/retina.min.js';
 import 'intro.js/intro.js';
 import 'babel-polyfill';
+import 'whatwg-fetch';
 
 global.$ = $;
 global.jQuery = $;
