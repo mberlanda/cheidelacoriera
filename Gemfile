@@ -17,7 +17,8 @@ gem 'haml-rails', '~> 1.0'
 gem 'webpacker', '~> 3.5'
 gem 'react-rails', '~> 2.4'
 
-gem  'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
+gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
+gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 
 gem 'draper', '~> 3.0'
 gem 'devise', '~> 4.3.0'  # Authentication
