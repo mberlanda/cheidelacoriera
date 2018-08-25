@@ -92,7 +92,6 @@ class ReservationsController < CrudController
     else
       render action: :new
     end
-    redirect_to controller: :events_controller, action: :details, id: event_id
   end
 
   def approve_all
