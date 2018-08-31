@@ -83,9 +83,6 @@ Metrics/PerceivedComplexity:
 Rails:
   Enabled: true
 
-Rails/Date:
-  Enabled: false
-
 Rails/OutputSafety:
   Exclude:
     - app/helpers/datatable_helper.rb

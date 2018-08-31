@@ -6,7 +6,7 @@
     .form-inputs
       = f.input :first_name, required: true
       = f.input :last_name, required: true
-      = f.input :date_of_birth, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12
+      = f.input :date_of_birth, as: :date, start_year: Time.zone.today.year - 90, end_year: Time.zone.today.year - 12
       = f.input :place_of_birth
       = f.input :phone_number, required: true
       = f.input :email, required: true, autofocus: true

@@ -28,3 +28,5 @@ public/assets/
 yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
+
+spec/examples.txt

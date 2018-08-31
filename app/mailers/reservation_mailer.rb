@@ -10,7 +10,7 @@ class ReservationMailer < ApplicationMailer
       to: @user.email,
       subject: "Richiesta Ricevuta | #{@event} | Chei De La Coriera"
     )
-    @reservation.update(mail_sent: Date.today)
+    @reservation.update(mail_sent: Time.zone.today)
   end
 
   def approved(reservation)
@@ -22,7 +22,7 @@ class ReservationMailer < ApplicationMailer
       to: @user.email,
       subject: "Richiesta Approvata | #{@event} | Chei De La Coriera"
     )
-    @reservation.update(mail_sent: Date.today)
+    @reservation.update(mail_sent: Time.zone.today)
   end
 
   def rejected(reservation)
@@ -34,7 +34,7 @@ class ReservationMailer < ApplicationMailer
       to: @user.email,
       subject: "Richiesta Declinata | #{@event} | Chei De La Coriera"
     )
-    @reservation.update(mail_sent: Date.today)
+    @reservation.update(mail_sent: Time.zone.today)
   end
 
   def overbooking(event)
