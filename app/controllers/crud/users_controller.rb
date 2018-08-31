@@ -40,7 +40,6 @@ class Crud::UsersController < CrudController
     flash.keep
     redirect_to action: :index
   end
-  # rubocop:enable Metrics/AbcSize
 
   def update
     @user = User.find(params.require(:id))

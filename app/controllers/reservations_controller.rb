@@ -72,7 +72,7 @@ class ReservationsController < CrudController
       ReservationMailer.received(@reservation).deliver_later
       head 200
     else
-      render json: { errors: @reservation.errors.messages }, status: 400
+      render json: { errors: @reservation.errors.messages }, status: :bad_request
     end
   end
 

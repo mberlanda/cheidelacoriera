@@ -14,5 +14,4 @@ class TripDecorator < ApplicationDecorator
       object.transport_mean.to_s
     ]
   end
-  # rubocop:enable Metrics/MethodLength
 end

@@ -3,16 +3,6 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
-    - bin/**/*
-    - config/boot.rb
-    - config/**/*
-    - db/schema.rb
-    - node_modules/**/*
-    - script/**/*
-    - tmp/**/*
-    - vendor/**/*
-    - Rakefile
-    - Gemfile
     - '**/helpers/dry_crud/**/*.rb'
     - '**/helpers/actions_helper*.rb'
     - '**/helpers/form_helper*.rb'
@@ -22,6 +12,7 @@ AllCops:
     - '**/helpers/utility_helper*.rb'
     - app/controllers/dry_crud/*.rb
     - app/controllers/crud_controller.rb
+    - node_modules/**/*
     - spec/support/crud_*.rb
     - spec/controllers/crud_test_models_controller_spec.rb
   DisplayCopNames: true
@@ -61,7 +52,11 @@ Metrics/CyclomaticComplexity:
 Metrics/LineLength:
   Max: 90
   Enabled: true
+  AllowHeredoc: true
+  AllowURI: true
   Exclude:
+    - Gemfile
+    - config/**/*
     - db/**/*
     - lib/tasks/dbdata.rake
     - spec/*_helper.rb
