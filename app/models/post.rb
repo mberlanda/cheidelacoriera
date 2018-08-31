@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   private
 
   def set_defaults
-    self.date ||= Date.today
+    self.date ||= Time.zone.today
   end
 
   def should_generate_new_friendly_id?

@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
       to: @user.email,
       subject: 'Conferma Attivazione | Chei De La Coriera'
     )
-    @user.update(activation_date: Date.today)
+    @user.update(activation_date: Time.zone.today)
   end
 
   def rejection_email(user)
@@ -19,6 +19,6 @@ class UserMailer < ApplicationMailer
       to: @user.email,
       subject: 'Utenza Sospesa | Chei De La Coriera'
     )
-    @user.update(activation_date: Date.today)
+    @user.update(activation_date: Time.zone.today)
   end
 end

@@ -60,14 +60,14 @@ RSpec.describe Event, type: :model do
   context '.upcoming' do
     before do
       default_date = Date.new(2017, 10, 1)
-      allow(Date).to receive(:today).and_return(default_date)
+      allow(Time.zone).to receive(:today).and_return(default_date)
       @past_event = FactoryGirl.create(:event, date: default_date - 1.day)
       @same_day_event = FactoryGirl.create(:event, date: default_date)
       @future_event = FactoryGirl.create(:event, date: default_date + 1.day)
     end
 
     it 'should mock date today' do
-      expect(Date.today).to eq(Date.new(2017, 10, 1))
+      expect(Time.zone.today).to eq(Date.new(2017, 10, 1))
     end
 
     it 'should filter past events' do
@@ -80,24 +80,24 @@ RSpec.describe Event, type: :model do
       DatabaseCleaner.clean_with(:truncation)
       @event1 = FactoryGirl.create(
         :event,
-        bookable_from: Date.today,
-        bookable_until: Date.today + 5.days
+        bookable_from: Time.zone.today,
+        bookable_until: Time.zone.today + 5.days
       )
       @event2 = FactoryGirl.create(
         :event,
-        bookable_from: Date.today - 5.days,
-        bookable_until: Date.today + 1.day
+        bookable_from: Time.zone.today - 5.days,
+        bookable_until: Time.zone.today + 1.day
       )
     end
 
-    it 'uses by default Date.today' do
+    it 'uses by default Time.zone.today' do
       actual = Event.bookable
       expect(actual.count).to eq(2)
       expect(actual).to match_array([@event1, @event2])
     end
 
     it 'can use custom date' do
-      actual = Event.bookable(Date.today - 2.days)
+      actual = Event.bookable(Time.zone.today - 2.days)
       expect(actual.count).to eq(1)
       expect(actual).to match_array([@event2])
     end

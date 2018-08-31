@@ -4,7 +4,7 @@ module BookableEvent
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def bookable(d = Date.today)
+    def bookable(d = Time.zone.today)
       where('bookable_from <= ? and bookable_until >= ?', d, d)
     end
   end
@@ -13,12 +13,12 @@ module BookableEvent
     bookable_from && bookable_until
   end
 
-  def bookable?(d = Date.today)
+  def bookable?(d = Time.zone.today)
     return false unless available_seats.positive?
     bookable_period?(d)
   end
 
-  def bookable_period?(d = Date.today)
+  def bookable_period?(d = Time.zone.today)
     return false unless book_range?
     bookable_from <= d && bookable_until >= d
   end

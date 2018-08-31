@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-  config.webpacker.check_yarn_integrity = false  # Settings specified here will take precedence over those in config/application.rb.
+  config.webpacker.check_yarn_integrity = false # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -86,7 +86,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   # config.action_mailer.smtp_settings = {
@@ -100,19 +99,17 @@ Rails.application.configure do
 
   # SMTP settings for sendgrid
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.sendgrid.net",
-    :port                 => 587,
-    :domain               => 'cheidelacoriera.com',
-    :user_name            => ENV['SENDGRID_USERNAME'],
-    :password             => ENV['SENDGRID_PASSWORD'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'cheidelacoriera.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
   config.action_mailer.asset_host = 'http://www.cheidelacoriera.com'
 
   config.action_mailer.default_url_options = { host: 'www.cheidelacoriera.com' }
 
-  if ENV['RAILS_FORCE_SSL'].present?
-    config.force_ssl = true
-  end
+  config.force_ssl = true if ENV['RAILS_FORCE_SSL'].present?
 end

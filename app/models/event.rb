@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   belongs_to :away_team, class_name: 'Team'
   belongs_to :competition, inverse_of: :events
 
-  scope :upcoming, -> { where('date >= ?', Date.today) }
+  scope :upcoming, -> { where('date >= ?', Time.zone.today) }
 
   has_many :reservations, inverse_of: :event, dependent: :destroy
   has_many :albums, inverse_of: :event, dependent: :nullify

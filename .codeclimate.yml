@@ -1,6 +1,6 @@
 plugins:
   rubocop:
     enabled: true
-    channel: rubocop-0-52
+    channel: rubocop-0-58
     config:
       file: .rubocop.yml

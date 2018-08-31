@@ -23,7 +23,6 @@ class Pid
     raise StandardError, "Process #{current} already running" if File.exist?(file_path)
     File.write(file_path, $PROCESS_ID)
   end
-  # rubocop:enable Metrics/LineLength
 
   def current
     File.read(file_path)

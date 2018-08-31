@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-    config.webpacker.check_yarn_integrity = true  # Settings specified here will take precedence over those in config/application.rb.
+  config.webpacker.check_yarn_integrity = true # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -54,7 +54,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   # config.action_mailer.smtp_settings = {
@@ -68,13 +67,13 @@ Rails.application.configure do
 
   # SMTP settings for sendgrid
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.sendgrid.net",
-    :port                 => 587,
-    :domain               => 'cheidelacoriera.com',
-    :user_name            => ENV['SENDGRID_USERNAME'],
-    :password             => ENV['SENDGRID_PASSWORD'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'cheidelacoriera.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
   config.action_mailer.asset_host = 'http://www.cheidelacoriera.com'
 
