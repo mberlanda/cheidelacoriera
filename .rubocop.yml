@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
@@ -88,15 +90,6 @@ Rails:
 
 Rails/Date:
   Enabled: false
-
-Rails/InverseOf:
-  Exclude:
-    - app/models/event.rb
-    - app/models/team.rb
-
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - app/controllers/reservations_controller.rb
 
 Rails/OutputSafety:
   Exclude:
