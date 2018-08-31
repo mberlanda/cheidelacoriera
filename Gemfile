@@ -68,7 +68,7 @@ group :lint do
   gem 'brakeman', '~> 3.7.2', require: false # A static analysis security vulnerability scanner
   gem 'bundler-audit', '~> 0.6' # Check dependencies
   gem 'haml-lint', '~> 0.26', require: false # Syntax checker for HAML
-  gem 'overcommit', '~> 0.41', require: false # hook event pre-commit, pre-push
+  gem 'overcommit', require: false # hook event pre-commit, pre-push
   gem 'rubocop', '~> 0.58', require: false # A Ruby static code analyzer
   gem 'ruby_css_lint', '~> 0.1', require: false # Syntax checker for CSS
 end
