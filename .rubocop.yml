@@ -15,6 +15,7 @@ AllCops:
     - node_modules/**/*
     - spec/support/crud_*.rb
     - spec/controllers/crud_test_models_controller_spec.rb
+    - vendor/**/*
   DisplayCopNames: true
 
 Lint/UnusedMethodArgument:
