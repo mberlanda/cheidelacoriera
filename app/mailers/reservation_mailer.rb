@@ -2,10 +2,7 @@
 
 class ReservationMailer < ApplicationMailer
   def received(reservation)
-    @reservation = reservation
-    @user = @reservation.user
-    @event = @reservation.event
-
+    mail_details(reservation)
     mail(
       to: @user.email,
       subject: "Richiesta Ricevuta | #{@event} | Chei De La Coriera"
@@ -14,10 +11,7 @@ class ReservationMailer < ApplicationMailer
   end
 
   def approved(reservation)
-    @reservation = reservation
-    @user = @reservation.user
-    @event = @reservation.event
-
+    mail_details(reservation)
     mail(
       to: @user.email,
       subject: "Richiesta Approvata | #{@event} | Chei De La Coriera"
@@ -26,10 +20,7 @@ class ReservationMailer < ApplicationMailer
   end
 
   def rejected(reservation)
-    @reservation = reservation
-    @user = @reservation.user
-    @event = @reservation.event
-
+    mail_details(reservation)
     mail(
       to: @user.email,
       subject: "Richiesta Declinata | #{@event} | Chei De La Coriera"
@@ -43,5 +34,13 @@ class ReservationMailer < ApplicationMailer
       to: 'cheidelacoriera@gmail.com',
       subject: "Disponibilità esaurita | #{@event}"
     )
+  end
+
+  private
+
+  def mail_details(reservation)
+    @reservation = reservation
+    @user = @reservation.user
+    @event = @reservation.event
   end
 end
