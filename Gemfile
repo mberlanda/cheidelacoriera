@@ -65,7 +65,7 @@ group :development do
 end
 
 group :lint do
-  gem 'brakeman', require: false # A static analysis security vulnerability scanner
+  gem 'brakeman', '~> 3.7.2', require: false # A static analysis security vulnerability scanner
   gem 'bundler-audit' # Check dependencies
   gem 'haml-lint', require: false # Syntax checker for HAML
   gem 'overcommit', require: false # hook event pre-commit, pre-push
