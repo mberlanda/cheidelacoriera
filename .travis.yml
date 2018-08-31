@@ -1,11 +1,11 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.4.0
+  - 2.5.1
 addons:
   postgresql: '9.6'
 before_install:
-  - gem install bundler -v 1.15.2
+  - gem install bundler -v 1.16.4
 jobs:
   include:
     - stage: Lints & Test

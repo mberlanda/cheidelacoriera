@@ -21,7 +21,7 @@ gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 
 gem 'draper', '~> 3.0'
-gem 'devise', '~> 4.3.0'  # Authentication
+gem 'devise', '~> 4.5.0'  # Authentication
 gem 'simple_form', '~> 3.4' # Form helper
 gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
 
@@ -76,4 +76,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-ruby '2.4.0'
+ruby '2.5.1'
