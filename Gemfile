@@ -13,7 +13,7 @@ gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'rails', '~> 5.1' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
-gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
+gem 'sassc-rails'
 gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
 gem 'webpacker', '~> 3.5'
@@ -21,9 +21,9 @@ gem 'webpacker', '~> 3.5'
 gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 
-gem 'devise', '~> 4.5.0'  # Authentication
+gem 'devise', '~> 4.5.0' # Authentication
 gem 'draper', '~> 3.0'
-gem 'lograge', '~> 0.5.1' # Lograge for more compact log files
+gem 'lograge' # Lograge for more compact log files
 gem 'simple_form', '~> 3.4' # Form helper
 
 gem 'dry_crud', '~> 5.0'
@@ -66,11 +66,11 @@ end
 
 group :lint do
   gem 'brakeman', '~> 3.7.2', require: false # A static analysis security vulnerability scanner
-  gem 'bundler-audit', '~> 0.6' # Check dependencies
-  gem 'haml-lint', '~> 0.26', require: false # Syntax checker for HAML
-  gem 'overcommit', '~> 0.41', require: false # hook event pre-commit, pre-push
-  gem 'rubocop', '~> 0.58', require: false # A Ruby static code analyzer
-  gem 'ruby_css_lint', '~> 0.1', require: false # Syntax checker for CSS
+  gem 'bundler-audit' # Check dependencies
+  gem 'haml-lint', require: false # Syntax checker for HAML
+  gem 'overcommit', require: false # hook event pre-commit, pre-push
+  gem 'rubocop', require: false # A Ruby static code analyzer
+  gem 'ruby_css_lint', require: false # Syntax checker for CSS
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
