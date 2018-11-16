@@ -6,20 +6,17 @@ addons:
   postgresql: '9.6'
 before_install:
   - gem install bundler -v 1.16.4
+services:
+  - docker
+stages:
+  - Lints & Test
+  - Pre-Deploy
 jobs:
   include:
     - stage: Lints & Test
-      before_script:
-        - psql -c 'create database cheidelacoriera_test;' -U postgres
-      script:
-        - bundle exec bundle-audit
-        - bundle exec rubocop
-        - bundle exec brakeman --ignore-model-output
-        - bundle exec rake db:test:prepare
-        - bundle exec rspec spec
+      env: TASK=security
+    - env: TASK=linting
+    - env: TASK=test
     - stage: Pre-Deploy
-      env:
-        - RAILS_ENV=production
-        - RAILS_SERVE_STATIC_FILES=enabled
-        - SECRET_KEY_BASE=df7d11e0d9b64f0a0801426d2d7d604f996e9d7b01d10cd9f1c56cba0d6dcd59e626a4da96f6f18fac3ab08585d9ea5c4574722ae8f0621e77d13777675a520d
-      script: bundle exec rake assets:precompile
+      env: TASK=webpack
+script: ./ci/travis-ci

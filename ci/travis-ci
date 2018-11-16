@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -eu
+
+IFS=$'\n\t'
+
+TASK=${TASK:-}
+
+case $TASK in
+  security)
+    bundle exec bundle-audit
+    bundle exec brakeman --ignore-model-output
+  ;;
+  linting)
+    bundle exec rubocop
+  ;;
+  test)
+    RAILS_ENV=test bundle exec rake db:reset
+    bundle exec rspec spec
+  ;;
+  webpack)
+    docker build -t cheidelacoriera:travis .
+    docker run --rm cheidelacoriera:travis /bin/bash -c "bundle exec rake assets:precompile"
+  ;;
+  *)
+    echo -e "'$TASK' not available"
+    exit 1
+  ;;
+esac

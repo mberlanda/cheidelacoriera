@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'pg'
+
+def connect
+  PG.connect(ENV['DATABASE_URL'])
+end
+
+5.times do
+  begin
+    connect
+    break
+  rescue PG::ConnectionBad => conn_err
+    puts conn_err
+    sleep 2
+  end
+end
