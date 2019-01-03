@@ -63,6 +63,7 @@ class Event < ApplicationRecord
 
   def percentage_availability
     return 0 unless available_seats.positive?
+
     100 * available_seats / total_seats
   end
 
@@ -97,6 +98,7 @@ class Event < ApplicationRecord
 
   def send_availability_alert
     return true unless saved_change_to_available_seats?
+
     ReservationMailer.overbooking(self).deliver_later unless available_seats.positive?
   end
 end

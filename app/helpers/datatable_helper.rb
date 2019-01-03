@@ -43,6 +43,7 @@ module DatatableHelper
 
     def translate(head)
       return head if model_name == :crud
+
       I18n.t(
         "activerecord.attributes.#{model_name}.#{head}",
         default: head

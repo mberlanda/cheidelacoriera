@@ -21,6 +21,7 @@ class Pid
 
   def create
     raise StandardError, "Process #{current} already running" if File.exist?(file_path)
+
     File.write(file_path, $PROCESS_ID)
   end
 
