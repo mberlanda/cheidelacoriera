@@ -42,6 +42,7 @@ class Reservation < ApplicationRecord
 
   def check_fans
     return true unless fan_names.empty?
+
     errors.add(:fan_names, I18n.t('errors.messages.blank'))
   end
 

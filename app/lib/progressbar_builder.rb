@@ -52,6 +52,7 @@ class ProgressbarBuilder
     return 'progress-bar-success' if occupancy <= 25
     return 'progress-bar-info' if occupancy <= 50
     return 'progress-bar-warning' if occupancy <= 75
+
     'progress-bar-danger'
   end
 end

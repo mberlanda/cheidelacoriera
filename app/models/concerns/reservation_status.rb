@@ -19,6 +19,7 @@ module ReservationStatus
 
   def approve
     return unless pending?
+
     active!
   end
 
@@ -31,6 +32,7 @@ module ReservationStatus
   # https://github.com/rails/rails/pull/25337#issuecomment-225166796
   def handle_statuses
     return unless saved_change_to_status?
+
     handle_active if active?
     handle_pending if pending?
     handle_rejected if rejected?
@@ -38,6 +40,7 @@ module ReservationStatus
 
   def handle_total_seats
     return unless saved_change_to_total_seats?
+
     seats_diff = total_seats_before_last_save - total_seats
     decrement_confirmed(seats_diff) if was_active?
     decrement_requested(seats_diff) if was_pending?

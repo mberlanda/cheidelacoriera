@@ -13,6 +13,7 @@ class Breadcrumb
   def to_li
     # rubocop:disable Rails/OutputSafety
     return content_tag(:li, @text, class: :active).html_safe unless @link
+
     content_tag(:li) do
       content_tag(:a, @text, href: seo_url(@link))
     end
@@ -49,6 +50,7 @@ class BreadcrumbBuilder
 
   def link_element(l)
     return l if l.is_a?(Array)
+
     routes[l] || [l]
   end
 

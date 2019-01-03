@@ -17,6 +17,7 @@ class ApplicationRecord < ActiveRecord::Base
     unless attribute_names.include?(attribute.to_s)
       raise ArgumentError("Invalid attribute: #{attribute}")
     end
+
     new_val = (send(attribute) || 0) + by.to_i
     self.class.find(id).update(attribute => new_val)
     reload

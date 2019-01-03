@@ -16,6 +16,7 @@ class DumpProcessor
     File.readlines(@input_file).each do |line|
       matched = line.match(insert_regex)
       next unless matched
+
       table_name, columns, data = matched.captures
       @prev_table_name ||= table_name
       if @prev_table_name != table_name

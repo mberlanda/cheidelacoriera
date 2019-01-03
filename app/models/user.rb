@@ -43,6 +43,7 @@ class User < ApplicationRecord
 
   def form_name
     return unless last_name
+
     "#{last_name} | #{first_name}"
   end
 
@@ -69,6 +70,7 @@ class User < ApplicationRecord
   def can_book?(event)
     return false unless event.bookable?
     return false if fan? && !event.everyone?
+
     true
   end
 end

@@ -15,16 +15,19 @@ module BookableEvent
 
   def bookable?(d = Time.zone.today)
     return false unless available_seats.positive?
+
     bookable_period?(d)
   end
 
   def bookable_period?(d = Time.zone.today)
     return false unless book_range?
+
     bookable_from <= d && bookable_until >= d
   end
 
   def booked_by?(user_id)
     return false unless book_range?
+
     reservations.where(user_id: user_id).present?
   end
 
