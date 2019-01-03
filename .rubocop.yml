@@ -16,6 +16,7 @@ AllCops:
     - spec/support/crud_*.rb
     - spec/controllers/crud_test_models_controller_spec.rb
     - vendor/**/*
+    - stack/**/*
   DisplayCopNames: true
 
 Lint/UnusedMethodArgument:
