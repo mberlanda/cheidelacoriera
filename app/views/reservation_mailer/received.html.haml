@@ -2,7 +2,7 @@
 
 %p
   Abbiamo preso in carico la tua richiesta di adesione alla trasferta
-  = link_to(" #{@event}.", details_event_url(@event.slug), target: '_blank')
+  = link_to(" #{@event}.", details_event_url(@event.slug), target: '_blank', rel: 'noopener noreferrer')
   %br/
   Prossimamente riceverai comunicazione dallo staff riguardo la conferma definitiva o non conferma della tua prenotazione.
 %hr
@@ -15,11 +15,11 @@
 
 - if @event.poster_url
   %hr
-  %a{ href: @event.poster_url, target: '_blank' }
+  %a{ href: @event.poster_url, target: '_blank', rel: 'noopener noreferrer' }
     %img.img-logo{ src: @event.poster_url }
 
 %p
   Ti ricordiamo che la partecipazione alla trasferta comporta l'accettazione del nostro
-  = link_to(' regolamento', 'http://www.cheidelacoriera.com/regolamento?gtm_source=email&gtm_campaign=activation', target: '_blank')
+  = link_to(' regolamento', 'http://www.cheidelacoriera.com/regolamento?gtm_source=email&gtm_campaign=activation', target: '_blank', rel: 'noopener noreferrer')
 
 
