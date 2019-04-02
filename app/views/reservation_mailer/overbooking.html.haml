@@ -20,5 +20,5 @@
       %th= @event.available_seats
 %hr
   .btn-group
-    = link_to('Modifica Posti Totali', edit_event_url(@event.slug), target: '_blank', class: 'btn btn-primary')
-    = link_to('Gestisci le Prenotazioni', reservations_event_url(@event.slug), target: '_blank', class: 'btn btn-info')
+    = link_to('Modifica Posti Totali', edit_event_url(@event.slug), target: '_blank', class: 'btn btn-primary', rel: 'noopener noreferrer')
+    = link_to('Gestisci le Prenotazioni', reservations_event_url(@event.slug), target: '_blank', class: 'btn btn-info', rel: 'noopener noreferrer')

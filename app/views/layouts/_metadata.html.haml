@@ -20,4 +20,4 @@
 %meta{ property: 'twitter:title', content: @displayed_title.truncate(65) }
 %meta{ property: 'twitter:description', content: strip_tags(@meta_description).truncate(190) }
 %meta{ property: 'twitter:image', content: @meta_image }
-%meta{ property: 'twitter:card', content: @title ? @title : 'Chei de la Coriera' }
+%meta{ property: 'twitter:card', content: @title || 'Chei de la Coriera' }
