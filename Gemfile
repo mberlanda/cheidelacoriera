@@ -22,7 +22,7 @@ gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 
 gem 'devise', '~> 4.6.0' # Authentication
-gem 'draper', '~> 3.0'
+gem 'draper'
 gem 'lograge' # Lograge for more compact log files
 gem 'simple_form' # Form helper
 
