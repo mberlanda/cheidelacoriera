@@ -65,15 +65,16 @@ group :development do
 end
 
 group :lint do
-  gem 'brakeman', '~> 3.7.2', require: false # A static analysis security vulnerability scanner
+  gem 'brakeman', require: false # A static analysis security vulnerability scanner
   gem 'bundler-audit' # Check dependencies
   gem 'haml-lint', require: false # Syntax checker for HAML
   gem 'overcommit', require: false # hook event pre-commit, pre-push
   gem 'rubocop', require: false # A Ruby static code analyzer
+  gem 'rubocop-performance', require: false
   gem 'ruby_css_lint', require: false # Syntax checker for CSS
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-ruby '2.5.3'
+ruby '2.6.2'

@@ -1,11 +1,11 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.5.3
+  - 2.6.2
 addons:
   postgresql: '9.6'
 before_install:
-  - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')" --no-rdoc --no-ri
+  - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
 jobs:
   include:
     - stage: Lints & Test

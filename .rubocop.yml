@@ -1,7 +1,8 @@
 inherit_from: .rubocop_todo.yml
+require: rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   Exclude:
     - '**/helpers/dry_crud/**/*.rb'
     - '**/helpers/actions_helper*.rb'
@@ -46,10 +47,6 @@ Metrics/ClassLength:
     - app/models/reservation.rb
     - app/controllers/reservations_controller.rb
 
-Metrics/CyclomaticComplexity:
-  Exclude:
-    - app/controllers/reservations_controller.rb
-
 Metrics/LineLength:
   Max: 90
   Enabled: true
@@ -77,26 +74,14 @@ Metrics/MethodLength:
     - app/controllers/reservations_controller.rb
     - app/decorators/*.rb
 
-Metrics/PerceivedComplexity:
-  Exclude:
-    - app/controllers/reservations_controller.rb
-
 Rails:
   Enabled: true
-
-Rails/OutputSafety:
-  Exclude:
-    - app/helpers/datatable_helper.rb
 
 Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
-
-Style/GuardClause:
-  Exclude:
-    - app/controllers/events_controller.rb
 
 Style/ModuleFunction:
   Enabled: false
