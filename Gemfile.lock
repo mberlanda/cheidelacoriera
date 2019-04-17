@@ -166,7 +166,7 @@ GEM
     pg (0.21.0)
     psych (3.1.0)
     puma (3.12.0)
-    rack (2.0.6)
+    rack (2.0.7)
     rack-protection (2.0.5)
       rack
     rack-proxy (0.6.5)
@@ -265,9 +265,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    simple_form (3.5.1)
-      actionpack (> 4, < 5.2)
-      activemodel (> 4, < 5.2)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -338,7 +338,7 @@ DEPENDENCIES
   overcommit
   pg (~> 0.18)
   puma (~> 3.0)
-  rails (< 5.2)
+  rails (< 6)
   rails-controller-testing (= 1.0.2)
   rails-html-sanitizer (~> 1.0.4)
   react-rails (~> 2.4)
@@ -349,7 +349,7 @@ DEPENDENCIES
   sassc-rails
   shoulda-matchers
   sidekiq (~> 5.0)
-  simple_form (~> 3.4)
+  simple_form
   simplecov (~> 0.15.1)
   spring
   spring-watcher-listen (~> 2.0.0)

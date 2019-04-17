@@ -11,7 +11,7 @@ gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.0' # Use Puma as the app server
-gem 'rails', '< 5.2' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
 gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -24,7 +24,7 @@ gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 gem 'devise', '~> 4.6.0' # Authentication
 gem 'draper', '~> 3.0'
 gem 'lograge' # Lograge for more compact log files
-gem 'simple_form', '~> 3.4' # Form helper
+gem 'simple_form' # Form helper
 
 gem 'dry_crud', '~> 5.0'
 gem 'friendly_id', '~> 5.2.3'
