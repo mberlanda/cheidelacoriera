@@ -9,7 +9,7 @@ end
 
 gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
-gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
+gem 'pg'
 gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
