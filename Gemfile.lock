@@ -340,7 +340,7 @@ DEPENDENCIES
   haml-lint
   haml-rails
   heroku-deflater
-  jbuilder (~> 2.5)
+  jbuilder
   listen (~> 3.0.5)
   lograge
   overcommit
