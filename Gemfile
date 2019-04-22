@@ -8,8 +8,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'haml-rails'
-gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
+gem 'jbuilder' # TODO: remove the couple of templates using it
+gem 'pg'
 gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
