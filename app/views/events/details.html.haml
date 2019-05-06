@@ -30,9 +30,9 @@
       - if current_user
         #reservation-form
           - if current_user.rejected?
-            = render(file: 'reservation/rejected_user')
+            = render(file: 'reservations/rejected_user')
           - elsif !current_user.active?
-            = render(file: 'reservation/pending_user')
+            = render(file: 'reservations/pending_user')
           - elsif !@event.book_range?
             = render(file: 'reservations/no_user_form')
           - elsif @reservation&.id
