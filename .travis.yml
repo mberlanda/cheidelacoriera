@@ -18,7 +18,9 @@ jobs:
         - bundle exec rake db:test:prepare
         - bundle exec rspec spec
     - stage: Pre-Deploy
-      node_js: "10.15.3"
+      language: node_js
+      node_js: 
+        - "10.15.3"
       before_script:
         - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
       env:
