@@ -21,7 +21,7 @@
 
 #welcome-actions
   - @actions.each do |action|
-    = react_component('IndexAction', action, prerender: true)
+    = react_component('IndexAction', action) #, prerender: true)
 
 :javascript
   $(function(){

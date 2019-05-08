@@ -22,7 +22,7 @@ class EventList extends Component {
   }
 
   componentDidMount(){
-    window.$('[data-toggle="tooltip"]').tooltip('show');
+    jQuery('[data-toggle="tooltip"]').tooltip('show');
   }
 
   _fetchEvents = (eventsUrl) => {

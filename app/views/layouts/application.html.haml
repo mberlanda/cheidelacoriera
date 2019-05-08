@@ -5,16 +5,14 @@
     = render partial: 'layouts/metadata'
 
     %link{ href: 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Roboto:300,400,500', rel: 'stylesheet' }/
-    = stylesheet_pack_tag 'styles'
-    = stylesheet_packs_with_chunks_tag 'application.css'
-
-    / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_packs_with_chunks_tag 'styles'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     / = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     / [if lt IE 9]
       = javascript_include_tag 'https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js'
       = javascript_include_tag 'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'
-    = javascript_packs_with_chunks_tag 'vendor.js', 'application'
+    = javascript_packs_with_chunks_tag 'vendor', 'application'
 
     %link{ href: asset_path('favicon.ico'), rel: 'shortcut icon', type: 'image/x-icon' }/
     = yield :head
