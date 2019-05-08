@@ -16,7 +16,7 @@ gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
 gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '4.0.2'
 
 gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
 gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
