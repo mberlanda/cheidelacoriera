@@ -15,4 +15,4 @@
     = BreadcrumbBuilder.build(:home, :upcoming_events)
 
 - provide :page_javascript do
-  = javascript_pack_tag 'api/upcoming_events'
+  = javascript_packs_with_chunks_tag 'api/upcoming_events'
