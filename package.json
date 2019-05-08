@@ -11,12 +11,14 @@
     "yarn": "1.15.2"
   },
   "dependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "4.0.2",
     "babel-polyfill": "6.26.0",
-    "babel-preset-react": "6.24.1",
     "bootstrap": "3.4.1",
     "bootstrap-datepicker": "1.8.0",
     "caniuse-lite": "1.0.30000957",
+    "core-js": "3.0.1",
     "font-awesome": "4.7.0",
     "intro.js": "2.7.0",
     "jquery": "3.3.1",
