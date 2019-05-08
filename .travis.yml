@@ -26,8 +26,7 @@ jobs:
         - rvm install 2.6.3
         - ruby --version
         - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-      # before_script:
-      #   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
+        - bundle install
       env:
         - RAILS_ENV=production
         - RAILS_SERVE_STATIC_FILES=enabled
