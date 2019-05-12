@@ -19,7 +19,7 @@ jobs:
         - bundle exec rspec spec
     - stage: Pre-Deploy
       language: node_js
-      node_js: 
+      node_js:
         - "10.15.3"
       before_install:
         - ruby --version
@@ -27,6 +27,7 @@ jobs:
         - ruby --version
         - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
         - bundle install
+        - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.16.0
       env:
         - RAILS_ENV=production
         - RAILS_SERVE_STATIC_FILES=enabled
