@@ -45,6 +45,9 @@ class EventIcon extends Component {
         else if (elem === 'preferred') {
             return 'fa fa-star icon-yellow'
         }
+        else if (elem === 'gold') {
+            return 'fa fa-trophy icon-yellow'
+        }
         else {
             return 'hidden'
         }
@@ -59,6 +62,9 @@ class EventIcon extends Component {
         }
         else if (elem === 'preferred') {
             return 'Solo Corieristi Semper Fidelis'
+        }
+        else if (elem === 'gold') {
+            return 'Solo Corieristi Gold'
         }
         else {
             return ''

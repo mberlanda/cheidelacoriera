@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   after_update :send_rejection_email
 
-  ROLES = %w[fan preferred admin].freeze
+  ROLES = %w[fan preferred gold admin].freeze
   STATUSES = %w[active pending rejected].freeze
 
   validates :phone_number, presence: true, allow_blank: false,
@@ -70,6 +70,7 @@ class User < ApplicationRecord
   def can_book?(event)
     return false unless event.bookable?
     return false if fan? && !event.everyone?
+    return false if preferred? && event.gold?
 
     true
   end

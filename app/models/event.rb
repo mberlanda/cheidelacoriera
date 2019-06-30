@@ -14,6 +14,8 @@ class Event < ApplicationRecord
   include BookableEvent
   include ReservationCsv
 
+  AUDIENCE = %w[everyone preferred gold].freeze
+
   before_validation :cleanup_params
   before_save :check_availability
 
@@ -41,8 +43,10 @@ class Event < ApplicationRecord
     "#{home_team.name} vs #{away_team.name} #{transport_mean} (#{competition}, #{date})"
   end
 
-  def everyone?
-    audience == 'everyone'
+  AUDIENCE.each do |aud|
+    define_method("#{aud}?") { audience == aud }
+    define_method("#{aud}!") { update(audience: aud) }
+    define_method("was_#{aud}?") { audience_was == aud }
   end
 
   def cleanup_params
