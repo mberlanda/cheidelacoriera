@@ -14,6 +14,7 @@ FactoryGirl.define do
     bookable_until { Date.new(2019, 9, 20) }
     requested_seats { 20 }
     confirmed_seats { 5 }
+    audience { 'everyone' }
 
     competition
   end

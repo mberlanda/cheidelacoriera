@@ -10,5 +10,7 @@ FactoryGirl.define do
     date_of_birth { FFaker::Time.date }
     place_of_birth { FFaker::Address.city }
     phone_number { FFaker::PhoneNumber.phone_number }
+    role { 'fan' }
+    status { 'pending' }
   end
 end

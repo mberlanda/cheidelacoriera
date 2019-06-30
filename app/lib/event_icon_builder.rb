@@ -35,7 +35,8 @@ class EventIconBuilder
     {
       available: 'Prenotabile',
       fully_booked: 'Disponibilità Esaurita',
-      preferred: 'Solo Corieristi Semper Fidelis'
+      preferred: 'Solo Corieristi Semper Fidelis',
+      gold: 'Solo Corieristi Gold'
     }
   end
 
@@ -43,7 +44,8 @@ class EventIconBuilder
     {
       available: 'fa fa-calendar-check-o icon-green ',
       fully_booked: 'fa fa-calendar-times-o icon-red',
-      preferred: 'fa fa-star icon-yellow'
+      preferred: 'fa fa-star icon-yellow',
+      gold: 'fa fa-trophy icon-yellow'
     }
   end
 end
