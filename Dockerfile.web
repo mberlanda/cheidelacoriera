@@ -2,20 +2,13 @@ FROM ruby:2.6.3-stretch
 
 RUN apt-get update \
     && apt-get install -y apt-transport-https \
-    # && curl --silent --show-error --location \
-    #   https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-    # && echo "deb https://deb.nodesource.com/node_10.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
-    # && curl --silent --show-error --location https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    # && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
       postgresql-client apt-transport-https \
-    # postgresql-client nodejs apt-transport-https yarn \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV RAILS_ENV "production"
 ENV RACK_ENV "production"
-ENV NODE_ENV "production"
 ENV RAILS_SERVE_STATIC_FILES "enabled"
 ENV RAILS_LOG_TO_STDOUT "enabled"
 
