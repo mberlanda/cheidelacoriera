@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+export RAILS_ENV=production
+export RAILS_SERVE_STATIC_FILES=enabled
+export SECRET_KEY_BASE=$(bundle exec rake secret)
+
+bundle exec rake assets:clean assets:precompile
