@@ -24,6 +24,7 @@ gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 gem 'devise', '~> 4.6.0' # Authentication
 gem 'draper'
 gem 'lograge' # Lograge for more compact log files
+gem 'newrelic_rpm'
 gem 'simple_form' # Form helper
 
 gem 'dry_crud', '~> 5.0'
