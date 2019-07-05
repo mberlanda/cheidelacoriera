@@ -4,6 +4,7 @@ rvm:
   - 2.6.3
 addons:
   postgresql: '9.6'
+
 before_install:
   - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
 jobs:
@@ -19,8 +20,10 @@ jobs:
         - bundle exec rspec spec
     - stage: Pre-Deploy
       language: node_js
-      node_js: 
+      node_js:
         - "10.15.3"
+      services:
+        - docker
       before_install:
         - ruby --version
         - rvm install 2.6.3
@@ -28,7 +31,6 @@ jobs:
         - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
         - bundle install
       env:
-        - RAILS_ENV=production
-        - RAILS_SERVE_STATIC_FILES=enabled
-        - SECRET_KEY_BASE=df7d11e0d9b64f0a0801426d2d7d604f996e9d7b01d10cd9f1c56cba0d6dcd59e626a4da96f6f18fac3ab08585d9ea5c4574722ae8f0621e77d13777675a520d
-      script: bundle exec rake assets:precompile
+      script:
+        - bin/compile_assets
+        - docker build -t cheidelacoriera --compress -f Dockerfile.web .
