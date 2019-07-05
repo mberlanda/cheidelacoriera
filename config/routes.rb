@@ -79,4 +79,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  require 'sidekiq/web'
+  Sidekiq::Web.set :session_secret, Rails.application.credentials[:secret_key_base]
+  authenticate :user, ->(u) { u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
