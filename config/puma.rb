@@ -9,10 +9,6 @@
 threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
 threads threads_count, threads_count
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port ENV.fetch('PORT') { 3000 }
-
 # Specifies the `environment` that Puma will run in.
 #
 rails_env = ENV.fetch('RAILS_ENV') { 'development' }
@@ -39,8 +35,13 @@ preload_app!
 app_dir = File.expand_path('..', __dir__)
 shared_dir = "#{app_dir}/shared"
 
-# Set up socket location
-bind "unix://#{shared_dir}/sockets/puma.sock"
+if rails_env == 'production'
+  # Set up socket location
+  bind "unix://#{shared_dir}/sockets/puma.sock"
+else
+  # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
+  port ENV.fetch('PORT') { 3000 }
+end
 
 # Set master PID and state locations
 pidfile "#{shared_dir}/pids/puma.pid"

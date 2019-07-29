@@ -13,7 +13,8 @@ mkdir -p shared/pids shared/sockets
 
 # Substitute $PORT in nginx config
 sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf
+# /etc/init.d/nginx restart
 # nginx -s reload
-/etc/init.d/nginx restart
+echo "Finished"
 
 exec "$@"
