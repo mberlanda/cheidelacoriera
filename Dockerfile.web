@@ -4,7 +4,7 @@ RUN apt-get update \
     && apt-get install -y apt-transport-https \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-      bash curl \
+      bash curl nginx sudo \
       postgresql-client apt-transport-https \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -24,15 +24,16 @@ COPY ./db "${WORKDIR}/db"
 COPY ./lib "${WORKDIR}/lib"
 COPY ./public "${WORKDIR}/public"
 COPY ./spec "${WORKDIR}/spec"
-COPY ./stack "${WORKDIR}/stack"
 COPY ./vendor "${WORKDIR}/vendor"
 
 COPY .ruby-version Gemfile Gemfile.lock Rakefile config.ru "${WORKDIR}/"
 
-EXPOSE 3000
-
 RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
 RUN bundle install --no-cache --jobs 4 --deployment --without development test lint || bundle check
+
+COPY ./stack "${WORKDIR}/stack"
+COPY ./stack/nginx/default-site.conf /etc/nginx/sites-available/default
+COPY ./stack/nginx/nginx.conf /etc/nginx/nginx.conf
 
 ENV SECRET_KEY_BASE $(bundle exec rake secret)
 
