@@ -15,6 +15,7 @@ FactoryGirl.define do
     requested_seats { 20 }
     confirmed_seats { 5 }
     audience { 'everyone' }
+    stops { nil }
 
     competition
   end

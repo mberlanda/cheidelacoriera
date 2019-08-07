@@ -71,6 +71,10 @@ class Event < ApplicationRecord
     100 * available_seats / total_seats
   end
 
+  def available_stops
+    @available_stops ||= stops&.split(',')&.map(&:strip)&.reject(&:empty?) || []
+  end
+
   private
 
   def set_slug_name!

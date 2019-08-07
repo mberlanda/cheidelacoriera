@@ -41,6 +41,8 @@ RSpec.describe Event, type: :model do
     it { should respond_to(:pax) }
     it { should respond_to(:audience) }
     it { should respond_to(:transport_mean) }
+    it { should respond_to(:stops) }
+    it { should respond_to(:available_stops) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -219,6 +221,62 @@ RSpec.describe Event, type: :model do
 
     it 'should assign the custom_name as slug_name' do
       expect(subject.slug).to eq(subject.custom_name)
+    end
+  end
+
+  context '.available_stops' do
+    let(:event) { FactoryGirl.build(:event) }
+
+    it 'handles null stops' do
+      aggregate_failures do
+        expect(event.stops).to be_nil
+        expect(event.available_stops).to match_array([])
+      end
+    end
+
+    it 'handles empty stops' do
+      event.stops = ''
+
+      aggregate_failures do
+        expect(event.stops).to eq('')
+        expect(event.available_stops).to match_array([])
+      end
+    end
+
+    it 'handles empty spaced stops' do
+      event.stops = '  '
+
+      aggregate_failures do
+        expect(event.stops).to eq('  ')
+        expect(event.available_stops).to match_array([])
+      end
+    end
+
+    it 'handles single-valued stops' do
+      event.stops = 'Bergamo'
+
+      aggregate_failures do
+        expect(event.stops).to eq('Bergamo')
+        expect(event.available_stops).to match_array(%w[Bergamo])
+      end
+    end
+
+    it 'handles value + space stops' do
+      event.stops = ' Bergamo,  '
+
+      aggregate_failures do
+        expect(event.stops).to eq(' Bergamo,  ')
+        expect(event.available_stops).to match_array(%w[Bergamo])
+      end
+    end
+
+    it 'handles multi-value stops' do
+      event.stops = ' Bergamo, Altro '
+
+      aggregate_failures do
+        expect(event.stops).to eq(' Bergamo, Altro ')
+        expect(event.available_stops).to match_array(%w[Bergamo Altro])
+      end
     end
   end
 end
