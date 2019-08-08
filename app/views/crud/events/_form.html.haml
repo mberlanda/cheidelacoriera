@@ -12,7 +12,8 @@
     %li "Note": testo con informazioni utili (es. tdt, link acquisto biglietti etc)
     %li "Mezzo di trasporto": inserire bus, aereo oppure lasciare vuoto. Gli altri valori verrano filtrati e rimossi
     %li "Posti Disponibili": numero totale dei posti ancora disponibili. se 0 o negativo, la trasferta è chiusa
+    %li "Fermate": lista delle fermate (punti di partenza) separati da virgola es. Bergamo, Altro Luogo, Altro
   %hr
 = crud_form(:competition_id, :date, :time, :venue, :home_team_id, :away_team_id, :season, :transport_mean, :total_seats, :bookable_from,
-            :bookable_until, :audience, :pax, :poster_url, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :available_seats, :score)
+            :bookable_until, :audience, :pax, :poster_url, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :available_seats, :score, :stops)
 = render partial: 'shared/form_html5_support'

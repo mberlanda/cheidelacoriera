@@ -29,3 +29,4 @@ it:
         transport_mean: Mezzo di trasporto
         available_seats: Posti Disponibili
         total_seats: Posti Totali
+        stops: Fermate
