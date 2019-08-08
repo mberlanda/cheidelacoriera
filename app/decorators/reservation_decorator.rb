@@ -8,7 +8,8 @@ class ReservationDecorator < ApplicationDecorator
       object.user.to_s,
       object.fan_names,
       object.phone_number,
-      object.notes
+      object.notes,
+      object.stop
     ]
   end
 
@@ -21,7 +22,8 @@ class ReservationDecorator < ApplicationDecorator
       object.fan_names,
       object.phone_number,
       object.mail_sent,
-      object.notes
+      object.notes,
+      object.stop
     ]
   end
 end

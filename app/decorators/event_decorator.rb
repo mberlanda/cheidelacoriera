@@ -16,7 +16,8 @@ class EventDecorator < ApplicationDecorator
       object.available_seats,
       object.competition.to_s,
       object.venue,
-      object.poster_url
+      object.poster_url,
+      object.available_seats.join(', ')
     ]
   end
 end
