@@ -49,7 +49,7 @@ class ReservationsController < CrudController
 
   def form_create
     permitted = params.require(:reservation)
-                      .permit(:phone_number, :notes, :event_id,
+                      .permit(:phone_number, :notes, :event_id, :stop,
                               :user_id, :fans_count, fan_names: %i[first_name last_name])
     # params.require(:reservation)
     #       .permit(:phone_number, :notes, :event_id, fan_names: [])
@@ -64,7 +64,8 @@ class ReservationsController < CrudController
       user_id: current_user.id,
       notes: permitted[:notes],
       phone_number: permitted[:phone_number],
-      fan_names: fan_names
+      fan_names: fan_names,
+      stop: permitted[:stop]
     )
     @event = Event.find(permitted[:event_id])
     if @reservation.valid?

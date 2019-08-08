@@ -17,3 +17,4 @@ it:
         email: Email
         event_id: Partita
         mail_sent: Mail Inviata
+        stop: Fermata

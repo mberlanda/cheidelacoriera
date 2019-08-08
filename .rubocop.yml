@@ -75,6 +75,9 @@ Metrics/MethodLength:
     - app/controllers/reservations_controller.rb
     - app/decorators/*.rb
 
+Metrics/ModuleLength:
+  Exclude:
+    - app/schemas/reservation_schema.rb
 Rails:
   Enabled: true
 
