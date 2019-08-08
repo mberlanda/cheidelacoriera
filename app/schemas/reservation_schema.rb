@@ -3,7 +3,7 @@
 module ReservationSchema
   module_function
 
-  def jsonschema(minimum: 1, maximum: 10, default: 1)
+  def jsonschema(minimum: 1, maximum: 10, default: 1, stops: [])
     {
       title: 'Prenota la trasferta',
       description: schema_description(maximum),
@@ -49,7 +49,16 @@ module ReservationSchema
         },
         notes: { type: 'string', title: 'Note' }
       }
-    }
+    }.tap do |h|
+      unless stops.empty?
+        h[:required] << 'stop'
+        h[:properties].merge!(stop: {
+                                type: 'string',
+                                title: 'Punto di partenza',
+                                enum: stops
+                              })
+      end
+    end
   end
 
   def ui_schema

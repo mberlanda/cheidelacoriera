@@ -6,13 +6,14 @@
   %ul
     %li "Posti Totali": numero totale dei posti prenotabili. Se 0 o negativo, la trasferta è chiusa
     %li "Prenotabile da" e "Prenotabile a": giorni in cui la trasferta sarà prenotabile
-    %li "Audience": se everyone, tutti gli utenti attivi possono prenotare, altrimenti solo preferred e admin
+    %li "Audience": se everyone, tutti gli utenti attivi possono prenotare, altrimenti solo preferred/gold e admin
     %li "PAX": numero massimo di partecipanti per prenotazione
     %li "Url locandina": fondamentale, link alla locandina
     %li "Note": testo con informazioni utili (es. tdt, link acquisto biglietti etc)
     %li "Mezzo di trasporto": inserire bus, aereo oppure lasciare vuoto. Gli altri valori verrano filtrati e rimossi
     %li "Posti Disponibili": numero totale dei posti ancora disponibili. se 0 o negativo, la trasferta è chiusa
+    %li "Fermate": lista delle fermate (punti di partenza) separati da virgola es. "Bergamo - Via Spino, Altro Luogo - Autostrada, Altro"
   %hr
 = crud_form(:competition_id, :date, :time, :venue, :home_team_id, :away_team_id, :season, :transport_mean, :total_seats, :bookable_from,
-            :bookable_until, :audience, :pax, :poster_url, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :available_seats, :score)
+            :bookable_until, :audience, :pax, :poster_url, :notes, :confirmed_seats, :requested_seats, :rejected_seats, :available_seats, :score, :stops)
 = render partial: 'shared/form_html5_support'

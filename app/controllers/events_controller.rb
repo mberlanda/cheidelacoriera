@@ -26,7 +26,11 @@ class EventsController < PublicController
       # if @react_form
       default_fans_count = 1
       @reservation_form = {
-        schema: ReservationSchema.jsonschema(maximum: @event.pax, default: default_fans_count),
+        schema: ReservationSchema.jsonschema(
+          maximum: @event.pax,
+          default: default_fans_count,
+          stops: @event.available_stops
+        ),
         ui_schema: ReservationSchema.ui_schema,
         form_data: {
           event_id: @event.id,
@@ -53,7 +57,7 @@ class EventsController < PublicController
     @models_label = I18n.t('activerecord.models.reservation.other')
     @model_name = 'reservation'
     @datatable_columns = %i[
-      status total_seats user_id fan_names phone_number notes
+      status total_seats user_id fan_names phone_number notes stop
     ]
   end
 

@@ -10,12 +10,12 @@ class ReservationsController < CrudController
   layout false, only: %i[user_form status]
   respond_to :html, :js
 
-  self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, fan_names: []]
+  self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, :stop, fan_names: []]
 
   include DatatableController
 
   def datatable_columns
-    %i[event_id user_id total_seats status fan_names phone_number mail_sent notes]
+    %i[event_id user_id total_seats status fan_names phone_number mail_sent notes stop]
   end
 
   def model_scope
@@ -49,7 +49,7 @@ class ReservationsController < CrudController
 
   def form_create
     permitted = params.require(:reservation)
-                      .permit(:phone_number, :notes, :event_id,
+                      .permit(:phone_number, :notes, :event_id, :stop,
                               :user_id, :fans_count, fan_names: %i[first_name last_name])
     # params.require(:reservation)
     #       .permit(:phone_number, :notes, :event_id, fan_names: [])
@@ -64,7 +64,8 @@ class ReservationsController < CrudController
       user_id: current_user.id,
       notes: permitted[:notes],
       phone_number: permitted[:phone_number],
-      fan_names: fan_names
+      fan_names: fan_names,
+      stop: permitted[:stop]
     )
     @event = Event.find(permitted[:event_id])
     if @reservation.valid?
@@ -78,12 +79,13 @@ class ReservationsController < CrudController
 
   def create
     permitted = params.require(:reservation)
-                      .permit(:phone_number, :notes, :event_id, :user_id, :fans_count, fan_names: [])
+                      .permit(:phone_number, :notes, :stop, :event_id, :user_id, :fans_count, fan_names: [])
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
       user_id: permitted[:user_id],
       notes: permitted[:notes],
       phone_number: permitted[:phone_number],
+      stop: permitted[:stop],
       fan_names: permitted[:fan_names].to_a.reject(&:blank?)
     )
     if @reservation.valid?
