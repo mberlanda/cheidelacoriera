@@ -57,7 +57,7 @@ class EventsController < PublicController
     @models_label = I18n.t('activerecord.models.reservation.other')
     @model_name = 'reservation'
     @datatable_columns = %i[
-      status total_seats user_id fan_names phone_number notes
+      status total_seats user_id fan_names phone_number notes stop
     ]
   end
 

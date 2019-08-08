@@ -39,6 +39,7 @@
               = f.input :fan_first_name, as: :fake, label: false, placeholder: 'Nome', input_html: { value: current_user.first_name }
               %button.btn.btn-primary#add-guest{ type: :button } Aggiungi Partecipante
             = f.input :phone_number
+            = f.input :stop
             = f.input :event_id, collection: Event.include_all.order(:date).bookable, include_blank: false
             = f.input :user_id, collection: User.order(:email), include_blank: false
             = f.input :notes
