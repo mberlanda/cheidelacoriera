@@ -11,11 +11,11 @@ gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
 gem 'mini_racer'
 gem 'pg'
-gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
 gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
+gem 'unicorn'
 gem 'webpacker', '~> 3.5'
 
 gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048

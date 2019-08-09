@@ -78,8 +78,13 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Exclude:
     - app/schemas/reservation_schema.rb
+
 Rails:
   Enabled: true
+
+Rails/Output:
+  Exclude:
+    - config/unicorn.rb
 
 Style/ClassAndModuleChildren:
   Enabled: false
