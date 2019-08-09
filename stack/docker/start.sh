@@ -7,7 +7,7 @@ function main {
   /etc/init.d/nginx restart
 
   nohup bundle exec sidekiq -e production -C config/sidekiq.yml </dev/null >/dev/null 2>&1 & \
-  bundle exec puma -C config/puma.rb
+  bundle exec unicorn -c config/unicorn.rb
 }
 
 
