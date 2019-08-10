@@ -4,10 +4,11 @@ RUN apt-get update \
     && apt-get install -y apt-transport-https \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-      bash curl nginx sudo \
+      bash curl nginx sudo libjemalloc-dev libjemalloc1 \
       postgresql-client apt-transport-https \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1
 ENV RAILS_ENV "production"
 ENV RACK_ENV "production"
 ENV RAILS_SERVE_STATIC_FILES "enabled"
