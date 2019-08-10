@@ -4,8 +4,8 @@ app_dir = File.expand_path('..', __dir__)
 shared_dir = "#{app_dir}/shared"
 rails_env = ENV.fetch('RAILS_ENV') { 'development' }
 
-worker_processes 5
-timeout 30
+worker_processes Integer(ENV.fetch('UNICORN_MAX_WORKERS') { 5 })
+timeout Integer(ENV.fetch('UNICORN_MAX_TIMEOUT') { 30 })
 preload_app true
 
 if rails_env == 'production'
@@ -13,7 +13,7 @@ if rails_env == 'production'
   # Set master PID location
   pid "#{shared_dir}/pids/unicorn.pid"
 else
-  listen ENV.fetch('PORT') { 3000 }, backlog: 64, tcp_nopush: true
+  listen Integer(ENV.fetch('PORT') { 3000 }), backlog: 64, tcp_nopush: true
 end
 
 # Garbage collection settings.
