@@ -24,7 +24,6 @@ gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
 gem 'devise', '~> 4.6.0' # Authentication
 gem 'draper'
 gem 'lograge' # Lograge for more compact log files
-gem 'newrelic_rpm'
 gem 'simple_form' # Form helper
 
 gem 'dry_crud', '~> 5.0'
@@ -37,9 +36,6 @@ gem 'gibbon', '~> 3.2' # MailChimp API
 gem 'cookies_eu', '~> 1.6' # cookies policy
 
 gem 'sidekiq', '~> 5.0' # Async queue
-
-# gem 'rails_12factor', group: :production # Gem that used to be required by Heroku for deploy
-gem 'heroku-deflater' # , group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -120,8 +120,6 @@ GEM
       rake (>= 10, < 13)
       rubocop (>= 0.50.0)
       sysexits (~> 1.1)
-    heroku-deflater (0.6.3)
-      rack (>= 1.4.5)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -163,7 +161,6 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    newrelic_rpm (6.5.0.357)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -342,12 +339,10 @@ DEPENDENCIES
   gibbon (~> 3.2)
   haml-lint
   haml-rails
-  heroku-deflater
   jbuilder
   listen (~> 3.0.5)
   lograge
   mini_racer
-  newrelic_rpm
   overcommit
   pg
   rails (< 6)
