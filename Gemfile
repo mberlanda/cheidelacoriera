@@ -16,6 +16,7 @@ gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
 gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
 gem 'unicorn'
+gem 'unicorn-worker-killer'
 gem 'webpacker', '~> 3.5'
 
 gem 'rails-html-sanitizer', '~> 1.0.4' # Force this version after CVE-2018-8048
