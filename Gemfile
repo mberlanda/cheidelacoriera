@@ -33,6 +33,7 @@ gem 'friendly_id', '~> 5.2.3'
 gem 'gibbon', '~> 3.2' # MailChimp API
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'scout_apm'
 
 gem 'cookies_eu', '~> 1.6' # cookies policy
 

@@ -8,7 +8,7 @@ RUN apt-get update \
       postgresql-client apt-transport-https \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+# ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1
 ENV RAILS_ENV "production"
 ENV RACK_ENV "production"
 ENV RAILS_SERVE_STATIC_FILES "enabled"
