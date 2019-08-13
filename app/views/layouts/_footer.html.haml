@@ -1,14 +1,14 @@
-%footer
-  .container
-    .row
-      .col-sm-12.footer-copyright
-        .row.text-center
-          %small= link_to(t('home.index.panel.regolamento.heading'), regolamento_path)
-        .row.text-center
-          %a.gtm-home-action{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank', 'data-action' => :fb_group }
-            %i.fa.fa-facebook-square.fb-color
-            %small Gruppo Facebook
-        .row.text-center
-          %a{ href: 'https://github.com/mberlanda', target: '_blank' }
-            %small &copy; kupta #{Time.zone.now.year}
-
+- cache 'footer' do
+  %footer
+    .container
+      .row
+        .col-sm-12.footer-copyright
+          .row.text-center
+            %small= link_to(t('home.index.panel.regolamento.heading'), regolamento_path)
+          .row.text-center
+            %a.gtm-home-action{ href: 'https://www.facebook.com/groups/588161717946822/', target: '_blank', 'data-action' => :fb_group }
+              %i.fa.fa-facebook-square.fb-color
+              %small Gruppo Facebook
+          .row.text-center
+            %a{ href: 'https://github.com/mberlanda', target: '_blank' }
+              %small &copy; kupta #{Time.zone.now.year}
