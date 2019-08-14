@@ -37,6 +37,6 @@ COPY ./stack/nginx/nginx.conf /etc/nginx/nginx.conf
 
 ENV SECRET_KEY_BASE $(bundle exec rake secret)
 
-ENTRYPOINT ["./stack/docker/entrypoint.sh"]
+ENTRYPOINT ["./stack/docker/entrypoint-worker.sh"]
 
-CMD ["./stack/docker/start.sh"]
+CMD ["./stack/docker/start-worker.sh"]
