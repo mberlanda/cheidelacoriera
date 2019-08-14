@@ -40,7 +40,9 @@ class Event < ApplicationRecord
   end
 
   def to_s
-    "#{home_team.name} vs #{away_team.name} #{transport_mean} (#{competition}, #{date})"
+    @to_s ||= Rails.cache.fetch("event|#{id}", expires_in: 12.hours) do
+      "#{home_team.name} vs #{away_team.name} #{transport_mean} (#{competition}, #{date})"
+    end
   end
 
   AUDIENCE.each do |aud|

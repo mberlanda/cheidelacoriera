@@ -71,7 +71,7 @@
               .btn-toolbar.pull-right
                 = yield :actions
         = yield
-    = render 'layouts/footer'
+    = render 'layouts/footer', cached: true
 
     = javascript_include_tag 'application.js'
     = javascript_tag yield(:javascripts) if content_for?(:javascripts)
