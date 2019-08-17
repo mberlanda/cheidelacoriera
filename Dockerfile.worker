@@ -1,0 +1,42 @@
+FROM ruby:2.6.3-stretch
+
+RUN apt-get update \
+    && apt-get install -y apt-transport-https \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+      bash curl nginx sudo libjemalloc-dev libjemalloc1 \
+      postgresql-client apt-transport-https \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ENV RAILS_ENV "production"
+ENV RACK_ENV "production"
+ENV RAILS_SERVE_STATIC_FILES "enabled"
+ENV RAILS_LOG_TO_STDOUT "enabled"
+
+ENV WORKDIR /app/cheidelacoriera
+WORKDIR "${WORKDIR}"
+
+COPY ./app "${WORKDIR}/app"
+COPY ./bin "${WORKDIR}/bin"
+COPY ./config "${WORKDIR}/config"
+COPY ./data "${WORKDIR}/data"
+COPY ./db "${WORKDIR}/db"
+COPY ./lib "${WORKDIR}/lib"
+COPY ./public "${WORKDIR}/public"
+COPY ./spec "${WORKDIR}/spec"
+COPY ./vendor "${WORKDIR}/vendor"
+
+COPY .ruby-version Gemfile Gemfile.lock Rakefile config.ru "${WORKDIR}/"
+
+RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
+RUN bundle install --no-cache --jobs 4 --deployment --without development test lint || bundle check
+
+COPY ./stack "${WORKDIR}/stack"
+COPY ./stack/nginx/default-site.conf /etc/nginx/sites-available/default
+COPY ./stack/nginx/nginx.conf /etc/nginx/nginx.conf
+
+ENV SECRET_KEY_BASE $(bundle exec rake secret)
+
+ENTRYPOINT ["./stack/docker/entrypoint-worker.sh"]
+
+CMD ["./stack/docker/start-worker.sh"]
