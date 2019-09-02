@@ -110,6 +110,23 @@ RSpec.describe Reservation, type: :model do
     end
   end
 
+  context 'when approve_all' do
+    it 'avoids n+1 queries' do
+      event = FactoryGirl.create(:event)
+      res1 = FactoryGirl.create(:reservation, fan_names: @fan_names, event: event)
+      res2 = FactoryGirl.create(:reservation, fan_names: @fan_names, event: event)
+
+      expect(Reservation.where(event_id: event.id).pending.count).to eq(2)
+
+      Reservation.where(event_id: event.id).pending.approve_all
+
+      aggregate_failures do
+        expect(res1.reload.pending?).to be(false)
+        expect(res2.reload.pending?).to be(false)
+      end
+    end
+  end
+
   def default_phone_number
     @default_phone_number ||= FFaker::PhoneNumber.phone_number
   end

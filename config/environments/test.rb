@@ -56,5 +56,6 @@ Rails.application.configure do
     Bullet.enable = true
     Bullet.sentry = true
     Bullet.alert = true
+    Bullet.raise = true
   end
 end
