@@ -5,13 +5,17 @@ class Api::V1::EventsController < ApplicationController
   layout false
 
   def upcoming
-    @events = Event.include_all.order(:date).upcoming
+    @events = event_scope.order(:date).upcoming
     render_event_list
   end
 
   def index
-    @events = Event.include_all.order(date: :desc).all
+    @events = event_scope.order(date: :desc).all
     render_event_list
+  end
+
+  def event_scope
+    Event.includes(:competition, :home_team, :away_team)
   end
 
   def render_event_list
