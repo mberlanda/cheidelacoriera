@@ -7,6 +7,15 @@ RSpec.describe Reservation, type: :model do
     @fan_names = %w[a_valid_fan another_fan]
   end
 
+  # Need to find a better solution to clean up
+  # after this test
+  after(:all) do
+    Reservation.delete_all
+    Event.delete_all
+    Team.delete_all
+    User.delete_all
+  end
+
   context 'default reservation' do
     subject { FactoryGirl.build :reservation }
 
