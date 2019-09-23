@@ -37,6 +37,15 @@ class Event < ApplicationRecord
       return 'fa fa-bus' if transport_mean == 'bus'
       return 'fa fa-plane' if transport_mean == 'aereo'
     end
+
+    def all_names
+      joins(:competition, :home_team, :away_team).select(
+        :id,
+        '"teams"."name" || \' vs \' || "away_teams_events"."name" || ' \
+        '\' \' || COALESCE("events"."transport_mean",\'\') || \' (\' ' \
+        '|| "competitions"."name" || \', \' || "events"."date" || \')\' AS full_name'
+      )
+    end
   end
 
   def to_s

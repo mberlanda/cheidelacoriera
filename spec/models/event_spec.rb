@@ -279,4 +279,39 @@ RSpec.describe Event, type: :model do
       end
     end
   end
+
+  context '#all_names' do
+    it 'handles names as a SQL query' do
+      expected = <<~SQL.strip.tr("\n", ' ').gsub(/\s+/, ' ')
+        SELECT
+           "events"."id",
+           "teams"."name" || ' vs ' || "away_teams_events"."name" || ' ' || COALESCE("events"."transport_mean",'') || ' (' || "competitions"."name" || ', ' || "events"."date" || ')'
+            AS full_name
+        FROM
+           "events"
+           INNER JOIN
+              "competitions"
+              ON "competitions"."id" = "events"."competition_id"
+           INNER JOIN
+              "teams"
+              ON "teams"."id" = "events"."home_team_id"
+           INNER JOIN
+              "teams" "away_teams_events"
+              ON "away_teams_events"."id" = "events"."away_team_id"
+      SQL
+      expect(Event.all_names.to_sql).to eq(expected)
+    end
+
+    it 'returns the expected value' do
+      event_a = FactoryGirl.create(:event)
+      event_b = FactoryGirl.create(:event)
+
+      actual = Event.order(:id).all_names
+
+      aggregate_failures do
+        expect(actual.map(&:id)).to match_array([event_a.id, event_b.id])
+        expect(actual.map(&:full_name)).to match_array([event_a.to_s, event_b.to_s])
+      end
+    end
+  end
 end
