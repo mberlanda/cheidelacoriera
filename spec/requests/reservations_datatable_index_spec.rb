@@ -33,7 +33,7 @@ RSpec.describe 'ReservationsController#datatable_index', type: :request do
   end
 
   before(:each) do
-    Rails.cache.delete('event|*')
+    Rails.cache.clear
   end
 
   it 'prevents n+1 queries' do
@@ -42,8 +42,6 @@ RSpec.describe 'ReservationsController#datatable_index', type: :request do
     get '/reservations/datatable_index.json'
 
     json_response = JSON.parse(response.body)
-    aggregate_failures do
-      expect(json_response['recordsTotal']).to eq(3)
-    end
+    expect(json_response['recordsTotal']).to eq(3)
   end
 end

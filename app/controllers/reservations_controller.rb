@@ -19,7 +19,9 @@ class ReservationsController < CrudController
   end
 
   def model_scope
-    Reservation.includes(:user, :event).all
+    Reservation.joins(:user).includes(
+      event: %i[home_team away_team competition]
+    ).select(%w[id] | datatable_columns, '"users"."email" AS "user_email"')
   end
 
   def status
