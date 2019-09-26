@@ -17,6 +17,8 @@ RSpec.describe User, type: :model do
     it { should respond_to(:phone_number) }
     it { should respond_to(:newsletter) }
     it { should respond_to(:activation_date) }
+    it { should respond_to(:can_book?) }
+    it { should respond_to(:can_see_availability?) }
 
     it 'has default role' do
       expect(subject.role).to eq('fan')
@@ -91,6 +93,7 @@ RSpec.describe User, type: :model do
         expect(fan_user.can_book?(preferred_event)).to be(false)
         expect(fan_user.can_book?(gold_event)).to be(false)
         expect(fan_user.can_book?(expired_event)).to be(false)
+        expect(fan_user.can_see_availability?).to be(false)
       end
     end
 
@@ -100,6 +103,7 @@ RSpec.describe User, type: :model do
         expect(preferred_user.can_book?(preferred_event)).to be(true)
         expect(preferred_user.can_book?(gold_event)).to be(false)
         expect(preferred_user.can_book?(expired_event)).to be(false)
+        expect(preferred_user.can_see_availability?).to be(true)
       end
     end
 
@@ -109,6 +113,7 @@ RSpec.describe User, type: :model do
         expect(gold_user.can_book?(preferred_event)).to be(true)
         expect(gold_user.can_book?(gold_event)).to be(true)
         expect(gold_user.can_book?(expired_event)).to be(false)
+        expect(gold_user.can_see_availability?).to be(true)
       end
     end
 
@@ -117,7 +122,8 @@ RSpec.describe User, type: :model do
         expect(admin_user.can_book?(public_event)).to be(true)
         expect(admin_user.can_book?(preferred_event)).to be(true)
         expect(admin_user.can_book?(gold_event)).to be(true)
-        expect(gold_user.can_book?(expired_event)).to be(false)
+        expect(admin_user.can_book?(expired_event)).to be(false)
+        expect(admin_user.can_see_availability?).to be(true)
       end
     end
   end
