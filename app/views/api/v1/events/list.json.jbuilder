@@ -49,6 +49,7 @@ json.array! @events.each do |event|
   json.currentUser do
     json.role current_user&.role
     json.canBook current_user&.can_book?(event)
+    json.canSeeAvailabilty current_user&.can_see_availability? || false
     json.booked current_user && event.booked_by?(current_user.id)
   end
   json.date I18n.l(event.date, format: :long)
