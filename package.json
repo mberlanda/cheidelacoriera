@@ -6,7 +6,7 @@
   "author": "Mauro Berlanda <mauro.berlanda@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=10.15.3 <10.17",
+    "node": ">=10.15.3 <10.18",
     "npm": "6.4.1",
     "yarn": ">=1.15.2 <1.18"
   },
