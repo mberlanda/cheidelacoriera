@@ -142,9 +142,9 @@ GEM
     json (2.1.0)
     kgio (2.11.2)
     libv8 (7.3.492.27.1)
-    listen (3.0.8)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
+    listen (3.2.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.10.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -351,7 +351,7 @@ DEPENDENCIES
   haml-lint
   haml-rails
   jbuilder
-  listen (~> 3.0.5)
+  listen (~> 3.2.0)
   lograge
   mini_racer
   overcommit
