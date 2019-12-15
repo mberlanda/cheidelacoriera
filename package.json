@@ -11,7 +11,7 @@
     "yarn": ">=1.15.2 <1.18"
   },
   "dependencies": {
-    "@rails/webpacker": "3.6.0",
+    "@rails/webpacker": "4.2.2",
     "babel-polyfill": "6.26.0",
     "babel-preset-react": "6.24.1",
     "bootstrap": "3.4.1",
