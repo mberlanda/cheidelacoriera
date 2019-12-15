@@ -8,7 +8,7 @@
   "engines": {
     "node": ">=10.15.3 <10.17",
     "npm": "6.4.1",
-    "yarn": ">=1.15.2 <1.18"
+    "yarn": ">=1.15.2 <1.22"
   },
   "dependencies": {
     "@rails/webpacker": "3.6.0",
