@@ -52,7 +52,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.9.0'
   gem 'ffaker', '~> 2.13.0'
   gem 'shoulda-matchers'
-  gem 'simplecov', '~>0.15.1', require: false
+  gem 'simplecov', '~>0.17.0', require: false
 end
 
 group :development do
