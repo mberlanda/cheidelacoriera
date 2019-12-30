@@ -97,7 +97,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffaker (2.7.0)
+    ffaker (2.13.0)
     ffi (1.9.25)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
@@ -345,7 +345,7 @@ DEPENDENCIES
   draper
   dry_crud (~> 5.0)
   factory_girl_rails (~> 4.8.0)
-  ffaker (~> 2.7.0)
+  ffaker (~> 2.13.0)
   friendly_id (~> 5.2.3)
   gibbon (~> 3.2)
   haml-lint
