@@ -106,4 +106,9 @@ class ReservationsController < CrudController
     Event.find(event_id).recalculate_seats!
     redirect_to reservations_event_url(slug)
   end
+
+  # Sets an existing model entry from the given id.
+  def find_entry
+    Reservation.includes(:user, :event).find(params[:id])
+  end
 end
