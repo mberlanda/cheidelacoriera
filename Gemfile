@@ -43,7 +43,7 @@ group :development, :test do
   gem 'bullet'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 11.0.0', platform: :mri
-  gem 'rails-controller-testing', '1.0.2'
+  gem 'rails-controller-testing', '1.0.4'
   gem 'rspec-rails'
 end
 
