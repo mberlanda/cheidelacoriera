@@ -13,7 +13,7 @@ jobs:
       before_script:
         - psql -c 'create database cheidelacoriera_test;' -U postgres
       script:
-        - bundle exec bundle-audit
+        - bundle exec bundle-audit --update
         - bundle exec rubocop
         - bundle exec brakeman --ignore-model-output
         - bundle exec rake db:test:prepare
