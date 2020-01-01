@@ -1,4 +1,4 @@
-FROM mberlanda/cheidelacoriera-base:2.6.3
+FROM mberlanda/cheidelacoriera-base:2.7.0
 
 ENV WORKDIR /app/cheidelacoriera
 WORKDIR "${WORKDIR}"
