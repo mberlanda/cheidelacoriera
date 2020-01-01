@@ -1,0 +1,32 @@
+name: Lint and security (Ruby)
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up RVM
+      run: |
+        curl -sSL https://get.rvm.io | bash
+    - name: Set up Ruby 2.7
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        rvm install 2.7.0
+      # uses: actions/setup-ruby@v1
+      # with:
+      #   ruby-version: 2.7.x
+    - name: Bundle install
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: Bundle audit
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        bundle exec bundle-audit --update
+    - name: Rubocop linting
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        bundle exec rubocop
