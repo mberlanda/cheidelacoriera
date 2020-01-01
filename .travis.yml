@@ -15,7 +15,7 @@ jobs:
       script:
         - bundle exec bundle-audit --update
         - bundle exec rubocop
-        - bundle exec brakeman --ignore-model-output
+        - bundle exec brakeman
         - bundle exec rake db:test:prepare
         - bundle exec rspec spec
     - stage: Pre-Deploy
