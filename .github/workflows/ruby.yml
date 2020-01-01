@@ -42,6 +42,10 @@ jobs:
       run: |
         source $HOME/.rvm/scripts/rvm
         bundle exec bundle-audit --update
+    - name: Brakeman security checks
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        bundle exec brakeman
     - name: Rubocop linting
       run: |
         source $HOME/.rvm/scripts/rvm
@@ -53,4 +57,5 @@ jobs:
         RAILS_ENV: test
       run: |
         source $HOME/.rvm/scripts/rvm
+        bundle exec rake db:test:prepare
         bundle exec rspec spec
