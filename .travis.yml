@@ -13,15 +13,15 @@ jobs:
       before_script:
         - psql -c 'create database cheidelacoriera_test;' -U postgres
       script:
-        - bundle exec bundle-audit
+        - bundle exec bundle-audit --update
         - bundle exec rubocop
-        - bundle exec brakeman --ignore-model-output
+        - bundle exec brakeman
         - bundle exec rake db:test:prepare
         - bundle exec rspec spec
     - stage: Pre-Deploy
       language: node_js
       node_js:
-        - "10.15.3"
+        - "10.18.0"
       services:
         - docker
       before_install:
