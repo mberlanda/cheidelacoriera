@@ -1,5 +1,7 @@
 inherit_from: .rubocop_todo.yml
-require: rubocop-performance
+require:
+  - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   TargetRubyVersion: 2.7
@@ -19,6 +21,22 @@ AllCops:
     - spec/controllers/crud_test_models_controller_spec.rb
     - vendor/**/*
   DisplayCopNames: true
+
+Layout/LineLength:
+  Max: 90
+  Enabled: true
+  AllowHeredoc: true
+  AllowURI: true
+  Exclude:
+    - Gemfile
+    - config/**/*
+    - db/**/*
+    - lib/tasks/dbdata.rake
+    - spec/*_helper.rb
+    - app/controllers/events_controller.rb
+    - app/controllers/reservations_controller.rb
+    - app/lib/breadcrumb_builder.rb
+    - app/action_view/helpers/sanitize_helper.rb
 
 Lint/UnusedMethodArgument:
   Exclude:
@@ -47,22 +65,6 @@ Metrics/ClassLength:
   Exclude:
     - app/models/reservation.rb
     - app/controllers/reservations_controller.rb
-
-Metrics/LineLength:
-  Max: 90
-  Enabled: true
-  AllowHeredoc: true
-  AllowURI: true
-  Exclude:
-    - Gemfile
-    - config/**/*
-    - db/**/*
-    - lib/tasks/dbdata.rake
-    - spec/*_helper.rb
-    - app/controllers/events_controller.rb
-    - app/controllers/reservations_controller.rb
-    - app/lib/breadcrumb_builder.rb
-    - app/action_view/helpers/sanitize_helper.rb
 
 Metrics/MethodLength:
   Max: 15

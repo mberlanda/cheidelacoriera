@@ -71,6 +71,7 @@ group :lint do
   gem 'overcommit', require: false # hook event pre-commit, pre-push
   gem 'rubocop', require: false # A Ruby static code analyzer
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem 'ruby_css_lint', require: false # Syntax checker for CSS
 end
 
