@@ -5,19 +5,35 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:9.6
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v1
     - name: Set up RVM
       run: |
         curl -sSL https://get.rvm.io | bash
-    - name: Set up Ruby 2.7
+    - name: Set up .ruby-version
       run: |
         source $HOME/.rvm/scripts/rvm
-        rvm install 2.7.0
+        rvm install $(cat .ruby-version) --binary
+        rvm --default use $(cat .ruby-version)
       # uses: actions/setup-ruby@v1
       # with:
       #   ruby-version: 2.7.x
+    - name: Install PostgreSQL client
+      run: |
+        sudo apt-get -yqq install libpq-dev
+
     - name: Bundle install
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
       run: |
         source $HOME/.rvm/scripts/rvm
         gem install bundler
@@ -30,3 +46,11 @@ jobs:
       run: |
         source $HOME/.rvm/scripts/rvm
         bundle exec rubocop
+    - name: Run tests
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        bundle exec rspec spec
