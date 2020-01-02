@@ -63,5 +63,6 @@ jobs:
         RAILS_ENV: test
       run: |
         source $HOME/.rvm/scripts/rvm
+        bundle exec rails webpacker:compile
         bundle exec rake db:test:prepare
         bundle exec rspec spec
