@@ -17,6 +17,7 @@ jobs:
         - bundle exec rubocop
         - bundle exec brakeman
         - bundle exec rake db:test:prepare
+        - NODE_ENV=test RAILS_ENV=test bundle exec rails webpacker:compile
         - bundle exec rspec spec
     - stage: Pre-Deploy
       language: node_js
