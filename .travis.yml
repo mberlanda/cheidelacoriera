@@ -1,7 +1,8 @@
 dist: xenial
-language: ruby
-rvm:
-  - 2.6.4
+language: node_js
+node_js:
+  - "10.18.0"
+
 addons:
   postgresql: '9.6'
 
@@ -13,20 +14,26 @@ jobs:
       before_script:
         - psql -c 'create database cheidelacoriera_test;' -U postgres
       script:
-        - bundle exec bundle-audit --update
-        - bundle exec rubocop
-        - bundle exec brakeman
+        # - bundle exec bundle-audit --update
+        # - bundle exec rubocop
+        # - bundle exec brakeman
+        - NODE_ENV=test RAILS_ENV=test bundle exec rails webpacker:compile
+        - ls public/packs-test
+        - cat public/packs-test/manifest.json
         - bundle exec rake db:test:prepare
         - bundle exec rspec spec
+      before_install:
+        - ruby --version
+        - rvm install $(cat .ruby-version)
+        - ruby --version
+        - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
+        - bundle install
     - stage: Pre-Deploy
-      language: node_js
-      node_js:
-        - "10.18.0"
       services:
         - docker
       before_install:
         - ruby --version
-        - rvm install 2.6.4
+        - rvm install $(cat .ruby-version)
         - ruby --version
         - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
         - bundle install
