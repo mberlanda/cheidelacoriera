@@ -1,10 +1,10 @@
-FROM ruby:2.6.4-stretch
+FROM ruby:2.7.0-buster
 
 RUN apt-get update \
     && apt-get install -y apt-transport-https \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-      bash curl nginx sudo libjemalloc-dev libjemalloc1 \
+      bash curl nginx sudo libjemalloc-dev \
       postgresql-client apt-transport-https \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
