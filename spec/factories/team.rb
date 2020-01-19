@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :team do
-    name { FFaker::Animal.common_name }
+    name { FFaker::AnimalUS.common_name }
     country { FFaker::Name.last_name }
     url { FFaker::Internet.http_url }
     image_url { FFaker::Avatar.image }

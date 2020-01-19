@@ -50,7 +50,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'factory_bot'
-  gem 'ffaker', '~> 2.13.0'
+  gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'simplecov', '~>0.17.0', require: false
 end

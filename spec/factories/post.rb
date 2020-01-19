@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :post do
-    title { FFaker::Animal.common_name }
+    title { FFaker::AnimalUS.common_name }
     image_url { FFaker::Avatar.image }
     content { FFaker::Lorem.paragraph }
   end

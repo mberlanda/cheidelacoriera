@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :album do
-    title { FFaker::Animal.common_name }
+    title { FFaker::AnimalUS.common_name }
     url { FFaker::Internet.http_url }
   end
 end

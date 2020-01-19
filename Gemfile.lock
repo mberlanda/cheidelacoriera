@@ -342,7 +342,7 @@ DEPENDENCIES
   draper
   dry_crud (~> 5.0)
   factory_bot
-  ffaker (~> 2.13.0)
+  ffaker
   friendly_id (~> 5.3.0)
   gibbon (~> 3.2)
   haml-lint
