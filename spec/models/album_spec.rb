@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Album, type: :model do
   context 'default album' do
-    subject { FactoryGirl.build :album }
+    subject { FactoryBot.build :album }
 
     it { should respond_to(:title) }
     it { should respond_to(:url) }

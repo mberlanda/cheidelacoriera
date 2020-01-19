@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'ReservationsController#approve_all', type: :request do
-  let(:fan) { FactoryGirl.create(:user, role: :fan, status: :active) }
-  let(:admin) { FactoryGirl.create(:user, role: :admin, status: :active) }
+  let(:fan) { FactoryBot.create(:user, role: :fan, status: :active) }
+  let(:admin) { FactoryBot.create(:user, role: :admin, status: :active) }
   let(:event) do
-    FactoryGirl.create(:event, requested_seats: 0, confirmed_seats: 0)
+    FactoryBot.create(:event, requested_seats: 0, confirmed_seats: 0)
   end
 
   context 'when logged user is not admin' do
@@ -39,7 +39,7 @@ RSpec.describe 'ReservationsController#approve_all', type: :request do
 
   context 'when a single pending reservation' do
     let!(:reservation_1) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :reservation,
         event: event,
         fan_names: %w[Foo|Bar]
@@ -67,14 +67,14 @@ RSpec.describe 'ReservationsController#approve_all', type: :request do
 
   context 'when multiple pending reservations' do
     let!(:reservation_1) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :reservation,
         event: event,
         fan_names: %w[Foo|Bar]
       )
     end
     let!(:reservation_2) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :reservation,
         event: event,
         fan_names: %w[Bar|Baz Bat|Man]

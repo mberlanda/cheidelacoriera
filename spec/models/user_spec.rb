@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'default user' do
-    subject! { FactoryGirl.build :user }
+    subject! { FactoryBot.build :user }
 
     it { should respond_to(:email) }
     it { should respond_to(:encrypted_password) }
@@ -26,8 +26,8 @@ RSpec.describe User, type: :model do
     end
   end
   context 'admin user' do
-    let(:fan_user) { FactoryGirl.build(:user, role: 'fan') }
-    let(:admin_user) { FactoryGirl.build(:user, role: 'admin') }
+    let(:fan_user) { FactoryBot.build(:user, role: 'fan') }
+    let(:admin_user) { FactoryBot.build(:user, role: 'admin') }
 
     subject { admin_user }
 
@@ -37,8 +37,8 @@ RSpec.describe User, type: :model do
   end
 
   context 'fan user' do
-    let(:fan_user) { FactoryGirl.build(:user, role: 'fan') }
-    let(:admin_user) { FactoryGirl.build(:user, role: 'admin') }
+    let(:fan_user) { FactoryBot.build(:user, role: 'fan') }
+    let(:admin_user) { FactoryBot.build(:user, role: 'admin') }
 
     subject { fan_user }
 
@@ -60,29 +60,29 @@ RSpec.describe User, type: :model do
     end
 
     let!(:expired_event) do
-      FactoryGirl.build(:event, audience: 'everyone', **expired_attrs)
+      FactoryBot.build(:event, audience: 'everyone', **expired_attrs)
     end
     let!(:public_event) do
-      FactoryGirl.build(:event, audience: 'everyone', **active_attrs)
+      FactoryBot.build(:event, audience: 'everyone', **active_attrs)
     end
     let!(:preferred_event) do
-      FactoryGirl.build(:event, audience: 'preferred', **active_attrs)
+      FactoryBot.build(:event, audience: 'preferred', **active_attrs)
     end
     let!(:gold_event) do
-      FactoryGirl.build(:event, audience: 'gold', **active_attrs)
+      FactoryBot.build(:event, audience: 'gold', **active_attrs)
     end
 
     let!(:fan_user) do
-      FactoryGirl.build(:user, role: 'fan', status: 'active')
+      FactoryBot.build(:user, role: 'fan', status: 'active')
     end
     let!(:preferred_user) do
-      FactoryGirl.build(:user, role: 'preferred', status: 'active')
+      FactoryBot.build(:user, role: 'preferred', status: 'active')
     end
     let!(:gold_user) do
-      FactoryGirl.build(:user, role: 'gold', status: 'active')
+      FactoryBot.build(:user, role: 'gold', status: 'active')
     end
     let(:admin_user) do
-      FactoryGirl.build(:user, role: 'admin', status: 'active')
+      FactoryBot.build(:user, role: 'admin', status: 'active')
     end
 
     it 'fan_user only everyone' do

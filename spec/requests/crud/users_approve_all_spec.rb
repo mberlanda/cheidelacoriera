@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Crud::UsersController#approve_all', type: :request do
-  let(:fan) { FactoryGirl.create(:user, role: :fan, status: :active) }
-  let(:admin) { FactoryGirl.create(:user, role: :admin, status: :active) }
+  let(:fan) { FactoryBot.create(:user, role: :fan, status: :active) }
+  let(:admin) { FactoryBot.create(:user, role: :admin, status: :active) }
 
   context 'when logged user is not admin' do
     it 'redirects to another page' do
@@ -29,7 +29,7 @@ RSpec.describe 'Crud::UsersController#approve_all', type: :request do
   end
 
   context 'when a single user is pending' do
-    let(:user_1) { FactoryGirl.create(:user) }
+    let(:user_1) { FactoryBot.create(:user) }
 
     it 'prevents n+1 queries' do
       sign_in admin
@@ -49,8 +49,8 @@ RSpec.describe 'Crud::UsersController#approve_all', type: :request do
   end
 
   context 'when multiple pending reservations' do
-    let(:user_1) { FactoryGirl.create(:user) }
-    let(:user_2) { FactoryGirl.create(:user) }
+    let(:user_1) { FactoryBot.create(:user) }
+    let(:user_2) { FactoryBot.create(:user) }
 
     it 'prevents n+1 queries' do
       sign_in admin

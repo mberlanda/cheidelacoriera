@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:competition) { FactoryGirl.create :competition }
-  let!(:team1) { FactoryGirl.create :team }
-  let!(:team2) { FactoryGirl.create :team }
+  let(:competition) { FactoryBot.create :competition }
+  let!(:team1) { FactoryBot.create :team }
+  let!(:team2) { FactoryBot.create :team }
 
   it '#transport_mean_class method' do
     expect(Event.transport_mean_class('bus')).to eq('fa fa-bus')
@@ -15,7 +15,7 @@ RSpec.describe Event, type: :model do
 
   context 'default event' do
     subject do
-      FactoryGirl.build(
+      FactoryBot.build(
         :event,
         competition: competition,
         home_team: team1,
@@ -49,9 +49,9 @@ RSpec.describe Event, type: :model do
     end
 
     it 'belongs to a team' do
-      event1 = FactoryGirl.create(:event, home_team: team1)
-      event2 = FactoryGirl.create(:event, home_team: team1)
-      event3 = FactoryGirl.create(:event, away_team: team1)
+      event1 = FactoryBot.create(:event, home_team: team1)
+      event2 = FactoryBot.create(:event, home_team: team1)
+      event3 = FactoryBot.create(:event, away_team: team1)
 
       expect(team1.home_events).to match_array([event1, event2])
       expect(team1.away_events).to match_array([event3])
@@ -63,9 +63,9 @@ RSpec.describe Event, type: :model do
     before do
       default_date = Date.new(2017, 10, 1)
       allow(Time.zone).to receive(:today).and_return(default_date)
-      @past_event = FactoryGirl.create(:event, date: default_date - 1.day)
-      @same_day_event = FactoryGirl.create(:event, date: default_date)
-      @future_event = FactoryGirl.create(:event, date: default_date + 1.day)
+      @past_event = FactoryBot.create(:event, date: default_date - 1.day)
+      @same_day_event = FactoryBot.create(:event, date: default_date)
+      @future_event = FactoryBot.create(:event, date: default_date + 1.day)
     end
 
     it 'should mock date today' do
@@ -80,12 +80,12 @@ RSpec.describe Event, type: :model do
   context '.bookable' do
     before do
       DatabaseCleaner.clean_with(:truncation)
-      @event1 = FactoryGirl.create(
+      @event1 = FactoryBot.create(
         :event,
         bookable_from: Time.zone.today,
         bookable_until: Time.zone.today + 5.days
       )
-      @event2 = FactoryGirl.create(
+      @event2 = FactoryBot.create(
         :event,
         bookable_from: Time.zone.today - 5.days,
         bookable_until: Time.zone.today + 1.day
@@ -108,7 +108,7 @@ RSpec.describe Event, type: :model do
   context 'slug_name generation' do
     let(:event_date) { Date.new(2017, 1, 1) }
     subject do
-      FactoryGirl.build(
+      FactoryBot.build(
         :event,
         competition: competition,
         date: event_date,
@@ -153,7 +153,7 @@ RSpec.describe Event, type: :model do
     end
 
     subject do
-      FactoryGirl.create(
+      FactoryBot.create(
         :event,
         competition: competition,
         date: event_date,
@@ -187,7 +187,7 @@ RSpec.describe Event, type: :model do
       amount = 15
       fans = ['one fan', 'another fan']
       subject.update! available_seats: 0
-      FactoryGirl.create(:reservation, event: subject, fan_names: fans)
+      FactoryBot.create(:reservation, event: subject, fan_names: fans)
 
       expect { subject.update! total_seats: amount }.to change {
         subject.available_seats
@@ -197,7 +197,7 @@ RSpec.describe Event, type: :model do
 
   context 'clean up params before validation' do
     subject do
-      FactoryGirl.build(
+      FactoryBot.build(
         :event,
         competition: competition,
         home_team: team1,
@@ -225,7 +225,7 @@ RSpec.describe Event, type: :model do
   end
 
   context '.available_stops' do
-    let(:event) { FactoryGirl.build(:event) }
+    let(:event) { FactoryBot.build(:event) }
 
     it 'handles null stops' do
       aggregate_failures do
@@ -303,8 +303,8 @@ RSpec.describe Event, type: :model do
     end
 
     it 'returns the expected value' do
-      event_a = FactoryGirl.create(:event)
-      event_b = FactoryGirl.create(:event)
+      event_a = FactoryBot.create(:event)
+      event_b = FactoryBot.create(:event)
 
       actual = Event.order(:id).all_names
 

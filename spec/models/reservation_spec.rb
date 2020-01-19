@@ -17,7 +17,7 @@ RSpec.describe Reservation, type: :model do
   end
 
   context 'default reservation' do
-    subject { FactoryGirl.build :reservation }
+    subject { FactoryBot.build :reservation }
 
     it { should respond_to(:total_seats) }
     it { should respond_to(:fan_names) }
@@ -34,29 +34,30 @@ RSpec.describe Reservation, type: :model do
   end
 
   context 'validate reservation' do
-    let!(:event) { FactoryGirl.create(:event) }
+    let!(:event) { FactoryBot.create(:event) }
 
     it '.check_fans if invalid' do
       expect do
-        FactoryGirl.create :reservation, phone_number: default_phone_number
+        FactoryBot.create :reservation, phone_number: default_phone_number
       end.to raise_exception(ActiveRecord::RecordInvalid)
     end
 
     it '.check_fans if valid' do
-      actual = FactoryGirl.build(
+      actual = FactoryBot.build(
         :reservation, fan_names: @fan_names, phone_number: default_phone_number
       )
+
       expect(actual.valid?).to be true
     end
 
     it '.process_fans! before save' do
-      actual = FactoryGirl.build(:reservation, fan_names: @fan_names)
+      actual = FactoryBot.build(:reservation, fan_names: @fan_names)
       expect(actual.total_seats).to be nil
       expect(actual.fan_names).to match_array(@fan_names)
     end
 
     it '.process_fans! after save' do
-      actual = FactoryGirl.create(
+      actual = FactoryBot.create(
         :reservation, fan_names: @fan_names, phone_number: default_phone_number
       )
       expect(actual.total_seats).to eq @fan_names.count
@@ -65,7 +66,7 @@ RSpec.describe Reservation, type: :model do
 
     it '.assign_requested!' do
       expect do
-        FactoryGirl.create(
+        FactoryBot.create(
           :reservation, event: event, fan_names: @fan_names,
                         phone_number: default_phone_number
         )
@@ -75,10 +76,10 @@ RSpec.describe Reservation, type: :model do
 
   context 'valid reservation' do
     before(:context) do
-      @event = FactoryGirl.create(
+      @event = FactoryBot.create(
         :event, confirmed_seats: 0, requested_seats: 0
       )
-      @reservation = FactoryGirl.create(
+      @reservation = FactoryBot.create(
         :reservation, event: @event, fan_names: @fan_names,
                       phone_number: default_phone_number
       )
@@ -121,9 +122,9 @@ RSpec.describe Reservation, type: :model do
 
   context 'when approve_all' do
     it 'avoids n+1 queries' do
-      event = FactoryGirl.create(:event)
-      res1 = FactoryGirl.create(:reservation, fan_names: @fan_names, event: event)
-      res2 = FactoryGirl.create(:reservation, fan_names: @fan_names, event: event)
+      event = FactoryBot.create(:event)
+      res1 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
+      res2 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
 
       expect(Reservation.where(event_id: event.id).pending.count).to eq(2)
 
