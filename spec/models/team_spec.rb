@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  let!(:team) { FactoryGirl.create :team }
+  let!(:team) { FactoryBot.create :team }
 
   context 'default team' do
     subject { team }
@@ -16,8 +16,8 @@ RSpec.describe Team, type: :model do
   end
 
   context 'events relationship' do
-    let!(:home_event) { FactoryGirl.create(:event, home_team: team) }
-    let!(:away_event) { FactoryGirl.create(:event, away_team: team) }
+    let!(:home_event) { FactoryBot.create(:event, home_team: team) }
+    let!(:away_event) { FactoryBot.create(:event, away_team: team) }
 
     it 'home_events' do
       expect(team.home_events).to eq([home_event])
@@ -34,27 +34,27 @@ RSpec.describe Team, type: :model do
 
   describe 'validates' do
     it 'name presence' do
-      invalid_team = FactoryGirl.build(:team, name: nil)
+      invalid_team = FactoryBot.build(:team, name: nil)
       expect(invalid_team.valid?).to be(false)
     end
 
     it 'name not empty' do
-      invalid_team = FactoryGirl.build(:team, name: '')
+      invalid_team = FactoryBot.build(:team, name: '')
       expect(invalid_team.valid?).to be(false)
     end
 
     it 'country presence' do
-      invalid_team = FactoryGirl.build(:team, country: nil)
+      invalid_team = FactoryBot.build(:team, country: nil)
       expect(invalid_team.valid?).to be(false)
     end
 
     it 'country not empty' do
-      invalid_team = FactoryGirl.build(:team, country: '')
+      invalid_team = FactoryBot.build(:team, country: '')
       expect(invalid_team.valid?).to be(false)
     end
 
     it 'name and country uniqueness' do
-      invalid_team = FactoryGirl.build(
+      invalid_team = FactoryBot.build(
         :team,
         name: team.name,
         country: team.country
@@ -63,22 +63,22 @@ RSpec.describe Team, type: :model do
     end
 
     it 'nil url allowed' do
-      valid_team = FactoryGirl.build(:team, url: nil)
+      valid_team = FactoryBot.build(:team, url: nil)
       expect(valid_team.valid?).to be(true)
     end
 
     it 'http url allowed' do
-      valid_team = FactoryGirl.build(:team, url: 'http://www.google.com')
+      valid_team = FactoryBot.build(:team, url: 'http://www.google.com')
       expect(valid_team.valid?).to be(true)
     end
 
     it 'https url allowed' do
-      valid_team = FactoryGirl.build(:team, url: 'https://www.google.com')
+      valid_team = FactoryBot.build(:team, url: 'https://www.google.com')
       expect(valid_team.valid?).to be(true)
     end
 
     it 'invalid url' do
-      invalid_team = FactoryGirl.build(:team, url: 'www.google.com')
+      invalid_team = FactoryBot.build(:team, url: 'www.google.com')
       expect(invalid_team.valid?).to be(false)
     end
   end

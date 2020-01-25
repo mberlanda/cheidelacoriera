@@ -11,7 +11,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns one event avoiding unnecessary eager loading' do
-      event = FactoryGirl.create(:event)
+      event = FactoryBot.create(:event)
 
       get '/api/events.json'
 
@@ -24,8 +24,8 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns multiple events avoiding unnecessary eager loading' do
-      event1 = FactoryGirl.create(:event)
-      event2 = FactoryGirl.create(:event)
+      event1 = FactoryBot.create(:event)
+      event2 = FactoryBot.create(:event)
 
       get '/api/events.json'
 
@@ -39,7 +39,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
   end
 
   context 'when fan logged-in' do
-    let(:fan) { FactoryGirl.create(:user, role: :fan, status: :active) }
+    let(:fan) { FactoryBot.create(:user, role: :fan, status: :active) }
 
     before(:each) { sign_in fan }
 
@@ -50,7 +50,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns one event preventing n+1' do
-      event = FactoryGirl.create(:event)
+      event = FactoryBot.create(:event)
 
       get '/api/events.json'
 
@@ -63,8 +63,8 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns multiple events preventing n+1' do
-      event1 = FactoryGirl.create(:event)
-      event2 = FactoryGirl.create(:event)
+      event1 = FactoryBot.create(:event)
+      event2 = FactoryBot.create(:event)
 
       get '/api/events.json'
 
@@ -78,7 +78,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
   end
 
   context 'when admin logged-in' do
-    let(:admin) { FactoryGirl.create(:user, role: :admin, status: :active) }
+    let(:admin) { FactoryBot.create(:user, role: :admin, status: :active) }
 
     before(:each) { sign_in admin }
 
@@ -89,7 +89,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns one event preventing n+1' do
-      event = FactoryGirl.create(:event)
+      event = FactoryBot.create(:event)
 
       get '/api/events.json'
 
@@ -102,8 +102,8 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
     end
 
     it 'returns multiple events preventing n+1' do
-      event1 = FactoryGirl.create(:event)
-      event2 = FactoryGirl.create(:event)
+      event1 = FactoryBot.create(:event)
+      event2 = FactoryBot.create(:event)
 
       get '/api/events.json'
 

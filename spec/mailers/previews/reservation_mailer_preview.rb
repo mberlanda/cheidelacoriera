@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'factory_girl'
+require 'factory_bot'
 require 'ffaker'
 
 # rubocop:disable Lint/HandleExceptions
 begin
-  FactoryGirl.find_definitions
-rescue FactoryGirl::DuplicateDefinitionError
+  FactoryBot.find_definitions
+rescue FactoryBot::DuplicateDefinitionError
 end
 # rubocop:enable Lint/HandleExceptions
 
@@ -14,13 +14,13 @@ end
 class ReservationMailerPreview < ActionMailer::Preview
   def received
     begin
-      reservation = FactoryGirl.create(
+      reservation = FactoryBot.create(
         :reservation,
         fan_names: ['Nome Cognome', 'Altro Partecipante']
       )
     rescue ArgumentError
-      FactoryGirl.find_definitions
-      reservation = FactoryGirl.create(
+      FactoryBot.find_definitions
+      reservation = FactoryBot.create(
         :reservation,
         fan_names: ['Nome Cognome', 'Altro Partecipante']
       )
@@ -29,7 +29,7 @@ class ReservationMailerPreview < ActionMailer::Preview
   end
 
   def overbooking
-    event = FactoryGirl.create(:event, transport_mean: :bus)
+    event = FactoryBot.create(:event, transport_mean: :bus)
     ReservationMailer.overbooking(event)
   end
 end

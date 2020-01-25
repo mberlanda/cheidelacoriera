@@ -4,13 +4,13 @@ require 'rails_helper'
 
 RSpec.describe Competition, type: :model do
   context 'default competition' do
-    subject { FactoryGirl.build :competition }
+    subject { FactoryBot.build :competition }
 
     it { should respond_to(:name) }
   end
 
   context 'slug' do
-    subject { FactoryGirl.create :competition, name: 'name' }
+    subject { FactoryBot.create :competition, name: 'name' }
 
     it 'should be generated from name if blank' do
       expect(subject.slug).to eq 'name'

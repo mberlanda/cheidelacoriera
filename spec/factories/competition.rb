@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :competition do
-    name { FFaker::Animal.common_name }
+    name { FFaker::AnimalUS.common_name }
   end
 end

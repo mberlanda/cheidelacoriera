@@ -28,7 +28,7 @@ gem 'lograge' # Lograge for more compact log files
 gem 'simple_form' # Form helper
 
 gem 'dry_crud', '~> 5.0'
-gem 'friendly_id', '~> 5.3.0'
+gem 'friendly_id'
 
 gem 'gibbon', '~> 3.2' # MailChimp API
 # Use Capistrano for deployment
@@ -41,16 +41,15 @@ gem 'sidekiq', '~> 5.0' # Async queue
 
 group :development, :test do
   gem 'bullet'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 11.0.0', platform: :mri
-  gem 'rails-controller-testing', '1.0.4'
+  gem 'byebug', platform: :mri
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.9.0'
-  gem 'ffaker', '~> 2.13.0'
+  gem 'factory_bot'
+  gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'simplecov', '~>0.17.0', require: false
 end

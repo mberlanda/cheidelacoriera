@@ -34,10 +34,10 @@ RSpec.describe Crud::UsersController, type: :controller do
   end
 
   def admin_user
-    @admin_user ||= FactoryGirl.create(:user, role: 'admin', status: 'active')
+    @admin_user ||= FactoryBot.create(:user, role: 'admin', status: 'active')
   end
 
   def fan_user
-    @fan_user ||= FactoryGirl.create(:user, role: 'fan', status: 'active')
+    @fan_user ||= FactoryBot.create(:user, role: 'fan', status: 'active')
   end
 end

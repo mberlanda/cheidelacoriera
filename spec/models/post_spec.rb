@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   context 'default post' do
-    subject { FactoryGirl.build :post }
+    subject { FactoryBot.build :post }
 
     it { should respond_to(:title) }
     it { should respond_to(:image_url) }
@@ -14,7 +14,7 @@ RSpec.describe Post, type: :model do
   end
 
   context 'slug' do
-    subject { FactoryGirl.create :post, title: 'title' }
+    subject { FactoryBot.create :post, title: 'title' }
 
     it 'should be generated from title if blank' do
       expect(subject.slug).to eq 'title'

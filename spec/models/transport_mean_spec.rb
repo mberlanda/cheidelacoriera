@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe TransportMean, type: :model do
-  let!(:transport_mean) { FactoryGirl.create :transport_mean }
+  let!(:transport_mean) { FactoryBot.create :transport_mean }
 
   context 'default transport_mean' do
     subject { transport_mean }
