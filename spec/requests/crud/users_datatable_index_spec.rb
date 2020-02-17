@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Crud::UsersController#datatable_index', type: :request do
-  let(:admin) { FactoryGirl.create(:user, role: :admin, status: :active) }
+  let(:admin) { FactoryBot.create(:user, role: :admin, status: :active) }
 
   it 'uses a different implementation preventing memory bloating' do
     n = 2
-    n.times { FactoryGirl.create(:user) }
+    n.times { FactoryBot.create(:user) }
 
     sign_in admin
 
