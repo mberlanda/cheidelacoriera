@@ -54,4 +54,15 @@ class Crud::UsersController < CrudController
       render action: :edit
     end
   end
+
+  def model_datatable_index(model_result)
+    decorator = DecoratorHelper.new
+    # Another level of optimitation could be to remove the following
+    # line and replace with a scoped query only on the used columns
+    @response = model_result
+
+    @data = @response.map { |r| decorator.users(r) }
+
+    render_datatable_response
+  end
 end
