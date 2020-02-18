@@ -20,7 +20,7 @@ gem 'unicorn-worker-killer'
 gem 'webpacker', '~> 3.5'
 
 gem 'rails-html-sanitizer', '~> 1.3.0' # Force this version after CVE-2018-8048
-gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
+gem 'sprockets', '~> 4.0.0' # Force this version after CVE-2018-3760
 
 gem 'devise', '~> 4.7.1' # Authentication
 gem 'draper'
