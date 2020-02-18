@@ -24,13 +24,9 @@ jobs:
     - stage: Pre-Deploy
       services:
         - docker
-      before_install:
-        - ruby --version
-        - rvm install $(cat .ruby-version)
-        - ruby --version
-        - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-        - bundle install
+      before_install: true
+      install: true
       env:
       script:
-        - bin/compile_assets
         - docker build -t cheidelacoriera --compress -f Dockerfile.web .
+        # Nice to have: run a docker-compose and make some requests check

@@ -1,12 +1,15 @@
-FROM ruby:2.7.0-buster
+############################
+# STEP 1 build base image
+############################
+
+FROM ruby:2.7.0-buster as base
 
 RUN apt-get update \
     && apt-get install -y apt-transport-https \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
       bash curl nginx sudo libjemalloc-dev \
-      postgresql-client apt-transport-https \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      postgresql-client apt-transport-https
 
 ENV RAILS_ENV "production"
 ENV RACK_ENV "production"
@@ -16,6 +19,13 @@ ENV RAILS_LOG_TO_STDOUT "enabled"
 ENV WORKDIR /app/cheidelacoriera
 WORKDIR "${WORKDIR}"
 
+COPY .ruby-version Gemfile Gemfile.lock "${WORKDIR}/"
+
+RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
+RUN bundle install --no-cache --jobs 4 --deployment --without development test lint || bundle check
+
+COPY Rakefile config.ru "${WORKDIR}/"
+
 COPY ./app "${WORKDIR}/app"
 COPY ./bin "${WORKDIR}/bin"
 COPY ./config "${WORKDIR}/config"
@@ -23,13 +33,40 @@ COPY ./data "${WORKDIR}/data"
 COPY ./db "${WORKDIR}/db"
 COPY ./lib "${WORKDIR}/lib"
 COPY ./public "${WORKDIR}/public"
-COPY ./spec "${WORKDIR}/spec"
 COPY ./vendor "${WORKDIR}/vendor"
 
-COPY .ruby-version Gemfile Gemfile.lock Rakefile config.ru "${WORKDIR}/"
+############################
+# STEP 2 compile assets
+############################
 
-RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-RUN bundle install --no-cache --jobs 4 --deployment --without development test lint || bundle check
+FROM base as assets
+
+# Install node and yarn
+RUN curl --silent --show-error --location \
+      https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+    && echo "deb https://deb.nodesource.com/node_10.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
+    && curl --silent --show-error --location https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       nodejs yarn
+
+COPY .yarnclean yarn.lock package.json .postcssrc.yml .babelrc "${WORKDIR}/"
+
+RUN rm -rf ./public/assets ./public/packs ./public/packs-test
+RUN ./bin/compile_assets
+
+############################
+# STEP 3 build web image
+############################
+
+FROM base
+
+# Cleanup apt repositories
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Copy the assets from the previous step
+COPY --from=assets "${WORKDIR}/public" "${WORKDIR}/public"
 
 COPY ./stack "${WORKDIR}/stack"
 COPY ./stack/nginx/default-site.conf /etc/nginx/sites-available/default
