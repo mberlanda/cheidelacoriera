@@ -44,6 +44,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'ruby-prof'
 end
 
 group :test do
