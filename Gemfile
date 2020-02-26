@@ -11,16 +11,16 @@ gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
 gem 'mini_racer'
 gem 'pg'
-gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '< 7' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
-gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
+gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 gem 'unicorn'
 gem 'unicorn-worker-killer'
 gem 'webpacker', '~> 3.5'
 
 gem 'rails-html-sanitizer', '~> 1.3.0' # Force this version after CVE-2018-8048
-gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
+gem 'sprockets'
 
 gem 'devise', '~> 4.7.1' # Authentication
 gem 'draper'

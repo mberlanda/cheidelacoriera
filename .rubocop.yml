@@ -29,6 +29,7 @@ Layout/LineLength:
   AllowURI: true
   Exclude:
     - Gemfile
+    - bin/**/*
     - config/**/*
     - db/**/*
     - lib/tasks/dbdata.rake
