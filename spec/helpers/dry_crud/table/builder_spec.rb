@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe 'DryCrud::Table::Builder' do
+
   include FormatHelper
   include UtilityHelper
 
@@ -118,4 +117,5 @@ describe 'DryCrud::Table::Builder' do
 
     assert_dom_equal dom, table.to_html
   end
+
 end

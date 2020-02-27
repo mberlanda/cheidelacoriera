@@ -1,12 +1,10 @@
-# encoding: UTF-8
-
 require 'English'
 
 # View helpers for basic functions used in various other helpers.
 module UtilityHelper
-  # rubocop:disable Rails/OutputSafety
-  EMPTY_STRING = '&nbsp;'.html_safe # non-breaking space asserts better css.
-  # rubocop:enable Rails/OutputSafety
+
+  # non-breaking space asserts better css.
+  EMPTY_STRING = '&nbsp;'.html_safe.freeze
 
   # Render a content tag with the collected contents rendered
   # by &block for each item in collection.
@@ -24,7 +22,7 @@ module UtilityHelper
   def flash_class(level)
     case level
     when :notice then 'success'
-    when :alert then 'danger'
+    when :alert then 'error'
     else level.to_s
     end
   end
@@ -82,4 +80,5 @@ module UtilityHelper
       [attr, "#{attr}_id"]
     end
   end
+
 end

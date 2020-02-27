@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe 'DryCrud::Form::Builder' do
+
   include FormatHelper
   include FormHelper
   include UtilityHelper
@@ -21,6 +20,7 @@ describe 'DryCrud::Form::Builder' do
   let(:form)  { DryCrud::Form::Builder.new(:entry, entry, self, {}) }
 
   describe '#input_field' do
+
     it 'dispatches name attr to string field' do
       expect(form).to receive(:string_field)
         .with(:name, required: 'required')
@@ -41,13 +41,14 @@ describe 'DryCrud::Form::Builder' do
       companion_id: :belongs_to_field,
       other_ids: :has_many_field,
       more_ids: :has_many_field }.each do |attr, method|
-      it 'dispatches #{attr} attr to #{method}' do
+      it "dispatches #{attr} attr to #{method}" do
         expect(form).to receive(method).with(attr, {})
         form.input_field(attr)
       end
 
       it { expect(form.input_field(attr)).to be_html_safe }
     end
+
   end
 
   describe '#labeled_input_fields' do
@@ -62,12 +63,12 @@ describe 'DryCrud::Form::Builder' do
   describe '#labeled_input_field' do
     context 'when required' do
       subject { form.labeled_input_field(:name) }
-      it { is_expected.to include('input-group-addon') }
+      it { is_expected.to include('input-group-append') }
     end
 
     context 'when not required' do
       subject { form.labeled_input_field(:remarks) }
-      it { is_expected.not_to include('input-group-addon') }
+      it { is_expected.not_to include('input-group-append') }
     end
 
     context 'with help text' do
@@ -150,6 +151,7 @@ describe 'DryCrud::Form::Builder' do
         is_expected.to match(/label [^>]*for.+hoho/)
       end
     end
+
   end
 
   describe '#labeled' do
@@ -223,7 +225,8 @@ describe 'DryCrud::Form::Builder' do
     end
   end
 
-  def expect_n_options(f, n)
-    expect(f.scan('</option>').size).to eq(n)
+  def expect_n_options(form, count)
+    expect(form.scan('</option>').size).to eq(count)
   end
+
 end

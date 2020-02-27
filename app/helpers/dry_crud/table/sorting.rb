@@ -1,11 +1,11 @@
-# encoding: UTF-8
-
 module DryCrud
   module Table
+
     # Provides headers with sort links. Expects a method :sortable?(attr)
     # in the template/controller to tell if an attribute is sortable or not.
     # Extracted into an own module for convenience.
     module Sorting
+
       # Create a header with sort links and a mark for the current sort
       # direction.
       def sort_header(attr, label = nil)
@@ -20,11 +20,11 @@ module DryCrud
       end
 
       # Renders a sort link header, otherwise similar to :attr.
-      def sortable_attr(a, header = nil, &block)
-        if template.sortable?(a)
-          attr(a, sort_header(a, header), &block)
+      def sortable_attr(attr, header = nil, &block)
+        if template.sortable?(attr)
+          attr(attr, sort_header(attr, header), &block)
         else
-          attr(a, header, &block)
+          attr(attr, header, &block)
         end
       end
 
@@ -61,6 +61,7 @@ module DryCrud
       def params
         template.params
       end
+
     end
   end
 end

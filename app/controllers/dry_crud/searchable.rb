@@ -1,10 +1,10 @@
-# encoding: UTF-8
-
 module DryCrud
+
   # The search functionality for the index table.
   # Define an array of searchable string columns in your subclassing
   # controllers using the class attribute +search_columns+.
   module Searchable
+
     extend ActiveSupport::Concern
 
     included do
@@ -18,6 +18,7 @@ module DryCrud
 
     # Prepended methods for searching.
     module Prepends
+
       private
 
       # Enhance the list entries with an optional search criteria
@@ -60,10 +61,12 @@ module DryCrud
       def search_support?
         search_columns.present?
       end
+
     end
 
     # Class methods for Searchable.
     module ClassMethods
+
       # All search columns divided in table and field names.
       def search_tables_and_fields
         @search_tables_and_fields ||= search_columns.map do |f|
@@ -74,6 +77,8 @@ module DryCrud
           end
         end
       end
+
     end
+
   end
 end

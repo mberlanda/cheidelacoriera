@@ -1,13 +1,10 @@
-
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 # Tests all actions of the CrudController based on a dummy model
 # (CrudTestModel). This is useful to test the general behavior
 # of CrudController.
 
-describe CrudTestModelsController, type: :controller do
+describe CrudTestModelsController do
   include CrudTestHelper
 
   before(:all) do
@@ -356,7 +353,14 @@ describe CrudTestModelsController, type: :controller do
     end
 
     context 'with invalid params' do
-      let(:params) { { crud_test_model: { rating: 20 } } }
+      let(:params) do
+        {
+          crud_test_model: {
+            rating: 20,
+            other_ids: [OtherCrudTestModel.first.id]
+          }
+        }
+      end
 
       context '.html', combine: 'uhivp' do
         it_is_expected_to_respond
@@ -375,6 +379,10 @@ describe CrudTestModelsController, type: :controller do
             %i[before_update before_save
                before_render_edit before_render_form]
           )
+        end
+
+        it 'does not update has_many ids' do
+          expect(test_entry.reload.other_ids).to eq([])
         end
       end
 
@@ -404,7 +412,7 @@ describe CrudTestModelsController, type: :controller do
       context '.html' do
         it 'does not delete entry from database',
            perform_request: false do
-          expect { perform_request }.not_to change { CrudTestModel.count }
+          expect { perform_request }.not_to(change { CrudTestModel.count })
         end
 
         it 'redirects to referer',
@@ -426,11 +434,13 @@ describe CrudTestModelsController, type: :controller do
 
       context 'callback', perform_request: false do
         before do
-          test_entry.update_attribute :name, 'illegal'
+          # rubocop:disable Rails/SkipsModelValidations
+          test_entry.update_attribute(:name, 'illegal')
+          # rubocop:enable Rails/SkipsModelValidations
         end
 
         it 'does not delete entry from database' do
-          expect { perform_request }.not_to change { CrudTestModel.count }
+          expect { perform_request }.not_to(change { CrudTestModel.count })
         end
 
         it 'redirects to index' do

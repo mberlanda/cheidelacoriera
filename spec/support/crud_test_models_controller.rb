@@ -1,15 +1,15 @@
-# frozen_string_literal: true
-
 # Controller for the dummy model.
 class CrudTestModelsController < CrudController #:nodoc:
-  HANDLE_PREFIX = 'handle_'
+
+  HANDLE_PREFIX = 'handle_'.freeze
 
   self.search_columns = %i[name whatever remarks]
   self.sort_mappings = { chatty: 'length(remarks)' }
   self.default_sort = 'name'
-  self.permitted_attrs = %i[name email password whatever children
-                            companion_id rating income birthdate
-                            gets_up_at last_seen human remarks]
+  self.permitted_attrs = [:name, :email, :password, :whatever, :children,
+                          :companion_id, :rating, :income, :birthdate,
+                          :gets_up_at, :last_seen, :human, :remarks,
+                          other_ids: []]
 
   before_create :possibly_redirect
   before_create :handle_name
@@ -95,7 +95,13 @@ class CrudTestModelsController < CrudController #:nodoc:
   def method_missing(sym, *_args)
     if sym.to_s.starts_with?(HANDLE_PREFIX)
       called_callback(sym.to_s[HANDLE_PREFIX.size..-1].to_sym)
+    else
+      super
     end
+  end
+
+  def respond_to_missing?(sym, include_private = false)
+    sym.to_s.starts_with?(HANDLE_PREFIX) || super
   end
 
   # records a callback
@@ -103,4 +109,5 @@ class CrudTestModelsController < CrudController #:nodoc:
     @called_callbacks ||= []
     @called_callbacks << callback
   end
+
 end

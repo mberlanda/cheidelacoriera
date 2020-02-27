@@ -1,8 +1,8 @@
-# encoding: UTF-8
-
 module DryCrud
+
   # Provide +before_render+ callbacks.
   module RenderCallbacks
+
     extend ActiveSupport::Concern
 
     included do
@@ -12,6 +12,7 @@ module DryCrud
 
     # Prepended methods for callbacks.
     module Prepends
+
       # Helper method to run +before_render+ callbacks and render the action.
       # If a callback renders or redirects, the action is not rendered.
       def render(*args, &block)
@@ -32,10 +33,12 @@ module DryCrud
           -> { run_callbacks(e, &a) }
         end.call
       end
+
     end
 
     # Class methods for callbacks.
     module ClassMethods
+
       # Defines before callbacks for the render actions.
       def define_render_callbacks(*actions)
         args = actions.map { |a| :"render_#{a}" }
@@ -55,6 +58,8 @@ module DryCrud
           terminate
         end
       end
+
     end
+
   end
 end

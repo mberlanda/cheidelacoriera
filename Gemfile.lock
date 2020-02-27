@@ -97,8 +97,8 @@ GEM
       activemodel-serializers-xml (>= 1.0)
       activesupport (>= 5.0)
       request_store (>= 1.0)
-    dry_crud (5.2.0)
-      rails (>= 5.0)
+    dry_crud (6.0.0)
+      rails (>= 6.0)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -355,7 +355,7 @@ DEPENDENCIES
   database_cleaner
   devise (~> 4.7.1)
   draper
-  dry_crud (~> 5.0)
+  dry_crud
   factory_bot
   ffaker
   friendly_id

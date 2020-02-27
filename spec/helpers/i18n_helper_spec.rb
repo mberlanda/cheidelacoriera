@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe I18nHelper do
+
   include CrudTestHelper
 
   describe '#translate_inheritable' do

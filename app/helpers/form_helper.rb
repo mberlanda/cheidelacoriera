@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # Defines forms to edit models. The helper methods come in different
 # granularities:
 # * #plain_form - A form using Crud::FormBuilder.
@@ -8,6 +6,7 @@
 # * #crud_form - A #standard_form for the current +entry+, with the given
 #   attributes or default.
 module FormHelper
+
   # Renders a form using Crud::FormBuilder.
   def plain_form(object, options = {}, &block)
     options[:html] ||= {}
@@ -48,4 +47,5 @@ module FormHelper
     attrs << options
     standard_form(path_args(entry), *attrs, &block)
   end
+
 end

@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe FormatHelper do
+
   include UtilityHelper
   include I18nHelper
   include CrudTestHelper
@@ -11,12 +10,13 @@ describe FormatHelper do
     reset_db
     setup_db
     create_test_data
+    @original_locale = I18n.locale
     I18n.locale = :en
   end
 
   after(:all) do
     reset_db
-    I18n.locale = I18n.default_locale
+    I18n.locale = @original_locale
   end
 
   # define some test format_ methods
@@ -83,6 +83,7 @@ describe FormatHelper do
   end
 
   describe '#f' do
+
     unless ENV['NON_LOCALIZED'] # localization dependent tests
       context 'Floats' do
         it 'adds two digits' do
@@ -136,6 +137,7 @@ describe FormatHelper do
         expect(f('<injection>')).not_to be_html_safe
       end
     end
+
   end
 
   describe '#format_attr' do
@@ -160,6 +162,17 @@ describe FormatHelper do
     it 'formats existing belongs_to' do
       string = format_attr(crud_test_models(:BBBBB), :companion)
       expect(string).to eq('AAAAA')
+    end
+
+    it 'formats empty has_one' do
+      expect(format_attr(crud_test_models(:FFFFF), :comrad)).to eq(
+        t('global.associations.no_entry')
+      )
+    end
+
+    it 'formats existing has_one' do
+      string = format_attr(crud_test_models(:AAAAA), :comrad)
+      expect(string).to eq('BBBBB')
     end
 
     it 'formats existing has_many' do
@@ -263,4 +276,5 @@ describe FormatHelper do
       expect(captionize(:gets_up_at, CrudTestModel)).to eq('Gets up at')
     end
   end
+
 end
