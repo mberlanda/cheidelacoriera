@@ -43,7 +43,7 @@ group :development, :test do
   gem 'bullet'
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta4'
   gem 'ruby-prof'
 end
 
