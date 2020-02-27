@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   extend FriendlyId
   validates :title, presence: true
-  validates :image_url, http_url: true, allow_nil: true, allow_blank: true
+  validates :image_url, http_url: true, allow_blank: true
   # validates :content, presence: true
 
   after_initialize :set_defaults, unless: :persisted?

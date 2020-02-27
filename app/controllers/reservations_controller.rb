@@ -1,4 +1,4 @@
-# frozen_string_literal: truebookable_until
+# frozen_string_literal: true
 
 class ReservationsController < CrudController
   before_action :authenticate_user!, only: %i[user_form form_create]
@@ -41,7 +41,9 @@ class ReservationsController < CrudController
     )
     redirect_to action: :status, id: @reservation.id if @reservation
 
-    render 'reservations/no_user_form', layout: false unless current_user.can_book?(@event)
+    unless current_user.can_book?(@event)
+      render 'reservations/no_user_form', layout: false
+    end
 
     @reservation = Reservation.new(
       event_id: event_id,
