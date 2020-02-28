@@ -10,7 +10,8 @@ import 'multiselect/js/jquery.multi-select.js';
 import 'wowjs/dist/wow.min.js';
 import 'retinajs/dist/retina.min.js';
 import 'intro.js/intro.js';
-import 'babel-polyfill';
+// import 'core-js/stable';
+import 'regenerator-runtime/runtime'
 import 'whatwg-fetch';
 
 global.$ = $;

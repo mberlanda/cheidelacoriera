@@ -51,7 +51,7 @@ RUN curl --silent --show-error --location \
     && apt-get install -y --no-install-recommends \
        nodejs yarn
 
-COPY .yarnclean yarn.lock package.json .postcssrc.yml .babelrc "${WORKDIR}/"
+COPY .yarnclean yarn.lock package.json .browserslistrc babel.config.js postcss.config.js "${WORKDIR}/"
 
 RUN rm -rf ./public/assets ./public/packs ./public/packs-test
 RUN ./bin/compile_assets

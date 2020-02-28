@@ -17,7 +17,7 @@ gem 'sassc-rails'
 gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 gem 'unicorn'
 gem 'unicorn-worker-killer'
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '4.2.2'
 
 gem 'rails-html-sanitizer', '~> 1.3.0' # Force this version after CVE-2018-8048
 gem 'sprockets'
