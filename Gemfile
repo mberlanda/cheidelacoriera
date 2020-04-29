@@ -27,7 +27,7 @@ gem 'draper'
 gem 'lograge' # Lograge for more compact log files
 gem 'simple_form' # Form helper
 
-gem 'dry_crud', '~> 5.0'
+gem 'dry_crud', '~> 6.0'
 gem 'friendly_id'
 
 gem 'gibbon', '~> 3.2' # MailChimp API
