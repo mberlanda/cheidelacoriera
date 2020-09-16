@@ -25,5 +25,7 @@ module Cheidelacoriera
     config.active_job.queue_adapter = :sidekiq
 
     config.active_record.time_zone_aware_types = %i[datetime time]
+
+    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   end
 end
