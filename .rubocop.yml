@@ -38,7 +38,7 @@ Layout/LineLength:
     - app/controllers/events_controller.rb
     - app/controllers/reservations_controller.rb
     - app/lib/breadcrumb_builder.rb
-    - app/action_view/helpers/sanitize_helper.rb
+    - lib/action_view/helpers/sanitize_helper.rb
 
 Lint/UnusedMethodArgument:
   Exclude:
