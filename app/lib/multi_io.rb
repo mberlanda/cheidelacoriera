@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MultiIO
+class MultiIo
   def initialize(*targets)
     @targets = targets
   end
