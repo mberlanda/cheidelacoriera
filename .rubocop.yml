@@ -16,6 +16,7 @@ AllCops:
     - '**/helpers/utility_helper*.rb'
     - app/controllers/dry_crud/*.rb
     - app/controllers/crud_controller.rb
+    - bin/webpack-dev-server
     - db/schema.rb
     - node_modules/**/*
     - spec/support/crud_*.rb
