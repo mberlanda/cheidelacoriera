@@ -1,15 +1,14 @@
-# frozen_string_literal: true
-
 #:nodoc:
-REGEXP_ROWS = /<tr.+?<\/tr>/m #:nodoc:
-REGEXP_HEADERS = /<th.+?<\/th>/m #:nodoc:
-REGEXP_SORT_HEADERS = /<th.*?><a .*?sort_dir=asc.*?>.*?<\/a><\/th>/m #:nodoc:
-REGEXP_ACTION_CELL = /<td class=\"action\"><a .*?href.+?<\/a><\/td>/m #:nodoc:
+REGEXP_ROWS = /<tr.+?<\/tr>/m.freeze
+REGEXP_HEADERS = /<th.+?<\/th>/m.freeze
+REGEXP_SORT_HEADERS = /<th.*?><a .*?sort_dir=asc.*?>.*?<\/a><\/th>/m.freeze
+REGEXP_ACTION_CELL = /<td class=\"action\"><a .*?href.+?<\/a><\/td>/m.freeze
 
 # A simple test helper to prepare the test database with a CrudTestModel model.
 # This helper is used to test the CrudController and various helpers
 # without the need for an application based model.
 module CrudTestHelper
+
   # Controller helper methods for the tests
 
   def model_class
@@ -56,8 +55,8 @@ module CrudTestHelper
     end
   end
 
-  def create_crud_test_models(c)
-    c.create_table :crud_test_models, force: true do |t|
+  def create_crud_test_models(connection)
+    connection.create_table :crud_test_models, force: true do |t|
       t.string   :name, null: false, limit: 50
       t.string   :email
       t.string   :password
@@ -76,16 +75,16 @@ module CrudTestHelper
     end
   end
 
-  def create_other_crud_test_models(c)
-    c.create_table :other_crud_test_models, force: true do |t|
+  def create_other_crud_test_models(connection)
+    connection.create_table :other_crud_test_models, force: true do |t|
       t.string  :name, null: false, limit: 50
       t.integer :more_id
     end
   end
 
-  def create_crud_test_models_other_crud_test_models(c)
-    c.create_table :crud_test_models_other_crud_test_models,
-                   force: true do |t|
+  def create_crud_test_models_other_crud_test_models(connection)
+    connection.create_table :crud_test_models_other_crud_test_models,
+                            force: true do |t|
       t.belongs_to :crud_test_model, index: { name: 'parent' }
       t.belongs_to :other_crud_test_model, index: { name: 'other' }
     end
@@ -113,6 +112,7 @@ module CrudTestHelper
   end
 
   def with_test_routing
+    @routes ||= nil
     with_routing do |set|
       set.draw { resources :crud_test_models }
       # used to define a controller in these tests
@@ -128,14 +128,23 @@ module CrudTestHelper
     routes = @routes
 
     controller.singleton_class.send(:include, routes.url_helpers)
-    controller.view_context_class = Class.new(controller.view_context_class) do
-      include routes.url_helpers
+
+    if controller.respond_to?(:view_context_class)
+      view_context_class = Class.new(controller.view_context_class) do
+        include routes.url_helpers
+      end
+      custom_view_context = Module.new do
+        define_method(:view_context_class) do
+          view_context_class
+        end
+      end
+      controller.extend(custom_view_context)
     end
 
     @routes.draw { resources :crud_test_models }
   end
 
-  def create(index, companion)
+  def create(index, companion) # rubocop:disable Metrics/AbcSize
     c = str(index)
     m = CrudTestModel.new(
       name: c,
@@ -172,7 +181,8 @@ module CrudTestHelper
   def without_transaction
     c = ActiveRecord::Base.connection
     start_transaction = false
-    if c.adapter_name.downcase.include?('mysql') && c.open_transactions > 0
+    if c.adapter_name.downcase.include?('mysql') &&
+       c.open_transactions.positive?
       # in transactional tests, we may simply rollback
       c.execute('ROLLBACK')
       start_transaction = true
@@ -182,4 +192,5 @@ module CrudTestHelper
 
     c.execute('BEGIN') if start_transaction
   end
+
 end

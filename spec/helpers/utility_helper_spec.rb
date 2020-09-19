@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe UtilityHelper do
+
   include CrudTestHelper
 
   before(:all) do
@@ -32,6 +31,7 @@ describe UtilityHelper do
   end
 
   describe '#content_tag_nested' do
+
     it 'escapes safe content' do
       html = content_tag_nested(:div, %w[a b]) { |e| content_tag(:span, e) }
       expect(html).to be_html_safe
@@ -70,4 +70,5 @@ describe UtilityHelper do
       )
     end
   end
+
 end

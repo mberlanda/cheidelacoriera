@@ -1,9 +1,9 @@
-# encoding: UTF-8
-
 module DryCrud
   module Table
+
     # Helper class to store column information.
     class Col #:nodoc:
+
       delegate :content_tag, :capture, to: :template
 
       attr_reader :header, :html_options, :template, :block
@@ -29,6 +29,7 @@ module DryCrud
       def html_cell(entry)
         content_tag(:td, content(entry), html_options)
       end
+
     end
   end
 end

@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe TableHelper do
+
   include FormatHelper
   include UtilityHelper
   include I18nHelper
@@ -268,4 +267,5 @@ describe TableHelper do
   def expect_pattern_count(pattern, count)
     expect(subject.scan(pattern).size).to eq(count)
   end
+
 end

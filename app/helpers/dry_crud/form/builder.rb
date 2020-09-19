@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 module DryCrud
   module Form
+
     # A form builder that automatically selects the corresponding input field
     # for ActiveRecord column types. Convenience methods for each column type
     # allow one to customize the different fields.
@@ -15,6 +14,7 @@ module DryCrud
     # See the Control class for how to customize the html rendered for a
     # single input field.
     class Builder < ActionView::Helpers::FormBuilder
+
       class_attribute :control_class
       self.control_class = Control
 
@@ -73,21 +73,35 @@ module DryCrud
       def boolean_field(attr, html_options = {})
         content_tag(:div, class: 'checkbox') do
           content_tag(:label) do
-            # rubocop:disable Rails/OutputSafety
             detail = html_options.delete(:detail) || '&nbsp;'.html_safe
-            # rubocop:enable Rails/OutputSafety
             safe_join([check_box(attr, html_options), ' ', detail])
           end
         end
       end
 
       # Add form-control class to all input fields.
-      %w[text_field password_field email_field text_area
+      %w[text_field password_field email_field
          number_field date_field time_field datetime_field].each do |method|
         define_method(method) do |attr, html_options = {}|
           add_css_class(html_options, 'form-control')
           super(attr, html_options)
         end
+      end
+
+      def integer_field(attr, html_options = {})
+        html_options[:step] ||= 1
+        number_field(attr, html_options)
+      end
+
+      def float_field(attr, html_options = {})
+        html_options[:step] ||= 'any'
+        number_field(attr, html_options)
+      end
+
+      def decimal_field(attr, html_options = {})
+        html_options[:step] ||=
+          (10**-column_property(object, attr, :scale)).to_f
+        number_field(attr, html_options)
       end
 
       # Customize the standard text area to have 5 rows by default.
@@ -96,10 +110,6 @@ module DryCrud
         html_options[:rows] ||= 5
         super(attr, html_options)
       end
-
-      alias integer_field number_field
-      alias float_field number_field
-      alias decimal_field number_field
 
       # Render a select element for a :belongs_to association defined by attr.
       # Use additional html_options for the select element.
@@ -148,7 +158,8 @@ module DryCrud
       # Renders the given content with an addon.
       def with_addon(content, addon)
         content_tag(:div, class: 'input-group') do
-          content + content_tag(:span, addon, class: 'input-group-addon')
+          html = content_tag(:span, addon, class: 'input-group-text')
+          content + content_tag(:div, html, class: 'input-group-append')
         end
       end
 
@@ -242,13 +253,13 @@ module DryCrud
         if field_method
           build_labeled_field(field_method, *args)
         else
-          super(name, *args)
+          super
         end
       end
 
       # Overriden to fullfill contract with method_missing 'labeled_' methods.
-      def respond_to?(name, include_private = false)
-        labeled_field_method?(name).present? || super(name, include_private)
+      def respond_to_missing?(name, include_private = false)
+        labeled_field_method?(name).present? || super
       end
 
       private
@@ -313,6 +324,7 @@ module DryCrud
           options[:cancel_url_edit] || options[:cancel_url]
         end
       end
+
     end
   end
 end

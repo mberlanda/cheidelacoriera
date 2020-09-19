@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 # Contains assertions for testing common crud controller use cases.
 # See crud_controller_examples for use cases.
 module CrudControllerTestHelper
   extend ActiveSupport::Concern
 
   # Performs a request based on the metadata of the action example under test.
-  def perform_request
+  def perform_request # rubocop:disable Metrics/AbcSize
     m = RSpec.current_example.metadata
     example_params = respond_to?(:params) ? send(:params) : {}
     params = scope_params.dup
@@ -79,6 +77,7 @@ module CrudControllerTestHelper
 
   # Helper methods to describe contexts.
   module ClassMethods
+
     # Describe a certain action and provide some usefull metadata.
     # Tests whether this action is configured to be skipped.
     def describe_action(method, action, metadata = {}, &block)
@@ -170,4 +169,5 @@ module CrudControllerTestHelper
       end
     end
   end
+
 end

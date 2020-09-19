@@ -1,18 +1,18 @@
-# frozen_string_literal: true
-
 module DryCrud
   module Form
+
     # Internal class to handle the rendering of a single form control,
     # consisting of a label, input field, addon, help text or
     # required mark.
     class Control
-      attr_reader :builder, :attr, :args, :options, :span, :addon, :help
+
+      attr_reader :builder, :attr, :args, :options, :addon, :help
 
       delegate :content_tag, :object,
                to: :builder
 
       # Html displayed to mark an input as required.
-      REQUIRED_MARK = '*'
+      REQUIRED_MARK = '*'.freeze
 
       # Number of default input field span columns depending
       # on the #field_method.
@@ -30,8 +30,8 @@ module DryCrud
       # This includes an options hash as the last argument, that
       # may contain the following special options:
       #
-      # * <tt>:addon</tt> - Addon content displayd just after the input field.
-      # * <tt>:help</tt> - A help text displayd below the input field.
+      # * <tt>:addon</tt> - Addon content displayed just after the input field.
+      # * <tt>:help</tt> - A help text displayed below the input field.
       # * <tt>:span</tt> - Number of columns the input field should span.
       # * <tt>:caption</tt> - Different caption for the label.
       # * <tt>:field_method</tt> - Different method to create the input field.
@@ -173,6 +173,8 @@ module DryCrud
           false
         end
       end
+
     end
+
   end
 end

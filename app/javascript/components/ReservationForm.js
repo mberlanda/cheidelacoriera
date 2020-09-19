@@ -87,7 +87,7 @@ class ReservationForm extends React.Component {
   }
 
   _updateSchema(newSchema) {
-    this.setState(schema: newSchema)
+    this.setState({schema: newSchema})
   }
 
   _increaseFansInputs(fanNames, fansCount){

@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 
 describe FormHelper do
+
   include UtilityHelper
   include FormatHelper
   include I18nHelper
@@ -57,6 +56,7 @@ describe FormHelper do
   end
 
   describe '#standard_form' do
+
     subject do
       with_test_routing do
         capture do
@@ -214,4 +214,5 @@ describe FormHelper do
                             #{t('global.button.cancel')}<\/a>/x)
     end
   end
+
 end

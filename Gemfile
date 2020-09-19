@@ -11,23 +11,23 @@ gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
 gem 'mini_racer'
 gem 'pg'
-gem 'rails', '< 6' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '< 6.1' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
 gem 'sassc-rails'
-gem 'uglifier', '4.1.5' # Use Uglifier as compressor for JavaScript assets
+gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 gem 'unicorn'
 gem 'unicorn-worker-killer'
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '4.2.2'
 
 gem 'rails-html-sanitizer', '~> 1.3.0' # Force this version after CVE-2018-8048
-gem 'sprockets', '~> 3.7.2' # Force this version after CVE-2018-3760
+gem 'sprockets'
 
 gem 'devise', '~> 4.7.1' # Authentication
 gem 'draper'
 gem 'lograge' # Lograge for more compact log files
 gem 'simple_form' # Form helper
 
-gem 'dry_crud', '~> 5.0'
+gem 'dry_crud'
 gem 'friendly_id'
 
 gem 'gibbon', '~> 3.2' # MailChimp API
@@ -37,13 +37,13 @@ gem 'scout_apm'
 
 gem 'cookies_eu', '~> 1.6' # cookies policy
 
-gem 'sidekiq', '~> 5.0' # Async queue
+gem 'sidekiq', '< 6' # Async queue
 
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta4'
   gem 'ruby-prof'
 end
 

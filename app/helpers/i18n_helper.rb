@@ -1,8 +1,7 @@
-# encoding: UTF-8
-
 # Translation helpers extending the Rails +translate+ helper to support
 # translation inheritance over the controller class hierarchy.
 module I18nHelper
+
   # Translates the passed key by looking it up over the controller hierarchy.
   # The key is searched in the following order:
   #  - {controller}.{current_partial}.{key}
@@ -80,4 +79,5 @@ module I18nHelper
     defaults << :"#{folder}.#{action_name}.#{key}"
     defaults << :"#{folder}.global.#{key}"
   end
+
 end

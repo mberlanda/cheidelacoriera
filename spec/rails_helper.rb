@@ -74,7 +74,7 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Dir[File.expand_path('support/*.rb', __dir__)].each { |file| require file }
+Dir[File.expand_path('support/*.rb', __dir__)].sort.each { |file| require file }
 
 # sidekiq
 require 'sidekiq/testing'

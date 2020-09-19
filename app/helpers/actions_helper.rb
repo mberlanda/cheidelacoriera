@@ -1,14 +1,13 @@
-# encoding: UTF-8
-
 # Helpers to create action links. This default implementation supports
 # regular links with an icon and a label. To change the general style
 # of action links, change the method #action_link, e.g. to generate a button.
 # The common crud actions show, edit, destroy, index and add are provided here.
 module ActionsHelper
+
   # A generic helper method to create action links.
   # These link could be styled to look like buttons, for example.
   def action_link(label, icon = nil, url = {}, html_options = {})
-    add_css_class html_options, 'action btn btn-default'
+    add_css_class html_options, 'action btn btn-light'
     link_to(icon ? action_icon(icon, label) : label,
             url, html_options)
   end
@@ -59,4 +58,5 @@ module ActionsHelper
     path = path.is_a?(String) ? path : new_polymorphic_path(path, url_options)
     action_link(ti('link.add'), 'plus', path)
   end
+
 end

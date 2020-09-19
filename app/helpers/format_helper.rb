@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # Provides uniform formatting of basic data types, based on Ruby class (#f)
 # or database column type (#format_attr). If other helpers define methods
 # with names like 'format_{class}_{attr}', these methods are used for
@@ -8,6 +6,7 @@
 # Futher helpers standartize the layout of multiple attributes (#render_attrs),
 # values with labels (#labeled) and simple lists.
 module FormatHelper
+
   # Formats a basic value based on its Ruby class.
   def f(value)
     case value
@@ -97,8 +96,9 @@ module FormatHelper
   # Checks whether the given attr is an association of obj and formats it
   # accordingly if it is.
   def format_association(obj, attr)
-    belongs_to = association(obj, attr, :belongs_to)
+    belongs_to = association(obj, attr, :belongs_to, :has_one)
     has_many = association(obj, attr, :has_many, :has_and_belongs_to_many)
+
     if belongs_to
       format_belongs_to(obj, belongs_to)
     elsif has_many
@@ -128,7 +128,7 @@ module FormatHelper
     end
   end
 
-  # Formats an ActiveRecord +belongs_to+ association
+  # Formats an ActiveRecord +belongs_to+ or +has_one+ association.
   def format_belongs_to(obj, assoc)
     val = obj.send(assoc.name)
     if val
@@ -161,4 +161,5 @@ module FormatHelper
   def assoc_link?(_assoc, val)
     respond_to?("#{val.class.model_name.singular_route_key}_path".to_sym)
   end
+
 end

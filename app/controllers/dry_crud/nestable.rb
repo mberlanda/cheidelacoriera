@@ -1,6 +1,5 @@
-# encoding: UTF-8
-
 module DryCrud
+
   # Provides functionality to nest controllers/resources.
   # If a controller is nested, the parent classes and namespaces
   # may be defined as an array in the +nesting+ class attribute.
@@ -9,6 +8,7 @@ module DryCrud
   # namespace, may define this attribute as follows:
   #   self.nesting = :admin, Country
   module Nestable
+
     # Adds the :nesting class attribute and parent helper methods
     # to the including controller.
     def self.prepended(klass)
@@ -61,5 +61,6 @@ module DryCrud
     def parent_scope
       parent.send(model_class.name.underscore.pluralize)
     end
+
   end
 end
