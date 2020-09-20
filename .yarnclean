@@ -8,8 +8,8 @@ powered-test
 docs
 doc
 website
-images
-assets
+# images
+# assets
 
 # examples
 example
