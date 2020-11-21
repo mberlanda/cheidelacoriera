@@ -74,4 +74,8 @@ class User < ApplicationRecord
 
     true
   end
+
+  def can_see_availability?
+    active? && ROLES.index(role).to_i.positive?
+  end
 end
