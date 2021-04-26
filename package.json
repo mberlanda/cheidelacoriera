@@ -17,7 +17,7 @@
     "@rails/ujs": "6.0.3",
     "@rails/webpacker": "4.3.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "bootstrap": "3.4.1",
+    "bootstrap": "4.6.0",
     "bootstrap-datepicker": "1.9.0",
     "font-awesome": "4.7.0",
     "jquery-backstretch": "2.1.18",
