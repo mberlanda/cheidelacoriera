@@ -170,7 +170,7 @@ GEM
     json (2.5.1)
     kgio (2.11.4)
     libv8-node (15.14.0.1)
-    listen (3.2.1)
+    listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.11.2)
@@ -394,7 +394,7 @@ DEPENDENCIES
   haml-lint
   haml-rails
   jbuilder
-  listen (~> 3.2.0)
+  listen
   lograge
   mini_racer
   overcommit
@@ -416,13 +416,13 @@ DEPENDENCIES
   simple_form
   simplecov (~> 0.17.0)
   spring
-  spring-watcher-listen (~> 2.0.0)
+  spring-watcher-listen
   sprockets
   tzinfo-data
   uglifier
   unicorn
   unicorn-worker-killer
-  web-console (>= 3.3.0)
+  web-console
   webpacker (= 4.2.2)
 
 RUBY VERSION
