@@ -1,4 +1,5 @@
 dist: xenial
+arch: arm64 # this should grant free buildshttps://travis-ci.community/t/free-oss-credits-usage-calculation/10832/4
 language: node_js
 node_js:
   - "10.18.0"
