@@ -3,6 +3,9 @@ arch: arm64 # this should grant free buildshttps://travis-ci.community/t/free-os
 language: node_js
 node_js:
   - "10.18.0"
+branches:
+  only:
+  - master
 
 addons:
   postgresql: '9.6' # same as production
