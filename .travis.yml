@@ -16,8 +16,8 @@ jobs:
         - bundle exec rake db:test:prepare
         - bundle exec rspec spec
       before_install:
-        - ruby --version
-        - rvm install $(cat .ruby-version)
+        - ruby --version
+        - rvm install $(cat .ruby-version)
         - ruby --version
         - gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
         - bundle install
