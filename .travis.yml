@@ -7,8 +7,11 @@ branches:
   only:
   - master
 
-addons:
-  postgresql: '9.6' # same as production
+# https://docs.travis-ci.com/user/database-setup/#postgresql
+services:
+  - postgresql
+# addons:
+#  postgresql: '9.6' # same as production
 
 jobs:
   include:
