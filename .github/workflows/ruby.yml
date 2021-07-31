@@ -1,70 +1,100 @@
-name: Lint and security (Ruby)
-
+name: Application build
 on: [push]
-
 jobs:
   build:
+    name: Linters and Security
     runs-on: ubuntu-latest
-
-    # services:
-    #   postgres:
-    #     image: postgres:9.6
-    #     ports: ["5432:5432"]
-    #     options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/cache@v1
-      with:
-        path: $HOME/.rvm
-        key: ${{ runner.os }}-rvm-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-rvm-
-    - name: Set up RVM
-      run: |
-        curl -sSL https://get.rvm.io | bash
-    - name: Set up .ruby-version
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        rvm install $(cat .ruby-version) --binary
-        rvm --default use $(cat .ruby-version)
-      # uses: actions/setup-ruby@v1
-      # with:
-      #   ruby-version: 2.7.x
-    - name: Install PostgreSQL client
-      run: |
-        sudo apt-get -yqq install libpq-dev
+      - uses: actions/checkout@v1
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.7.0
+      - name: Bundle audit
+        run: |
+          bundle exec bundle-audit --update
+      - name: Brakeman security checks
+        run: |
+          bundle exec brakeman
+      - name: Rubocop linting
+        run: |
+          bundle exec rubocop
+  tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:9.6
+        env:
+          POSTGRES_DB: cheidelacoriera_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.7.0
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.15.3
+      - name: Find yarn cache location
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+      - name: Run tests
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          RAILS_ENV: test
+          NODE_ENV: test
+        run: |
+          bundle exec rails webpacker:compile
+          bundle exec rake db:test:prepare
+          bundle exec rspec spec
+  docker-build:
+    name: Docker build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
 
-    - name: Bundle install
-      env:
-        PGHOST: localhost
-        PGUSER: postgres
-        RAILS_ENV: test
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-        bundle install --jobs 4 --retry 3
-    - name: Bundle audit
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        bundle exec bundle-audit --update
-    - name: Brakeman security checks
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        bundle exec brakeman
-    - name: Rubocop linting
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        bundle exec rubocop
-    #  Assets precompilation would require node modules
-    # - name: Run tests
-    #   env:
-    #     PGHOST: localhost
-    #     PGUSER: postgres
-    #     RAILS_ENV: test
-    #     NODE_ENV: test
-    #   run: |
-    #     source $HOME/.rvm/scripts/rvm
-    #     bundle exec rails webpacker:compile
-    #     bundle exec rake db:test:prepare
-    #     bundle exec rspec spec
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile.web
+          push: false
