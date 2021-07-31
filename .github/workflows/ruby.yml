@@ -6,43 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/cache@v1
-        with:
-          path: $HOME/.rvm
-          key: ${{ runner.os }}-rvm-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-rvm-
-      - name: Set up RVM
-        run: |
-          curl -sSL https://get.rvm.io | bash
-      - name: Set up .ruby-version
-        run: |
-          source $HOME/.rvm/scripts/rvm
-          rvm install $(cat .ruby-version) --binary
-          rvm --default use $(cat .ruby-version)
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
-      - name: Bundle install
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          RAILS_ENV: test
-        run: |
-          source $HOME/.rvm/scripts/rvm
-          gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-          bundle install --jobs 4 --retry 3
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.7.0
       - name: Bundle audit
         run: |
-          source $HOME/.rvm/scripts/rvm
           bundle exec bundle-audit --update
       - name: Brakeman security checks
         run: |
-          source $HOME/.rvm/scripts/rvm
           bundle exec brakeman
       - name: Rubocop linting
         run: |
-          source $HOME/.rvm/scripts/rvm
           bundle exec rubocop
   tests:
     name: Unit tests
@@ -52,8 +31,8 @@ jobs:
         image: postgres:9.6
         env:
           POSTGRES_DB: cheidelacoriera_test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: cheidelacoriera
+          POSTGRES_PASSWORD: ""
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
@@ -102,7 +81,7 @@ jobs:
       - name: Bundle install
         env:
           PGHOST: localhost
-          PGUSER: postgres
+          PGUSER: cheidelacoriera
           RAILS_ENV: test
         run: |
           source $HOME/.rvm/scripts/rvm
@@ -112,7 +91,7 @@ jobs:
       - name: Run tests
         env:
           PGHOST: localhost
-          PGUSER: postgres
+          PGUSER: cheidelacoriera
           RAILS_ENV: test
           NODE_ENV: test
         run: |
