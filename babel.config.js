@@ -22,10 +22,8 @@ module.exports = function(api) {
         {
           targets: {
             node: 'current'
-          },
-          modules: 'commonjs'
-        },
-        '@babel/preset-react'
+          }
+        }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
@@ -53,7 +51,8 @@ module.exports = function(api) {
       [
         '@babel/plugin-proposal-class-properties',
         {
-          loose: true
+          // loose: true
+          useBuiltIns: true
         }
       ],
       [
@@ -63,11 +62,23 @@ module.exports = function(api) {
         }
       ],
       [
+        '@babel/plugin-proposal-private-methods',
+        {
+          useBuiltIns: true
+        }
+      ],
+      [
+        '@babel/plugin-proposal-private-property-in-object',
+        {
+          useBuiltIns: true
+        }
+      ],
+      [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false,
-          regenerator: true,
-          corejs: false
+          helpers: false // ,
+          // regenerator: true,
+          // corejs: false
         }
       ],
       [
