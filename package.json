@@ -15,7 +15,7 @@
     "@rails/actioncable": "6.0.3",
     "@rails/activestorage": "6.0.3",
     "@rails/ujs": "6.0.3",
-    "@rails/webpacker": "4.3.0",
+    "@rails/webpacker": "5.4.3",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "bootstrap": "3.4.1",
     "bootstrap-datepicker": "1.9.0",
