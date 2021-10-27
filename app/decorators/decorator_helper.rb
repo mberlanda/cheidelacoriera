@@ -34,7 +34,7 @@ class DecoratorHelper
       object.first_name,
       object.last_name,
       status_field(object.status),
-      role_field(object),
+      role_field(object.role),
       object.phone_number,
       bool_field(object.newsletter),
       bool_field(object.mailing_listed),
