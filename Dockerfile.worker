@@ -22,7 +22,10 @@ WORKDIR "${WORKDIR}"
 COPY .ruby-version Gemfile Gemfile.lock "${WORKDIR}/"
 
 RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-RUN bundle install --no-cache --jobs 4 --deployment --without development test lint || bundle check
+RUN bundle config set deployment 'true' && \ 
+    bundle config set no-cache 'true' && \
+    bundle config set without 'development test lint' && \
+    bundle install --jobs 4 || bundle check
 
 COPY Rakefile config.ru "${WORKDIR}/"
 
@@ -49,7 +52,7 @@ RUN curl --silent --show-error --location \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     # Need to update debian version
     && apt-get update --allow-releaseinfo-change\
-    && aptapt-get install -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends \
        nodejs yarn
 
 COPY .yarnclean yarn.lock package.json .browserslistrc babel.config.js postcss.config.js "${WORKDIR}/"
