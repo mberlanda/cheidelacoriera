@@ -7,7 +7,7 @@ class MailchimpJob < ApplicationJob
     gibbon = Gibbon::Request.new
     users_to_add.each do |u|
       gibbon.lists(Mailchimp.list_id).members(calculate_id(u)).upsert(
-        format_user_body(u)
+        **format_user_body(u)
       )
       u.update(mailing_listed: true)
     rescue Gibbon::MailChimpError => e

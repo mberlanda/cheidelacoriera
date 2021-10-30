@@ -207,8 +207,6 @@ GEM
     pg (1.2.3)
     racc (1.6.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
-      rack
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -255,7 +253,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    redis (4.1.4)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -318,11 +316,10 @@ GEM
     sexp_processor (4.15.3)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
-    sidekiq (5.2.9)
-      connection_pool (~> 2.2, >= 2.2.2)
+    sidekiq (6.2.2)
+      connection_pool (>= 2.2.2)
       rack (~> 2.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 4.2)
+      redis (>= 4.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -414,7 +411,7 @@ DEPENDENCIES
   sassc-rails
   scout_apm
   shoulda-matchers
-  sidekiq (< 6)
+  sidekiq (>= 6, < 7)
   simple_form
   simplecov (~> 0.17.0)
   spring
