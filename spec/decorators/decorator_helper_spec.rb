@@ -14,7 +14,7 @@ RSpec.describe DecoratorHelper do
           user.first_name,
           user.last_name,
           '<div class="status-pending">pending</div>',
-          "<div class=\"role-#{user.email}\">#{user.email}</div>",
+          "<div class=\"role-#{user.role}\">#{user.role}</div>",
           user.phone_number,
           '<div class="bool-true">true</div>',
           '<div class="bool-false">false</div>',
