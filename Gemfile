@@ -52,7 +52,7 @@ group :test do
   gem 'factory_bot'
   gem 'ffaker'
   gem 'shoulda-matchers'
-  gem 'simplecov', '~>0.17.0', require: false
+  gem 'simplecov', '~>0.21.0', require: false
 end
 
 group :development do
