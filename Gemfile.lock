@@ -420,7 +420,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   sprockets
-  tzinfo-data
   uglifier
   unicorn
   unicorn-worker-killer
