@@ -43,7 +43,7 @@ group :development, :test do
   gem 'bullet'
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 4.0.0.beta4'
+  gem 'rspec-rails', '~> 5'
   gem 'ruby-prof'
 end
 
@@ -52,7 +52,7 @@ group :test do
   gem 'factory_bot'
   gem 'ffaker'
   gem 'shoulda-matchers'
-  gem 'simplecov', '~>0.17.0', require: false
+  gem 'simplecov', '<1', require: false
 end
 
 group :development do

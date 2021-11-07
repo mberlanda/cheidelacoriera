@@ -35,3 +35,16 @@ $ ls -1 *png | xargs optipng -dir optimized/ -strip all -o7
 $ sudo apt install jpegoptim
 $ ls -1 *jpg | xargs jpegoptim -doptimized --strip-all -v
 ```
+
+### Create test data in development environment
+
+* Add `:development` group to `:test` only dependecies to load FactoryBot
+* Run `bundle exec rails c`
+```
+Dir[File.expand_path('spec/factories/*.rb', __dir__)].sort.each { |file| require
+ file }
+FactoryBot.create :user
+User.first.active!
+User.first.admin!
+FactoryBot.create :event
+```
