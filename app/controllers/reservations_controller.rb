@@ -24,6 +24,7 @@ class ReservationsController < CrudController
     ).select(%w[id] | datatable_columns, '"users"."email" AS "user_email"')
   end
 
+  # FIXME: scope the access on this endpoint
   def status
     @reservation = Reservation.find(params[:id])
   end
