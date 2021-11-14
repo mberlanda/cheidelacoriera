@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
+def user_can_book(event)
+  @user_can_book ||= current_user&.can_book?(event)
+end
+
 def show_button_for_user(event)
   if current_user && event.booked_by?(current_user.id)
     {
       className: 'btn btn-default',
       text: t('events.buttons.booked')
     }
-  elsif current_user&.can_book?(event)
+  elsif user_can_book(event)
     {
       text: t('events.buttons.book_now')
     }
@@ -48,7 +52,9 @@ json.array! @events.each do |event|
   json.competition event.competition.name
   json.currentUser do
     json.role current_user&.role
-    json.canBook current_user&.can_book?(event)
+    json.canBook user_can_book(event)
+    json.canSeeAvailabilty current_user&.can_see_availability? && \
+                           (user_can_book(event) || current_user&.admin?)
     json.booked current_user && event.booked_by?(current_user.id)
   end
   json.date I18n.l(event.date, format: :long)

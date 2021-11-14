@@ -20,7 +20,7 @@ class EventAvailabilityProgressbar extends Component {
     }
 
     _getVisibleBar = (game) => {
-        if (game.currentUser.canBook) {
+        if (game.currentUser.canSeeAvailabilty) {
             let divStyle = {
                 width: this.state.occupancy + '%'
             }
