@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# pg_dump 10 seems to have changed the format of the output since
+# PG9. This utility may be broken as of 2021114
+# :nocov:
 class DumpProcessor
   def initialize(input_path, output_path)
     @input_file = input_path
@@ -11,7 +14,7 @@ class DumpProcessor
     /^INSERT INTO (\b\w*\b) \(([\w,\s]+)\) VALUES \((.+)\);$/
   end
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
   def process
     File.readlines(@input_file).each do |line|
       matched = line.match(insert_regex)
@@ -29,9 +32,9 @@ class DumpProcessor
       @hash[table_name][:data] << "(#{data})"
       write_data(table_name) if @hash[table_name][:data].size > 499
     end
-    write_data(@hash.keys.first)
+    @hash.keys.first && write_data(@hash.keys.first)
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 
   def write_data(table_name)
     write_to_file(
@@ -51,3 +54,4 @@ class DumpProcessor
     File.open(my_file, 'a') { |f| f.write(line) }
   end
 end
+# :nocov:

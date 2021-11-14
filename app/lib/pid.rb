@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 class Pid
   class << self
     def create_for_task(logger, action)
@@ -37,3 +38,4 @@ class Pid
     File.delete(file_path)
   end
 end
+# :nocov:

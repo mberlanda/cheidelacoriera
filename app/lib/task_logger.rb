@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module TaskLogger
   extend self
 
@@ -15,3 +16,4 @@ module TaskLogger
     Rails.root.join('log', 'tasks.log')
   end
 end
+# :nocov:

@@ -3,6 +3,7 @@
 require 'active_support/core_ext/object/try'
 require 'rails-html-sanitizer'
 
+# :nocov:
 module ActionView
   # = Action View Sanitize Helpers
   module Helpers
@@ -171,3 +172,4 @@ module ActionView
     end
   end
 end
+# :nocov:
