@@ -88,8 +88,6 @@ jobs:
       - name: Publish code coverage
         run: |
           export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-          ls -lah ./coverage
-          cat ./coverage/.resultset.json
           ./cc-test-reporter after-build -t simplecov -r ${{secrets.CC_TEST_REPORTER_ID}}
   docker-build:
     name: Docker build
