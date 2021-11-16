@@ -30,6 +30,27 @@ interface EventIconProps {
     game: Game;
 }
 
+enum IconTypes {
+    available = "available",
+    fully_booked = "fully_booked",
+    preferred = "preferred",
+    gold = "gold",
+}
+
+const EventIconClasses : { [key in IconTypes] : string } = {
+    available: 'fa fa-calendar-check-o icon-green',
+    fully_booked: 'fa fa-calendar-times-o icon-red',
+    preferred: 'fa fa-star icon-yellow',
+    gold: 'fa fa-trophy icon-yellow'
+}
+
+const EventIconMessages : { [key in IconTypes] : string } = {
+    available: 'Prenotabile',
+    fully_booked: 'Disponibilità Esaurita',
+    preferred: 'Solo Corieristi Semper Fidelis',
+    gold: 'Solo Corieristi Gold'
+}
+
 export class EventIcon extends React.Component<EventIconProps> {
     constructor(props: EventIconProps){
         super(props);
@@ -53,38 +74,10 @@ export class EventIcon extends React.Component<EventIconProps> {
     }
 
     _getClasses = (elem: string) => {
-        if (elem === 'available') {
-            return 'fa fa-calendar-check-o icon-green'
-        }
-        else if (elem === 'fully_booked') {
-            return 'fa fa-calendar-times-o icon-red'
-        }
-        else if (elem === 'preferred') {
-            return 'fa fa-star icon-yellow'
-        }
-        else if (elem === 'gold') {
-            return 'fa fa-trophy icon-yellow'
-        }
-        else {
-            return 'hidden'
-        }
+        return EventIconClasses[elem] || 'hidden';
     }
 
     _getMessage = (elem: string) => {
-        if (elem === 'available') {
-            return 'Prenotabile'
-        }
-        else if (elem === 'fully_booked') {
-            return 'Disponibilità Esaurita'
-        }
-        else if (elem === 'preferred') {
-            return 'Solo Corieristi Semper Fidelis'
-        }
-        else if (elem === 'gold') {
-            return 'Solo Corieristi Gold'
-        }
-        else {
-            return ''
-        }
+        return EventIconClasses[elem] || '';
     }
 }
