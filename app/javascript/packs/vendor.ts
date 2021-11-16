@@ -14,8 +14,10 @@ import 'retinajs/dist/retina.min.js';
 // import 'intro.js/intro.js';
 import 'regenerator-runtime/runtime'
 import 'whatwg-fetch';
+import { WOW } from 'wowjs/dist/wow.min.js';
 
 declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace NodeJS {
         interface Global {
             $: JQueryStatic;
@@ -31,4 +33,4 @@ declare global {
 }
 
 window.$ = window.jQuery = global.$ = global.jQuery = jQuery;
-window.WOW = global.WOW = require('wowjs/dist/wow.min.js').WOW;
+window.WOW = global.WOW = WOW;
