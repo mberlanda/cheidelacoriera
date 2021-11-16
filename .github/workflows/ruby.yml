@@ -71,6 +71,8 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
+      - name: Run ESLint
+        run: yarn run lint
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
