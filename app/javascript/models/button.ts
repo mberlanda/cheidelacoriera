@@ -1,5 +1,5 @@
 export interface Button {
-    className: string;
-    url: string;
-    text: string;
+  className: string;
+  url: string;
+  text: string;
 }
