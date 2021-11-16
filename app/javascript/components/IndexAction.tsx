@@ -1,7 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
+import * as React from "react"
+import { IndexActionProps } from "../models/indexActionProps"
 
-class IndexAction extends React.Component {
+export default class IndexAction extends React.Component<IndexActionProps, {}> {
+  constructor(props: IndexActionProps) {
+    super(props);
+  }
 
   render(){
     return(
@@ -28,14 +31,3 @@ class IndexAction extends React.Component {
     )
   }
 }
-
-IndexAction.propTypes = {
-  body: PropTypes.string,
-  buttonText: PropTypes.string,
-  heading: PropTypes.string,
-  iconClass: PropTypes.string,
-  name: PropTypes.string,
-  url: PropTypes.string,
-}
-
-export default IndexAction

@@ -1,5 +1,5 @@
 // import 'jquery';
-var jQuery = require('jquery')
+import * as jQuery from 'jquery'
 
 // import 'jquery-ujs/src/rails.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -15,7 +15,20 @@ import 'retinajs/dist/retina.min.js';
 import 'regenerator-runtime/runtime'
 import 'whatwg-fetch';
 
-global.$ = global.jQuery = jQuery;
-window.$ = window.jQuery = jQuery;
+declare global {
+    namespace NodeJS {
+        interface Global {
+            $: JQueryStatic;
+            jQuery: JQueryStatic;
+            WOW: any;
+        }
+    }
+    interface Window {
+        $: JQueryStatic;
+        jQuery: JQueryStatic;
+        WOW: any;
+    }
+}
 
-global.WOW = require('wowjs/dist/wow.min.js').WOW;
+window.$ = window.jQuery = global.$ = global.jQuery = jQuery;
+window.WOW = global.WOW = require('wowjs/dist/wow.min.js').WOW;

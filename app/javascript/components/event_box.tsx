@@ -1,9 +1,20 @@
-import React, {Component} from 'react'
-import EventIcon from './event/icon'
-import EventAvailabilityProgressbar from './event/availability_progressbar'
-import EventTeams from './event/teams'
+import * as React from 'react'
+import {
+    EventAvailabilityProgressbar,
+    EventIcon,
+    EventTeams
+ } from './event'
+import { Game } from "./../models"
 
-class EventBox extends Component {
+interface EventBoxProps {
+    game: Game;
+}
+
+ class EventBox extends React.Component<EventBoxProps> {
+    constructor(props: EventBoxProps) {
+        super(props);
+    }
+
     render(){
         const game = this.props.game;
         const buttons = game ? game.buttons : []

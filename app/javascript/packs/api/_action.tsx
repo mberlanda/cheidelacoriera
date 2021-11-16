@@ -1,9 +1,13 @@
-import React, { Component } from 'react'
+import * as React from "react"
+import { IndexActionProps } from "../../models/indexActionProps"
 
-class Action extends Component {
+export class Action extends React.Component<IndexActionProps> {
+  constructor(props: IndexActionProps) {
+    super(props);
+  }
 
   render(){
-    const { action = {} } = this.props
+    const action = this.props;
     return(
       <div className="col-sm-6 features-box wow fadeInLeft">
         <div className="row">
@@ -28,5 +32,3 @@ class Action extends Component {
     )
   }
 }
-
-export default Action

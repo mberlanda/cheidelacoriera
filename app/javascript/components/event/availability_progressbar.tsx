@@ -1,7 +1,20 @@
-import React, { Component } from 'react'
+import * as React from 'react'
+import { Game } from "../../models"
 
-class EventAvailabilityProgressbar extends Component {
-    constructor(props){
+interface ProgressbarProps {
+    game: Game;
+}
+
+// TODO: this can be refactored
+interface ProgressbarState {
+    availability: number;
+    occupancy: number;
+}
+
+export class EventAvailabilityProgressbar extends React.Component<ProgressbarProps> {
+    state: ProgressbarState;
+    
+    constructor(props: ProgressbarProps){
         super(props);
         let availability = this.props.game.availability;
         this.state = {
@@ -11,26 +24,25 @@ class EventAvailabilityProgressbar extends Component {
     }
 
     render(){
-        const game = this.props.game;
         return (
             <div className="progress event-progress">
-                {this._getVisibleBar(game)}
+                {this._getVisibleBar(this.props.game)}
             </div>
         )
     }
 
-    _getVisibleBar = (game) => {
-        if (game.currentUser.canBook) {
+    _getVisibleBar = (game: Game) => {
+        if (game.currentUser?.canBook) {
             let divStyle = {
-                width: this.state.occupancy + '%'
+                width: `${this.state.occupancy}%`
             }
         return(
           <div
             className={this._getBarClass()}
             role="progressbar"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="100"
+            aria-valuenow={0}
+            aria-valuemin={0}
+            aria-valuemax={100}
             style={divStyle}
         >
             <span className="sr-only">
@@ -57,5 +69,3 @@ class EventAvailabilityProgressbar extends Component {
         }
     }
 }
-
-export default EventAvailabilityProgressbar

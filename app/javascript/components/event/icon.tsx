@@ -1,6 +1,15 @@
-import React, {Component} from 'react'
+import * as React from 'react'
+import { Game } from "../../models"
 
-class  Icon extends Component {
+interface IconProps {
+    className: string;
+    message: string;
+}
+
+class  Icon extends React.Component<IconProps> {
+    constructor(props: IconProps) {
+      super(props);
+    }
     render(){
         return(
             <i
@@ -17,7 +26,15 @@ class  Icon extends Component {
     }
 }
 
-class EventIcon extends Component {
+interface EventIconProps {
+    game: Game;
+}
+
+export class EventIcon extends React.Component<EventIconProps> {
+    constructor(props: EventIconProps){
+        super(props);
+    }
+
     render(){
         const status = this.props.game.status || '';
         const audience = this.props.game.audience || '';
@@ -35,7 +52,7 @@ class EventIcon extends Component {
         )
     }
 
-    _getClasses = (elem) => {
+    _getClasses = (elem: string) => {
         if (elem === 'available') {
             return 'fa fa-calendar-check-o icon-green'
         }
@@ -53,7 +70,7 @@ class EventIcon extends Component {
         }
     }
 
-    _getMessage = (elem) => {
+    _getMessage = (elem: string) => {
         if (elem === 'available') {
             return 'Prenotabile'
         }
@@ -71,5 +88,3 @@ class EventIcon extends Component {
         }
     }
 }
-
-export default EventIcon;

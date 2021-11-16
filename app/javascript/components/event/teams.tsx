@@ -1,24 +1,26 @@
-import React, {Component} from 'react'
+import * as React from "react"
+import { Game, Team, TransportMean } from "../../models"
 
-class EventTeams extends Component {
-  constructor(){
-    super()
+interface EventTeamsProps {
+  game: Game
+}
+
+export class EventTeams extends React.Component<EventTeamsProps, {}> {
+  constructor(props: EventTeamsProps){
+    super(props)
   }
 
   render(){
-    const game = this.props.game;
-    const teams =game.teams;
-
     return(
       <div className="row">
-        {this._formatTeam(teams.home)}
-        {this._formatInfo(game)}
-        {this._formatTeam(teams.away)}
+        {this._formatTeam(this.props.game.teams.home)}
+        {this._formatInfo(this.props.game)}
+        {this._formatTeam(this.props.game.teams.away)}
       </div>
     )
   }
 
-  _formatTeam = (team) => {
+  _formatTeam = (team: Team) => {
     return(
       <div className="col-md-5 left event-team">
           <img alt={team.name} className="team-logo" src={team.imageUrl} />
@@ -27,7 +29,7 @@ class EventTeams extends Component {
     )
   }
 
-  _formatInfo = (game) => {
+  _formatInfo = (game: Game) => {
     const score = game.score;
     const transportMean = game.transportMean;
     const time = game.time;
@@ -40,7 +42,7 @@ class EventTeams extends Component {
     }
   }
 
-  _formatTransportMean = (transportMean) => {
+  _formatTransportMean = (transportMean: TransportMean) => {
     return(
       <div className="col-md-2 event-score">
         <i className={transportMean.iconClass} />
@@ -51,7 +53,7 @@ class EventTeams extends Component {
     )
   }
 
-  _formatSimple = (info) => {
+  _formatSimple = (info: string) => {
     return (
       <div className="col-md-2 event-score">
         {info}
@@ -59,5 +61,3 @@ class EventTeams extends Component {
     )
   }
 }
-
-export default EventTeams;

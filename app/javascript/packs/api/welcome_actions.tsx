@@ -1,11 +1,15 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import * as React from "react"
+import * as ReactDOM from 'react-dom'
+import { Action } from './_action'
+import { IndexActionProps } from "../../models/indexActionProps"
 
-import Action from './_action'
+class WelcomeActions extends React.Component<{}> {
+  state: {
+    actions: IndexActionProps[];
+  }
 
-class WelcomeActions extends Component {
-  constructor(){
-    super();
+  constructor(props: {}){
+    super(props);
     this.state = {
       actions: []
     };
@@ -21,11 +25,11 @@ class WelcomeActions extends Component {
   }
 
   _fetchActions = () => {
-    jQuery.ajax({
+    jQuery.get({
       method: 'GET',
       url: '/api/actions/available',
-      format: 'json',
-      success: (actions) => {
+      dataType: 'json',
+      success: (actions: IndexActionProps[]) => {
         this.setState({ actions });
       }
     });
