@@ -6,8 +6,8 @@
   "author": "Mauro Berlanda <mauro.berlanda@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint": "eslint ./app/javascript/ --ext .ts,.tsx",
+    "lint:fix": "eslint ./app/javascript/ --ext .ts,.tsx --fix"
   },
   "engines": {
     "node": ">=10.15.3 <15",
