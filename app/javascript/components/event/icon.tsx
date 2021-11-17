@@ -76,6 +76,6 @@ export class EventIcon extends React.Component<EventIconProps> {
   };
 
   _getMessage = (elem: string) => {
-    return EventIconClasses[elem] || "";
+    return EventIconMessages[elem] || "";
   };
 }

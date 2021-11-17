@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Action } from "./_action";
+import IndexAction from "../../components/IndexAction";
 import { IndexActionProps } from "../../models/indexActionProps";
 
 class WelcomeActions extends React.Component<Record<string, unknown>> {
@@ -18,7 +18,7 @@ class WelcomeActions extends React.Component<Record<string, unknown>> {
 
   render() {
     return this.state.actions.map((action) => (
-      <Action action={action} key={action.name} />
+      <IndexAction action={action} key={action.name} />
     ));
   }
 
