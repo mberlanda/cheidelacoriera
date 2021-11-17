@@ -44,7 +44,7 @@ FROM base as assets
 # Install node and yarn
 RUN curl --silent --show-error --location \
       https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-    && echo "deb https://deb.nodesource.com/node_10.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
+    && echo "deb https://deb.nodesource.com/node_12.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
     && curl --silent --show-error --location https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     # Need to update debian version
@@ -52,7 +52,7 @@ RUN curl --silent --show-error --location \
     && apt-get install -y --no-install-recommends \
        nodejs yarn
 
-COPY .yarnclean yarn.lock package.json .browserslistrc babel.config.js postcss.config.js "${WORKDIR}/"
+COPY .yarnclean yarn.lock package.json .browserslistrc babel.config.js postcss.config.js tsconfig.json "${WORKDIR}/"
 
 RUN rm -rf ./public/assets ./public/packs ./public/packs-test
 RUN ./bin/compile_assets
