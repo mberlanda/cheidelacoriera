@@ -41,6 +41,8 @@ COPY ./vendor "${WORKDIR}/vendor"
 
 FROM base as assets
 
+ENV NODE_ENV "production"
+
 # Install node and yarn
 RUN curl --silent --show-error --location \
       https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
