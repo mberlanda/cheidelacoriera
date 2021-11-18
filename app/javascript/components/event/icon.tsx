@@ -25,7 +25,7 @@ class Icon extends React.Component<IconProps> {
 }
 
 interface EventIconProps {
-  game: Game;
+  game: Partial<Game>;
 }
 
 enum IconTypes {
