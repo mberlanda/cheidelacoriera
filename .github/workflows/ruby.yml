@@ -73,10 +73,14 @@ jobs:
           yarn install --pure-lockfile
       - name: Run ESLint
         run: yarn run lint
+      - name: Run Jest tests
+        env:
+          NODE_ENV: test
+        run: yarn run test app/javascript
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
-      - name: Run tests
+      - name: Run RSpec tests
         env:
           PGHOST: localhost
           PGUSER: postgres
