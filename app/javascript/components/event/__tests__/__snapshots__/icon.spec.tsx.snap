@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventIcon when status: "available" and audience: "gold" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-check-o icon-green"
+    message="Prenotabile"
+  />
+  <Icon
+    className="fa fa-trophy icon-yellow"
+    message="Solo Corieristi Gold"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "available" and audience: "preferred" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-check-o icon-green"
+    message="Prenotabile"
+  />
+  <Icon
+    className="fa fa-star icon-yellow"
+    message="Solo Corieristi Semper Fidelis"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "available" and audience: "undefined" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-check-o icon-green"
+    message="Prenotabile"
+  />
+  <Icon
+    className="hidden"
+    message=""
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "fully_booked" and audience: "gold" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-times-o icon-red"
+    message="Disponibilità Esaurita"
+  />
+  <Icon
+    className="fa fa-trophy icon-yellow"
+    message="Solo Corieristi Gold"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "fully_booked" and audience: "preferred" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-times-o icon-red"
+    message="Disponibilità Esaurita"
+  />
+  <Icon
+    className="fa fa-star icon-yellow"
+    message="Solo Corieristi Semper Fidelis"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "fully_booked" and audience: "undefined" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="fa fa-calendar-times-o icon-red"
+    message="Disponibilità Esaurita"
+  />
+  <Icon
+    className="hidden"
+    message=""
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "undefined" and audience: "gold" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="hidden"
+    message=""
+  />
+  <Icon
+    className="fa fa-trophy icon-yellow"
+    message="Solo Corieristi Gold"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "undefined" and audience: "preferred" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="hidden"
+    message=""
+  />
+  <Icon
+    className="fa fa-star icon-yellow"
+    message="Solo Corieristi Semper Fidelis"
+  />
+</div>
+`;
+
+exports[`EventIcon when status: "undefined" and audience: "undefined" 1`] = `
+<div
+  className="pull-right"
+>
+  <Icon
+    className="hidden"
+    message=""
+  />
+  <Icon
+    className="hidden"
+    message=""
+  />
+</div>
+`;

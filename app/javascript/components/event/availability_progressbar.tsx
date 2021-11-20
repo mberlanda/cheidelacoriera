@@ -2,7 +2,7 @@ import * as React from "react";
 import { Game } from "../../models";
 
 interface ProgressbarProps {
-  game: Game;
+  game: Partial<Game>;
 }
 
 // TODO: this can be refactored
@@ -31,7 +31,7 @@ export class EventAvailabilityProgressbar extends React.Component<ProgressbarPro
     );
   }
 
-  _getVisibleBar = (game: Game) => {
+  _getVisibleBar = (game: Partial<Game>) => {
     if (game.currentUser?.canBook) {
       const divStyle = {
         width: `${this.state.occupancy}%`,
