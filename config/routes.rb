@@ -49,7 +49,6 @@ Rails.application.routes.draw do
       get :status
     end
     collection do
-      get :user_form
       post :form_create
       get :approve_all
       get :datatable_index
