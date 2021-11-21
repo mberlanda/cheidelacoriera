@@ -4,7 +4,7 @@ import * as ReactRailsUJS from "react_ujs";
 const componentRequireContext = require.context(
   "components",
   true,
-  /^(?!.*__tests__\/.*$).+\.[jt]sx?$/
+  /^(?!.*__tests__\/.*$).+$/
 );
 
 ReactRailsUJS.useContext(componentRequireContext);
