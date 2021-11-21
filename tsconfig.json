@@ -12,7 +12,9 @@
     "noEmit": true
   },
   "exclude": [
+    "**/__tests__",
     "**/*.spec.ts",
+    "**/*.spec.tsx",
     "node_modules",
     "vendor",
     "public"
