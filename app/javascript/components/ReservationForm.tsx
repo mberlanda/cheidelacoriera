@@ -11,7 +11,7 @@ interface ReservationFormProps {
   authenticity_token: string;
 }
 
-interface Fan {
+export interface Fan {
   first_name: string;
   last_name: string;
 }
@@ -44,9 +44,6 @@ class ReservationForm extends React.Component<ReservationFormProps> {
   };
 
   onSubmit = () => {
-    // const AuthenticityToken = document
-    //   .getElementsByName("csrf-token")[0]
-    //   .getAttribute("content");
     if (
       confirm(
         `Vuoi confermare questa prenotazione per ${this._fansCountConfirmation()} ?`
@@ -90,11 +87,9 @@ class ReservationForm extends React.Component<ReservationFormProps> {
       newSchema.properties.fan_names.maxItems = fansCount;
       newSchema.properties.fans_count.default = fansCount;
 
-      // Array(fansCount).fill({}).
-      const fans = Array(fansCount).fill({});
-
       // This allows to preserve the previous selection when
       // updating the fansCount
+      const fans = Array(fansCount).fill({});
       [...fanNames].forEach((element, index) => {
         if (index < fansCount) {
           fans[index] = element;
@@ -112,44 +107,6 @@ class ReservationForm extends React.Component<ReservationFormProps> {
       this.setState({
         formData: newFormData,
       });
-    }
-  };
-
-  _updateSchema = (newSchema: Record<string, unknown>) => {
-    this.setState({ schema: newSchema });
-  };
-
-  _updateFansInputs = (
-    fanNames: Partial<Fan>[],
-    fansCount: number
-  ): Partial<Fan>[] => {
-    return this._decreaseFansInputs(
-      this._increaseFansInputs(fanNames, fansCount),
-      fansCount
-    );
-  };
-
-  _increaseFansInputs = (
-    fanNames: Partial<Fan>[],
-    fansCount: number
-  ): Partial<Fan>[] => {
-    if (fanNames.length < fansCount) {
-      fanNames.push({ first_name: undefined, last_name: undefined });
-      return this._increaseFansInputs(fanNames, fansCount);
-    } else {
-      return fanNames;
-    }
-  };
-
-  _decreaseFansInputs = (
-    fanNames: Partial<Fan>[],
-    fansCount: number
-  ): Partial<Fan>[] => {
-    if (fanNames.length > fansCount) {
-      fanNames.pop();
-      return this._decreaseFansInputs(fanNames, fansCount);
-    } else {
-      return fanNames;
     }
   };
 

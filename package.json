@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "jest": {
+    "coverageReporters": ["html", "lcov", "text"],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
