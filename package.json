@@ -11,9 +11,11 @@
     "test": "jest"
   },
   "jest": {
+    "coverageReporters": ["html", "lcov", "text"],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|(\\.|/)(spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "ts",
@@ -66,6 +68,7 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.3",
+    "@types/react-jsonschema-form": "^1.7.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@webpack-cli/serve": "1.6.0",

@@ -76,7 +76,7 @@ jobs:
       - name: Run Jest tests
         env:
           NODE_ENV: test
-        run: yarn run test app/javascript
+        run: yarn run test app/javascript --coverage
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
@@ -94,7 +94,13 @@ jobs:
       - name: Publish code coverage
         run: |
           export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-          ./cc-test-reporter after-build -t simplecov -r ${{secrets.CC_TEST_REPORTER_ID}}
+          ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.rspec.json
+          wc -lc coverage/codeclimate.rspec.json 
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.jest.json
+          wc -lc coverage/codeclimate.jest.json
+          ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
+          ls coverage
+          ./cc-test-reporter upload-coverage -r ${{secrets.CC_TEST_REPORTER_ID}}
   docker-build:
     name: Docker build
     runs-on: ubuntu-latest
