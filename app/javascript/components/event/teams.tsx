@@ -2,7 +2,7 @@ import * as React from "react";
 import { Game, Team, TransportMean } from "../../models";
 
 interface EventTeamsProps {
-  game: Game;
+  game: Partial<Game>;
 }
 
 export class EventTeams extends React.Component<EventTeamsProps> {
@@ -29,13 +29,13 @@ export class EventTeams extends React.Component<EventTeamsProps> {
     );
   };
 
-  _formatInfo = (game: Game) => {
+  _formatInfo = (game: Partial<Game>) => {
     const score = game.score;
     const transportMean = game.transportMean;
     const time = game.time;
     if (score) {
       return this._formatSimple(score);
-    } else if (transportMean.iconClass) {
+    } else if (transportMean?.iconClass) {
       return this._formatTransportMean(transportMean);
     } else {
       return this._formatSimple(time);

@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventTeams when score=1-1, transportMean={"iconClass":"fa fa-bus","name":"bus"} and time=2021-11-20  1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 2"
+      className="team-logo"
+      src="http://link-to-team-2"
+    />
+    <p>
+      Team 2
+    </p>
+  </div>
+  <div
+    className="col-md-2 event-score"
+  >
+    1-1
+  </div>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 1"
+      className="team-logo"
+      src="http://link-to-team-1"
+    />
+    <p>
+      Team 1
+    </p>
+  </div>
+</div>
+`;
+
+exports[`EventTeams when score=1-1, transportMean=undefined and time=2021-11-20  1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 2"
+      className="team-logo"
+      src="http://link-to-team-2"
+    />
+    <p>
+      Team 2
+    </p>
+  </div>
+  <div
+    className="col-md-2 event-score"
+  >
+    1-1
+  </div>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 1"
+      className="team-logo"
+      src="http://link-to-team-1"
+    />
+    <p>
+      Team 1
+    </p>
+  </div>
+</div>
+`;
+
+exports[`EventTeams when score=undefined, transportMean={"iconClass":"fa fa-bus","name":"bus"} and time=2021-11-20  1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 2"
+      className="team-logo"
+      src="http://link-to-team-2"
+    />
+    <p>
+      Team 2
+    </p>
+  </div>
+  <div
+    className="col-md-2 event-score"
+  >
+    <i
+      className="fa fa-bus"
+    />
+    <p>
+      <small>
+        bus
+      </small>
+    </p>
+  </div>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 1"
+      className="team-logo"
+      src="http://link-to-team-1"
+    />
+    <p>
+      Team 1
+    </p>
+  </div>
+</div>
+`;
+
+exports[`EventTeams when score=undefined, transportMean=undefined and time=2021-11-20  1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 2"
+      className="team-logo"
+      src="http://link-to-team-2"
+    />
+    <p>
+      Team 2
+    </p>
+  </div>
+  <div
+    className="col-md-2 event-score"
+  >
+    2021-11-20
+  </div>
+  <div
+    className="col-md-5 left event-team"
+  >
+    <img
+      alt="Team 1"
+      className="team-logo"
+      src="http://link-to-team-1"
+    />
+    <p>
+      Team 1
+    </p>
+  </div>
+</div>
+`;
