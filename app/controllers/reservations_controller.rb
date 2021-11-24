@@ -59,6 +59,9 @@ class ReservationsController < CrudController
     end
   end
 
+  # FIXME: although this page can be found in the ui only admins, traffic should
+  # be explicitly restricted to non admin or prevent them to create reservations
+  # for other users (including pending and rejected ones)
   def create
     permitted = params.require(:reservation)
                       .permit(:phone_number, :notes, :stop, :event_id, :user_id, :fans_count, fan_names: [])
