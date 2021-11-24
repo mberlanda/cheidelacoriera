@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class ReservationsController < CrudController
-  before_action :authenticate_user!, only: %i[user_form form_create]
-  before_action :active_user?, except: %i[user_form form_create]
+  before_action :authenticate_user!, only: %i[form_create]
+  before_action :active_user?, except: %i[form_create]
   before_action :admin_user?, only: %i[approve_all show update edit]
 
   # skip_before_action :verify_authenticity_token, only: %i[form_create]
 
-  layout false, only: %i[user_form status]
+  layout false, only: %i[status]
   respond_to :html, :js
 
   self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, :stop, fan_names: []]
