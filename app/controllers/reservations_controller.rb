@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class ReservationsController < CrudController
-  before_action :authenticate_user!, only: %i[user_form form_create]
-  before_action :active_user?, except: %i[user_form form_create]
-  before_action :admin_user?, only: %i[approve_all show update edit]
+  before_action :authenticate_user!
+  before_action :active_user?
+  before_action :admin_user?, except: %i[form_create status]
 
-  # skip_before_action :verify_authenticity_token, only: %i[form_create]
-
-  layout false, only: %i[user_form status]
+  layout false, only: %i[status]
   respond_to :html, :js
 
   self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, :stop, fan_names: []]
@@ -24,7 +22,6 @@ class ReservationsController < CrudController
     ).select(%w[id] | datatable_columns, '"users"."email" AS "user_email"')
   end
 
-  # FIXME: scope the access on this endpoint
   def status
     @reservation = Reservation.find(params[:id])
   end
@@ -33,13 +30,11 @@ class ReservationsController < CrudController
     permitted = params.require(:reservation)
                       .permit(:phone_number, :notes, :event_id, :stop,
                               :user_id, :fans_count, fan_names: %i[first_name last_name])
-    # params.require(:reservation)
-    #       .permit(:phone_number, :notes, :event_id, fan_names: [])
 
     fan_names = permitted[:fan_names].to_a.reject(&:blank?)
-    fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" } # if @react_form
+    fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" }
 
-    head 400 if params[:user_id].to_i != current_user.id
+    return head 400 if permitted[:user_id].to_i != current_user.id
 
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
