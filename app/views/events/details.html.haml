@@ -25,7 +25,7 @@
     .features-box{ class: "col-sm-#{md_size}" }
       - unless @event.notes.nil?
         .nicEdit-main
-          = sanitize @event.notes.html_safe, scrubber: EventScrubber.new
+          = sanitize @event.notes.html_safe, scrubber: ApplicationScrubber.new
       %hr
       - if current_user
         #reservation-form

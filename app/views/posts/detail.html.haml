@@ -42,7 +42,7 @@
           %br/
         - unless @post.content.nil?
           .nicEdit-main
-            = sanitize @post.content.html_safe, scrubber: EventScrubber.new
+            = sanitize @post.content.html_safe, scrubber: ApplicationScrubber.new
 .row.breadcrumb-row
   %hr
   = BreadcrumbBuilder.build(:home, :posts, strip_tags(@post.title))
