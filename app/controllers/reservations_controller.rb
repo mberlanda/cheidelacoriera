@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 class ReservationsController < CrudController
-  before_action :authenticate_user!, only: %i[form_create]
-  before_action :active_user?, except: %i[form_create]
-  before_action :admin_user?, only: %i[approve_all show update edit]
-
-  # skip_before_action :verify_authenticity_token, only: %i[form_create]
+  before_action :authenticate_user!
+  before_action :active_user?
+  before_action :admin_user?, except: %i[form_create status]
 
   layout false, only: %i[status]
   respond_to :html, :js
@@ -24,7 +22,6 @@ class ReservationsController < CrudController
     ).select(%w[id] | datatable_columns, '"users"."email" AS "user_email"')
   end
 
-  # FIXME: scope the access on this endpoint
   def status
     @reservation = Reservation.find(params[:id])
   end
@@ -33,13 +30,11 @@ class ReservationsController < CrudController
     permitted = params.require(:reservation)
                       .permit(:phone_number, :notes, :event_id, :stop,
                               :user_id, :fans_count, fan_names: %i[first_name last_name])
-    # params.require(:reservation)
-    #       .permit(:phone_number, :notes, :event_id, fan_names: [])
 
     fan_names = permitted[:fan_names].to_a.reject(&:blank?)
-    fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" } # if @react_form
+    fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" }
 
-    head 400 if params[:user_id].to_i != current_user.id
+    return head 400 if permitted[:user_id].to_i != current_user.id
 
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
@@ -59,9 +54,6 @@ class ReservationsController < CrudController
     end
   end
 
-  # FIXME: although this page can be found in the ui only admins, traffic should
-  # be explicitly restricted to non admin or prevent them to create reservations
-  # for other users (including pending and rejected ones)
   def create
     permitted = params.require(:reservation)
                       .permit(:phone_number, :notes, :stop, :event_id, :user_id, :fans_count, fan_names: [])
