@@ -19,5 +19,5 @@
         - unless post.content.nil?
           .col-sm-12{ class: "col-md-#{md_size}" }
             .nicEdit-main
-              = sanitize post.content.html_safe, scrubber: EventScrubber.new
+              = sanitize post.content.html_safe, scrubber: ApplicationScrubber.new
     %hr

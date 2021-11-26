@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FlashScrubber < Rails::Html::PermitScrubber
+class ApplicationScrubber < Rails::Html::PermitScrubber
   def initialize
     super
     self.tags = %w[a blockquote b br div em font i li ol p pre u ul]
