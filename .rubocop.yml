@@ -5,6 +5,7 @@ require:
   - rubocop-rails
 
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.7
   Exclude:
     - '**/helpers/dry_crud/**/*.rb'

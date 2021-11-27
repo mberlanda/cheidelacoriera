@@ -8,7 +8,7 @@ class ReservationsController < CrudController
   layout false, only: %i[status]
   respond_to :html, :js
 
-  self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, :stop, fan_names: []]
+  self.permitted_attrs = [:phone_number, :notes, :status, :event_id, :total_seats, :user_id, :stop, { fan_names: [] }]
 
   include DatatableController
 
@@ -34,7 +34,7 @@ class ReservationsController < CrudController
     fan_names = permitted[:fan_names].to_a.reject(&:blank?)
     fan_names.map! { |h| "#{h[:last_name]}|#{h[:first_name]}" }
 
-    return head 400 if permitted[:user_id].to_i != current_user.id
+    return head :bad_request if permitted[:user_id].to_i != current_user.id
 
     @reservation = Reservation.new(
       event_id: permitted[:event_id],
@@ -48,7 +48,7 @@ class ReservationsController < CrudController
     if @reservation.valid?
       @reservation.save
       ReservationMailer.received(@reservation).deliver_later
-      head 200
+      head :ok
     else
       render json: { errors: @reservation.errors.messages }, status: :bad_request
     end

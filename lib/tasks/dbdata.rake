@@ -35,10 +35,10 @@ namespace :dbdata do
         puts "Imported data from Heroku to #{dumpfile(source_env)}"
       else
         source = Rails.application.config.database_configuration[source_env.to_s]
-        STDOUT.puts "Please enter the username for #{source['database']}:"
-        username = STDIN.gets.chomp
-        STDOUT.puts "Please type the password for #{username}:"
-        password = STDIN.gets.chomp
+        $stdout.puts "Please enter the username for #{source['database']}:"
+        username = $stdin.gets.chomp
+        $stdout.puts "Please type the password for #{username}:"
+        password = $stdin.gets.chomp
         options = '--verbose --column-inserts --data-only'
 
         cmd = "PGPASSWORD=\"#{password}\" pg_dump -U  #{source['database']} -h "\

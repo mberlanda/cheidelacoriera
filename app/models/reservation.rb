@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :event, inverse_of: :reservations
 
   validates :phone_number, presence: true, allow_blank: false,
-                           format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
+                           format: { with: /\A[x\d()\s\-.]{5,}\z/ }
   before_validation :process_fans!
 
   validate :check_fans
@@ -15,6 +15,7 @@ class Reservation < ApplicationRecord
 
   before_create :set_default_status!
   after_create :assign_requested!
+  after_update :handle_updates
   before_destroy :remove_requested!
 
   scope :pending, -> { where(status: :pending) }
@@ -25,7 +26,6 @@ class Reservation < ApplicationRecord
 
   include ReservationStatus
 
-  after_update :handle_updates
   # after_destroy :handle_destroy
 
   def to_s

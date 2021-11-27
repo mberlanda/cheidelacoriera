@@ -9,7 +9,7 @@ Rails.application.load_tasks
 
 Rake::Task['assets:precompile'].enhance [:js_deps_install]
 
-task :js_deps_install do
+task js_deps_install: :environment do
   sh 'yarn install'
   sh 'yarn autoclean --force'
 end

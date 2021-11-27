@@ -13,7 +13,7 @@ class User < ApplicationRecord
   STATUSES = %w[active pending rejected].freeze
 
   validates :phone_number, presence: true, allow_blank: false,
-                           format: { with: /\A[x\d\(\)\s\-\.]{5,}\z/ }
+                           format: { with: /\A[x\d()\s\-.]{5,}\z/ }
 
   validates :last_name, presence: true
   validates :first_name, presence: true

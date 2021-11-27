@@ -282,7 +282,7 @@ RSpec.describe Event, type: :model do
 
   context '#all_names' do
     it 'handles names as a SQL query' do
-      expected = <<~SQL.strip.tr("\n", ' ').gsub(/\s+/, ' ')
+      expected = <<~SQL.squish.strip.tr("\n", ' ').gsub(/\s+/, ' ')
         SELECT
            "events"."id",
            "teams"."name" || ' vs ' || "away_teams_events"."name" || ' ' || COALESCE("events"."transport_mean",'') || ' (' || "competitions"."name" || ', ' || "events"."date" || ')'

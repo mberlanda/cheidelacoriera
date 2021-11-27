@@ -12,10 +12,10 @@ class Breadcrumb
 
   def to_li
     # rubocop:disable Rails/OutputSafety
-    return content_tag(:li, @text, class: :active).html_safe unless @link
+    return tag.li(@text, class: :active).html_safe unless @link
 
-    content_tag(:li) do
-      content_tag(:a, @text, href: seo_url(@link))
+    tag.li do
+      tag.a(@text, href: seo_url(@link))
     end
     # rubocop:enable Rails/OutputSafety
   end
@@ -37,7 +37,7 @@ class BreadcrumbBuilder
 
   def item
     # rubocop:disable Rails/OutputSafety
-    content_tag(:ul, class: 'breadcrumb') do
+    tag.ul(class: 'breadcrumb') do
       raw(@links.map { |l| Breadcrumb.new(*link_element(l)).to_li }.join) +
         Breadcrumb.new(active_element).to_li
     end.html_safe

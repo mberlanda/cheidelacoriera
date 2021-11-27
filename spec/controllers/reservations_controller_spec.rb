@@ -81,7 +81,7 @@ RSpec.describe ReservationsController, type: :controller do
       end
 
       it 'redirects to new_reservation an admin with validation errors' do
-        empty_fans = ->(_) { nil }
+        empty_fans = ->(_) {}
         params = valid_reservation_params(active_fan, event, fans_proc: empty_fans)
         post :create, params: params
 
@@ -118,7 +118,7 @@ RSpec.describe ReservationsController, type: :controller do
       end
 
       it 'returns 400 with validation errors if reservation is not valid' do
-        empty_fans = ->(_) { nil }
+        empty_fans = ->(_) {}
         params = valid_reservation_params(active_fan, event, fans_proc: empty_fans)
         post :form_create, params: params
 

@@ -9,14 +9,14 @@ class ApplicationDecorator < Draper::Decorator
   delegate_all
 
   def status_field(object)
-    content_tag :div, object.status, class: "status-#{object.status}"
+    tag.div(object.status, class: "status-#{object.status}")
   end
 
   def role_field(object)
-    content_tag :div, object.role, class: "role-#{object.role}"
+    tag.div(object.role, class: "role-#{object.role}")
   end
 
   def bool_field(value)
-    content_tag :div, value, class: "bool-#{value}"
+    tag.div(value, class: "bool-#{value}")
   end
 end
