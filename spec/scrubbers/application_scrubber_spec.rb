@@ -7,7 +7,7 @@ RSpec.describe ApplicationScrubber do
     node = double('Node')
     allow(node).to receive(:text?).and_return(true)
 
-    scrubber = ApplicationScrubber.new
+    scrubber = described_class.new
     scrubber.skip_node? node
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe 'ReservationsController#status', type: :request do
     FactoryBot.create(:reservation, user: fan, event: eventa, fan_names: %w[Foo|Bar])
   end
 
-  before(:each) do
+  before do
     Rails.cache.clear
   end
 

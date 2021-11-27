@@ -7,7 +7,7 @@ RSpec.describe ProgressbarBuilder do
     event = FactoryBot.build(:event)
     allow(event).to receive(:percentage_availability).and_return(0)
 
-    actual = ProgressbarBuilder.build(event)
+    actual = described_class.build(event)
     expect(actual).to be_a_valid_html
     expect(actual).to include('progress-bar-danger')
   end
@@ -16,7 +16,7 @@ RSpec.describe ProgressbarBuilder do
     event = FactoryBot.build(:event)
     allow(event).to receive(:percentage_availability).and_return(30)
 
-    actual = ProgressbarBuilder.build(event)
+    actual = described_class.build(event)
     expect(actual).to be_a_valid_html
     expect(actual).to include('progress-bar-warning')
   end
@@ -25,7 +25,7 @@ RSpec.describe ProgressbarBuilder do
     event = FactoryBot.build(:event)
     allow(event).to receive(:percentage_availability).and_return(66)
 
-    actual = ProgressbarBuilder.build(event)
+    actual = described_class.build(event)
     expect(actual).to be_a_valid_html
     expect(actual).to include('progress-bar-info')
   end
@@ -34,7 +34,7 @@ RSpec.describe ProgressbarBuilder do
     event = FactoryBot.build(:event)
     allow(event).to receive(:percentage_availability).and_return(88)
 
-    actual = ProgressbarBuilder.build(event)
+    actual = described_class.build(event)
     expect(actual).to be_a_valid_html
     expect(actual).to include('progress-bar-success')
   end

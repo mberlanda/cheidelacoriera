@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe PostDecorator do
   it 'decorates without errors' do
     post = FactoryBot.create(:post)
-    decorator = PostDecorator.new(post)
+    decorator = described_class.new(post)
 
     expect(decorator.datatable_index).to eq(
       [

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CompetitionDecorator do
   it 'decorates without errors' do
     competition = FactoryBot.create(:competition)
-    decorator = CompetitionDecorator.new(competition)
+    decorator = described_class.new(competition)
 
     expect(decorator.datatable_index).to eq(
       [

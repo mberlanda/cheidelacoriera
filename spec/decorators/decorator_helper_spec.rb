@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe DecoratorHelper do
-  let(:decorator_instance) { DecoratorHelper.new }
+  let(:decorator_instance) { described_class.new }
+
   describe '.users' do
     it 'serializes as expected' do
       user = FactoryBot.create(:user)

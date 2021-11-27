@@ -41,7 +41,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
   context 'when fan logged-in' do
     let(:fan) { FactoryBot.create(:user, role: :fan, status: :active) }
 
-    before(:each) { sign_in fan }
+    before { sign_in fan }
 
     it 'returns empty array if no events' do
       get '/api/events.json'
@@ -80,7 +80,7 @@ RSpec.describe 'Api::V1::EventsController#index', type: :request do
   context 'when admin logged-in' do
     let(:admin) { FactoryBot.create(:user, role: :admin, status: :active) }
 
-    before(:each) { sign_in admin }
+    before { sign_in admin }
 
     it 'returns empty array if no events' do
       get '/api/events.json'

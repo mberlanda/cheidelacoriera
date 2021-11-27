@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe TeamDecorator do
   it 'decorates without errors' do
     team = FactoryBot.create(:team)
-    decorator = TeamDecorator.new(team)
+    decorator = described_class.new(team)
 
     expect(decorator.datatable_index).to eq(
       [

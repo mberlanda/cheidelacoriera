@@ -58,7 +58,7 @@ RSpec.describe ReservationsController, type: :controller do
     end
 
     def assert_form_validation_errors(response)
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
       expect(response).to render_template(:new)
     end
 
@@ -73,8 +73,10 @@ RSpec.describe ReservationsController, type: :controller do
         end
       end
     end
+
     context 'when admin' do
-      before(:each) { sign_in admin }
+      before { sign_in admin }
+
       it 'creates and redirects to show page an admin with valid inputs' do
         post :create, params: valid_create_reservation_params(admin, event)
         assert_reservation_created(response)
@@ -98,23 +100,24 @@ RSpec.describe ReservationsController, type: :controller do
 
   describe 'POST#form_create' do
     context 'when a user is a fan' do
-      before(:each) do
+      before do
         sign_in active_fan
       end
+
       it 'creates a reservation with valid input' do
         reservation_count_before = Reservation.count
         params = valid_reservation_params(active_fan, event)
         post :form_create, params: params
 
         expect(Reservation.count).to eq(reservation_count_before + 1)
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'returns bad request if tries to create reservations on behalf of other users' do
         params = valid_reservation_params(pending_fan, event)
         post :form_create, params: params
 
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
       end
 
       it 'returns 400 with validation errors if reservation is not valid' do
@@ -122,7 +125,7 @@ RSpec.describe ReservationsController, type: :controller do
         params = valid_reservation_params(active_fan, event, fans_proc: empty_fans)
         post :form_create, params: params
 
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
         json_response = JSON.parse(response.body)
 
         expect(json_response.keys).to include('errors')

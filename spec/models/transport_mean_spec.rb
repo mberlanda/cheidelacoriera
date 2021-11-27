@@ -8,10 +8,10 @@ RSpec.describe TransportMean, type: :model do
   context 'default transport_mean' do
     subject { transport_mean }
 
-    it { should respond_to(:kind) }
-    it { should respond_to(:company) }
-    it { should respond_to(:phone_number) }
-    it { should respond_to(:email) }
-    it { should respond_to(:description) }
+    it { is_expected.to respond_to(:kind) }
+    it { is_expected.to respond_to(:company) }
+    it { is_expected.to respond_to(:phone_number) }
+    it { is_expected.to respond_to(:email) }
+    it { is_expected.to respond_to(:description) }
   end
 end

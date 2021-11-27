@@ -10,7 +10,7 @@ RSpec.describe Reservation, type: :model do
   # Need to find a better solution to clean up
   # after this test
   after(:all) do
-    Reservation.delete_all
+    described_class.delete_all
     Event.delete_all
     Team.delete_all
     User.delete_all
@@ -19,16 +19,16 @@ RSpec.describe Reservation, type: :model do
   context 'default reservation' do
     subject { FactoryBot.build :reservation }
 
-    it { should respond_to(:total_seats) }
-    it { should respond_to(:fan_names) }
-    it { should respond_to(:notes) }
-    it { should respond_to(:status) }
-    it { should respond_to(:phone_number) }
-    it { should respond_to(:user_id) }
-    it { should respond_to(:event_id) }
-    it { should respond_to(:mail_sent) }
+    it { is_expected.to respond_to(:total_seats) }
+    it { is_expected.to respond_to(:fan_names) }
+    it { is_expected.to respond_to(:notes) }
+    it { is_expected.to respond_to(:status) }
+    it { is_expected.to respond_to(:phone_number) }
+    it { is_expected.to respond_to(:user_id) }
+    it { is_expected.to respond_to(:event_id) }
+    it { is_expected.to respond_to(:mail_sent) }
 
-    it 'should not be valid' do
+    it 'is not valid' do
       expect(subject.valid?).to be false
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe Reservation, type: :model do
           :reservation, event: event, fan_names: @fan_names,
                         phone_number: default_phone_number
         )
-      end.to change { event.requested_seats }.by(@fan_names.size)
+      end.to change(event, :requested_seats).by(@fan_names.size)
     end
   end
 
@@ -126,9 +126,9 @@ RSpec.describe Reservation, type: :model do
       res1 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
       res2 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
 
-      expect(Reservation.where(event_id: event.id).pending.count).to eq(2)
+      expect(described_class.where(event_id: event.id).pending.count).to eq(2)
 
-      Reservation.where(event_id: event.id).pending.approve_all
+      described_class.where(event_id: event.id).pending.approve_all
 
       aggregate_failures do
         expect(res1.reload.pending?).to be(false)

@@ -8,11 +8,11 @@ RSpec.describe Team, type: :model do
   context 'default team' do
     subject { team }
 
-    it { should respond_to(:name) }
-    it { should respond_to(:country) }
-    it { should respond_to(:url) }
-    it { should respond_to(:image_url) }
-    it { should respond_to(:description) }
+    it { is_expected.to respond_to(:name) }
+    it { is_expected.to respond_to(:country) }
+    it { is_expected.to respond_to(:url) }
+    it { is_expected.to respond_to(:image_url) }
+    it { is_expected.to respond_to(:description) }
   end
 
   context 'events relationship' do

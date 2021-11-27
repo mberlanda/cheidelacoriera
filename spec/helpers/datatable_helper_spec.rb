@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe DatatableHelper do
-  include DatatableHelper
+  include described_class
 
   context 'default empty Builder' do
     before do
