@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PublicController < ActionController::Base
+class PublicController < ApplicationController
   protect_from_forgery with: :exception
   # before_action :set_locale
   layout 'application'

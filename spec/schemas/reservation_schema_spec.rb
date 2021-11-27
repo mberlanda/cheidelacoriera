@@ -6,7 +6,7 @@ RSpec.describe ReservationSchema do
   describe '.jsonschema' do
     context 'when stops are not provided' do
       it 'returns some default values discarding stops' do
-        j = ReservationSchema.jsonschema(stops: [])
+        j = described_class.jsonschema(stops: [])
 
         aggregate_failures do
           expect(j.keys).to match_array(%i[title description type required properties])
@@ -23,7 +23,7 @@ RSpec.describe ReservationSchema do
 
     context 'when stops are provided' do
       it 'returns some default values adding stops' do
-        j = ReservationSchema.jsonschema(stops: %w[Bergamo Foo Bar])
+        j = described_class.jsonschema(stops: %w[Bergamo Foo Bar])
 
         aggregate_failures do
           expect(j.keys).to match_array(%i[title description type required properties])

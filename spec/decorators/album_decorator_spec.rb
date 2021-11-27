@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe AlbumDecorator do
   it 'decorates without errors' do
     album = FactoryBot.create(:album)
-    decorator = AlbumDecorator.new(album)
+    decorator = described_class.new(album)
 
     expect(decorator.datatable_index).to eq(
       [

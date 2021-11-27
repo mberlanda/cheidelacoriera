@@ -6,8 +6,8 @@ RSpec.describe Album, type: :model do
   context 'default album' do
     subject { FactoryBot.build :album }
 
-    it { should respond_to(:title) }
-    it { should respond_to(:url) }
-    it { should respond_to(:event_id) }
+    it { is_expected.to respond_to(:title) }
+    it { is_expected.to respond_to(:url) }
+    it { is_expected.to respond_to(:event_id) }
   end
 end

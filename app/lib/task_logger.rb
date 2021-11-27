@@ -9,7 +9,7 @@ module TaskLogger
   end
 
   def multi_io_logger
-    MultiIo.new(STDOUT, File.open(task_logger_path, 'a'))
+    MultiIo.new($stdout, File.open(task_logger_path, 'a'))
   end
 
   def task_logger_path

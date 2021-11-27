@@ -6,30 +6,32 @@ RSpec.describe User, type: :model do
   context 'default user' do
     subject! { FactoryBot.build :user }
 
-    it { should respond_to(:email) }
-    it { should respond_to(:encrypted_password) }
-    it { should respond_to(:role) }
-    it { should respond_to(:status) }
-    it { should respond_to(:first_name) }
-    it { should respond_to(:last_name) }
-    it { should respond_to(:date_of_birth) }
-    it { should respond_to(:place_of_birth) }
-    it { should respond_to(:phone_number) }
-    it { should respond_to(:newsletter) }
-    it { should respond_to(:activation_date) }
+    it { is_expected.to respond_to(:email) }
+    it { is_expected.to respond_to(:encrypted_password) }
+    it { is_expected.to respond_to(:role) }
+    it { is_expected.to respond_to(:status) }
+    it { is_expected.to respond_to(:first_name) }
+    it { is_expected.to respond_to(:last_name) }
+    it { is_expected.to respond_to(:date_of_birth) }
+    it { is_expected.to respond_to(:place_of_birth) }
+    it { is_expected.to respond_to(:phone_number) }
+    it { is_expected.to respond_to(:newsletter) }
+    it { is_expected.to respond_to(:activation_date) }
 
     it 'has default role' do
       expect(subject.role).to eq('fan')
     end
+
     it 'has default status' do
       expect(subject.status).to eq('pending')
     end
   end
+
   context 'admin user' do
+    subject { admin_user }
+
     let(:fan_user) { FactoryBot.build(:user, role: 'fan') }
     let(:admin_user) { FactoryBot.build(:user, role: 'admin') }
-
-    subject { admin_user }
 
     it 'admin?' do
       expect(subject.admin?).to be(true)
@@ -37,10 +39,10 @@ RSpec.describe User, type: :model do
   end
 
   context 'fan user' do
+    subject { fan_user }
+
     let(:fan_user) { FactoryBot.build(:user, role: 'fan') }
     let(:admin_user) { FactoryBot.build(:user, role: 'admin') }
-
-    subject { fan_user }
 
     it 'admin?' do
       expect(subject.admin?).to be(false)

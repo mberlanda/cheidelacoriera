@@ -6,20 +6,21 @@ RSpec.describe Competition, type: :model do
   context 'default competition' do
     subject { FactoryBot.build :competition }
 
-    it { should respond_to(:name) }
+    it { is_expected.to respond_to(:name) }
   end
 
   context 'slug' do
     subject { FactoryBot.create :competition, name: 'name' }
 
-    it 'should be generated from name if blank' do
+    it 'is generated from name if blank' do
       expect(subject.slug).to eq 'name'
     end
 
-    it 'should be generated again when name change' do
-      expect { subject.update! name: 'another name' }.to change {
-        subject.slug
-      }.from('name').to('another-name')
+    it 'is generated again when name change' do
+      expect do
+        subject.update! name: 'another name'
+      end.to change(subject,
+                    :slug).from('name').to('another-name')
     end
   end
 end

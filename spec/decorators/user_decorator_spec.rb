@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe UserDecorator do
   it 'decorates without errors' do
     user = FactoryBot.create(:user)
-    decorator = UserDecorator.new(user)
+    decorator = described_class.new(user)
 
     expect(decorator.datatable_index).to eq(
       [

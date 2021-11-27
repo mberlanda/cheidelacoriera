@@ -14,7 +14,7 @@ class EventsController < PublicController
   def details
     @event = Event.include_all.friendly.find(params.require(:id))
     @title = @event.to_s
-    @meta_description = 'Trasferta ' + @title
+    @meta_description = "Trasferta #{@title}"
 
     if current_user
       @reservation = Reservation.find_by(

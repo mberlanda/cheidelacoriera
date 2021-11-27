@@ -25,10 +25,10 @@ module DatatableHelper
     end
 
     def to_html
-      content_tag :div, class: 'container' do
-        content_tag(:div, nil, class: "#{model_name}-index-buttons") +
-          content_tag(:table, class: table_class, id: "#{model_name}-table") do
-            content_tag(:thead) do
+      tag.div(class: 'container') do
+        tag.div(nil, class: "#{model_name}-index-buttons") +
+          tag.table(class: table_class, id: "#{model_name}-table") do
+            tag.thead do
               headers.collect { |h| format_header(h) }.join.html_safe
             end
           end
@@ -38,7 +38,7 @@ module DatatableHelper
     private
 
     def format_header(head)
-      content_tag(:th, translate(head))
+      tag.th(translate(head))
     end
 
     def translate(head)

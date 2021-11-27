@@ -14,12 +14,12 @@ class EventIconBuilder
 
   def item
     # rubocop:disable Rails/OutputSafety
-    content_tag(:i, sr_only, icon_attributes).html_safe
+    tag.i(sr_only, **icon_attributes).html_safe
     # rubocop:enable Rails/OutputSafety
   end
 
   def sr_only
-    content_tag(:span, message[@icon_type], class: 'sr-only')
+    tag.span(message[@icon_type], class: 'sr-only')
   end
 
   def icon_attributes

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe EventDecorator do
   it 'decorates without errors' do
     event = FactoryBot.create(:event)
-    decorator = EventDecorator.new(event)
+    decorator = described_class.new(event)
 
     expect(decorator.datatable_index).to eq(
       [

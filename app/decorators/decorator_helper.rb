@@ -17,15 +17,15 @@ class DecoratorHelper
   end
 
   def status_field(status)
-    cache["status::#{status}"] ||= content_tag :div, status, class: "status-#{status}"
+    cache["status::#{status}"] ||= tag.div(status, class: "status-#{status}")
   end
 
   def role_field(role)
-    cache["status::#{role}"] ||= content_tag :div, role, class: "role-#{role}"
+    cache["status::#{role}"] ||= tag.div(role, class: "role-#{role}")
   end
 
   def bool_field(value)
-    cache["bool::#{value}"] ||= content_tag :div, value, class: "bool-#{value}"
+    cache["bool::#{value}"] ||= tag.div(value.to_s, class: "bool-#{value}")
   end
 
   def users(object)

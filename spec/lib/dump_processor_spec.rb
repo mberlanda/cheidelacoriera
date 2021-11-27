@@ -12,7 +12,7 @@ RSpec.describe DumpProcessor do
       input_path = dump_path('0-records-input.txt')
       output_path = dump_path('0-records-output.txt')
 
-      DumpProcessor.new(input_path, output_path).process
+      described_class.new(input_path, output_path).process
 
       output_count = `wc -l #{output_path}`.split.first.to_i
       expect(output_count).to eq(0)
@@ -24,7 +24,7 @@ RSpec.describe DumpProcessor do
       input_path = dump_path('1-record-input.txt')
       output_path = dump_path('1-record-output.txt')
 
-      DumpProcessor.new(input_path, output_path).process
+      described_class.new(input_path, output_path).process
 
       output_count = `wc -l #{output_path}`.split.first.to_i
       expect(output_count).to eq(2)
@@ -36,7 +36,7 @@ RSpec.describe DumpProcessor do
       input_path = dump_path('500-records-input.txt')
       output_path = dump_path('500-records-output.txt')
 
-      DumpProcessor.new(input_path, output_path).process
+      described_class.new(input_path, output_path).process
 
       output_count = `wc -l #{output_path}`.split.first.to_i
       expect(output_count).to eq(3)

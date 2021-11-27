@@ -32,7 +32,7 @@ RSpec.describe 'ReservationsController#datatable_index', type: :request do
     FactoryBot.create(:reservation, user: admin, event: eventb, fan_names: %w[Foo|Bar])
   end
 
-  before(:each) do
+  before do
     Rails.cache.clear
   end
 

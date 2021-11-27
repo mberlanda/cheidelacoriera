@@ -24,7 +24,7 @@ class RemoveArrayInput < SimpleForm::Inputs::StringInput
   private
 
   def build_single_elem(elem, button)
-    content_tag :div, class: 'form-control-inline' do
+    tag.div(class: 'form-control-inline') do
       build_single_input(elem) +
         button
     end
@@ -41,14 +41,14 @@ class RemoveArrayInput < SimpleForm::Inputs::StringInput
   end
 
   def add_button
-    content_tag(:button, '+', type: :button,
-                              class: "add_#{attribute_name}_button btn btn-primary")
+    tag.button('+', type: :button,
+                    class: "add_#{attribute_name}_button btn btn-primary")
   end
 
   def remove_button
-    content_tag(:button, type: :button,
-                         class: "remove_#{attribute_name}_button btn btn-default") do
-      content_tag(:i, nil, class: %w[fa fa-trash-o], 'aria-hidden' => true)
+    tag.button(type: :button,
+               class: "remove_#{attribute_name}_button btn btn-default") do
+      tag.i(nil, class: %w[fa fa-trash-o], 'aria-hidden' => true)
     end
   end
 end

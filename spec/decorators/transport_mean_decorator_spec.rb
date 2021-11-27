@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe TransportMeanDecorator do
   it 'decorates without errors' do
     transport_mean = FactoryBot.create(:transport_mean)
-    decorator = TransportMeanDecorator.new(transport_mean)
+    decorator = described_class.new(transport_mean)
 
     expect(decorator.datatable_index).to eq(
       [

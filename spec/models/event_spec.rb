@@ -8,9 +8,9 @@ RSpec.describe Event, type: :model do
   let!(:team2) { FactoryBot.create :team }
 
   it '#transport_mean_class method' do
-    expect(Event.transport_mean_class('bus')).to eq('fa fa-bus')
-    expect(Event.transport_mean_class('aereo')).to eq('fa fa-plane')
-    expect(Event.transport_mean_class('invalid')).to eq(nil)
+    expect(described_class.transport_mean_class('bus')).to eq('fa fa-bus')
+    expect(described_class.transport_mean_class('aereo')).to eq('fa fa-plane')
+    expect(described_class.transport_mean_class('invalid')).to eq(nil)
   end
 
   context 'default event' do
@@ -23,26 +23,26 @@ RSpec.describe Event, type: :model do
       )
     end
 
-    it { should respond_to(:date) }
-    it { should respond_to(:time) }
-    it { should respond_to(:season) }
-    it { should respond_to(:score) }
-    it { should respond_to(:notes) }
-    it { should respond_to(:home_team) }
-    it { should respond_to(:away_team) }
-    it { should respond_to(:competition) }
-    it { should respond_to(:venue) }
-    it { should respond_to(:poster_url) }
-    it { should respond_to(:requested_seats) }
-    it { should respond_to(:confirmed_seats) }
-    it { should respond_to(:bookable_from) }
-    it { should respond_to(:bookable_until) }
-    it { should respond_to(:rejected_seats) }
-    it { should respond_to(:pax) }
-    it { should respond_to(:audience) }
-    it { should respond_to(:transport_mean) }
-    it { should respond_to(:stops) }
-    it { should respond_to(:available_stops) }
+    it { is_expected.to respond_to(:date) }
+    it { is_expected.to respond_to(:time) }
+    it { is_expected.to respond_to(:season) }
+    it { is_expected.to respond_to(:score) }
+    it { is_expected.to respond_to(:notes) }
+    it { is_expected.to respond_to(:home_team) }
+    it { is_expected.to respond_to(:away_team) }
+    it { is_expected.to respond_to(:competition) }
+    it { is_expected.to respond_to(:venue) }
+    it { is_expected.to respond_to(:poster_url) }
+    it { is_expected.to respond_to(:requested_seats) }
+    it { is_expected.to respond_to(:confirmed_seats) }
+    it { is_expected.to respond_to(:bookable_from) }
+    it { is_expected.to respond_to(:bookable_until) }
+    it { is_expected.to respond_to(:rejected_seats) }
+    it { is_expected.to respond_to(:pax) }
+    it { is_expected.to respond_to(:audience) }
+    it { is_expected.to respond_to(:transport_mean) }
+    it { is_expected.to respond_to(:stops) }
+    it { is_expected.to respond_to(:available_stops) }
 
     it 'belongs to a competition' do
       expect(subject.competition).to eq(competition)
@@ -59,7 +59,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  context '.upcoming' do
+  describe '.upcoming' do
     before do
       default_date = Date.new(2017, 10, 1)
       allow(Time.zone).to receive(:today).and_return(default_date)
@@ -68,16 +68,16 @@ RSpec.describe Event, type: :model do
       @future_event = FactoryBot.create(:event, date: default_date + 1.day)
     end
 
-    it 'should mock date today' do
+    it 'mocks date today' do
       expect(Time.zone.today).to eq(Date.new(2017, 10, 1))
     end
 
-    it 'should filter past events' do
-      expect(Event.upcoming).to match_array([@same_day_event, @future_event])
+    it 'filters past events' do
+      expect(described_class.upcoming).to match_array([@same_day_event, @future_event])
     end
   end
 
-  context '.bookable' do
+  describe '.bookable' do
     before do
       DatabaseCleaner.clean_with(:truncation)
       @event1 = FactoryBot.create(
@@ -93,20 +93,19 @@ RSpec.describe Event, type: :model do
     end
 
     it 'uses by default Time.zone.today' do
-      actual = Event.bookable
+      actual = described_class.bookable
       expect(actual.count).to eq(2)
       expect(actual).to match_array([@event1, @event2])
     end
 
     it 'can use custom date' do
-      actual = Event.bookable(Time.zone.today - 2.days)
+      actual = described_class.bookable(Time.zone.today - 2.days)
       expect(actual.count).to eq(1)
       expect(actual).to match_array([@event2])
     end
   end
 
   context 'slug_name generation' do
-    let(:event_date) { Date.new(2017, 1, 1) }
     subject do
       FactoryBot.build(
         :event,
@@ -118,7 +117,9 @@ RSpec.describe Event, type: :model do
       )
     end
 
-    it 'should not include transport mean if null' do
+    let(:event_date) { Date.new(2017, 1, 1) }
+
+    it 'does not include transport mean if null' do
       expect(subject.send(:custom_slug_name)).to eq([
         subject.home_team.name.downcase.tr(' ', '-').to_s,
         subject.away_team.name.downcase.tr(' ', '-').to_s,
@@ -127,7 +128,7 @@ RSpec.describe Event, type: :model do
       ].join('-'))
     end
 
-    it 'should include transport mean if present' do
+    it 'includes transport mean if present' do
       transport_mean = 'bus'
       subject.update(transport_mean: transport_mean)
 
@@ -141,17 +142,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  context '.handle_seats_changes before save' do
-    let(:event_date) { Date.new(2017, 1, 1) }
-
-    def decrease_availability_test(subject, attribute, amount)
-      expect do
-        subject.update! attribute => amount
-      end.to change {
-        subject.available_seats
-      }.by amount * -1
-    end
-
+  describe '.handle_seats_changes before save' do
     subject do
       FactoryBot.create(
         :event,
@@ -167,6 +158,16 @@ RSpec.describe Event, type: :model do
       )
     end
 
+    let(:event_date) { Date.new(2017, 1, 1) }
+
+    def decrease_availability_test(subject, attribute, amount)
+      expect do
+        subject.update! attribute => amount
+      end.to change {
+        subject.available_seats
+      }.by amount * -1
+    end
+
     it 'decrease availability if will_save_change_to_confirmed_seats?' do
       decrease_availability_test(subject, :confirmed_seats, 7)
     end
@@ -178,9 +179,10 @@ RSpec.describe Event, type: :model do
     it 'recalculate availability when total_seats changed and no reservations' do
       amount = 15
       subject.update! available_seats: 0
-      expect { subject.update! total_seats: amount }.to change {
-        subject.available_seats
-      }.from(0).to(amount)
+      expect do
+        subject.update! total_seats: amount
+      end.to change(subject,
+                    :available_seats).from(0).to(amount)
     end
 
     it 'recalculate availability when total_seats changed and 1+ reservations' do
@@ -189,9 +191,10 @@ RSpec.describe Event, type: :model do
       subject.update! available_seats: 0
       FactoryBot.create(:reservation, event: subject, fan_names: fans)
 
-      expect { subject.update! total_seats: amount }.to change {
-        subject.available_seats
-      }.from(fans.size * -1).to(amount - fans.size)
+      expect do
+        subject.update! total_seats: amount
+      end.to change(subject,
+                    :available_seats).from(fans.size * -1).to(amount - fans.size)
     end
   end
 
@@ -205,26 +208,26 @@ RSpec.describe Event, type: :model do
       )
     end
 
-    it 'should strip valid transport mean (bus|aereo)' do
+    it 'strips valid transport mean (bus|aereo)' do
       subject.update(transport_mean: '  bus  ')
       subject.save!
 
       expect(subject.transport_mean).to eq('bus')
     end
 
-    it 'should nullify invalid transport means' do
+    it 'nullifies invalid transport means' do
       subject.update(transport_mean: '  invalid  ')
       subject.save!
 
       expect(subject.transport_mean).to eq(nil)
     end
 
-    it 'should assign the custom_name as slug_name' do
+    it 'assigns the custom_name as slug_name' do
       expect(subject.slug).to eq(subject.custom_name)
     end
   end
 
-  context '.available_stops' do
+  describe '.available_stops' do
     let(:event) { FactoryBot.build(:event) }
 
     it 'handles null stops' do
@@ -280,9 +283,9 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  context '#all_names' do
+  describe '#all_names' do
     it 'handles names as a SQL query' do
-      expected = <<~SQL.strip.tr("\n", ' ').gsub(/\s+/, ' ')
+      expected = <<~SQL.squish.strip.tr("\n", ' ').gsub(/\s+/, ' ')
         SELECT
            "events"."id",
            "teams"."name" || ' vs ' || "away_teams_events"."name" || ' ' || COALESCE("events"."transport_mean",'') || ' (' || "competitions"."name" || ', ' || "events"."date" || ')'
@@ -299,14 +302,14 @@ RSpec.describe Event, type: :model do
               "teams" "away_teams_events"
               ON "away_teams_events"."id" = "events"."away_team_id"
       SQL
-      expect(Event.all_names.to_sql).to eq(expected)
+      expect(described_class.all_names.to_sql).to eq(expected)
     end
 
     it 'returns the expected value' do
       event_a = FactoryBot.create(:event)
       event_b = FactoryBot.create(:event)
 
-      actual = Event.order(:id).all_names
+      actual = described_class.order(:id).all_names
 
       aggregate_failures do
         expect(actual.map(&:id)).to match_array([event_a.id, event_b.id])

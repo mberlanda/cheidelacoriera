@@ -19,7 +19,7 @@ end
 RSpec.describe MultiIo do
   context 'when no io is passed' do
     it 'does not raise any error' do
-      multi_io = MultiIo.new
+      multi_io = described_class.new
       multi_io.write('foo')
       multi_io.close
     end
@@ -29,7 +29,7 @@ RSpec.describe MultiIo do
     it 'forwards the logs to every target' do
       fake_io_a = FakeIo.new
       fake_io_b = FakeIo.new
-      multi_io = MultiIo.new(fake_io_a, fake_io_b)
+      multi_io = described_class.new(fake_io_a, fake_io_b)
       multi_io.write('foo')
       multi_io.close
 

@@ -63,40 +63,40 @@ module ReservationSchema
 
   def ui_schema
     {
-      "authenticity_token": { "ui:widget": 'hidden' },
-      "event_id": { "ui:widget": 'hidden' },
-      "user_id": { "ui:widget": 'hidden' },
-      "fans_count": {
-        "ui:widget": 'select',
-        "ui:options": {
-          "inline": true
+      authenticity_token: { 'ui:widget': 'hidden' },
+      event_id: { 'ui:widget': 'hidden' },
+      user_id: { 'ui:widget': 'hidden' },
+      fans_count: {
+        'ui:widget': 'select',
+        'ui:options': {
+          inline: true
         }
       },
-      "fan_names": {
-        "ui:options": {
-          "addable": false,
-          "orderable": false,
-          "removable": false
+      fan_names: {
+        'ui:options': {
+          addable: false,
+          orderable: false,
+          removable: false
         },
-        "items": {
-          "first_name": {
-            "classNames": 'col-md-6',
-            "ui:placeholder": 'Nome',
-            "ui:options": {
-              "label": false
+        items: {
+          first_name: {
+            classNames: 'col-md-6',
+            'ui:placeholder': 'Nome',
+            'ui:options': {
+              label: false
             }
           },
-          "last_name": {
-            "classNames": 'col-md-6',
-            "ui:placeholder": 'Cognome',
-            "ui:options": {
-              "label": false
+          last_name: {
+            classNames: 'col-md-6',
+            'ui:placeholder': 'Cognome',
+            'ui:options': {
+              label: false
             }
           }
         }
       },
-      "notes": {
-        "ui:widget": 'textarea'
+      notes: {
+        'ui:widget': 'textarea'
       }
     }
   end
@@ -104,6 +104,6 @@ module ReservationSchema
   def schema_description(max_pax)
     places = max_pax > 1 ? "#{max_pax} posti" : '1 posto'
     "Per questa partita potrai prenotare un massimo di #{places}. "\
-    'Dopo aver inserito le informazioni richieste clicca su "Prenota".'
+      'Dopo aver inserito le informazioni richieste clicca su "Prenota".'
   end
 end
