@@ -3,9 +3,8 @@
 class EventsController < PublicController
   include PermissionsScopeHelper
 
-  before_action :authenticate_user!, only: %i[reservations]
-  before_action :admin_user?, only: :reservations
-  # before_action :active_user?, only: :details
+  before_action :authenticate_user!, only: %i[reservations csv_reservations]
+  before_action :admin_user?, only: %i[reservations csv_reservations]
 
   def upcoming; end
 
@@ -21,9 +20,6 @@ class EventsController < PublicController
         event_id: @event.id, user_id: current_user.id
       )
 
-      # @react_form = ENV['REACT_FORMS'] || true
-
-      # if @react_form
       default_fans_count = 1
       @reservation_form = {
         schema: ReservationSchema.jsonschema(
@@ -40,12 +36,6 @@ class EventsController < PublicController
           fan_names: [{ first_name: current_user.first_name, last_name: current_user.last_name }]
         }
       }
-      # else
-      #   @reservation ||= Reservation.new(
-      #     event_id: @event.id,
-      #     fan_names: [current_user.form_name].compact
-      #   )
-      # end
     end
   end
 
