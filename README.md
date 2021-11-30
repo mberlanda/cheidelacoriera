@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mberlanda/cheidelacoriera.svg?branch=master)](https://travis-ci.org/mberlanda/cheidelacoriera)
 [![Maintainability](https://api.codeclimate.com/v1/badges/19dac7a302ec55f5cd95/maintainability)](https://codeclimate.com/github/mberlanda/cheidelacoriera/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/19dac7a302ec55f5cd95/test_coverage)](https://codeclimate.com/github/mberlanda/cheidelacoriera/test_coverage)
 
 This Rails application aims to become a management system for away fans.
 

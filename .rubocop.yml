@@ -89,6 +89,9 @@ Metrics/ModuleLength:
 Rails:
   Enabled: true
 
+Rails/ApplicationController:
+  Enabled: false
+
 Rails/Output:
   Exclude:
     - config/unicorn.rb
