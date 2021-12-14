@@ -4,15 +4,18 @@ class MailchimpJob < ApplicationJob
   queue_as :default
 
   def perform(*users_to_add)
-    gibbon = Gibbon::Request.new
     users_to_add.each do |u|
-      gibbon.lists(Mailchimp.list_id).members(calculate_id(u)).upsert(
+      gibbon_request.lists(Mailchimp.list_id).members(calculate_id(u)).upsert(
         **format_user_body(u)
       )
       u.update(mailing_listed: true)
     rescue Gibbon::MailChimpError => e
       Rails.logger.warn(e)
     end
+  end
+
+  def gibbon_request
+    @gibbon_request ||= Gibbon::Request.new
   end
 
   private
