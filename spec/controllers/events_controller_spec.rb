@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
+  render_views
+
   let!(:event) { FactoryBot.create(:event) }
 
   context 'when user is not logged in' do
