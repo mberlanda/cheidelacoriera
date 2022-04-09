@@ -1,0 +1,14 @@
+.row
+  %p{ class: "status-#{@reservation.status}" }= t("reservations.show.status.#{@reservation.status}")
+  %p= t('reservations.show.fans')
+  %ul
+    - @reservation.fan_names.each do |n|
+      %li= n
+  %p= t('reservations.show.phone_number', number: @reservation.phone_number)
+  - if @reservation.stop.present?
+    %p Punto di partenza: #{@reservation.stop}
+
+- if @reservation.pending?
+  .row
+    %p Riceverai aggiornamenti sulla tua mail.
+    %p Per eventuali modifiche scrivi a : cheidelacoriera@gmail.com

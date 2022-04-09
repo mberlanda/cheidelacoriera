@@ -30,15 +30,15 @@
       - if current_user
         #reservation-form
           - if current_user.rejected?
-            = render(file: 'reservations/rejected_user')
+            = render 'reservations/rejected_user'
           - elsif !current_user.active?
-            = render(file: 'reservations/pending_user')
+            = render 'reservations/pending_user'
           - elsif !@event.book_range?
-            = render(file: 'reservations/no_user_form')
+            = render 'reservations/no_user_form'
           - elsif @reservation&.id
-            = render(file: 'reservations/status')
+            = render 'reservations/status'
           - elsif !current_user.can_book?(@event)
-            = render(file: 'reservations/no_user_form')
+            = render 'reservations/no_user_form'
           - else
             = react_component('ReservationForm', @reservation_form.merge(url: form_create_reservations_path, authenticity_token: form_authenticity_token), prerender: true)
       - else
