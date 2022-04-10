@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+  cache:
+    image: redis:5-alpine
+  db:
+    image: postgres:12.1
+    environment:
+      POSTGRES_DB: cheidelacoriera_production
+      POSTGRES_USER: cheidelacoriera
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cheidelacoriera -d cheidelacoriera_production"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      DATABASE_URL: postgres://cheidelacoriera:password@db:5432/cheidelacoriera_production
+      RAILS_DB_MIGRATE: "true"
+      RAILS_DB_SEED: "true"      
+      RAILS_ENV: production
+      REDIS_URL: redis://cache:6379/0
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    depends_on:
+      - cache
+      - db
+    links:
+      - cache
+      - db
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      DATABASE_URL: postgres://cheidelacoriera:password@db:5432/cheidelacoriera_production
+      RAILS_DB_MIGRATE: "true"
+      RAILS_DB_SEED: "true"      
+      RAILS_ENV: production
+      REDIS_URL: redis://cache:6379/0
+    depends_on:
+      - cache
+      - db
+      - web
+    links:
+      - cache
+      - db
+      - web
