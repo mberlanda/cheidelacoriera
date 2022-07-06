@@ -19,7 +19,7 @@ gem 'unicorn'
 gem 'unicorn-worker-killer'
 gem 'webpacker', '< 7'
 
-gem 'rails-html-sanitizer', '~> 1.4.0' # Force this version after CVE-2018-8048
+gem 'rails-html-sanitizer', '~> 1.4.3' # Force this version after CVE-2018-8048
 gem 'sprockets'
 
 gem 'devise', '~> 4.7.1' # Authentication
