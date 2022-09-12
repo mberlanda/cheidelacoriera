@@ -19,7 +19,7 @@ gem 'unicorn'
 gem 'unicorn-worker-killer'
 gem 'webpacker', '< 7'
 
-gem 'rails-html-sanitizer', '~> 1.4.0' # Force this version after CVE-2018-8048
+gem 'rails-html-sanitizer', '>= 1.4.3', '< 1.5.0'
 gem 'sprockets'
 
 gem 'devise', '~> 4.7.1' # Authentication
@@ -30,7 +30,7 @@ gem 'simple_form' # Form helper
 gem 'dry_crud'
 gem 'friendly_id'
 
-gem 'gibbon', '~> 3.2' # MailChimp API
+gem 'gibbon', '>= 3.4.4' # MailChimp API
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'scout_apm'
