@@ -46,3 +46,8 @@ en:
           body: >
             Short updates for our Community
           icon_class: fa fa-comment-o
+        facebook:
+          heading: Facebook Community
+          body: >
+            Stay in touch with us and other corieristi!
+          icon_class: fa fa-facebook

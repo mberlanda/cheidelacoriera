@@ -46,3 +46,8 @@ it:
           body: >
             Brevi aggiornamenti per i corieristi!
           icon_class: fa fa-comment-o
+        facebook:
+          heading: Gruppo Facebook
+          body: >
+            Rimani in contatto con noi e gli altri corieristi!
+          icon_class: fa fa-facebook

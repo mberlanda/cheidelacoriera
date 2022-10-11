@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
+
+  FACEBOOK_GROUP_URL = "https://www.facebook.com/groups/588161717946822/".freeze
+
   def index
     menu_actions
   end
@@ -13,6 +16,7 @@ class WelcomeController < ApplicationController
       # news: news_index_path,
       # posts: all_posts_path,
       # photogallery: all_albums_path,
+      facebook: FACEBOOK_GROUP_URL,
       regolamento: regolamento_path
     ).map(&build_action)
   end
