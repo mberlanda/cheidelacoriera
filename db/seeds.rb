@@ -20,8 +20,8 @@ if ENV['RAILS_DB_SEED']
       email: "#{status}-#{role}@test.com",
       password: 'testtest',
       password_confirmation: 'testtest',
-      role: role,
-      status: status
+      role:,
+      status:
     )
   end
 end

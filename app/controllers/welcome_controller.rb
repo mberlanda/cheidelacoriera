@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
 
-  FACEBOOK_GROUP_URL = "https://www.facebook.com/groups/588161717946822/".freeze
+  FACEBOOK_GROUP_URL = 'https://www.facebook.com/groups/588161717946822/'.freeze
 
   def index
     menu_actions
@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
     lambda do |action, url|
       {
         name: action,
-        url: url,
+        url:,
         iconClass: t("home.index.panel.#{action}.icon_class"),
         heading: t("home.index.panel.#{action}.heading"),
         body: t("home.index.panel.#{action}.body").strip,

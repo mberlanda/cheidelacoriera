@@ -15,28 +15,28 @@ class EventsController < PublicController
     @title = @event.to_s
     @meta_description = "Trasferta #{@title}"
 
-    if current_user
-      @reservation = Reservation.find_by(
-        event_id: @event.id, user_id: current_user.id
-      )
+    return unless current_user
 
-      default_fans_count = 1
-      @reservation_form = {
-        schema: ReservationSchema.jsonschema(
-          maximum: @event.pax,
-          default: default_fans_count,
-          stops: @event.available_stops
-        ),
-        ui_schema: ReservationSchema.ui_schema,
-        form_data: {
-          event_id: @event.id,
-          user_id: current_user.id,
-          phone_number: current_user.phone_number,
-          fans_count: default_fans_count,
-          fan_names: [{ first_name: current_user.first_name, last_name: current_user.last_name }]
-        }
+    @reservation = Reservation.find_by(
+      event_id: @event.id, user_id: current_user.id
+    )
+
+    default_fans_count = 1
+    @reservation_form = {
+      schema: ReservationSchema.jsonschema(
+        maximum: @event.pax,
+        default: default_fans_count,
+        stops: @event.available_stops
+      ),
+      ui_schema: ReservationSchema.ui_schema,
+      form_data: {
+        event_id: @event.id,
+        user_id: current_user.id,
+        phone_number: current_user.phone_number,
+        fans_count: default_fans_count,
+        fan_names: [{ first_name: current_user.first_name, last_name: current_user.last_name }]
       }
-    end
+    }
   end
 
   def reservations

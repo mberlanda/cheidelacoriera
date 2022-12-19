@@ -41,7 +41,7 @@ RSpec.describe 'ReservationsController#approve_all', type: :request do
     let!(:reservation_1) do
       FactoryBot.create(
         :reservation,
-        event: event,
+        event:,
         fan_names: %w[Foo|Bar]
       )
     end
@@ -69,14 +69,14 @@ RSpec.describe 'ReservationsController#approve_all', type: :request do
     let!(:reservation_1) do
       FactoryBot.create(
         :reservation,
-        event: event,
+        event:,
         fan_names: %w[Foo|Bar]
       )
     end
     let!(:reservation_2) do
       FactoryBot.create(
         :reservation,
-        event: event,
+        event:,
         fan_names: %w[Bar|Baz Bat|Man]
       )
     end

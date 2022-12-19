@@ -29,7 +29,7 @@ class Crud::EventsController < CrudController
 
   def datatable_reservations
     event_id = params[:id]
-    @response = Reservation.includes(:user).where(event_id: event_id)
+    @response = Reservation.includes(:user).where(event_id:)
     @data = @response.map do |r|
       ReservationDecorator.new(r).datatable_reservations
     end

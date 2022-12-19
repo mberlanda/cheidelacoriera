@@ -34,7 +34,7 @@ class ArrayInput < SimpleForm::Inputs::StringInput
     @builder.text_field(
       nil,
       input_html_options.merge(
-        value: value, name: "#{object_name}[#{attribute_name}][]",
+        value:, name: "#{object_name}[#{attribute_name}][]",
         id: nil
       )
     )

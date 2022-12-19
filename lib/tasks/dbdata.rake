@@ -41,8 +41,8 @@ namespace :dbdata do
         password = $stdin.gets.chomp
         options = '--verbose --column-inserts --data-only'
 
-        cmd = "PGPASSWORD=\"#{password}\" pg_dump -U  #{source['database']} -h "\
-              "#{source['host']} -p #{source['port']}  #{options} >"\
+        cmd = "PGPASSWORD=\"#{password}\" pg_dump -U  #{source['database']} -h " \
+              "#{source['host']} -p #{source['port']}  #{options} >" \
               " #{dumpfile(source_env)}"
         output = `#{cmd}`
         if output.match?(/fatal/i)

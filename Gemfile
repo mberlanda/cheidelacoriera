@@ -37,9 +37,8 @@ gem 'scout_apm'
 
 gem 'cookies_eu', '~> 1.6' # cookies policy
 
-gem 'sidekiq', '>=6', '< 7' # Async queue
 gem 'net-smtp'
-
+gem 'sidekiq', '>=6', '< 7' # Async queue
 
 group :development, :test do
   gem 'bullet'

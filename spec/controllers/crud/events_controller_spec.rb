@@ -29,7 +29,7 @@ RSpec.describe Crud::EventsController, type: :controller do
     let(:event) { FactoryBot.create(:event) }
 
     before do
-      FactoryBot.create(:reservation, event: event, fan_names: %w[Foo|Bar])
+      FactoryBot.create(:reservation, event:, fan_names: %w[Foo|Bar])
       sign_in admin
     end
 

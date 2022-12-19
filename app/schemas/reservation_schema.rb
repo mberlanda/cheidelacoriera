@@ -18,9 +18,9 @@ module ReservationSchema
           type: 'integer',
           title: 'Numero di Partecipanti',
           enum: (minimum..maximum).to_a,
-          minimum: minimum,
-          maximum: maximum,
-          default: default
+          minimum:,
+          maximum:,
+          default:
         },
         fan_names: {
           type: 'array',
@@ -103,7 +103,7 @@ module ReservationSchema
 
   def schema_description(max_pax)
     places = max_pax > 1 ? "#{max_pax} posti" : '1 posto'
-    "Per questa partita potrai prenotare un massimo di #{places}. "\
+    "Per questa partita potrai prenotare un massimo di #{places}. " \
       'Dopo aver inserito le informazioni richieste clicca su "Prenota".'
   end
 end

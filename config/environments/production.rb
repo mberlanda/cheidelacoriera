@@ -76,7 +76,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  config.log_formatter = Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
@@ -136,8 +136,8 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: 587,
     domain: 'cheidelacoriera.com',
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: ENV.fetch('SENDGRID_USERNAME', nil),
+    password: ENV.fetch('SENDGRID_PASSWORD', nil),
     authentication: 'plain',
     enable_starttls_auto: true
   }

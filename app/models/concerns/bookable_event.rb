@@ -28,7 +28,7 @@ module BookableEvent
   def booked_by?(user_id)
     return false unless book_range?
 
-    reservations.where(user_id: user_id).present?
+    reservations.where(user_id:).present?
   end
 
   # This is executed in a before_save hook
