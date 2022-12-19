@@ -37,6 +37,7 @@ gem 'scout_apm'
 
 gem 'cookies_eu', '~> 1.6' # cookies policy
 
+gem 'net-smtp'
 gem 'sidekiq', '>=6', '< 7' # Async queue
 
 group :development, :test do
@@ -76,7 +77,4 @@ group :lint do
   gem 'ruby_css_lint', require: false # Syntax checker for CSS
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-ruby '2.7.0'
+ruby '3.1.3'

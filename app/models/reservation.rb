@@ -21,7 +21,7 @@ class Reservation < ApplicationRecord
   scope :pending, -> { where(status: :pending) }
   scope :active, -> { where(status: :active) }
   scope :rejected, -> { where(status: :rejected) }
-  scope :for_event, ->(event_id) { where(event_id: event_id) }
+  scope :for_event, ->(event_id) { where(event_id:) }
   belongs_to :event, inverse_of: :reservations
 
   include ReservationStatus

@@ -67,7 +67,7 @@ RSpec.describe Reservation, type: :model do
     it '.assign_requested!' do
       expect do
         FactoryBot.create(
-          :reservation, event: event, fan_names: @fan_names,
+          :reservation, event:, fan_names: @fan_names,
                         phone_number: default_phone_number
         )
       end.to change(event, :requested_seats).by(@fan_names.size)
@@ -123,8 +123,8 @@ RSpec.describe Reservation, type: :model do
   context 'when approve_all' do
     it 'avoids n+1 queries' do
       event = FactoryBot.create(:event)
-      res1 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
-      res2 = FactoryBot.create(:reservation, fan_names: @fan_names, event: event)
+      res1 = FactoryBot.create(:reservation, fan_names: @fan_names, event:)
+      res2 = FactoryBot.create(:reservation, fan_names: @fan_names, event:)
 
       expect(described_class.where(event_id: event.id).pending.count).to eq(2)
 

@@ -46,7 +46,7 @@ class DumpProcessor
   end
 
   def build_insert_statement(table_name, columns, data)
-    "INSERT INTO #{table_name} #{columns} VALUES #{data.join(', ')}"\
+    "INSERT INTO #{table_name} #{columns} VALUES #{data.join(', ')}" \
       " ON CONFLICT DO NOTHING;\n"
   end
 

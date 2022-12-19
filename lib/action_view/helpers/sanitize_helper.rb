@@ -119,7 +119,7 @@ module ActionView
         self.class.link_sanitizer.sanitize(html)
       end
 
-      module ClassMethods #:nodoc:
+      module ClassMethods # :nodoc:
         attr_writer :full_sanitizer, :link_sanitizer, :white_list_sanitizer
 
         # Vendors the full, link and white list sanitizers.

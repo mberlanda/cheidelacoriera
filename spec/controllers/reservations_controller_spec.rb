@@ -85,7 +85,7 @@ RSpec.describe ReservationsController, type: :controller do
       it 'redirects to new_reservation an admin with validation errors' do
         empty_fans = ->(_) {}
         params = valid_reservation_params(active_fan, event, fans_proc: empty_fans)
-        post :create, params: params
+        post(:create, params:)
 
         assert_form_validation_errors(response)
       end
@@ -107,7 +107,7 @@ RSpec.describe ReservationsController, type: :controller do
       it 'creates a reservation with valid input' do
         reservation_count_before = Reservation.count
         params = valid_reservation_params(active_fan, event)
-        post :form_create, params: params
+        post(:form_create, params:)
 
         expect(Reservation.count).to eq(reservation_count_before + 1)
         expect(response).to have_http_status(:ok)
@@ -115,7 +115,7 @@ RSpec.describe ReservationsController, type: :controller do
 
       it 'returns bad request if tries to create reservations on behalf of other users' do
         params = valid_reservation_params(pending_fan, event)
-        post :form_create, params: params
+        post(:form_create, params:)
 
         expect(response).to have_http_status(:bad_request)
       end
@@ -123,7 +123,7 @@ RSpec.describe ReservationsController, type: :controller do
       it 'returns 400 with validation errors if reservation is not valid' do
         empty_fans = ->(_) {}
         params = valid_reservation_params(active_fan, event, fans_proc: empty_fans)
-        post :form_create, params: params
+        post(:form_create, params:)
 
         expect(response).to have_http_status(:bad_request)
         json_response = JSON.parse(response.body)

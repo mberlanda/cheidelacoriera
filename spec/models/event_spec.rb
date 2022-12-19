@@ -17,7 +17,7 @@ RSpec.describe Event, type: :model do
     subject do
       FactoryBot.build(
         :event,
-        competition: competition,
+        competition:,
         home_team: team1,
         away_team: team2
       )
@@ -109,7 +109,7 @@ RSpec.describe Event, type: :model do
     subject do
       FactoryBot.build(
         :event,
-        competition: competition,
+        competition:,
         date: event_date,
         home_team: team1,
         away_team: team2,
@@ -130,7 +130,7 @@ RSpec.describe Event, type: :model do
 
     it 'includes transport mean if present' do
       transport_mean = 'bus'
-      subject.update(transport_mean: transport_mean)
+      subject.update(transport_mean:)
 
       expect(subject.send(:custom_slug_name)).to eq([
         subject.home_team.name.downcase.tr(' ', '-').to_s,
@@ -146,7 +146,7 @@ RSpec.describe Event, type: :model do
     subject do
       FactoryBot.create(
         :event,
-        competition: competition,
+        competition:,
         date: event_date,
         home_team: team1,
         away_team: team2,
@@ -202,7 +202,7 @@ RSpec.describe Event, type: :model do
     subject do
       FactoryBot.build(
         :event,
-        competition: competition,
+        competition:,
         home_team: team1,
         away_team: team2
       )

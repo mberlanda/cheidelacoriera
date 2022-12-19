@@ -28,11 +28,11 @@ describe DatatableHelper do
 
     it '.to_html' do
       expect(@b.to_html).to eq(
-        '<div class="container">'\
-        '<div class="crud-index-buttons"></div>'\
-        '<table class="table table-striped table-hover datatable-table"'\
-        ' id="crud-table">'\
-        '<thead></thead>'\
+        '<div class="container">' \
+        '<div class="crud-index-buttons"></div>' \
+        '<table class="table table-striped table-hover datatable-table"' \
+        ' id="crud-table">' \
+        '<thead></thead>' \
         '</table></div>'
       )
     end
@@ -42,11 +42,11 @@ describe DatatableHelper do
     it '#table' do
       actual = DatatableHelper::Builder.table(nil, 'a', 'b', 'c')
       expect(actual).to eq(
-        '<div class="container">'\
-        '<div class="crud-index-buttons"></div>'\
-        '<table class="table table-striped table-hover datatable-table"'\
-        ' id="crud-table">'\
-        '<thead><th>a</th><th>b</th><th>c</th></thead>'\
+        '<div class="container">' \
+        '<div class="crud-index-buttons"></div>' \
+        '<table class="table table-striped table-hover datatable-table"' \
+        ' id="crud-table">' \
+        '<thead><th>a</th><th>b</th><th>c</th></thead>' \
         '</table></div>'
       )
     end
@@ -55,11 +55,11 @@ describe DatatableHelper do
   it 'crud_datatable' do
     actual = crud_datatable(nil, 'a', 'b', 'c')
     expect(actual).to eq(
-      '<div class="container">'\
-      '<div class="crud-index-buttons"></div>'\
-      '<table class="table table-striped table-hover datatable-table"'\
-      ' id="crud-table">'\
-      '<thead><th>a</th><th>b</th><th>c</th></thead>'\
+      '<div class="container">' \
+      '<div class="crud-index-buttons"></div>' \
+      '<table class="table table-striped table-hover datatable-table"' \
+      ' id="crud-table">' \
+      '<thead><th>a</th><th>b</th><th>c</th></thead>' \
       '</table></div>'
     )
   end

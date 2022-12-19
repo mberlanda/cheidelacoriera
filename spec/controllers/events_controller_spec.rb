@@ -54,7 +54,7 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it 'can see event details with a reservation' do
-      FactoryBot.create(:reservation, event: event, user: active_fan,
+      FactoryBot.create(:reservation, event:, user: active_fan,
                                       fan_names: %w[Foo|Bar])
 
       get :details, params: { id: event.id }
