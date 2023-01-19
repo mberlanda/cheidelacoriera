@@ -127,7 +127,7 @@ GEM
     gibbon (3.4.4)
       faraday (>= 1.0)
       multi_json (>= 1.11.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     haml (5.2.2)
       temple (>= 0.8.0)
@@ -179,7 +179,7 @@ GEM
     mini_portile2 (2.8.0)
     mini_racer (0.4.0)
       libv8-node (~> 15.14.0.0)
-    minitest (5.16.3)
+    minitest (5.17.0)
     multi_json (1.15.0)
     nio4r (2.5.8)
     nokogiri (1.13.8)
@@ -363,7 +363,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
