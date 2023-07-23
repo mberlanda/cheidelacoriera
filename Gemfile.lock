@@ -371,7 +371,7 @@ GEM
 PLATFORMS
   aarch64-linux
   ruby
-  x64_64-linux
+  x84_64-linux
 
 DEPENDENCIES
   brakeman
