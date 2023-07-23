@@ -58,6 +58,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.10.0.0
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
       - name: Find yarn cache location
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
