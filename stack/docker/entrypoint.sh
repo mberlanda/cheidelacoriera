@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 PORT=${PORT:-3001}
 RAILS_DB_SEED=${RAILS_DB_SEED:-false}
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
+export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so
 
 if [[ "${RAILS_DB_MIGRATE}" == "true" ]]; then
   bundle exec rake db:migrate

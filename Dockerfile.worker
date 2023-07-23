@@ -2,7 +2,7 @@
 # STEP 1 build base image
 ############################
 
-FROM ruby:2.7.0-buster as base
+FROM ruby:2.7.8-bullseye as base
 
 RUN apt-get update \
     && apt-get install -y apt-transport-https \
@@ -22,7 +22,7 @@ WORKDIR "${WORKDIR}"
 COPY .ruby-version Gemfile Gemfile.lock "${WORKDIR}/"
 
 RUN gem install bundler -v "$(tail -n 1 Gemfile.lock | tr -d '[:blank:]')"
-RUN bundle config set deployment 'true' && \ 
+RUN bundle config set deployment 'true' && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test lint' && \
     bundle install --jobs 4 || bundle check
@@ -47,12 +47,14 @@ FROM base as assets
 ENV NODE_ENV "production"
 
 # Install node and yarn
-RUN curl --silent --show-error --location \
-      https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-    && echo "deb https://deb.nodesource.com/node_16.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
-    && curl --silent --show-error --location https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+ADD https://deb.nodesource.com/gpgkey/nodesource.gpg.key /tmp/node-pubkey.gpgkey
+RUN apt-key add /tmp/node-pubkey.gpgkey && rm /tmp/node-pubkey.gpgkey
+ADD https://dl.yarnpkg.com/debian/pubkey.gpg /tmp/yarn-pubkey.gpg
+RUN apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
+RUN echo "deb https://deb.nodesource.com/node_16.x/ stretch main" > /etc/apt/sources.list.d/nodesource.list \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     # Need to update debian version
+    && rm /etc/apt/sources.list.d/nodesource.* \
     && apt-get update --allow-releaseinfo-change\
     && apt-get install -y --no-install-recommends \
        nodejs yarn
