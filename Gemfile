@@ -9,7 +9,7 @@ end
 
 gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
-gem 'mini_racer'
+gem 'mini_racer', '0.6.0'
 gem 'pg'
 gem 'rails', '< 7' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'
@@ -79,4 +79,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-ruby '2.7.0'
+ruby '2.7.8'
