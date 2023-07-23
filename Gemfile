@@ -9,7 +9,7 @@ end
 
 gem 'haml-rails'
 gem 'jbuilder' # TODO: remove the couple of templates using it
-gem 'mini_racer', '0.6.0'
+gem 'mini_racer', '~> 0.6'
 gem 'pg'
 gem 'rails', '< 7' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'react-rails', '~> 2.4'

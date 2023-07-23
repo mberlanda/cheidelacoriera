@@ -160,6 +160,7 @@ GEM
       railties (>= 3.1)
     kgio (2.11.4)
     libv8-node (16.10.0.0)
+    libv8-node (16.10.0.0-aarch64-linux)
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -184,6 +185,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-aarch64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     overcommit (0.58.0)
@@ -366,7 +369,9 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  aarch64-linux
   ruby
+  x84_64-linux
 
 DEPENDENCIES
   brakeman
@@ -387,7 +392,7 @@ DEPENDENCIES
   jbuilder
   listen
   lograge
-  mini_racer (= 0.6.0)
+  mini_racer (~> 0.6)
   overcommit
   pg
   rails (< 7)
