@@ -1,5 +1,9 @@
 # cheidelacoriera
 
+> This project was deprecated at the end of 2022. Since then we are going to reuse the learnings
+> of this experience for a new solution that is going to delight ever more our users.
+
+
 [![Build Status](https://travis-ci.org/mberlanda/cheidelacoriera.svg?branch=master)](https://travis-ci.org/mberlanda/cheidelacoriera)
 [![Maintainability](https://api.codeclimate.com/v1/badges/19dac7a302ec55f5cd95/maintainability)](https://codeclimate.com/github/mberlanda/cheidelacoriera/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/19dac7a302ec55f5cd95/test_coverage)](https://codeclimate.com/github/mberlanda/cheidelacoriera/test_coverage)
