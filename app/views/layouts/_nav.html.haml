@@ -29,9 +29,9 @@
                     %i.fa.fa-question-circle
                     = t('navbar.admin.demo')
         %li= link_to t('navbar.events.upcoming'), seo_url(upcoming_events_path), **nav_opt(:upcoming_events)
-        / %li= link_to t('navbar.news.index'), seo_url(news_index_path), **nav_opt(:news)
-        / %li= link_to t('navbar.posts.index'), seo_url(all_posts_path), **nav_opt(:comunicazioni)
-        / %li= link_to t('navbar.albums.index'), seo_url(all_albums_path), **nav_opt(:all_albums)
+        %li= link_to t('navbar.news.index'), seo_url(news_index_path), **nav_opt(:news)
+        %li= link_to t('navbar.posts.index'), seo_url(all_posts_path), **nav_opt(:comunicazioni)
+        %li= link_to t('navbar.albums.index'), seo_url(all_albums_path), **nav_opt(:all_albums)
 
       %ul.nav.navbar-nav.navbar-right
         / - unless I18n.locale == :en
