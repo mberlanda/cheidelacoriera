@@ -36,7 +36,7 @@
     "@babel/preset-typescript": "^7.16.0",
     "@rails/actioncable": "6.0.3",
     "@rails/activestorage": "6.0.3",
-    "@rails/ujs": "6.0.3",
+    "@rails/ujs": "6.1.7",
     "@rails/webpacker": "5.4.3",
     "@types/jquery": "^3.5.8",
     "@types/react": "^17.0.34",
