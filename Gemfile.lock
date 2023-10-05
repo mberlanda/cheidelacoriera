@@ -202,7 +202,7 @@ GEM
       ast (~> 2.4.1)
     pg (1.5.3)
     racc (1.7.1)
-    rack (2.2.7)
+    rack (2.2.8)
     rack-proxy (0.7.2)
       rack
     rack-test (2.1.0)
@@ -313,7 +313,7 @@ GEM
     semantic_range (3.0.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.5.9)
+    sidekiq (6.5.10)
       connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
@@ -410,7 +410,7 @@ DEPENDENCIES
   sassc-rails
   scout_apm
   shoulda-matchers
-  sidekiq (>= 6, < 7)
+  sidekiq (>= 6, < 8)
   simple_form
   simplecov (< 1)
   spring
