@@ -2,7 +2,7 @@
 # STEP 1 build base image
 ############################
 
-FROM ruby:2.7.0-buster as base
+FROM ruby:3.2.2-buster as base
 
 RUN apt-get update \
     && apt-get install -y apt-transport-https \
