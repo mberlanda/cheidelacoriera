@@ -200,7 +200,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    pg (1.5.3)
+    pg (1.5.9)
     racc (1.7.1)
     rack (2.2.7)
     rack-proxy (0.7.2)
