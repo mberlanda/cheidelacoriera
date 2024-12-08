@@ -22,7 +22,7 @@ gem 'webpacker', '< 7'
 gem 'rails-html-sanitizer', '>= 1.4.3', '< 1.5.0'
 gem 'sprockets'
 
-gem 'devise', '~> 4.7.1' # Authentication
+gem 'devise', '~> 4.9.0' # Authentication
 gem 'draper'
 gem 'lograge' # Lograge for more compact log files
 gem 'simple_form' # Form helper
