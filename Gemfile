@@ -19,7 +19,7 @@ gem 'unicorn'
 gem 'unicorn-worker-killer'
 gem 'webpacker', '< 7'
 
-gem 'rails-html-sanitizer', '>= 1.4.3', '< 1.5.0'
+gem 'rails-html-sanitizer', '>= 1.4.3', '< 1.7.2'
 gem 'sprockets'
 
 gem 'devise', '~> 4.7.1' # Authentication
